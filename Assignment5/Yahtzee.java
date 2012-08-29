@@ -43,6 +43,11 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	}
 	
 	private void setupGame() {	
+		/* sets up the initial requirements for the game
+		 * number of players, player names, instantiates a new YahtzeeDisplay
+		 * initializes the MasterScoreCard and UsedCategories
+		 */
+		
 		IODialog dialog = getDialog();
 		while (numPlayerCheck(nPlayers) == false) {//input is checked for proper type by the YahtzeeDisplay class
 			nPlayers = dialog.readInt("Enter number of players");	
@@ -53,25 +58,31 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		}
 		display = new YahtzeeDisplay(getGCanvas(), playerNames);
 		
-		//IMPORTANT TO NOTE THAT BOTH THESE arrays have an empty element at [0].
-		//this is to be able to use the constants to directly access index the array
-		MasterScore = new int[nPlayers][N_CATEGORIES+1];
+		/* IMPORTANT TO NOTE THAT BOTH THESE arrays have an empty element at [0].
+		 * so that the category constants can be used directly to index these array
+		 */
+		MasterScoreCard = new int[nPlayers][N_CATEGORIES+1];
 		UsedCategories = new boolean[nPlayers][N_CATEGORIES+1];
 	}
 
 	private void playGame() {
-		boolean[] selectedDice = new boolean[N_DICE];
+		/* loops all players turn until the last player has all categories filled:
+		 *     rolls dice and then waits for player to select re-rolls
+		 * after loop calls the scoring sub
+		 * selectedDice[] is to store which dice are selected
+		 */
+		boolean[] selectedDice = new boolean[N_DICE]; 
 		
 		while (scoreCardIsComplete() == false) {
 			for (int player = 1; player <= nPlayers; player++) {			
-				display.printMessage("Roll dice to begin your turn.");
+				display.printMessage(playerNames[player-1] + ", please roll dice to begin your turn.");
 				display.waitForPlayerToClickRoll(player);	
 				Arrays.fill(selectedDice, true);
 				rollDice(selectedDice);
 				
 				int j = 1;
 				while (j < 3) {		
-					display.printMessage("Select which dice to re-roll.");
+					display.printMessage("Select which dice to re-roll. " + Integer.toString(3-j) + " rolls remaining.");
 					display.waitForPlayerToSelectDice();				
 					rollDice(selectDice());
 					j++;
@@ -81,27 +92,27 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		}
 	}
 
-	private boolean scoreCardIsComplete() {		
-		return checkIfCategoryUsed(nPlayers-1, UPPER_SCORE) && checkIfCategoryUsed(nPlayers-1, LOWER_SCORE);
-	}
-
 	private void declareWinner() {
+		/* creates an ArrayList to add names that equal
+		 * the maximum score on the MasterScoreCard 
+		 */
 		int max = 0;
 		ArrayList<String> winnersList = new ArrayList<String>();
-		
+		//get the max score on each players card
 		for (int i = 0; i < nPlayers; i++) {
 			if (getScore(i, TOTAL) > max) max = getScore(i,TOTAL);
 		}
+		//add name to the list if TOTAL equals the max
 		for (int i = 0; i < playerNames.length;  i++) {
 			if (getScore(i,TOTAL) == max) winnersList.add(playerNames[i]);
 		}
+		//bunch of string conditionals for nice gramar
 		String isAre = " is";
 		String sGrammar = "";
 		if (winnersList.size() > 1) {
 			isAre = " are";
 			sGrammar = "s";
-		}
-		
+		}		
 		String names = "";
 		for (int i = 0; i < winnersList.size(); i++) {
 			String name = (String) winnersList.get(i);
@@ -113,8 +124,11 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	}
 	
 	private void playerScoreEntry(int player) {
+		/* waits for player to select category and calculates the appropriate score
+		 * includes a check to make sure the category isn't previously selected
+		 */
 		int category;		 
-		display.printMessage("Select a category to score.");
+		display.printMessage(playerNames[player-1] + " has no rolls left. Select a category to score.");
 		while(true) {
 			category = display.waitForPlayerToSelectCategory();
 			if (!checkIfCategoryUsed(player, category)) {
@@ -136,13 +150,13 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	private void updateTotal(int player) {
 		int sum = 0;
 		for (int i =0; i< scoringCategories.length; i++) {
-			sum += MasterScore[player-1][scoringCategories[i]];
+			sum += MasterScoreCard[player-1][scoringCategories[i]];
 		}
 		setMasterScore(player, TOTAL, sum);
 	}
 
 	private void setMasterScore(int player, int category, int score) {
-		MasterScore[player-1][category] = score;
+		MasterScoreCard[player-1][category] = score;
 		UsedCategories[player-1][category] = true;
 		display.updateScorecard(category, player, score);
 	}
@@ -156,7 +170,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			boolean allFilled = true;
 			for (int i = ONES; i <= SIXES; i++) { //iterate and sum. if the sum is >= 63 then give the bonus and mark it in UsedCategories
 				if (UsedCategories[player-1][i] == false) allFilled = false;
-				sum += MasterScore[player-1][i];							
+				sum += MasterScoreCard[player-1][i];							
 			}			
 			if (allFilled) {
 				setMasterScore(player, UPPER_SCORE, sum);
@@ -172,7 +186,7 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 			int sum = 0;
 			boolean test = true;
 			for (int i = THREE_OF_A_KIND; i < LOWER_SCORE; i++) { //iterate and sum and count. 
-				if(UsedCategories[player-1][i] == true) sum += MasterScore[player-1][i];
+				if(UsedCategories[player-1][i] == true) sum += MasterScoreCard[player-1][i];
 				else {
 					test = false;
 					break;				
@@ -183,27 +197,44 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	}
 	
 	private int calculateScore(int category) {
+		//this will test the category requirements and return a score as well
 		int[] diceValueCounts = countDiceValues(diceArray);		
-		//calculate simple and chance categories
-		if ((ONES <= category && category <= FULL_HOUSE) || category == YAHTZEE) {
-			if (ONES <= category && category <= SIXES) return category * diceValueCounts[category-1];
-		} else if (category == CHANCE) return sumArray(diceArray);
+		//Handles categories ONES-SIXES
+		if (ONES <= category && category <= SIXES) return category * diceValueCounts[category-1];
 		int[] sortedDiceArray = (int[])diceArray.clone();
 		Arrays.sort(sortedDiceArray);			
 		int[] sortedCounts = (int[])diceValueCounts.clone();
 		Arrays.sort(sortedCounts);			
 		
-		//straight conditionals
-		if (category == SMALL_STRAIGHT || category == LARGE_STRAIGHT) { //categories 10-11
+		//Handles STRAIGHTS
+		if (SMALL_STRAIGHT == category || category == LARGE_STRAIGHT) {
 			return calculateStraightScore(sortedDiceArray, category);
 		}
-		
+		//Handles MULTIPLES, CHANCE
 		return calculateMultiplesScore(sortedCounts, category); 
 	}
 
+	private int calculateStraightScore(int[] sortedDiceArray, int category) {
+		/*helper to calculate straights. will count the a sorted array for numbers increasing in size.
+		 *  by def there has to 5 for a large straight and at most 1 that doesn't meet that requirement
+		 *  for a small.
+		 */
+		int cnt = 0;
+		
+		if(sortedDiceArray[4]- sortedDiceArray[0] == 4) { //4 is an automatic pass for both categories
+			if (category == SMALL_STRAIGHT) return 30;
+			else return 40; //large score
+		} else if (category == SMALL_STRAIGHT) {//tests the small straight
+			for (int i = 1; i < sortedDiceArray.length; i++) {
+				if(cnt > 1) return 0;
+				else if (sortedDiceArray[i]-sortedDiceArray[i-1] != 1) cnt++;
+			}
+			return 30; //if the for loop passed without return 0 it will return 30
+		} else return 0; //fails both tests returns 0
+	}
+
 	private int calculateMultiplesScore(int[] sortedCounts, int category) {
-		//score for multiples. maxCount is an array with the highest multiple in 0 pos
-		//and the second height in 1 position
+		//maxCount[] has the highest dice multiple at index 0 and the second highest at index 1
 		int[] maxCount = {sortedCounts[sortedCounts.length-1], sortedCounts[sortedCounts.length-2]};
 		
 		switch (category) {
@@ -219,29 +250,19 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 		case FULL_HOUSE: //full house
 			if (maxCount[0] == 3 && maxCount[1] == 2) return 25;
 			else return 0;
+		case CHANCE:
+			return sumArray(diceArray);		
 		default:
 			return 0;
 		}
 	}
 
-	private int calculateStraightScore(int[] sortedDiceArray, int category) {
-		// check and calculate straight score
-		int cnt = 0;
-		
-		if(sortedDiceArray[4]- sortedDiceArray[0] == 4) {
-			if (category == SMALL_STRAIGHT) return 30;
-			else return 40;
-		} else if (category == SMALL_STRAIGHT) {
-			for (int i = 1; i < sortedDiceArray.length; i++) {
-				if(cnt > 1) return 0;
-				else if (sortedDiceArray[i]-sortedDiceArray[i-1] != 1) cnt++;
-			}
-			return 30; //if the for loop passed without return 0 it will return 30
-		} else return 0;
-	}
-	
 	private boolean checkIfCategoryUsed(int player, int category) {
 		return UsedCategories[player-1][category];
+	}
+
+	private boolean scoreCardIsComplete() {		
+		return checkIfCategoryUsed(nPlayers-1, UPPER_SCORE) && checkIfCategoryUsed(nPlayers-1, LOWER_SCORE);
 	}
 
 	private boolean numPlayerCheck(int nPlayers) {
@@ -285,10 +306,13 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 	}
 
 	private int getScore(int playerIndex, int category) {
-		return MasterScore[playerIndex][category];
+		return MasterScoreCard[playerIndex][category];
 	}
 
 	private void fillScoreCard(int player) {
+		/* debugging helper to fill up the score card
+		 * leaves the last category to blank to self fill
+		 */
 		for (int i = 0; i < scoringCategories.length-1; i++) {
 			setMasterScore(player, scoringCategories[i], 1);	
 		}
@@ -296,10 +320,10 @@ public class Yahtzee extends GraphicsProgram implements YahtzeeConstants {
 
 	// Private instance variables 
 	private int nPlayers;
-	private String[] playerNames;
+	private String[] playerNames; //nPlayer-1 size
 	private YahtzeeDisplay display;
 	private RandomGenerator rgen = new RandomGenerator();
-	private int[][] MasterScore;
+	private int[][] MasterScoreCard;
 	private boolean[][] UsedCategories;
 	private int[] diceArray = new int[N_DICE];
 	int[] allCategories = {ONES, TWOS, THREES, FOURS, FIVES , SIXES, UPPER_SCORE,UPPER_BONUS, THREE_OF_A_KIND, FOUR_OF_A_KIND, FULL_HOUSE, YAHTZEE, SMALL_STRAIGHT, LARGE_STRAIGHT, CHANCE, LOWER_SCORE, TOTAL};
