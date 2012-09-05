@@ -89,7 +89,7 @@ public class NameSurferGraph extends GCanvas
 		remove(obj);
 	}
 	
-	private int calibrateValue(int value) {
+	private int calibrate(int value) {
 		if ( value == 0) {
 			return ( getHeight() - GRAPH_MARGIN_SIZE) ;
 		}
@@ -135,23 +135,19 @@ public class NameSurferGraph extends GCanvas
 		GCompound series = new GCompound();
 		int[] arr = entry.getRankArray();
 		Color color = colorArray[ colorIndex ];
-		String valueString;
 		int decadeWidth = 0;
 		int[] pt2 = new int[2];
 		
 		for (int i = 0; i < arr.length; i++ ) {	
 			System.out.println("nameSurferloop...");
-			int value = calibrateValue(arr[i]);
-			if(arr[i] != 0) valueString = Integer.toString(arr[i]);
-			else valueString = "*";			
-			GLabel nameLabel = new GLabel ( entry.getName() + " " + valueString);
-			nameLabel.setColor(color);
+			int value = calibrate(arr[i]);						
 			int[] pt1 = {decadeWidth, value};
 			if (i>0) {
 				GLine line = new GLine(pt1[0], pt1[1], pt2[0], pt2[1] );
 				line.setColor(color);
 				series.add(line);
 			}
+			GLabel nameLabel = createLabel(entry.getName(), arr[i], color);
 			GObject mark = makeMark(color);
 			series.add(nameLabel, pt1[0] + labelMargin, pt1[1] - labelMargin );
 			series.add(mark, pt1[0]- mark.getWidth()/2, pt1[1] - mark.getHeight()/2);
@@ -162,6 +158,49 @@ public class NameSurferGraph extends GCanvas
 		setNextColorIndex();
 		setMarkerIndex();
 		return series;
+	}
+	
+//	private GCompound createSeries(NameSurferEntry entry) {
+//		System.out.println("createSeries...");
+//		GCompound series = new GCompound();
+//		int[] arr = entry.getRankArray();
+//		Color color = colorArray[ colorIndex ];
+//		String valueString;
+//		int decadeWidth = 0;
+//		int[] pt2 = new int[2];
+//		
+//		for (int i = 0; i < arr.length; i++ ) {	
+//			System.out.println("nameSurferloop...");
+//			int value = calibrate(arr[i]);
+//			if(arr[i] != 0) valueString = Integer.toString(arr[i]);
+//			else valueString = "*";			
+//			GLabel nameLabel = new GLabel ( entry.getName() + " " + valueString);
+//			nameLabel.setColor(color);
+//			int[] pt1 = {decadeWidth, value};
+//			if (i>0) {
+//				GLine line = new GLine(pt1[0], pt1[1], pt2[0], pt2[1] );
+//				line.setColor(color);
+//				series.add(line);
+//			}
+//			GObject mark = makeMark(color);
+//			series.add(nameLabel, pt1[0] + labelMargin, pt1[1] - labelMargin );
+//			series.add(mark, pt1[0]- mark.getWidth()/2, pt1[1] - mark.getHeight()/2);
+//			pt2 = pt1;
+//			decadeWidth += getWidth() / NDECADES;
+//		}
+//		lineColorMap.put(entry.getName(), colorArray[colorIndex]);
+//		setNextColorIndex();
+//		setMarkerIndex();
+//		return series;
+//	}
+	
+	private GLabel createLabel(String name, int value, Color color) {
+		String valueString;
+		if(value != 0) valueString = Integer.toString(value);
+		else valueString = "*";			
+		GLabel nameLabel = new GLabel ( name + " " + valueString);
+		nameLabel.setColor(color);
+		return nameLabel;
 	}
 	
 	private GObject makeMark(Color color) {
@@ -192,7 +231,7 @@ public class NameSurferGraph extends GCanvas
 
 	private GObject circleMark(Color color) {
 		GOval mark = new GOval(markSize,markSize);
-		mark.setFilled(true);
+//		mark.setFilled(true);
 		mark.setColor(color);
 		return mark;
 	}
@@ -227,6 +266,37 @@ public class NameSurferGraph extends GCanvas
 			decade += 10;
 		}		
 		return result;
+	}
+	
+	private void animateLine() {
+		
+	}
+	
+	private void animateLineCreation() {
+		
+	}
+	
+	private int[][] createGraphPoints(int[] rankArr) {
+		int decadeSpace = getWidth() / NDECADES;
+		int x, y;
+		
+		int[][] result = new int[rankArr.length][];
+		for (int i = 0; i < rankArr.length; i++) {			
+			x = calibrate(rankArr[i]);
+			y = i*decadeSpace;
+			int[] point = {x,y};
+			result[i] = point;  
+		}
+		
+		return result;
+	}
+	
+	private int[] createAnimationPoints(int[] graphPoints) {
+		int[] result = new int[graphPoints.length];
+		for (int i = 0; i < graphPoints.length-1; i++) {
+			
+		}
+		                       
 	}
 	
 	public boolean checkSeriesMap(String capitalizedName) {
