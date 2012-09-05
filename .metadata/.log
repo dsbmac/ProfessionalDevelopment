@@ -1,0 +1,74 @@
+!SESSION 2012-09-05 18:12:54.734 -----------------------------------------------
+eclipse.buildId=M20110210-1200
+java.version=1.7.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86 -product org.eclipse.epp.package.java.product -data C:\Documents and Settings\Denis\My Documents\GitHub\Stanford-CS106A -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.core.resources 4 2 2012-09-05 18:14:19.875
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.core.resources".
+!STACK 0
+java.lang.NullPointerException
+	at edu.stanford.cs106.LogChangeListener.getRepository(LogChangeListener.java:165)
+	at edu.stanford.cs106.LogChangeListener.resourceChanged(LogChangeListener.java:133)
+	at org.eclipse.core.internal.events.NotificationManager$2.run(NotificationManager.java:291)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:327)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1181)
+	at org.eclipse.core.internal.resources.Resource.refreshLocal(Resource.java:1676)
+	at org.eclipse.core.internal.refresh.RefreshJob.runInWorkspace(RefreshJob.java:166)
+	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:38)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.core.resources 4 2 2012-09-05 18:14:20.125
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.core.resources".
+!STACK 0
+java.lang.NullPointerException
+	at edu.stanford.cs106.LogChangeListener.getRepository(LogChangeListener.java:165)
+	at edu.stanford.cs106.LogChangeListener.resourceChanged(LogChangeListener.java:133)
+	at org.eclipse.core.internal.events.NotificationManager$2.run(NotificationManager.java:291)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:327)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1181)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:1984)
+	at org.eclipse.jdt.core.JavaCore.run(JavaCore.java:4777)
+	at org.eclipse.jdt.internal.launching.LaunchingPlugin$VMChanges.doit(LaunchingPlugin.java:270)
+	at org.eclipse.jdt.internal.launching.LaunchingPlugin$JREUpdateJob.run(LaunchingPlugin.java:365)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.core.resources 4 2 2012-09-05 18:14:22.453
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.core.resources".
+!STACK 0
+java.lang.NullPointerException
+	at edu.stanford.cs106.LogChangeListener.getRepository(LogChangeListener.java:165)
+	at edu.stanford.cs106.LogChangeListener.resourceChanged(LogChangeListener.java:133)
+	at org.eclipse.core.internal.events.NotificationManager$2.run(NotificationManager.java:291)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:327)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1181)
+	at org.eclipse.core.internal.resources.Workspace.run(Workspace.java:1984)
+	at org.eclipse.core.internal.events.NotificationManager$NotifyJob.run(NotificationManager.java:40)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.core.resources 4 2 2012-09-05 18:14:23.015
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.core.resources".
+!STACK 0
+java.lang.NullPointerException
+	at edu.stanford.cs106.LogChangeListener.getRepository(LogChangeListener.java:165)
+	at edu.stanford.cs106.LogChangeListener.resourceChanged(LogChangeListener.java:133)
+	at org.eclipse.core.internal.events.NotificationManager$2.run(NotificationManager.java:291)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.core.internal.events.NotificationManager.notify(NotificationManager.java:285)
+	at org.eclipse.core.internal.events.NotificationManager.broadcastChanges(NotificationManager.java:149)
+	at org.eclipse.core.internal.resources.Workspace.broadcastPostChange(Workspace.java:327)
+	at org.eclipse.core.internal.resources.Workspace.endOperation(Workspace.java:1181)
+	at org.eclipse.core.internal.events.AutoBuildJob.doBuild(AutoBuildJob.java:157)
+	at org.eclipse.core.internal.events.AutoBuildJob.run(AutoBuildJob.java:242)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
