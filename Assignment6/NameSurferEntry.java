@@ -6,6 +6,7 @@
  * of that name for each decade stretching back to 1900.
  */
 
+import java.awt.Color;
 import java.util.*;
 
 public class NameSurferEntry implements NameSurferConstants {
@@ -24,11 +25,12 @@ public class NameSurferEntry implements NameSurferConstants {
 			/* iterate through the loop and mark the index when the rankings start
 			 * then add the values to the rankArray as spaces are met
 			 */	
-			rankArray = new int[11];
+			this.rankArray = new int[11];
 			String[] helper = line.split("\\s+");
-			name = helper[0];
+			this.name = helper[0];
 			for (int i = 1; i < helper.length; i++) {
-			rankArray[i-1] = Integer.parseInt(helper[i]);
+			this.rankArray[i-1] = Integer.parseInt(helper[i]);
+						
 		}						
 	}
 
@@ -37,7 +39,7 @@ public class NameSurferEntry implements NameSurferConstants {
  * Returns the name associated with this entry.
  */
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 /* Method: getRank(decade) */
@@ -49,13 +51,14 @@ public class NameSurferEntry implements NameSurferConstants {
  * not appear in a decade, the rank value is 0.
  */
 	public int getRank(int decade) {
-		return rankArray[decade];
+		return this.rankArray[decade];
 	}
 	
 	public int[] getRankArray() {
-		return rankArray;
+		return this.rankArray;
 	}
 
+	
 /* Method: toString() */
 /**
  * Returns a string that makes it easy to see the value of a
@@ -64,6 +67,6 @@ public class NameSurferEntry implements NameSurferConstants {
 	@Override
 	public String toString() {
 		// You need to turn this stub into a real implementation //
-		return name + " " + Arrays.toString(rankArray);
-	}		
+		return this.name + " " + Arrays.toString(this.rankArray);
+	}
 }

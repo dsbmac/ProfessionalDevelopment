@@ -1,3 +1,5 @@
+import java.awt.Color;
+
 /*
  * File: NameSurferConstants.java
  * ------------------------------
@@ -32,4 +34,6 @@ public interface NameSurferConstants {
 /** size of text field */
 	public static final int MAX_NAME_LENGTH = 20;
 	
+/** possible graph colors */	
+	public static final Color[] COLOR_ARRAY = {Color.BLACK, Color.RED, Color.BLUE, Color.MAGENTA}; 
 }

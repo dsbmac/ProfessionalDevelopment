@@ -43,21 +43,21 @@ public class NameSurferDataBase implements NameSurferConstants {
 		}
 	}
 	
-	private HashMap<String, String> readLineMap(BufferedReader rd) {
-		HashMap<String, String> result = new HashMap<String, String>();
-		try {
-			while ( true ) {
-				String line = rd.readLine();
-				if (line == null) break;
-				NameSurferEntry entry = new NameSurferEntry(line);
-				result.put(entry.getName(), line);
-			}		
-			rd.close();
-		} catch (IOException ex) {
-			throw new ErrorException (ex);
-		}					
-	return result;
-	}
+//	private HashMap<String, String> readLineMap(BufferedReader rd) {
+//		HashMap<String, String> result = new HashMap<String, String>();
+//		try {
+//			while ( true ) {
+//				String line = rd.readLine();
+//				if (line == null) break;
+//				NameSurferEntry entry = new NameSurferEntry(line);
+//				result.put(entry.getName(), line);
+//			}		
+//			rd.close();
+//		} catch (IOException ex) {
+//			throw new ErrorException (ex);
+//		}					
+//	return result;
+//	}
 	
 	private BufferedReader openFileReader(String filename) {
 		BufferedReader rd = null;

@@ -1,0 +1,20 @@
+import java.awt.Color;
+
+public class NameSurferSeries {
+	
+	public NameSurferSeries(NameSurferEntry entry, Color color) {
+		this.entry = entry;
+		this.color = color;
+	}
+
+	private NameSurferEntry entry;
+	private Color color;
+	
+	public NameSurferEntry getEntry() {
+		return this.entry;
+	}
+	
+	public Color getColor() {
+		return this.color;
+	}
+}

@@ -1,0 +1,22 @@
+import java.awt.Color;
+
+public class NameSurferInstance {
+	
+	public NameSurferInstance(NameSurferEntry entry, Color color, int[] resolution) {
+		this.entry = entry;
+		this.color = color;
+		this.resolution = resolution;
+	}
+
+	private NameSurferEntry entry;
+	private Color color;
+	private int[] resolution ;
+	
+	public NameSurferEntry getEntry() {
+		return this.entry;
+	}
+	
+	public Color getColor() {
+		return this.color;
+	}
+}

@@ -7,7 +7,6 @@
  */
 
 import acm.graphics.*;
-
 import java.awt.Color;
 import java.awt.event.*;
 import java.util.*;
@@ -20,9 +19,8 @@ public class NameSurferGraph extends GCanvas
 	*/
 	public NameSurferGraph() {
 		addComponentListener(this);
-		seriesMap = new HashMap<String, GObject>();
-		lineColorMap = new HashMap<String, Color>();
-		markIndex = 0;
+		seriesMap = new HashMap<String, NameSurferSeries>();
+		currentMarkIndex = 0;
 		
 		//	 You fill in the rest //
 	}
@@ -46,49 +44,24 @@ public class NameSurferGraph extends GCanvas
 	* simply stores the entry; the graph is drawn by calling update.
 	*/
 	public void addEntry(NameSurferEntry entry) {
-		GCompound series = createSeries(entry);
-		add(series);		
+		int[] resolution = { getWidth(), getHeight()};
+		NameSurferSeries series = new NameSurferSeries(entry, COLOR_ARRAY[ colorIndex ], currentMarkIndex);
+		drawGraph(series);
 		String key = entry.getName();
 		seriesMap.put(key, series);	
 		System.out.println(seriesMap);
-//		remove(series);
-//		System.out.println("remove complete");		
+		setColorIndex();
+		setCurrentMarkIndex();
 	}
 	
 	public void deleteEntry(String name) {
-		System.out.println("deleteEntry...");
-		System.out.println("name: " + name);
-		System.out.println("seriesMap.containsKey(name): " + seriesMap.containsKey(name));
-		System.out.println("containsKey J : " + seriesMap.containsKey("J"));
-		System.out.println("seriesMap: " + seriesMap);
-		Iterator iterator = seriesMap.keySet().iterator();    
-        while(iterator. hasNext()){        
-            System.out.println(iterator.next() + ",");
-        }
-		GObject series =  seriesMap.get(name);
-		System.out.println("series null: " + series != null);
-		if (series != null) {
-			remove(series);
+		if (seriesMap.containsKey(name)) {
 			seriesMap.remove(name);
-			System.out.println("seriesMap: " + seriesMap);
 		}
+		update();
 	}
 	
-	public void testEntry() {
-		HashMap<String, GObject> testMap = new HashMap<String, GObject>();
-		System.out.println("testEntry...");
-		GRect box = new GRect(100,100);
-		GRect box2 = new GRect(100,100);
-		add(box);
-		add(box2, getWidth()/2, getHeight()/2);
-		testMap.put("A", box);
-		System.out.println("testMap.put complete");
-		System.out.println(testMap);
-		testMap.put("B", box2);
-		GObject obj = testMap.get("A"); 	
-		remove(obj);
-	}
-	
+
 	private int calibrate(int value) {
 		if ( value == 0) {
 			return ( getHeight() - GRAPH_MARGIN_SIZE) ;
@@ -109,6 +82,7 @@ public class NameSurferGraph extends GCanvas
 	*/
 	public void update() {
 		drawGrid();		
+		displayStoredSeries();
 	}
 	
 	private void drawGrid() {
@@ -129,12 +103,22 @@ public class NameSurferGraph extends GCanvas
 			width += getWidth() / NDECADES;
 		}		
 	}
+	
+	private void displayStoredSeries() {
+		if (seriesMap.size() > 0) {
+			Iterator <Map.Entry<String, NameSurferSeries>> entries = seriesMap.entrySet().iterator();
+			while (entries.hasNext()) {
+				Map.Entry<String, NameSurferSeries> series = entries.next();
+				drawGraph(series.getValue());
+			}
+		}
+	}
 
-	private GCompound createSeries(NameSurferEntry entry) {
+	private void drawGraph(NameSurferSeries series) {
 		System.out.println("createSeries...");
-		GCompound series = new GCompound();
-		int[] arr = entry.getRankArray();
-		Color color = colorArray[ colorIndex ];
+		GCompound graph = new GCompound();
+		int[] arr = series.getEntry().getRankArray();
+		Color color = series.getColor();
 		int decadeWidth = 0;
 		int[] pt2 = new int[2];
 		
@@ -145,55 +129,18 @@ public class NameSurferGraph extends GCanvas
 			if (i>0) {
 				GLine line = new GLine(pt1[0], pt1[1], pt2[0], pt2[1] );
 				line.setColor(color);
-				series.add(line);
+				graph.add(line);
 			}
-			GLabel nameLabel = createLabel(entry.getName(), arr[i], color);
-			GObject mark = makeMark(color);
-			series.add(nameLabel, pt1[0] + labelMargin, pt1[1] - labelMargin );
-			series.add(mark, pt1[0]- mark.getWidth()/2, pt1[1] - mark.getHeight()/2);
+			GLabel nameLabel = createLabel(series.getEntry().getName(), arr[i], color);
+			GObject mark = makeMark(series.getMarkIndex(), color);
+			graph.add(nameLabel, pt1[0] + labelMargin, pt1[1] - labelMargin );
+			graph.add(mark, pt1[0]- mark.getWidth()/2, pt1[1] - mark.getHeight()/2);
 			pt2 = pt1;
 			decadeWidth += getWidth() / NDECADES;
-		}
-		lineColorMap.put(entry.getName(), colorArray[colorIndex]);
-		setNextColorIndex();
-		setMarkerIndex();
-		return series;
+		}		
+		add(graph);
 	}
-	
-//	private GCompound createSeries(NameSurferEntry entry) {
-//		System.out.println("createSeries...");
-//		GCompound series = new GCompound();
-//		int[] arr = entry.getRankArray();
-//		Color color = colorArray[ colorIndex ];
-//		String valueString;
-//		int decadeWidth = 0;
-//		int[] pt2 = new int[2];
-//		
-//		for (int i = 0; i < arr.length; i++ ) {	
-//			System.out.println("nameSurferloop...");
-//			int value = calibrate(arr[i]);
-//			if(arr[i] != 0) valueString = Integer.toString(arr[i]);
-//			else valueString = "*";			
-//			GLabel nameLabel = new GLabel ( entry.getName() + " " + valueString);
-//			nameLabel.setColor(color);
-//			int[] pt1 = {decadeWidth, value};
-//			if (i>0) {
-//				GLine line = new GLine(pt1[0], pt1[1], pt2[0], pt2[1] );
-//				line.setColor(color);
-//				series.add(line);
-//			}
-//			GObject mark = makeMark(color);
-//			series.add(nameLabel, pt1[0] + labelMargin, pt1[1] - labelMargin );
-//			series.add(mark, pt1[0]- mark.getWidth()/2, pt1[1] - mark.getHeight()/2);
-//			pt2 = pt1;
-//			decadeWidth += getWidth() / NDECADES;
-//		}
-//		lineColorMap.put(entry.getName(), colorArray[colorIndex]);
-//		setNextColorIndex();
-//		setMarkerIndex();
-//		return series;
-//	}
-	
+		
 	private GLabel createLabel(String name, int value, Color color) {
 		String valueString;
 		if(value != 0) valueString = Integer.toString(value);
@@ -203,10 +150,10 @@ public class NameSurferGraph extends GCanvas
 		return nameLabel;
 	}
 	
-	private GObject makeMark(Color color) {
+	private GObject makeMark(int seriesMarkIndex, Color color) {
 		GObject mark;
-		System.out.println("markIndex: " + markIndex);
-		switch (markIndex) {
+		System.out.println("seriesMarkIndex: " + seriesMarkIndex);
+		switch (seriesMarkIndex) {
 		case 0: mark = circleMark(color);
 					break;
 		case 1: mark = squareMark(color);
@@ -248,7 +195,6 @@ public class NameSurferGraph extends GCanvas
 	}
 	
 	private GObject asteriskMark(Color color) {
-		int length = markSize +1;
 		GCompound mark = new GCompound();
 		add(new GLine(markSize,0, 0, markSize ));
 		add(new GLine(markSize/2 ,0, markSize/2 , markSize ));
@@ -291,35 +237,49 @@ public class NameSurferGraph extends GCanvas
 		return result;
 	}
 	
-	private int[] createAnimationPoints(int[] graphPoints) {
-		int[] result = new int[graphPoints.length];
-		for (int i = 0; i < graphPoints.length-1; i++) {
-			
-		}
-		                       
-	}
+//	private int[] createAnimationPoints(int[] graphPoints) {
+//		int[] result = new int[graphPoints.length];
+//		for (int i = 0; i < graphPoints.length-1; i++) {
+//			
+//		}
+//		                       
+//	}
+	
+//	public void testEntry() {
+//	HashMap<String, GObject> testMap = new HashMap<String, GObject>();
+//	System.out.println("testEntry...");
+//	GRect box = new GRect(100,100);
+//	GRect box2 = new GRect(100,100);
+//	add(box);
+//	add(box2, getWidth()/2, getHeight()/2);
+//	testMap.put("A", box);
+//	System.out.println("testMap.put complete");
+//	System.out.println(testMap);
+//	testMap.put("B", box2);
+//	GObject obj = testMap.get("A"); 	
+//	remove(obj);
+//}
+//
 	
 	public boolean checkSeriesMap(String capitalizedName) {
 		return seriesMap.containsKey(capitalizedName);
 	}
 	
-	private void setNextColorIndex() {
-		colorIndex = ( colorIndex + 1 ) % colorArray.length;
+	private void setColorIndex() {
+		colorIndex = ( colorIndex + 1 ) % COLOR_ARRAY.length;
 	}
 	
-	private void setMarkerIndex() {
-		markIndex = ( markIndex + 1 ) % numberOfMarkers;
+	private void setCurrentMarkIndex() {
+		currentMarkIndex = ( currentMarkIndex + 1 ) % numberOfMarkers;
 	}
 	
 	private int numberOfMarkers = 3;
 	private int markSize = 7;
-	private int markIndex;
+	private int currentMarkIndex;
 	private int labelMargin = 3;
 	private int[] yearArray = createYearArray(1900);
 	private int colorIndex;
-	private Color[] colorArray = {Color.BLACK, Color.RED, Color.BLUE, Color.MAGENTA}; 
-	private HashMap<String, GObject> seriesMap;
-	private HashMap<String, Color> lineColorMap;
+	private HashMap<String, NameSurferSeries> seriesMap;
 	/* Implementation of the ComponentListener interface */
 	@Override
 	public void componentHidden(ComponentEvent e) { }

@@ -87,14 +87,14 @@ public class NameSurfer extends Program implements NameSurferConstants {
 		} else if ( source == deleteButton ) {
 			String capitilizedName = db.capitalizeFirstLetter(name);
 			graph.deleteEntry( capitilizedName );
-		} else if ( source == testButton ) {
-			graph.testEntry();
+//		} else if ( source == testButton ) {
+//			graph.testEntry();
+//		}
 		}
 		nameField.setText ( "" );
 	}
 	
 	private Boolean checkValidEntry (String name) {
-		String capitalizedName = db.capitalizeFirstLetter(name);
 		return 0 < name.length() && name.length() < MAX_NAME_LENGTH; 
 	}
 	 
