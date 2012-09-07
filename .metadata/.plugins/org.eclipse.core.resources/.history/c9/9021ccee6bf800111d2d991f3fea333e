@@ -21,14 +21,19 @@ public class NameSurferGraph extends GCanvas
 		addComponentListener(this);
 		seriesMap = new HashMap<String, NameSurferSeries>();
 		currentMarkIndex = 0;
+		
+		//	 You fill in the rest //
 	}
 	
 	/**
 	* Clears the list of name surfer entries stored inside this class.
 	*/
 	public void clear() {
+		System.out.println("clear()...");
 		seriesMap.clear();
+		System.out.println("seriesMap.clear finished");
 		update();
+		System.out.println("update finished");
 		colorIndex = 0;
 	}
 	
@@ -81,6 +86,7 @@ public class NameSurferGraph extends GCanvas
 	}
 	
 	private void drawGrid() {
+		System.out.println("drawGrid()...");
 		removeAll();
 		int bottom = getHeight();
 		GLine topMargin = new GLine(0, GRAPH_MARGIN_SIZE, getWidth(),GRAPH_MARGIN_SIZE);
@@ -109,6 +115,7 @@ public class NameSurferGraph extends GCanvas
 	}
 
 	private void drawGraph(NameSurferSeries series) {
+		System.out.println("createSeries...");
 		GCompound graph = new GCompound();
 		int[] arr = series.getEntry().getRankArray();
 		Color color = series.getColor();
@@ -116,6 +123,7 @@ public class NameSurferGraph extends GCanvas
 		int[] pt2 = new int[2];
 		
 		for (int i = 0; i < arr.length; i++ ) {	
+			System.out.println("nameSurferloop...");
 			int value = calibrate(arr[i]);						
 			int[] pt1 = {decadeWidth, value};
 			if (i>0) {
@@ -144,6 +152,7 @@ public class NameSurferGraph extends GCanvas
 	
 	private GObject makeMark(int seriesMarkIndex, Color color) {
 		GObject mark;
+		System.out.println("seriesMarkIndex: " + seriesMarkIndex);
 		switch (seriesMarkIndex) {
 		case 0: mark = circleMark(color);
 					break;
@@ -257,14 +266,6 @@ public class NameSurferGraph extends GCanvas
 	}
 	
 	private void setColorIndex() {
-		
-//		Iterator <Map.Entry<String, NameSurferSeries>> entries = seriesMap.entrySet().iterator();
-//		while (entries.hasNext()) {
-//			Map.Entry<String, NameSurferSeries> series = entries.next();
-//			Color color = series.getValue().getColor();			
-//		}
-//		int cnt1, cnt1, cnt1, cnt1 = 0;
-		
 		colorIndex = ( colorIndex + 1 ) % COLOR_ARRAY.length;
 	}
 	

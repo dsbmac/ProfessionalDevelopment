@@ -23,7 +23,9 @@ public class NameSurfer extends Program implements NameSurferConstants {
 	private JButton graphButton;
 	private JButton deleteButton;
 	private JButton clearButton;
+	
 	private JButton testButton;
+	
 	private NameSurferGraph graph;
 	private GCanvas canvas;
 	private NameSurferDataBase db;
@@ -69,13 +71,18 @@ public class NameSurfer extends Program implements NameSurferConstants {
  */
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		// You fill this in //
 		Object source = e.getSource();
 		String name = nameField.getText().toLowerCase();
+		System.out.println(source);
 		String capitalizedName = db.capitalizeFirstLetter(name);
 		if ( ( source == graphButton || source == nameField ) && checkValidEntry( name )  && graph.checkSeriesMap(capitalizedName) == false)  {
+				System.out.println("graphButton pressed");
 				NameSurferEntry entry = db.findEntry(name);
+				System.out.println("db: " + db);
 				graph.addEntry(entry);
 		} else if ( source == clearButton ) {
+			System.out.println ( "graph.clear()" );
 			graph.clear();
 		} else if ( source == deleteButton ) {
 			String capitilizedName = db.capitalizeFirstLetter(name);
