@@ -16,8 +16,14 @@
 # If the string length is less than 3, leave it unchanged.
 # Return the resulting string.
 def verbing(s):
-  # +++your code here+++
-  return
+  ending = ""
+  if len(s) >= 3:
+    if s[-3:] == 'ing':
+      ending = 'ly'
+    else:
+      ending = 'ing'
+      
+  return s+ending
 
 
 # E. not_bad
@@ -29,8 +35,14 @@ def verbing(s):
 # So 'This dinner is not that bad!' yields:
 # This dinner is good!
 def not_bad(s):
-  # +++your code here+++
-  return
+  result = s
+  if 'not' in s and 'bad' in s:
+    notIndex = s.index('not')
+    badIndex = s.index('bad')
+    if 0 < notIndex and notIndex < badIndex:
+      result = s[:notIndex] + 'good' + s[badIndex+3:] 
+  
+  return result
 
 
 # F. front_back
@@ -41,9 +53,17 @@ def not_bad(s):
 # Given 2 strings, a and b, return a string of the form
 #  a-front + b-front + a-back + b-back
 def front_back(a, b):
-  # +++your code here+++
-  return
+  aFB =  frontBackSubString(a)
+  bFB =  frontBackSubString(b)
+  
+  return aFB[0] + bFB[0] + aFB[1] + bFB[1]
 
+def frontBackSubString(str):
+  if len(str) % 2 == 0:
+    midIndex = len(str)/2
+  else:
+    midIndex = len(str)/2+1
+  return str[:midIndex], str[midIndex:] 
 
 # Simple provided test() function used in main() to print
 # what each function returns vs. what it's supposed to return.
