@@ -64,5 +64,36 @@ def main():
     print 'unknown option: ' + option
     sys.exit(1)
 
+def create_word_dict(filename):
+    wordFile = open(filename, "rU",0)
+    wordCountDict = {}
+    for line in wordFile:
+        words = line.split()
+        for word in words:
+            if word.isalpha():
+                word = word.lower()
+                if word in wordCountDict:
+                    wordCountDict[word] += 1
+                else:
+                    wordCountDict[word] = 1
+    wordFile.close()
+    return wordCountDict                
+
+def print_words(filename):
+  wordCountDict = create_word_dict(filename)
+  for key in sorted(iter(wordCountDict)):
+    print key, wordCountDict[key]
+
+def get_count(wordTuple):
+    return wordTuple[1]
+
+def print_top(filename):
+  wordCountDict = create_word_dict(filename)
+  keys = sorted(wordCountDict.items(), key=get_count, reverse = True)
+  length = min(len(keys), 20) 
+  for i in range(length):
+      print str(i+1) +'.', keys[i][0], keys[i][1]
+      
 if __name__ == '__main__':
   main()
+    
