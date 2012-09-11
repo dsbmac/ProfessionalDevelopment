@@ -8,6 +8,7 @@
 
 import sys
 import re
+import glob
 
 """Baby Names exercise
 
@@ -40,9 +41,78 @@ def extract_names(filename):
   followed by the name-rank strings in alphabetical order.
   ['2006', 'Aaliyah 91', Aaron 57', 'Abagail 895', ' ...]
   """
-  # +++your code here+++
-  return
+  result = ''
+  nameDict = create_names_dict(filename)
+  if nameDict:
+    result += nameDict["Year"] + '\n' 
+    for entry in sorted( iter(nameDict) ):
+      result += entry + ' ' + nameDict[entry]+'\n'
+  return result
 
+##def create_names_dict2(filename):
+##  fileBabyNames = open(filename, 'rU',0)
+##  nameDict = {}
+##  line = fileBabyNames.readline()
+##  while (line):
+##    print line
+##    if 'Year' in nameDict:
+##      names = findNames(line)
+##      if names:
+##        enterNames(names, nameDict)
+##    else:
+##      year = re.search(r'<h3 align="\w+">Popularity in\s(\d\d\d\d)</h3>', line)
+##      if year:
+##        nameDict['Year'] = year.group(1)
+##    line = fileBabyNames.readline()
+##  fileBabyNames.close()
+##  return nameDict
+
+def create_names_dict(filename):
+  nameDict = {}
+  try:
+    namesFile = open(filename, 'rU')
+    namesText = namesFile.read()
+    enterYear(namesText, nameDict)
+    enterAllNames(namesText, nameDict)
+    namesFile.close()
+  except IOError:
+    print 'Cannot open file.'
+  return nameDict
+
+def enterYear(namesText, nameDict):
+  year = re.search(r'<input type="text" name="year" id="yob" size="4" value="(\d\d\d\d)">', namesText)
+  if year:
+    nameDict['Year'] = year.group(1)
+  
+def enterAllNames(namesText, nameDict):
+  entries = re.findall( r'<tr align="\w+"><td>(\d+)</td><td>(\w+)+</td><td>(\w+)+</td>', namesText)
+  if entries:
+    for entry in entries:
+      for i in xrange(1, len(entry)):
+        if ( entry[i] in nameDict and entry[0] < nameDict[entry[i]] ) or ( entry[i] not in nameDict ):
+          nameDict[entry[i]] = entry[0]
+          
+def enterNames(names, nameDict):
+  (rank, name1, name2) = names
+  if (name1 not in nameDict) or (name1 in nameDict and rank < nameDict[name1] ):
+    nameDict[name1] = rank
+  elif (name1 not in nameDict) or ( name2 in nameDict and rank < nameDict[name2] ):
+    nameDict[name2] = rank
+                  
+def findNames(line):
+  data = re.search(r'<tr align="\w+"><td>(\d+)</td><td>(\w+)</td><td>(\w+)</td>', line)
+  if data:
+    return data.group(1), data.group(2), data.group(3)
+
+def writeSummaryFile(filename, extractedNames):
+  try:
+    f = open(filename+'.summary', 'w')
+    try:
+      f.write(extractedNames)
+    finally:
+      f.close()
+  except IOError:
+    pass
 
 def main():
   # This command-line parsing code is provided.
@@ -60,9 +130,21 @@ def main():
     summary = True
     del args[0]
 
-  # +++your code here+++
   # For each filename, get the names, then either print the text output
   # or write it to a summary file
+  for arg in args:
+    filenames = glob.glob(arg)
+  for filename in filenames:
+    extractedNames = extract_names(filename)
+    if summary:
+      writeSummaryFile(filename, extractedNames)
+    else:
+      print extractedNames
+
   
 if __name__ == '__main__':
   main()
+
+
+##print extract_names('baby2008.html')
+##create_names_dict('baby2008.html')
