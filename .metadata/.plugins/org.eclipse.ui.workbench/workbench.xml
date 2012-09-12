@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="31" version="2.0">
+<workbench progressCount="10" version="2.0">
 <workbenchAdvisor/>
 <window height="768" maximized="true" width="1024" x="381" y="123">
 <fastViewData fastViewLocation="1024"/>
@@ -31,44 +31,14 @@
 <info part="DefaultEditorWorkbook">
 <folder appearance="1" expanded="2">
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="1"/>
 <part id="0"/>
-<part id="5"/>
-<part id="2"/>
-<part id="3"/>
-<part id="4"/>
-<part id="6"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="NameSurferGraph.java" partName="NameSurferGraph.java" path="C:/Documents and Settings/Denis/My Documents/GitHub/Stanford-CS106A/Assignment6/NameSurferGraph.java" title="NameSurferGraph.java" tooltip="Assignment6/NameSurferGraph.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Assignment6/NameSurferGraph.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="696" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="NameSurfer.java" partName="NameSurfer.java" path="C:/Documents and Settings/Denis/My Documents/GitHub/Stanford-CS106A/Assignment6/NameSurfer.java" title="NameSurfer.java" tooltip="Assignment6/NameSurfer.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Assignment6/NameSurfer.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2035" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="NameSurferEntry.java" partName="NameSurferEntry.java" path="C:/Documents and Settings/Denis/My Documents/GitHub/Stanford-CS106A/Assignment6/NameSurferEntry.java" title="NameSurferEntry.java" tooltip="Assignment6/NameSurferEntry.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Assignment6/NameSurferEntry.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1945" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="NameSurferConstants.java" partName="NameSurferConstants.java" path="C:/Documents and Settings/Denis/My Documents/GitHub/Stanford-CS106A/Assignment6/NameSurferConstants.java" title="NameSurferConstants.java" tooltip="Assignment6/NameSurferConstants.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Assignment6/NameSurferConstants.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1180" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="NameSurferDataBase.java" partName="NameSurferDataBase.java" path="C:/Documents and Settings/Denis/My Documents/GitHub/Stanford-CS106A/Assignment6/NameSurferDataBase.java" title="NameSurferDataBase.java" tooltip="Assignment6/NameSurferDataBase.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Assignment6/NameSurferDataBase.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1465" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="NameSurferSeries.java" partName="NameSurferSeries.java" path="C:/Documents and Settings/Denis/My Documents/GitHub/Stanford-CS106A/Assignment6/NameSurferSeries.java" title="NameSurferSeries.java" tooltip="Assignment6/NameSurferSeries.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Assignment6/NameSurferSeries.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="372" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="test.java" partName="test.java" path="C:/Documents and Settings/Denis/My Documents/GitHub/Stanford-CS106A/Assignment6/test.java" title="test.java" tooltip="Assignment6/test.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Assignment6/test.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="flights.java" partName="flights.java" path="C:/Documents and Settings/Denis/My Documents/GitHub/Stanford-CS106A/section handout 8/flights.java" title="flights.java" tooltip="section handout 8/flights.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/section handout 8/flights.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2978" selectionTopPixel="0"/>
 </editor>
 </editors>
 <views>
@@ -136,13 +106,13 @@
 <filteredTreeFindHistory/>
 </viewState>
 </view>
+<view id="org.eclipse.jdt.ui.SourceView" partName="Declaration"/>
 <view id="org.eclipse.ui.views.ContentOutline" partName="Outline">
 <viewState/>
 </view>
-<view id="org.eclipse.jdt.ui.SourceView" partName="Declaration"/>
 <view id="org.eclipse.jdt.ui.JavadocView" partName="Javadoc"/>
 </views>
-<perspectives activePart="org.eclipse.jdt.ui.CompilationUnitEditor" activePerspective="org.eclipse.jdt.ui.JavaPerspective">
+<perspectives activePart="org.eclipse.jdt.ui.PackageExplorer" activePerspective="org.eclipse.jdt.ui.JavaPerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.eclipse.jdt.internal.ui.JavaPerspectiveFactory" id="org.eclipse.jdt.ui.JavaPerspective" label="Java"/>
 <alwaysOnActionSet id="org.eclipse.mylyn.context.ui.actionSet"/>
@@ -274,168 +244,32 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Assignment6/NameSurferGraph.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Assignment6/NameSurferSeries.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Assignment6/NameSurferInstance.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Assignment6/NameSurferDataBase.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Assignment6/NameSurferEntry.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Assignment6/NameSurfer.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Assignment6/NameSurferConstants.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Assignment6/test.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Assignment6/NameSurferGraph.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Assignment6/NameSurferEntry.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Assignment6/NameSurferConstants.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Assignment6/NameSurferSeries.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/section handout 8/flights.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/section handout 8/solution.java"/>
 </editors>
-<item historyLabel="NameSurferSeries.java" index="1">
-<position info="not_deleted" x="136" y="0"/>
+<item historyLabel="flights.java" index="0">
+<position info="not_deleted" x="3675" y="0"/>
 </item>
-<item historyLabel="NameSurferInstance.java" index="2">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="solution.java" index="1">
+<position info="not_deleted" x="4702" y="0"/>
 </item>
-<item historyLabel="NameSurferSeries.java" index="1">
-<position info="not_deleted" x="136" y="0"/>
+<item historyLabel="flights.java" index="0">
+<position info="not_deleted" x="3675" y="0"/>
 </item>
-<item historyLabel="NameSurferInstance.java" index="2">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="flights.java" index="0">
+<position info="not_deleted" x="873" y="0"/>
 </item>
-<item historyLabel="NameSurferSeries.java" index="1">
-<position info="not_deleted" x="136" y="0"/>
+<item historyLabel="flights.java" index="0">
+<position info="not_deleted" x="763" y="0"/>
 </item>
-<item historyLabel="NameSurferInstance.java" index="2">
-<position info="not_deleted" x="0" y="0"/>
+<item historyLabel="flights.java" index="0">
+<position info="not_deleted" x="2978" y="0"/>
 </item>
-<item historyLabel="NameSurferSeries.java" index="1">
-<position info="not_deleted" x="51" y="0"/>
+<item historyLabel="solution.java" index="1">
+<position info="not_deleted" x="4702" y="0"/>
 </item>
-<item historyLabel="test.java" index="7">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="NameSurferSeries.java" index="1">
-<position info="not_deleted" x="51" y="0"/>
-</item>
-<item historyLabel="NameSurferGraph.java" index="0">
-<position info="not_deleted" x="1565" y="0"/>
-</item>
-<item historyLabel="NameSurferEntry.java" index="4">
-<position info="not_deleted" x="1945" y="0"/>
-</item>
-<item historyLabel="NameSurferDataBase.java" index="3">
-<position info="not_deleted" x="1465" y="0"/>
-</item>
-<item historyLabel="NameSurferConstants.java" index="6">
-<position info="not_deleted" x="1180" y="0"/>
-</item>
-<item historyLabel="NameSurfer.java" index="5">
-<position info="not_deleted" x="19" y="0"/>
-</item>
-<item historyLabel="NameSurferSeries.java" index="1">
-<position info="not_deleted" x="60" y="0"/>
-</item>
-<item historyLabel="NameSurferEntry.java" index="4">
-<position info="not_deleted" x="1945" y="0"/>
-</item>
-<item historyLabel="NameSurferGraph.java" index="0">
-<position info="not_deleted" x="1565" y="0"/>
-</item>
-<item historyLabel="NameSurferSeries.java" index="1">
-<position info="not_deleted" x="216" y="0"/>
-</item>
-<item historyLabel="NameSurferGraph.java" index="0">
-<position info="not_deleted" x="1565" y="0"/>
-</item>
-<item historyLabel="NameSurferGraph.java" index="0">
-<position info="not_deleted" x="4357" y="0"/>
-</item>
-<item historyLabel="NameSurferEntry.java" index="4">
-<position info="not_deleted" x="1945" y="0"/>
-</item>
-<item historyLabel="NameSurferGraph.java" index="0">
-<position/>
-</item>
-<item historyLabel="NameSurfer.java" index="5">
-<position info="not_deleted" x="19" y="0"/>
-</item>
-<item historyLabel="NameSurferGraph.java" index="0">
-<position/>
-</item>
-<item historyLabel="NameSurferGraph.java" index="0">
-<position info="not_deleted" x="1729" y="0"/>
-</item>
-<item historyLabel="NameSurferGraph.java" index="0">
-<position info="not_deleted" x="1775" y="0"/>
-</item>
-<item historyLabel="NameSurferGraph.java" index="0">
-<position info="not_deleted" x="1478" y="0"/>
-</item>
-<item historyLabel="NameSurferEntry.java" index="4">
-<position info="not_deleted" x="1945" y="0"/>
-</item>
-<item historyLabel="NameSurferConstants.java" index="6">
-<position info="not_deleted" x="1180" y="0"/>
-</item>
-<item historyLabel="NameSurferSeries.java" index="1">
-<position info="not_deleted" x="372" y="0"/>
-</item>
-<item historyLabel="NameSurferGraph.java" index="0">
-<position info="not_deleted" x="673" y="0"/>
-</item>
-<item historyLabel="NameSurfer.java" index="5">
-<position info="not_deleted" x="2820" y="0"/>
-</item>
-<item historyLabel="NameSurfer.java" index="5">
-<position info="not_deleted" x="2851" y="0"/>
-</item>
-<item historyLabel="NameSurfer.java" index="5">
-<position info="not_deleted" x="2064" y="0"/>
-</item>
-<item historyLabel="NameSurferGraph.java" index="8">
-<position info="not_deleted" x="4" y="0"/>
-</item>
-<item historyLabel="NameSurferGraph.java" index="8">
-<position info="not_deleted" x="673" y="0"/>
-</item>
-<item historyLabel="NameSurferGraph.java" index="8">
-<position/>
-</item>
-<item historyLabel="NameSurfer.java" index="5">
-<position info="not_deleted" x="1286" y="0"/>
-</item>
-<item historyLabel="NameSurferEntry.java" index="9">
-<position info="not_deleted" x="3" y="0"/>
-</item>
-<item historyLabel="NameSurferEntry.java" index="9">
-<position info="not_deleted" x="1945" y="0"/>
-</item>
-<item historyLabel="NameSurferConstants.java" index="10">
-<position info="not_deleted" x="1180" y="0"/>
-</item>
-<item historyLabel="NameSurferGraph.java" index="8">
-<position/>
-</item>
-<item historyLabel="NameSurferSeries.java" index="11">
-<position info="not_deleted" x="372" y="0"/>
-</item>
-<item historyLabel="NameSurferGraph.java" index="8">
-<position info="not_deleted" x="7483" y="0"/>
-</item>
-<item historyLabel="NameSurferGraph.java" index="8">
-<position info="not_deleted" x="7483" y="0"/>
-</item>
-<item historyLabel="NameSurferSeries.java" index="11">
-<position info="not_deleted" x="372" y="0"/>
-</item>
-<item historyLabel="NameSurferGraph.java" index="8">
-<position info="not_deleted" x="844" y="0"/>
-</item>
-<item historyLabel="NameSurferSeries.java" index="11">
-<position info="not_deleted" x="372" y="0"/>
-</item>
-<item historyLabel="NameSurfer.java" index="5">
-<position info="not_deleted" x="2035" y="0"/>
-</item>
-<item active="true" historyLabel="NameSurferGraph.java" index="8">
-<position info="not_deleted" x="844" y="0"/>
+<item active="true" historyLabel="flights.java" index="0">
+<position info="not_deleted" x="2978" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -443,6 +277,13 @@
 <workbenchWindowAdvisor/>
 <actionBarAdvisor/>
 <trimLayout>
+<trimArea IMemento.internal.id="16384">
+<trimItem IMemento.internal.id="left"/>
+</trimArea>
+<trimArea IMemento.internal.id="131072">
+<trimItem IMemento.internal.id="right"/>
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.ViewStack@1a12a0e"/>
+</trimArea>
 <trimArea IMemento.internal.id="128">
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
 </trimArea>
@@ -454,6 +295,12 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="solution.java" tooltip="section handout 8/solution.java">
+<persistable path="/section handout 8/solution.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="flights.java" tooltip="section handout 8/flights.java">
+<persistable path="/section handout 8/flights.java"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="test.java" tooltip="Assignment6/test.java">
 <persistable path="/Assignment6/test.java"/>
 </file>

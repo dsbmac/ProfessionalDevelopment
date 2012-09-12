@@ -14,16 +14,14 @@ public class flights extends ConsoleProgram{
 		String prompt = "Please enter your starting city: ";
 		String lastCity = getEntry(prompt);
 		String start = lastCity;
-		flightPath.add(lastCity);
 		do {
+			flightPath.add(lastCity);
 			println();
 			println("From " + lastCity + " you can fly directly to:");
 			printMap(lastCity);
 			prompt = "Where do you want to go from " + lastCity +"? ";
 			lastCity = getEntry(prompt);
-			flightPath.add(lastCity);
 		} while (start.equals(lastCity) == false);
-		println("\nHere's your final itinerary:");
 		printFlightPath(flightPath);
 		println("\nBon Voyage!");
 	}
@@ -58,7 +56,6 @@ public class flights extends ConsoleProgram{
 		printMap("keys");
 		println("\nLet's plan your route.");
 	}
-	
 	private void printMap(String param) {
 		if (param.equals("keys")) {
 			Iterator iter = flightMap.keySet().iterator();
@@ -128,7 +125,6 @@ public class flights extends ConsoleProgram{
 				}	
 			}		
 	}	
-	
 private static HashMap <String, ArrayList<String>> flightMap;
 private final String FILE_NAME = "flights.txt"; 
 }

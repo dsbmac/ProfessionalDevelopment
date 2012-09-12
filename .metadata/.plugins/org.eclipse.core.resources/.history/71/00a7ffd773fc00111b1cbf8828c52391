@@ -58,7 +58,6 @@ public class flights extends ConsoleProgram{
 		printMap("keys");
 		println("\nLet's plan your route.");
 	}
-	
 	private void printMap(String param) {
 		if (param.equals("keys")) {
 			Iterator iter = flightMap.keySet().iterator();
@@ -128,7 +127,6 @@ public class flights extends ConsoleProgram{
 				}	
 			}		
 	}	
-	
 private static HashMap <String, ArrayList<String>> flightMap;
 private final String FILE_NAME = "flights.txt"; 
 }

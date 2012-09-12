@@ -2,6 +2,7 @@ import acm.program.*;
 import acm.util.*;
 import java.io.*;
 import java.util.*;
+import java.util.regex.*;
 
 public class flights extends ConsoleProgram{
 	public void run() {
@@ -11,29 +12,24 @@ public class flights extends ConsoleProgram{
 	
 	private void planFlight() {
 		ArrayList<String> flightPath = new ArrayList<String>();
-		String prompt = "Please enter your starting city: ";
-		String lastCity = getEntry(prompt);
-		String start = lastCity;
-		flightPath.add(lastCity);
+		String lastCity;
+		String entry;
 		do {
+			lastCity = readLine("Please enter your starting city: ");	
+		} while (validEntry(lastCity) == false);
+		String start = lastCity;
+		do {
+			flightPath.add(lastCity);
 			println();
 			println("From " + lastCity + " you can fly directly to:");
 			printMap(lastCity);
-			prompt = "Where do you want to go from " + lastCity +"? ";
-			lastCity = getEntry(prompt);
-			flightPath.add(lastCity);
+			do  {
+				entry = readLine("Where do you want to go from " + lastCity +"? ");	
+			} while (validEntry(entry) == false);
+			lastCity = entry;
 		} while (start.equals(lastCity) == false);
-		println("\nHere's your final itinerary:");
 		printFlightPath(flightPath);
 		println("\nBon Voyage!");
-	}
-	
-	private String getEntry(String prompt) {
-		String entry;
-		do  {
-			entry = readLine(prompt);	
-		} while (validEntry(entry) == false);
-		return entry;
 	}
 	
 	private void printFlightPath(ArrayList<String> flightPath) {
@@ -58,7 +54,6 @@ public class flights extends ConsoleProgram{
 		printMap("keys");
 		println("\nLet's plan your route.");
 	}
-	
 	private void printMap(String param) {
 		if (param.equals("keys")) {
 			Iterator iter = flightMap.keySet().iterator();
@@ -89,10 +84,21 @@ public class flights extends ConsoleProgram{
 	private String[][] readLineList(BufferedReader rd){
 		//creates an arraylist of destinations pairs arrays
 		ArrayList<String[]> flights = new ArrayList<String[]>();
+//		optional regex method
+//		String pattern =  "(\\w+)\\s+->\\s+(\\w+)";
+//		Pattern r = Pattern.compile(pattern);
+//		Matcher match; 
 		try{
 			while (true) {
 				String line = rd.readLine();
 				if (line == null) break;
+//				optional regex method
+//				match = r.matcher(line);
+//				if (match.find()) {
+//					String[] flight = {match.group(1), match.group(2)};
+//					flights.add(flight);
+//				}
+				
 				if ( line.contains(" -> ")) {
 					String[] flight = line.split(" -> ");
 					flight[0] = flight[0].trim();
@@ -128,7 +134,6 @@ public class flights extends ConsoleProgram{
 				}	
 			}		
 	}	
-	
 private static HashMap <String, ArrayList<String>> flightMap;
 private final String FILE_NAME = "flights.txt"; 
 }
