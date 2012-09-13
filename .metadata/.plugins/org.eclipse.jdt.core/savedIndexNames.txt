@@ -1,10 +1,3 @@
 INDEX VERSION 1.126+C:\Documents and Settings\Denis\My Documents\GitHub\Stanford-CS106A\.metadata\.plugins\org.eclipse.jdt.core
-2599813461.index
-4037286042.index
-2742762896.index
-1311925154.index
-3217998931.index
-946258696.index
-2575501851.index
-1484187988.index
-9067425.index
+3368678597.index
+790484811.index

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="10" version="2.0">
+<workbench progressCount="15" version="2.0">
 <workbenchAdvisor/>
 <window height="768" maximized="true" width="1024" x="381" y="123">
 <fastViewData fastViewLocation="1024"/>
@@ -32,13 +32,18 @@
 <folder appearance="1" expanded="2">
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
+<part id="1"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="flights.java" partName="flights.java" path="C:/Documents and Settings/Denis/My Documents/GitHub/Stanford-CS106A/section handout 8/flights.java" title="flights.java" tooltip="section handout 8/flights.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/section handout 8/flights.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2978" selectionTopPixel="0"/>
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ExpandableArray.java" partName="ExpandableArray.java" path="C:/Documents and Settings/Denis/My Documents/GitHub/Stanford-CS106A/section handout 9/ExpandableArray.java" title="ExpandableArray.java" tooltip="section handout 9/ExpandableArray.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/section handout 9/ExpandableArray.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="824" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="test.java" partName="test.java" path="C:/Documents and Settings/Denis/My Documents/GitHub/Stanford-CS106A/section handout 9/test.java" title="test.java" tooltip="section handout 9/test.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/section handout 9/test.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="232" selectionTopPixel="0"/>
 </editor>
 </editors>
 <views>
@@ -47,7 +52,7 @@
 </view>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
-<expanded>&#x0A;<category IMemento.internal.id="Warnings"/>
+<expanded>
 <category IMemento.internal.id="Errors"/>
 </expanded>
 <columnWidths org.eclipse.ui.ide.locationField="0" org.eclipse.ui.ide.markerType="0" org.eclipse.ui.ide.pathField="0" org.eclipse.ui.ide.resourceField="0" org.eclipse.ui.ide.severityAndDescriptionField="0"/>
@@ -91,9 +96,7 @@
 </view>
 <view id="org.eclipse.mylyn.tasks.ui.views.tasks" partName="Task List">
 <viewState linkWithEditor="true" presentation="org.eclipse.mylyn.tasks.ui.categorized">
-<sorter groupBy="CATEGORY_QUERY">
-<sorter>
-<sort0 sortDirection="1" sortKey="PRIORITY"/>
+<sorter groupBy="CATEGORY_QUERY">&#x0A;<sorter>&#x0A;<sort0 sortDirection="1" sortKey="PRIORITY"/>
 <sort1 sortDirection="1" sortKey="RANK"/>
 <sort2 sortDirection="1" sortKey="DATE_CREATED"/>
 <sort3 sortDirection="1" sortKey="NONE"/>
@@ -246,6 +249,9 @@
 <editors>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/section handout 8/flights.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/section handout 8/solution.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/section handout 9/ExpandableArrary.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/section handout 9/ExpandableArray.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/section handout 9/test.java"/>
 </editors>
 <item historyLabel="flights.java" index="0">
 <position info="not_deleted" x="3675" y="0"/>
@@ -268,8 +274,122 @@
 <item historyLabel="solution.java" index="1">
 <position info="not_deleted" x="4702" y="0"/>
 </item>
-<item active="true" historyLabel="flights.java" index="0">
+<item historyLabel="flights.java" index="0">
 <position info="not_deleted" x="2978" y="0"/>
+</item>
+<item historyLabel="ExpandableArrary.java" index="2">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="ExpandableArray.java" index="3">
+<position/>
+</item>
+<item historyLabel="ExpandableArray.java" index="3">
+<position/>
+</item>
+<item historyLabel="ExpandableArray.java" index="3">
+<position info="not_deleted" x="305" y="0"/>
+</item>
+<item historyLabel="ExpandableArray.java" index="3">
+<position info="not_deleted" x="308" y="0"/>
+</item>
+<item historyLabel="ExpandableArray.java" index="3">
+<position info="not_deleted" x="308" y="0"/>
+</item>
+<item historyLabel="ExpandableArray.java" index="3">
+<position/>
+</item>
+<item historyLabel="ExpandableArray.java" index="3">
+<position/>
+</item>
+<item historyLabel="ExpandableArray.java" index="3">
+<position info="not_deleted" x="308" y="0"/>
+</item>
+<item historyLabel="ExpandableArray.java" index="3">
+<position info="not_deleted" x="308" y="0"/>
+</item>
+<item historyLabel="ExpandableArray.java" index="3">
+<position info="not_deleted" x="308" y="0"/>
+</item>
+<item historyLabel="ExpandableArray.java" index="3">
+<position info="not_deleted" x="1129" y="0"/>
+</item>
+<item historyLabel="test.java" index="4">
+<position info="not_deleted" x="23" y="0"/>
+</item>
+<item historyLabel="test.java" index="4">
+<position/>
+</item>
+<item historyLabel="test.java" index="4">
+<position/>
+</item>
+<item historyLabel="test.java" index="4">
+<position info="not_deleted" x="86" y="0"/>
+</item>
+<item historyLabel="test.java" index="4">
+<position info="not_deleted" x="67" y="0"/>
+</item>
+<item historyLabel="ExpandableArray.java" index="3">
+<position info="not_deleted" x="1269" y="0"/>
+</item>
+<item historyLabel="ExpandableArray.java" index="3">
+<position/>
+</item>
+<item historyLabel="test.java" index="4">
+<position info="not_deleted" x="67" y="0"/>
+</item>
+<item historyLabel="test.java" index="4">
+<position/>
+</item>
+<item historyLabel="ExpandableArray.java" index="3">
+<position/>
+</item>
+<item historyLabel="ExpandableArray.java" index="3">
+<position info="not_deleted" x="791" y="0"/>
+</item>
+<item historyLabel="ExpandableArray.java" index="3">
+<position/>
+</item>
+<item historyLabel="ExpandableArray.java" index="3">
+<position info="not_deleted" x="1211" y="0"/>
+</item>
+<item historyLabel="ExpandableArray.java" index="3">
+<position info="not_deleted" x="4" y="0"/>
+</item>
+<item historyLabel="test.java" index="4">
+<position/>
+</item>
+<item historyLabel="test.java" index="4">
+<position/>
+</item>
+<item historyLabel="ExpandableArray.java" index="3">
+<position info="not_deleted" x="830" y="0"/>
+</item>
+<item historyLabel="test.java" index="4">
+<position info="not_deleted" x="139" y="0"/>
+</item>
+<item historyLabel="ExpandableArray.java" index="3">
+<position info="not_deleted" x="830" y="0"/>
+</item>
+<item historyLabel="test.java" index="4">
+<position info="not_deleted" x="235" y="0"/>
+</item>
+<item historyLabel="test.java" index="4">
+<position info="not_deleted" x="148" y="1"/>
+</item>
+<item historyLabel="test.java" index="4">
+<position info="not_deleted" x="149" y="0"/>
+</item>
+<item historyLabel="test.java" index="4">
+<position info="not_deleted" x="208" y="0"/>
+</item>
+<item historyLabel="ExpandableArray.java" index="3">
+<position info="not_deleted" x="627" y="0"/>
+</item>
+<item historyLabel="test.java" index="4">
+<position info="not_deleted" x="232" y="0"/>
+</item>
+<item active="true" historyLabel="ExpandableArray.java" index="3">
+<position info="not_deleted" x="627" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -277,13 +397,6 @@
 <workbenchWindowAdvisor/>
 <actionBarAdvisor/>
 <trimLayout>
-<trimArea IMemento.internal.id="16384">
-<trimItem IMemento.internal.id="left"/>
-</trimArea>
-<trimArea IMemento.internal.id="131072">
-<trimItem IMemento.internal.id="right"/>
-<trimItem IMemento.internal.id="org.eclipse.ui.internal.ViewStack@1a12a0e"/>
-</trimArea>
 <trimArea IMemento.internal.id="128">
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
 </trimArea>
@@ -295,6 +408,9 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="test.java" tooltip="section handout 9/test.java">
+<persistable path="/section handout 9/test.java"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="solution.java" tooltip="section handout 8/solution.java">
 <persistable path="/section handout 8/solution.java"/>
 </file>
