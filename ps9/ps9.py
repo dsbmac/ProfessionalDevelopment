@@ -139,8 +139,6 @@ def bestGreedy(subjects, maxWork, comparator):
         
     return result
 
-
-
 #
 # Problem 3: Subject Selection By Brute Force
 #
@@ -155,17 +153,36 @@ def bruteForceAdvisor(subjects, maxWork):
     returns: dictionary mapping subject name to (value, work)
     """
     assert type(subjects) == dict and maxWork >= 0
-    subjectsKeys = sorted( subjects.items(), key=getWork, reverse = True)
+    subjectsKeys = subjects.keys()
     totalWork = 0
     result = {}
 
-    allCombos = itertools.permutations(subjectKeys)
-    for combo in allCombos:
-      comboSorted = sorted(combo)
-      comboTotals = sumCombo(comboSorted)
-      if comboSorted not in result and  comboTotals[WORK]<= maxWork:
+    uniqueCombos = permutations(subjectKeys)
+    for combo in uniqueCombos:
+      comboTotals = sumCombo(combo)
+      if comboTotals[WORK]<= maxWork:
         result[comboSorted] = comboTotals[VALUE], comboTotals[WORK]    
     return result
+
+def permutations(inputValues, result=[]):
+    newPerms = []
+
+    if inputValues == []:
+        print 'no more input values'
+        print 'result:', result
+        assert result != None
+        return result
+    else:
+        i = [inputValues.pop()]
+        if i not in result:
+            newPerms.append(i)
+        for perm in result:
+            newPerm = sorted(perm + i)
+            if newPerm not in result:
+                newPerms.append(newPerm)
+        result = result + newPerms
+        permutations(inputValues, result)
+             
 
 def sumCombo(comboSorted, subjects):
   valueSum, workSum = 0
@@ -178,5 +195,7 @@ def test():
     subjects = loadSubjects("smallCatalog.txt")
 ##    subjects = loadSubjects(SUBJECT_FILENAME)
 ##    print greedyAdvisor( subjects, 15, cmpWork)
-    print bruteForceAdvisor(subjects, 15)
+##    print bruteForceAdvisor(subjects, 15)
+    subjectsList = subjects.keys()
+    print permutations([1,2,3,4])
 test()
