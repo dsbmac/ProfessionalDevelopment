@@ -4,19 +4,19 @@
 		<item value="442" key="DIALOG_Y_ORIGIN"/>
 		<item value="475" key="DIALOG_X_ORIGIN"/>
 	</section>
-	<section name="ExternalProjectImportWizard">
-		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
-		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
-	</section>
 	<section name="WORKBENCH_SETTINGS">
 		<list key="ENABLED_TRANSFERS">
 		</list>
 	</section>
+	<section name="ExternalProjectImportWizard">
+		<item value="false" key="WizardProjectsImportPage.STORE_ARCHIVE_SELECTED"/>
+		<item value="true" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
+	</section>
 	<section name="SaveAsDialogSettings">
 		<item value="438" key="DIALOG_WIDTH"/>
 		<item value="232" key="DIALOG_Y_ORIGIN"/>
-		<item value="554" key="DIALOG_X_ORIGIN"/>
 		<item value="559" key="DIALOG_HEIGHT"/>
+		<item value="554" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Tahoma|8.25|0|WINDOWS|1|-11|0|0|0|400|0|0|0|1|0|0|0|0|Tahoma" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="NewWizardAction">

@@ -1,0 +1,30 @@
+import java.util.*;
+
+import acm.program.*;
+
+public class test {
+	public static void main(String[] args) {
+		String name = "Johnny";
+		FacePamphletDatabase db = new FacePamphletDatabase();
+		FacePamphletProfile p = new FacePamphletProfile (name); 
+		db.addProfile(p);
+		System.out.println("p.getName(): " + p.getName());
+		String name2 = "Jill";
+		FacePamphletProfile p2 = new FacePamphletProfile (name2);
+		db.addProfile(p2);
+		p.addFriend(name2);
+		System.out.println("p friends:");
+		Iterator<String> iter = p.getFriends();
+		while (iter.hasNext()) {
+			System.out.println(iter.next());
+		}
+		db.deleteProfile(name2);
+		db.containsProfile(name2);
+		System.out.println("p friends:");
+		iter = p.getFriends();
+		while (iter.hasNext()) {
+			System.out.println(iter.next());
+		}
+	}
+
+}

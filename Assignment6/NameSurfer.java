@@ -54,9 +54,6 @@ public class NameSurfer extends Program implements NameSurferConstants {
 //		add(Box.createRigidArea(new Dimension(100,0)), SOUTH);
 //		testButton = new JButton("Test");
 //		add( testButton, SOUTH);		
-		canvas = new GCanvas();
-		add(canvas, WEST);
-		
 		addActionListeners();
 		nameField.addActionListener(this);		
 	}
