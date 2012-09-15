@@ -157,21 +157,18 @@ def bruteForceAdvisor(subjects, maxWork):
     totalWork = 0
     result = {}
 
-    uniqueCombos = permutations(subjectKeys)
+    uniqueCombos = makeUniqueCombos(subjectsKeys)
     for combo in uniqueCombos:
-      comboTotals = sumCombo(combo)
+      comboTotals = sumCombo(combo, subjects)
       if comboTotals[WORK]<= maxWork:
-        result[comboSorted] = comboTotals[VALUE], comboTotals[WORK]    
+        result[tuple(combo)] = comboTotals[VALUE], comboTotals[WORK]    
     return result
 
-def permutations(inputValues, result=[]):
+def makeUniqueCombos(inputValues, result=[]):
     newPerms = []
 
     if inputValues == []:
-        print 'no more input values'
-        print 'result:', result
-        assert result != None
-        return result
+        return []
     else:
         i = [inputValues.pop()]
         if i not in result:
@@ -181,11 +178,10 @@ def permutations(inputValues, result=[]):
             if newPerm not in result:
                 newPerms.append(newPerm)
         result = result + newPerms
-        permutations(inputValues, result)
-             
+        return newPerms + makeUniqueCombos(inputValues, result)             
 
 def sumCombo(comboSorted, subjects):
-  valueSum, workSum = 0
+  valueSum, workSum = 0, 0
   for subject in comboSorted:
     valueSum += subjects[subject][VALUE]
     workSum += subjects[subject][WORK]
@@ -195,7 +191,5 @@ def test():
     subjects = loadSubjects("smallCatalog.txt")
 ##    subjects = loadSubjects(SUBJECT_FILENAME)
 ##    print greedyAdvisor( subjects, 15, cmpWork)
-##    print bruteForceAdvisor(subjects, 15)
-    subjectsList = subjects.keys()
-    print permutations([1,2,3,4])
+    print bruteForceAdvisor(subjects, 15)
 test()
