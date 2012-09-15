@@ -20,7 +20,7 @@ public class FacePamphletProfile implements FacePamphletConstants {
 	 */
 	public FacePamphletProfile(String name) {
 		pName = name;
-		pStatus = "";
+		pStatus = "No current status";
 		pImage = null;
 		pFriends = new ArrayList<String>();
 	}
@@ -98,6 +98,9 @@ public class FacePamphletProfile implements FacePamphletConstants {
 		System.out.println("getFriends...");
 		Iterator<String> iter = pFriends.iterator();
 		System.out.println("iter.hasNext(): " + iter.hasNext());
+		while (iter.hasNext()) {
+			System.out.println(iter.next());
+		}
 		return iter;
 	}
 	

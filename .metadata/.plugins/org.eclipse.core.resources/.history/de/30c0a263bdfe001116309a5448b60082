@@ -10,6 +10,7 @@
 import acm.graphics.*;
 import java.awt.*;
 import java.util.*;
+import java.awt.event.*;
 
 public class FacePamphletCanvas extends GCanvas 
 					implements FacePamphletConstants {
@@ -20,9 +21,9 @@ public class FacePamphletCanvas extends GCanvas
 	 * the display
 	 */
 	public FacePamphletCanvas() {
-		msg = "";
-		msgbox = new GLabel(msg);
-		add(msgbox);
+		message = "";
+		msgbox = new GLabel(message);
+		add(msgbox,0, TOP_MARGIN);
 	}
 
 	
@@ -33,8 +34,8 @@ public class FacePamphletCanvas extends GCanvas
 	 * passed in.
 	 */
 	public void showMessage(String msg) {
-		msg += "\nmsg";
-		msgbox.setLabel(msg);
+		message += "\n" + msg;
+		msgbox.setLabel(message);
 	}	
 	
 	/** 
@@ -55,5 +56,5 @@ public class FacePamphletCanvas extends GCanvas
 	}
 	
 	private GLabel msgbox;
-	private String msg;
+	private String message;
 }

@@ -20,14 +20,16 @@ public class FacePamphlet extends Program
 	 * initialization that needs to be performed.
 	 */
 	public void init() {
+		db = new FacePamphletDatabase(); 
 		createDisplay();
     }    
 	
 	private void createDisplay() {
-		centerDisplay = new FacePamphletCanvas();		
+		canvas = new FacePamphletCanvas();		
+		add(canvas,CENTER);		
 		addTopBar();
 		addSideBar();
-		add(centerDisplay,CENTER);		
+		
 		addActionListeners();
 	}
 	
@@ -80,19 +82,52 @@ public class FacePamphlet extends Program
      * to respond to these actions.
      */
     public void actionPerformed(ActionEvent e) {
+    	String name = "";
     	Object source = e.getSource();
-		if (source == nameAdd) {
-			System.out.println("nameField");
-			centerDisplay.showMessage(nameField.getText());
-		} else if (source == statusChange) {
-			System.out.println("statusField");
-			centerDisplay.showMessage(statusField.getText());
+    	if (source == nameAdd || source == nameLookup || source == nameDelete) {
+    		name = nameField.getText();
+    		if (source == nameAdd) {
+    			createProfile(name);			
+    		} else if (source == nameDelete) {			
+    			deleteProfile(name);
+    		} else if (source == nameLookup) {
+    			if (validProfile(name)) {
+    				currentProfile = db.getProfile(name);		
+    			}			
+    		}
+    	} else if (source == statusChange) {
+			System.out.println("statusField action");
+			canvas.showMessage(statusField.getText());
 		}
+		updateDisplay();
 //				if (e.getSource() == pictureChange)
 //					if (e.getSource() == addFriend);
 	}
-
-    private FacePamphletCanvas centerDisplay;
+    
+    private void updateDisplay() {
+    	if (currentProfile == null) {
+    		canvas.removeAll();
+    	} else canvas.displayProfile(currentProfile);
+    }
+    
+    private boolean validProfile (String name) {
+    	return db.containsProfile(name);
+    }
+    
+    private void deleteProfile (String name) {
+		db.deleteProfile(name);
+    	currentProfile = null;    	
+    }
+    
+    private void createProfile(String name) {
+    	FacePamphletProfile newProfile = new FacePamphletProfile(name);
+		db.addProfile(newProfile);
+		currentProfile = newProfile;
+    }
+    
+    private FacePamphletDatabase db; 
+    private FacePamphletProfile currentProfile;
+    private FacePamphletCanvas canvas;
     private JLabel nameLabel;
 	private JTextField nameField;
 	private JTextField statusField;

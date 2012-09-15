@@ -21,10 +21,9 @@ public class FacePamphletCanvas extends GCanvas
 	 * the display
 	 */
 	public FacePamphletCanvas() {
-		msg = "";
-		msgbox = new GLabel(msg);
-		add(msgbox);
-		addComponentListener(this);
+		message = "";
+		msgbox = new GLabel(message);
+		add(msgbox,100,100);
 	}
 
 	
@@ -35,8 +34,8 @@ public class FacePamphletCanvas extends GCanvas
 	 * passed in.
 	 */
 	public void showMessage(String msg) {
-		msg += "\nmsg";
-		msgbox.setLabel(msg);
+		message += "\n" + msg;
+		msgbox.setLabel(message);
 	}	
 	
 	/** 
@@ -57,5 +56,5 @@ public class FacePamphletCanvas extends GCanvas
 	}
 	
 	private GLabel msgbox;
-	private String msg;
+	private String message;
 }

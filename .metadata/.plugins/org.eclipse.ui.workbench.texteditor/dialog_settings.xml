@@ -12,9 +12,12 @@
 		<item value="false" key="isRegEx"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
-		<item value="false" key="wholeword"/>
-		<item value="canvas" key="selection"/>
+		<item value="true" key="wholeword"/>
+		<item value="mark" key="selection"/>
 		<list key="findhistory">
+			<item value="heightMark"/>
+			<item value="msgbox"/>
+			<item value="centerDisplay"/>
 			<item value="canvas"/>
 			<item value="markerind"/>
 			<item value="colorinde"/>
@@ -22,6 +25,9 @@
 			<item value="seriesMap"/>
 		</list>
 		<list key="replacehistory">
+			<item value="mark"/>
+			<item value="msgBox"/>
+			<item value="canvas"/>
 			<item value="markind"/>
 			<item value="seriesMap"/>
 			<item value="entryMap"/>

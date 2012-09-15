@@ -21,11 +21,7 @@ public class FacePamphletCanvas extends GCanvas
 	 * the display
 	 */
 	public FacePamphletCanvas() {
-		message = "";
-		msgbox = new GLabel(message);
-		add(msgbox,100,100);
 	}
-
 	
 	/** 
 	 * This method displays a message string near the bottom of the 
@@ -33,9 +29,11 @@ public class FacePamphletCanvas extends GCanvas
 	 * displayed message (if any) is replaced by the new message text 
 	 * passed in.
 	 */
-	public void showMessage(String msg) {
-		message += "\n" + msg;
-		msgbox.setLabel(message);
+	public void showMessage(String msg) {		
+		msgBox = new GLabel(msg);
+		msgBox.setFont(MESSAGE_FONT);
+		add(msgBox, ( getWidth() - msgBox.getWidth() ) / 2, getHeight() - BOTTOM_MESSAGE_MARGIN);
+		msgBox.setLabel(msg);
 	}	
 	
 	/** 
@@ -48,13 +46,81 @@ public class FacePamphletCanvas extends GCanvas
 	 * the user, and a list of the user's friends in the social network.
 	 */
 	public void displayProfile(FacePamphletProfile profile) {
-		// You fill this in
+		GProfile profileDisplay = new GProfile(profile, getWidth());
+		add(profileDisplay, LEFT_MARGIN, TOP_MARGIN);
+		String msg = "Displaying " + profile.getName();
+		showMessage(msg);
 	}
+	
+	
 
 	public void test(String msg) {
 		
 	}
 	
-	private GLabel msgbox;
-	private String message;
+	private GLabel msgBox;
+	
+	class GProfile  extends GCompound {
+		
+		public GProfile (FacePamphletProfile profile, double width) {	
+			
+			GLabel name = new GLabel(profile.getName());
+			name.setFont(PROFILE_NAME_FONT);
+			name.setColor(Color.BLUE);
+			
+			GCompound avatarPlaceHolder  = createAvatarPlaceHolder();
+			
+			GLabel status = new GLabel(profile.getStatus());
+			status.setFont(PROFILE_STATUS_FONT);
+			
+			GCompound friendsList = createFriendsLabels(profile.getFriends());
+			
+			double mark = name.getHeight();
+			double friendsMark = mark;
+			System.out.println(mark);
+			add(name, 0, mark);
+			mark += IMAGE_MARGIN;			
+			System.out.println(mark);
+			add(avatarPlaceHolder, 0, mark);
+			mark += avatarPlaceHolder.getHeight() + STATUS_MARGIN + status.getHeight();
+			System.out.println(mark);
+			add(status, 0, mark);
+			add(friendsList, width  /2 , friendsMark );
+			
+		}
+		
+		private GCompound createFriendsLabels( Iterator<String> iter) {
+			GCompound friendsDisplay = new GCompound();
+			String title = "Friends:";
+			GLabel label = new GLabel( title);
+			label.setFont(PROFILE_FRIEND_LABEL_FONT);
+			
+			String friends = "";
+			while (iter.hasNext()) {
+				friends += iter.next();
+				friends += "\n";
+			}
+			GLabel listOfFriends = new GLabel(friends);
+			
+			double mark = label.getHeight();
+			friendsDisplay.add(label, 0, mark);			
+			mark += listOfFriends.getHeight();
+			friendsDisplay.add(listOfFriends, 0, mark);
+			
+			return friendsDisplay;
+		}
+		
+		private GCompound createAvatarPlaceHolder() {
+			GCompound avatarPlaceHolder = new GCompound();
+			GRect box  = new GRect(0, 0, IMAGE_WIDTH, IMAGE_HEIGHT);
+			GLabel status = new GLabel("No Image");
+			status.setFont(PROFILE_IMAGE_FONT);
+			
+			avatarPlaceHolder.add(box);
+			avatarPlaceHolder.add(status, ( box.getWidth() - status.getWidth() ) / 2,  box.getHeight() / 2 );
+			
+			return avatarPlaceHolder;
+		}
+		
+	}
 }

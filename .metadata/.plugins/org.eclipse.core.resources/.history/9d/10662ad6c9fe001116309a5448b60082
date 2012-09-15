@@ -21,11 +21,10 @@ public class FacePamphletCanvas extends GCanvas
 	 * the display
 	 */
 	public FacePamphletCanvas() {
-		msg = "kjhkjhk";
-		msgbox = new GLabel(msg);
-		add(msgbox);
+		message = "sdfsafsfd";
+		msgbox = new GLabel(message);
+		add(msgbox, LEFT_MARGIN, TOP_MARGIN );
 	}
-
 	
 	/** 
 	 * This method displays a message string near the bottom of the 
@@ -34,8 +33,8 @@ public class FacePamphletCanvas extends GCanvas
 	 * passed in.
 	 */
 	public void showMessage(String msg) {
-		msg += "\nmsg";
-		msgbox.setLabel(msg);
+		message += "\n" + msg;
+		msgbox.setLabel(message);
 	}	
 	
 	/** 
@@ -48,7 +47,8 @@ public class FacePamphletCanvas extends GCanvas
 	 * the user, and a list of the user's friends in the social network.
 	 */
 	public void displayProfile(FacePamphletProfile profile) {
-		// You fill this in
+		GLabel name = new GLabel(profile.getName());
+		name.setFont(PROFILE_NAME_FONT);
 	}
 
 	public void test(String msg) {
@@ -56,5 +56,5 @@ public class FacePamphletCanvas extends GCanvas
 	}
 	
 	private GLabel msgbox;
-	private String msg;
+	private String message;
 }
