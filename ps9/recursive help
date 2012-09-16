@@ -1,0 +1,41 @@
+def permutations(inputValues, result=[], fnc_no = 0):
+    newPerms = []
+##    print inputValues
+
+    if inputValues == []:
+##        print 'no more input values'
+##        print 'result:', result
+##        assert result != None
+        return result
+    else:
+        i = [inputValues.pop()]
+        if i not in result:
+            newPerms.append(i)
+        for perm in result:
+            newPerm = sorted(perm + i)
+            if newPerm not in result:
+                newPerms.append(newPerm)
+        result = result + newPerms
+    print '\t' * fnc_no, 'function {} recursing'.format(fnc_no)
+    result = permutations(inputValues, result, fnc_no +1)
+    print '\t' * fnc_no, 'function {} returning'.format(fnc_no)
+    return result
+
+def test():
+    print permutations([1,2,3,4])
+
+test()             
+
+"""
+>>> 
+ function 0 recursing
+	function 1 recursing
+		function 2 recursing
+			function 3 recursing
+			function 3 returning
+		function 2 returning
+	function 1 returning
+ function 0 returning
+[[4], [3], [3, 4], [2], [2, 4], [2, 3], [2, 3, 4], [1], [1, 4], [1, 3], [1, 3, 4], [1, 2], [1, 2, 4], [1, 2, 3], [1, 2, 3, 4]]
+>>> 
+"""

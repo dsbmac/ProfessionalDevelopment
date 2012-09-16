@@ -122,7 +122,7 @@ def getValue(item):
 def getRatio(item):
     return float(item[1][VALUE]) / item[1][WORK]
 
-def bestGreedy(subjects, maxWork, comparator):
+def bestGreedyAdvisor(subjects, maxWork, comparator):
     result = {}
     sumWork = 0
     subjectList = [x for x in subjects.items()  if ( x[1][WORK] + sumWork )<= maxWork ]
@@ -156,29 +156,80 @@ def bruteForceAdvisor(subjects, maxWork):
     subjectsKeys = subjects.keys()
     totalWork = 0
     result = {}
-
-    uniqueCombos = makeUniqueCombos(subjectsKeys)
+    comboList = []
+    c = []
+    
+    highestValue = 0;
+    uniqueCombos = UniqueCombos(subjectsKeys, subjects, maxWork)
     for combo in uniqueCombos:
       comboTotals = sumCombo(combo, subjects)
-      if comboTotals[WORK]<= maxWork:
-        result[tuple(combo)] = comboTotals[VALUE], comboTotals[WORK]    
+      c.append((combo,comboTotals))
+      if comboTotals[WORK] <= maxWork and comboTotals[VALUE] > highestValue:
+          bestCombo = combo
+          highestValue = comboTotals[VALUE]
+##    print c
+    for subject in bestCombo:
+        result[subject] = subjects[subject]
     return result
 
+
+##def bestUniqueCombos(inputValues, subjects, maxWork, epsilon, bestCombo=[], result=[]):
+##    newCombos = []
+##
+##    if inputValues == []:
+##        return []
+##    else:
+##        i = [inputValues.pop()]   
+##        if ComboMeetsCriteria(subjects.get(i[0])[WORK] , maxWork, epsilon, i , result):
+##            newCombos.append(i)
+##        for combo in result:
+##            newCombo = sorted(combo + i)
+##            comboTotal = sumCombo(newCombo, subjects)
+##            if ComboMeetsCriteria(comboTotal, maxWork, epsilon, combo, result):
+##                print newCombo
+##                newCombos.append(newCombo)
+##        result = result + newCombos
+##        return newCombos + bestUniqueCombos(inputValues, subjects, maxWork, epsilon, result)
+##
+##def ComboMeetsCriteria(value, maxWork, epsilon, bestCombo, combo, result):
+##    if bestComb =[]:
+##        return True
+##    else:
+##        return ( bestCombo - epsilon <= value <= maxWork ) and combo not in result
+
+def UniqueCombos(inputValues, subjects, maxWork, result=[]):
+    newCombos = []
+
+    if inputValues == []:
+        return []
+    else:
+        i = [inputValues.pop()]   
+        if i not in result and subjects.get(i[0])[WORK] <= maxWork:
+            newCombos.append(i)
+        for combo in result:
+            newCombo = sorted(combo + i)
+            comboTotal = sumCombo(newCombo, subjects)
+            if comboTotal[WORK] <= maxWork and newCombo not in result:
+                print newCombo
+                newCombos.append(newCombo)
+        result = result + newCombos
+        return newCombos + UniqueCombos(inputValues, subjects, maxWork, result)             
+
 def makeUniqueCombos(inputValues, result=[]):
-    newPerms = []
+    newCombos = []
 
     if inputValues == []:
         return []
     else:
         i = [inputValues.pop()]
         if i not in result:
-            newPerms.append(i)
-        for perm in result:
-            newPerm = sorted(perm + i)
-            if newPerm not in result:
-                newPerms.append(newPerm)
-        result = result + newPerms
-        return newPerms + makeUniqueCombos(inputValues, result)             
+            newCombos.append(i)
+        for combo in result:
+            newCombo = sorted(combo + i)
+            if newCombo not in result:
+                newCombos.append(newCombo)
+        result = result + newCombos
+        return newCombos + makeUniqueCombos(inputValues, result)             
 
 def sumCombo(comboSorted, subjects):
   valueSum, workSum = 0, 0
@@ -188,8 +239,11 @@ def sumCombo(comboSorted, subjects):
   return valueSum, workSum
   
 def test():
-    subjects = loadSubjects("smallCatalog.txt")
-##    subjects = loadSubjects(SUBJECT_FILENAME)
-##    print greedyAdvisor( subjects, 15, cmpWork)
-    print bruteForceAdvisor(subjects, 15)
+##    subjects = loadSubjects("smallCatalog.txt")
+    maxWork = 15
+    epsilon = 1
+    subjects = loadSubjects(SHORT_SUBJECT_FILENAME)
+##    print bestGreedyAdvisor( subjects, maxWork, cmpRatio)
+##    print bruteForceAdvisor(subjects, maxWork)
+    print bestUniqueCombos(subjects.keys(), subjects, maxWork, epsilon)
 test()
