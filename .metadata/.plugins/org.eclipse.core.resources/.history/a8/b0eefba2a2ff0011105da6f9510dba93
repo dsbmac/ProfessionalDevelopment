@@ -97,10 +97,10 @@ public class FacePamphletProfile implements FacePamphletConstants {
 	public Iterator<String> getFriends() {
 		System.out.println("getFriends...");
 		Iterator<String> iter = pFriends.iterator();
-//		System.out.println("iter.hasNext(): " + iter.hasNext());
-//		while (iter.hasNext()) {
-//			System.out.println(iter.next());
-//		}
+		System.out.println("iter.hasNext(): " + iter.hasNext());
+		while (iter.hasNext()) {
+			System.out.println(iter.next());
+		}
 		return iter;
 	}
 	

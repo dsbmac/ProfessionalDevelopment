@@ -72,33 +72,34 @@ public class FacePamphletCanvas extends GCanvas
 			
 			GLabel status = new GLabel(profile.getStatus());
 			status.setFont(PROFILE_STATUS_FONT);
-			Iterator<String> friends = profile.getFriends();
-			System.out.println("friends.hasNext(): " + friends.hasNext());
-			GCompound friendsList = createFriendsLabels(friends);
+			
+			GCompound friendsList = createFriendsLabels(profile.getFriends());
 			
 			double mark = name.getHeight();
 			double friendsMark = mark;
+			System.out.println(mark);
 			add(name, 0, mark);
 			mark += IMAGE_MARGIN;			
+			System.out.println(mark);
 			add(avatarPlaceHolder, 0, mark);
 			mark += avatarPlaceHolder.getHeight() + STATUS_MARGIN + status.getHeight();
+			System.out.println(mark);
 			add(status, 0, mark);
 			add(friendsList, width  /2 , friendsMark );
 			
 		}
 		
 		private GCompound createFriendsLabels( Iterator<String> iter) {
-			System.out.println("createFriendsLabels...");
 			GCompound friendsDisplay = new GCompound();
 			String title = "Friends:";
 			GLabel label = new GLabel( title);
 			label.setFont(PROFILE_FRIEND_LABEL_FONT);
 			
 			String friends = "";
-			while (iter.hasNext()) {				
-				friends = iter.next();
+			while (iter.hasNext()) {
+				friends += iter.next();
+				friends += "\n";
 			}
-			System.out.println("friends: " + friends);
 			GLabel listOfFriends = new GLabel(friends);
 			
 			double mark = label.getHeight();

@@ -9,8 +9,6 @@ import acm.program.*;
 import acm.graphics.*;
 import acm.util.*;
 import java.awt.event.*;
-import java.util.Iterator;
-
 import javax.swing.*;
 
 public class FacePamphlet extends Program 
@@ -97,54 +95,19 @@ public class FacePamphlet extends Program
     				currentProfile = db.getProfile(name);		
     			}			
     		}
-    	} else if (source == statusChange || source == statusField) {
+    	} else if (source == statusChange) {
 			System.out.println("statusField action");
-			String text = statusField.getText();
-			if ( currentProfile != null && !text.equals("") ) {				
-				changeStatus(text);				
-			}			
-		} else if (source == addFriend || source == friendField) {
-			System.out.println("friendField action");
-			String text = friendField.getText();
-			if ( currentProfile != null && hasFriend(text) == false) {
-				System.out.println("passed condition");
-				addFriend(text);				
-				System.out.println(currentProfile.toString());
-			}			
+			canvas.showMessage(statusField.getText());
 		}
-    	
 		updateDisplay();
 //				if (e.getSource() == pictureChange)
 //					if (e.getSource() == addFriend);
 	}
     
-    private void addFriend(String name) {
-    	if (db.containsProfile(name)) {
-    		currentProfile.addFriend(name);
-    		FacePamphletProfile friend = db.getProfile(name);
-    		friend.addFriend(currentProfile.getName());
-    	}
-    }
-    
-    private boolean hasFriend(String name) {
-    	Iterator<String> iter = currentProfile.getFriends();
-		while (iter.hasNext()) {
-			if (iter.next() == name) return true;
-		}
-		return false;    	
-    }
-    
-    private void changeStatus(String status) {
-    	String name = currentProfile.getName();
-    	String msg = name + " is " + status;
-    	currentProfile.setStatus(msg);
-    }
-    
     private void updateDisplay() {
-    	canvas.removeAll();
-    	if (currentProfile != null) {
-    		canvas.displayProfile(currentProfile);
-    	} 
+    	if (currentProfile == null) {
+    		canvas.removeAll();
+    	} else canvas.displayProfile(currentProfile);
     }
     
     private boolean validProfile (String name) {

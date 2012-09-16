@@ -109,7 +109,6 @@ public class FacePamphlet extends Program
 			if ( currentProfile != null && hasFriend(text) == false) {
 				System.out.println("passed condition");
 				addFriend(text);				
-				System.out.println(currentProfile.toString());
 			}			
 		}
     	

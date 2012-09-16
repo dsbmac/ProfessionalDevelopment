@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="21" version="2.0">
+<workbench progressCount="18" version="2.0">
 <workbenchAdvisor/>
 <window height="768" maximized="true" width="1024" x="381" y="123">
 <fastViewData fastViewLocation="1024"/>
@@ -37,39 +37,29 @@
 <part id="1"/>
 <part id="3"/>
 <part id="4"/>
-<part id="5"/>
-<part id="6"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="FacePamphlet.java" partName="FacePamphlet.java" path="C:/Documents and Settings/Denis/My Documents/GitHub/Stanford-CS106A/Assignment7/FacePamphlet.java" title="FacePamphlet.java" tooltip="Assignment7/FacePamphlet.java" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="FacePamphlet.java" partName="FacePamphlet.java" path="C:/Documents and Settings/Denis/My Documents/GitHub/Stanford-CS106A/Assignment7/FacePamphlet.java" title="FacePamphlet.java" tooltip="Assignment7/FacePamphlet.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Assignment7/FacePamphlet.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3216" selectionTopPixel="417"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3198" selectionTopPixel="1284"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="FacePamphletConstants.java" partName="FacePamphletConstants.java" path="C:/Documents and Settings/Denis/My Documents/GitHub/Stanford-CS106A/Assignment7/FacePamphletConstants.java" title="FacePamphletConstants.java" tooltip="Assignment7/FacePamphletConstants.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Assignment7/FacePamphletConstants.java"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1978" selectionTopPixel="272"/>
 </editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="FacePamphletCanvas.java" partName="FacePamphletCanvas.java" path="C:/Documents and Settings/Denis/My Documents/GitHub/Stanford-CS106A/Assignment7/FacePamphletCanvas.java" title="FacePamphletCanvas.java" tooltip="Assignment7/FacePamphletCanvas.java" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="FacePamphletCanvas.java" partName="FacePamphletCanvas.java" path="C:/Documents and Settings/Denis/My Documents/GitHub/Stanford-CS106A/Assignment7/FacePamphletCanvas.java" title="FacePamphletCanvas.java" tooltip="Assignment7/FacePamphletCanvas.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Assignment7/FacePamphletCanvas.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="947" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3053" selectionTopPixel="944"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="FacePamphletDatabase.java" partName="FacePamphletDatabase.java" path="C:/Documents and Settings/Denis/My Documents/GitHub/Stanford-CS106A/Assignment7/FacePamphletDatabase.java" title="FacePamphletDatabase.java" tooltip="Assignment7/FacePamphletDatabase.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Assignment7/FacePamphletDatabase.java"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2985" selectionTopPixel="9"/>
 </editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="NameSurferGraph.java" partName="NameSurferGraph.java" path="C:/Documents and Settings/Denis/My Documents/GitHub/Stanford-CS106A/Assignment6/NameSurferGraph.java" title="NameSurferGraph.java" tooltip="Assignment6/NameSurferGraph.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Assignment6/NameSurferGraph.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="584" selectionTopPixel="1088"/>
-</editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="FacePamphletProfile.java" partName="FacePamphletProfile.java" path="C:/Documents and Settings/Denis/My Documents/GitHub/Stanford-CS106A/Assignment7/FacePamphletProfile.java" title="FacePamphletProfile.java" tooltip="Assignment7/FacePamphletProfile.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Assignment7/FacePamphletProfile.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="689" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="test.java" partName="test.java" path="C:/Documents and Settings/Denis/My Documents/GitHub/Stanford-CS106A/Assignment7/test.java" title="test.java" tooltip="Assignment7/test.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Assignment7/test.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="551" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2859" selectionTopPixel="791"/>
 </editor>
 </editors>
 <views>
@@ -503,160 +493,161 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Assignment7/FacePamphletCanvas.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Assignment7/FacePamphletProfile.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Assignment7/FacePamphlet.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Assignment7/FacePamphletProfile.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Assignment6/NameSurferGraph.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Assignment7/FacePamphletCanvas.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/Assignment7/FacePamphletDatabase.java"/>
 </editors>
-<item historyLabel="FacePamphletCanvas.java" index="0">
-<position info="not_deleted" x="3053" y="0"/>
+<item historyLabel="NameSurferGraph.java" index="2">
+<position info="not_deleted" x="584" y="0"/>
 </item>
-<item historyLabel="FacePamphletCanvas.java" index="0">
-<position info="not_deleted" x="2924" y="0"/>
+<item historyLabel="FacePamphlet.java" index="0">
+<position info="not_deleted" x="3550" y="0"/>
 </item>
-<item historyLabel="FacePamphletCanvas.java" index="0">
-<position info="not_deleted" x="2951" y="0"/>
-</item>
-<item historyLabel="FacePamphletCanvas.java" index="0">
-<position info="not_deleted" x="3001" y="0"/>
-</item>
-<item historyLabel="FacePamphletCanvas.java" index="0">
-<position info="not_deleted" x="2990" y="0"/>
-</item>
-<item historyLabel="FacePamphletCanvas.java" index="0">
-<position info="not_deleted" x="2615" y="0"/>
-</item>
-<item historyLabel="FacePamphletCanvas.java" index="0">
-<position info="not_deleted" x="3114" y="0"/>
-</item>
-<item historyLabel="FacePamphletCanvas.java" index="0">
-<position info="not_deleted" x="327" y="14"/>
-</item>
-<item historyLabel="FacePamphletCanvas.java" index="0">
-<position info="not_deleted" x="1614" y="0"/>
-</item>
-<item historyLabel="FacePamphletCanvas.java" index="0">
-<position info="not_deleted" x="1446" y="0"/>
+<item historyLabel="NameSurferGraph.java" index="2">
+<position info="not_deleted" x="584" y="0"/>
 </item>
 <item historyLabel="FacePamphletProfile.java" index="1">
 <position info="not_deleted" x="689" y="0"/>
 </item>
-<item historyLabel="FacePamphlet.java" index="2">
-<position info="not_deleted" x="4" y="0"/>
+<item historyLabel="FacePamphletProfile.java" index="1">
+<position info="not_deleted" x="2907" y="0"/>
 </item>
-<item historyLabel="FacePamphlet.java" index="2">
-<position info="not_deleted" x="3391" y="0"/>
-</item>
-<item historyLabel="FacePamphletCanvas.java" index="0">
-<position info="not_deleted" x="2419" y="0"/>
-</item>
-<item historyLabel="FacePamphlet.java" index="2">
+<item historyLabel="FacePamphlet.java" index="0">
 <position/>
 </item>
-<item historyLabel="FacePamphletCanvas.java" index="0">
-<position info="not_deleted" x="2419" y="0"/>
+<item historyLabel="NameSurferGraph.java" index="2">
+<position info="not_deleted" x="2975" y="8"/>
 </item>
-<item historyLabel="FacePamphlet.java" index="2">
-<position info="not_deleted" x="2784" y="0"/>
+<item historyLabel="FacePamphletProfile.java" index="1">
+<position info="not_deleted" x="2876" y="8"/>
 </item>
-<item historyLabel="FacePamphletCanvas.java" index="0">
-<position info="not_deleted" x="2419" y="0"/>
-</item>
-<item historyLabel="FacePamphletCanvas.java" index="0">
-<position info="not_deleted" x="1733" y="0"/>
-</item>
-<item historyLabel="FacePamphletCanvas.java" index="0">
-<position info="not_deleted" x="2641" y="0"/>
-</item>
-<item historyLabel="FacePamphletCanvas.java" index="0">
-<position info="not_deleted" x="947" y="0"/>
-</item>
-<item historyLabel="FacePamphlet.java" index="2">
-<position info="not_deleted" x="3391" y="0"/>
-</item>
-<item historyLabel="FacePamphletCanvas.java" index="0">
-<position info="not_deleted" x="947" y="0"/>
-</item>
-<item historyLabel="FacePamphlet.java" index="2">
-<position info="not_deleted" x="3391" y="0"/>
-</item>
-<item historyLabel="FacePamphletCanvas.java" index="0">
-<position info="not_deleted" x="947" y="0"/>
-</item>
-<item historyLabel="NameSurferGraph.java" index="3">
-<position info="not_deleted" x="4" y="0"/>
-</item>
-<item historyLabel="NameSurferGraph.java" index="3">
-<position info="not_deleted" x="584" y="0"/>
-</item>
-<item historyLabel="FacePamphletCanvas.java" index="0">
-<position info="not_deleted" x="947" y="0"/>
-</item>
-<item historyLabel="FacePamphlet.java" index="2">
-<position info="not_deleted" x="3391" y="0"/>
-</item>
-<item historyLabel="FacePamphlet.java" index="2">
-<position info="not_deleted" x="3205" y="0"/>
-</item>
-<item historyLabel="FacePamphletCanvas.java" index="0">
-<position info="not_deleted" x="947" y="0"/>
-</item>
-<item historyLabel="NameSurferGraph.java" index="3">
-<position info="not_deleted" x="584" y="0"/>
-</item>
-<item historyLabel="FacePamphlet.java" index="2">
-<position info="not_deleted" x="3205" y="0"/>
-</item>
-<item historyLabel="FacePamphletCanvas.java" index="0">
-<position info="not_deleted" x="947" y="0"/>
-</item>
-<item historyLabel="FacePamphlet.java" index="2">
-<position info="not_deleted" x="3205" y="0"/>
-</item>
-<item historyLabel="FacePamphlet.java" index="2">
+<item historyLabel="FacePamphlet.java" index="0">
 <position/>
 </item>
-<item historyLabel="FacePamphlet.java" index="2">
+<item historyLabel="FacePamphlet.java" index="0">
+<position info="not_deleted" x="3610" y="0"/>
+</item>
+<item historyLabel="FacePamphlet.java" index="0">
+<position info="not_deleted" x="3695" y="0"/>
+</item>
+<item historyLabel="FacePamphlet.java" index="0">
+<position info="not_deleted" x="3725" y="0"/>
+</item>
+<item historyLabel="FacePamphlet.java" index="0">
+<position info="not_deleted" x="3403" y="0"/>
+</item>
+<item historyLabel="FacePamphlet.java" index="0">
+<position info="not_deleted" x="3442" y="0"/>
+</item>
+<item historyLabel="FacePamphlet.java" index="0">
+<position info="not_deleted" x="2826" y="0"/>
+</item>
+<item historyLabel="FacePamphlet.java" index="0">
+<position info="not_deleted" x="3124" y="0"/>
+</item>
+<item historyLabel="FacePamphlet.java" index="0">
+<position info="not_deleted" x="3498" y="0"/>
+</item>
+<item historyLabel="FacePamphlet.java" index="0">
+<position info="not_deleted" x="3406" y="0"/>
+</item>
+<item historyLabel="NameSurferGraph.java" index="2">
+<position info="not_deleted" x="2975" y="8"/>
+</item>
+<item historyLabel="FacePamphlet.java" index="0">
+<position info="not_deleted" x="3406" y="0"/>
+</item>
+<item historyLabel="FacePamphletProfile.java" index="1">
+<position info="not_deleted" x="2876" y="8"/>
+</item>
+<item historyLabel="FacePamphlet.java" index="0">
+<position info="not_deleted" x="3406" y="0"/>
+</item>
+<item historyLabel="FacePamphletProfile.java" index="1">
+<position info="not_deleted" x="2876" y="8"/>
+</item>
+<item historyLabel="FacePamphlet.java" index="0">
+<position info="not_deleted" x="3406" y="0"/>
+</item>
+<item historyLabel="FacePamphletProfile.java" index="1">
+<position info="not_deleted" x="2876" y="8"/>
+</item>
+<item historyLabel="FacePamphlet.java" index="0">
+<position info="not_deleted" x="3406" y="0"/>
+</item>
+<item historyLabel="FacePamphletCanvas.java" index="3">
+<position info="not_deleted" x="3" y="0"/>
+</item>
+<item historyLabel="FacePamphletCanvas.java" index="3">
+<position info="not_deleted" x="2154" y="0"/>
+</item>
+<item historyLabel="FacePamphletProfile.java" index="1">
+<position info="not_deleted" x="2876" y="8"/>
+</item>
+<item historyLabel="FacePamphletProfile.java" index="1">
+<position info="not_deleted" x="3740" y="0"/>
+</item>
+<item historyLabel="FacePamphletCanvas.java" index="3">
+<position info="not_deleted" x="2154" y="0"/>
+</item>
+<item historyLabel="FacePamphletCanvas.java" index="3">
+<position info="not_deleted" x="2801" y="0"/>
+</item>
+<item historyLabel="FacePamphletCanvas.java" index="3">
+<position info="not_deleted" x="3021" y="0"/>
+</item>
+<item historyLabel="FacePamphletProfile.java" index="1">
+<position info="not_deleted" x="3061" y="0"/>
+</item>
+<item historyLabel="FacePamphletCanvas.java" index="3">
+<position info="not_deleted" x="3021" y="0"/>
+</item>
+<item historyLabel="FacePamphletCanvas.java" index="3">
 <position/>
 </item>
-<item historyLabel="FacePamphlet.java" index="2">
-<position info="not_deleted" x="3047" y="0"/>
+<item historyLabel="FacePamphletCanvas.java" index="3">
+<position info="not_deleted" x="3021" y="0"/>
 </item>
-<item historyLabel="FacePamphlet.java" index="2">
-<position info="not_deleted" x="3086" y="0"/>
+<item historyLabel="FacePamphletProfile.java" index="1">
+<position info="not_deleted" x="3061" y="0"/>
 </item>
-<item historyLabel="FacePamphlet.java" index="2">
-<position/>
+<item historyLabel="FacePamphletCanvas.java" index="3">
+<position info="not_deleted" x="3021" y="0"/>
 </item>
-<item historyLabel="FacePamphlet.java" index="2">
-<position/>
+<item historyLabel="FacePamphletCanvas.java" index="3">
+<position info="not_deleted" x="3053" y="0"/>
 </item>
-<item historyLabel="FacePamphlet.java" index="2">
-<position/>
+<item historyLabel="FacePamphletCanvas.java" index="3">
+<position info="not_deleted" x="2212" y="0"/>
 </item>
-<item historyLabel="FacePamphlet.java" index="2">
-<position/>
+<item historyLabel="FacePamphletCanvas.java" index="3">
+<position info="not_deleted" x="2300" y="0"/>
 </item>
-<item historyLabel="FacePamphlet.java" index="2">
-<position info="not_deleted" x="2875" y="0"/>
+<item historyLabel="FacePamphletProfile.java" index="1">
+<position info="not_deleted" x="3061" y="0"/>
 </item>
-<item historyLabel="FacePamphlet.java" index="2">
-<position/>
+<item historyLabel="FacePamphletCanvas.java" index="3">
+<position info="not_deleted" x="2300" y="0"/>
 </item>
-<item historyLabel="FacePamphlet.java" index="2">
-<position/>
+<item historyLabel="FacePamphletDatabase.java" index="4">
+<position info="not_deleted" x="3" y="0"/>
 </item>
-<item historyLabel="FacePamphlet.java" index="2">
-<position info="not_deleted" x="2952" y="0"/>
+<item historyLabel="FacePamphletDatabase.java" index="4">
+<position info="not_deleted" x="2985" y="0"/>
 </item>
-<item historyLabel="FacePamphlet.java" index="2">
-<position info="not_deleted" x="2751" y="0"/>
+<item historyLabel="FacePamphletProfile.java" index="1">
+<position info="not_deleted" x="3045" y="0"/>
 </item>
-<item historyLabel="FacePamphlet.java" index="2">
-<position/>
+<item historyLabel="FacePamphletCanvas.java" index="3">
+<position info="not_deleted" x="2311" y="0"/>
 </item>
-<item active="true" historyLabel="FacePamphlet.java" index="2">
-<position/>
+<item historyLabel="FacePamphletProfile.java" index="1">
+<position info="not_deleted" x="2859" y="0"/>
+</item>
+<item active="true" historyLabel="FacePamphletCanvas.java" index="3">
+<position info="not_deleted" x="2311" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -675,6 +666,9 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="NameSurfer.java" tooltip="Assignment6/NameSurfer.java">
+<persistable path="/Assignment6/NameSurfer.java"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="test.java" tooltip="Assignment7/test.java">
 <persistable path="/Assignment7/test.java"/>
 </file>
@@ -692,9 +686,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="FacePamphletCanvas.java" tooltip="Assignment7/FacePamphletCanvas.java">
 <persistable path="/Assignment7/FacePamphletCanvas.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="NameSurfer.java" tooltip="Assignment6/NameSurfer.java">
-<persistable path="/Assignment6/NameSurfer.java"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="FacePamphletConstants.java" tooltip="Assignment7/FacePamphletConstants.java">
 <persistable path="/Assignment7/FacePamphletConstants.java"/>

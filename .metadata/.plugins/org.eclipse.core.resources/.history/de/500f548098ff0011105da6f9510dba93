@@ -109,7 +109,6 @@ public class FacePamphlet extends Program
 			if ( currentProfile != null && hasFriend(text) == false) {
 				System.out.println("passed condition");
 				addFriend(text);				
-				System.out.println(currentProfile.toString());
 			}			
 		}
     	
@@ -119,10 +118,8 @@ public class FacePamphlet extends Program
 	}
     
     private void addFriend(String name) {
-    	if (db.containsProfile(name)) {
+    	if (db.containsProfile(name) && hasFriend(name) == false) {
     		currentProfile.addFriend(name);
-    		FacePamphletProfile friend = db.getProfile(name);
-    		friend.addFriend(currentProfile.getName());
     	}
     }
     
