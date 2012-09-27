@@ -159,7 +159,7 @@
 			>
 		</Filter>
 		<File
-			RelativePath="..\add2.cpp"
+			RelativePath=".\add2.cpp"
 			>
 		</File>
 	</Files>

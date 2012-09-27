@@ -12,7 +12,7 @@
 #include "simpio.h"
 	
 
-int main()
+void censorString()
 {	
 	cout << "Enter string: " ;
 	string uInput, chrRemove, result;

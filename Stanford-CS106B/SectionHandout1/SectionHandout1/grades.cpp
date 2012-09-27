@@ -5,7 +5,8 @@
 #include <string>
 #include "vector.h"
 
-Vector gradesVect (ifstream &in) {
+Vector gradesVect (ifstream &in)
+{
 	Vector<string> result;
 	while (true) {
 		string s;
@@ -16,7 +17,8 @@ Vector gradesVect (ifstream &in) {
 	return result;
 }
 
-int main() {
+void grades() 
+{
 	ifstream in;
 	while (true) {
 	in.open("grades.txt");
@@ -26,5 +28,4 @@ int main() {
 	}
 	Vector<string> result = gradeString(in);
 	return 0;
-
 }

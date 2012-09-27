@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="8.00"
-	Name="SectionHandout1"
-	ProjectGUID="{1BE6D46E-BD64-4D69-9196-B45C7631EA07}"
-	RootNamespace="SectionHandout1"
+	Name="Assignment1"
+	ProjectGUID="{7423513C-5F28-44DB-A520-F9A59EC8D3E0}"
+	RootNamespace="Assignment1"
 	>
 	<Platforms>
 		<Platform
@@ -157,27 +157,11 @@
 			Name="Source Files"
 			Filter="txt"
 			>
+			<File
+				RelativePath=".\Assign1warmup.cpp"
+				>
+			</File>
 		</Filter>
-		<File
-			RelativePath=".\alphabet.txt"
-			>
-		</File>
-		<File
-			RelativePath=".\grades.txt"
-			>
-		</File>
-		<File
-			RelativePath=".\main.cpp"
-			>
-		</File>
-		<File
-			RelativePath=".\resource.h"
-			>
-		</File>
-		<File
-			RelativePath=".\SectionHandout1.rc"
-			>
-		</File>
 	</Files>
 	<Globals>
 	</Globals>

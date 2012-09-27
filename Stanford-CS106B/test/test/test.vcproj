@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="8.00"
-	Name="SectionHandout1"
-	ProjectGUID="{1BE6D46E-BD64-4D69-9196-B45C7631EA07}"
-	RootNamespace="SectionHandout1"
+	Name="test"
+	ProjectGUID="{30A10B01-DDC7-4C99-8BA3-E40C40606A8A}"
+	RootNamespace="test"
 	>
 	<Platforms>
 		<Platform
@@ -159,23 +159,7 @@
 			>
 		</Filter>
 		<File
-			RelativePath=".\alphabet.txt"
-			>
-		</File>
-		<File
-			RelativePath=".\grades.txt"
-			>
-		</File>
-		<File
-			RelativePath=".\main.cpp"
-			>
-		</File>
-		<File
-			RelativePath=".\resource.h"
-			>
-		</File>
-		<File
-			RelativePath=".\SectionHandout1.rc"
+			RelativePath="..\..\..\..\..\..\Desktop\test.cpp"
 			>
 		</File>
 	</Files>
