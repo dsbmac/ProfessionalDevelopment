@@ -161,6 +161,14 @@
 				RelativePath=".\Assign1warmup.cpp"
 				>
 			</File>
+			<File
+				RelativePath=".\ChaosGame.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\ChaosGame.h"
+				>
+			</File>
 		</Filter>
 	</Files>
 	<Globals>

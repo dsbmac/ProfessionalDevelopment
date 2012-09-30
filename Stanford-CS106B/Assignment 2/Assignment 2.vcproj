@@ -2,9 +2,8 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="8.00"
-	Name="test"
-	ProjectGUID="{30A10B01-DDC7-4C99-8BA3-E40C40606A8A}"
-	RootNamespace="test"
+	Name="Assignment 2"
+	ProjectGUID="{C1E2C6EB-8D06-43F0-9C98-7DCCB4F68109}"
 	>
 	<Platforms>
 		<Platform
@@ -157,11 +156,11 @@
 			Name="Source Files"
 			Filter="txt"
 			>
-			<File
-				RelativePath=".\test.cpp"
-				>
-			</File>
 		</Filter>
+		<File
+			RelativePath=".\test"
+			>
+		</File>
 	</Files>
 	<Globals>
 	</Globals>
