@@ -157,19 +157,23 @@
 			Name="Source Files"
 			Filter="txt"
 			>
-			<File
-				RelativePath=".\Assign1warmup.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\ChaosGame.cpp"
-				>
-			</File>
-			<File
-				RelativePath=".\ChaosGame.h"
-				>
-			</File>
 		</Filter>
+		<File
+			RelativePath=".\Assign1warmup.cpp"
+			>
+		</File>
+		<File
+			RelativePath=".\Pt.cpp"
+			>
+		</File>
+		<File
+			RelativePath=".\Pt.h"
+			>
+		</File>
+		<File
+			RelativePath=".\Soundex.cpp"
+			>
+		</File>
 	</Files>
 	<Globals>
 	</Globals>

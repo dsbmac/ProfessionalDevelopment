@@ -6,10 +6,11 @@
 #include "random.h"
 #include "simpio.h"
 #include "queue.h"
+#include "map.h"
 
 int main()
 {
-Queue<int> queue;
-queue.enqueue(t);
-queue.dequeue()
+	Map<int> map ;
+	map.add("a", 1);
+	cout << map.getValue("a") << endl;
 }
