@@ -1,23 +1,18 @@
-//#include <iostream>
+#include <iostream>
 #include "genlib.h"
 #include <vector.h>
 #include <math.h>
-#include <stdio.h>
-#include <stdlib.h>
 #include <random.h>
 #include "ChaosGame.h"
 #include "graphics.h"
-#include <ctime>
 #include "extgraph.h"
-#include "Pt.h"
 
 ChaosGame::ChaosGame()
-:relativePt(), vertices(), vertex(), lastX(), lastY()
 {
 /*1. Randomly choose one vertex (A, B, or C) as the current point
 2. Draw a small filled circle around the current point
 3. Randomly choose one vertex (A, B, or C) and move the current point half of the distance
-toward that vertex
+toward that target
 4. Repeat steps 2 & 3 (stop when the user clicks the mouse)*/	
 	setup();
 	drawTriangle();
@@ -28,47 +23,52 @@ toward that vertex
 		if(MouseButtonIsDown())	break;
 	}
 }
-void ChaosGame::calcDiff(Pt & b, double factor = 1.0) {
-	Pt a(GetCurrentX(), GetCurrentY());
-	relativePt.setX((b.getX()-a.getX()) * factor);
-	relativePt.setY((b.getY()-a.getY()) * factor);
+//calculates the relative coordinates for line drawing
+void ChaosGame::calcDiff(pointT & b, double factor) {
+	pointT a = {GetCurrentX(), GetCurrentY()};
+	relativePt.x = (b.x-a.x) * factor;
+	relativePt.y = (b.y-a.y) * factor;
 }
-void ChaosGame::DrawLineToPt (Pt & b) {
+//draws a line from current location to specified point
+void ChaosGame::DrawLineToPt (pointT & b) {
 	calcDiff(b);
-	DrawLine(relativePt.getX(), relativePt.getY());
+	DrawLine(relativePt.x, relativePt.y);
 }
+//draws filled circle
 void ChaosGame::mark(){
 	double size = 0.05;
-	Pt bookmark(GetCurrentX(), GetCurrentY());
+	pointT bookmark = {GetCurrentX(), GetCurrentY()};
 	MovePen(GetCurrentX()+ size, GetCurrentY());
 	StartFilledRegion(1);
 	DrawArc(size, 0, 360);
 	EndFilledRegion();
-	MovePen(bookmark.getX(), bookmark.getY());
+	MovePen(bookmark.x, bookmark.y);
 }
+//reuses the calcdiff to determine where to move
 void ChaosGame::moveHalfway() {
-	calcDiff(vertex, 0.5);
-	MovePen(GetCurrentX() + relativePt.getX(), GetCurrentY() + relativePt.getY());
+	calcDiff(target, 0.5);
+	MovePen(GetCurrentX() + relativePt.x, GetCurrentY() + relativePt.y);
 }
 void ChaosGame::randomVertex() {
 	int index = RandomInteger(0, 2);
-	vertex = vertices[index];
+	target = vertices[index];
 }
+//draws the fractal process
 void ChaosGame::drawChaos() {
 	randomVertex();
 	moveHalfway();
 	mark();
 	Pause(0.005);
 }
+//struct pointT is used to track coordinates
 void ChaosGame::getVertices(){
 	while(vertices.size() < 3) {
 		WaitForMouseDown();
-			lastX = GetMouseX();
-			lastY = GetMouseY();
+			last.x = GetMouseX();
+			last.y = GetMouseY();
 		WaitForMouseUp();
-			Pt entry(lastX, lastY);
-			vertices.add(entry);
-			cout << entry.getX() << ", " << entry.getY() << endl;
+			vertices.add(last);
+			cout << "Vertex at: " << last.x << ", " << last.y << " confirmed." << endl;
 	}
 }
 void ChaosGame::setup(){
@@ -79,16 +79,16 @@ void ChaosGame::setup(){
 	getVertices();
 }
 void ChaosGame::drawTriangle() {
-	Pt A = vertices[0];
-	Pt B = vertices[1];
-	Pt C = vertices[2];
-	MovePen(A.getX(), A.getY());
+	pointT A = vertices[0];
+	pointT B = vertices[1];
+	pointT C = vertices[2];
+	MovePen(A.x, A.y);
 	DrawLineToPt(B);
 	DrawLineToPt(C);
 	DrawLineToPt(A);
 }
 void ChaosGame::drawFirstMark() {
 	randomVertex();
-	MovePen(vertex.getX(), vertex.getY());
+	MovePen(target.x, target.y);
 	mark();
 }

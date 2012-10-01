@@ -7,10 +7,10 @@
 #include "simpio.h"
 #include "queue.h"
 #include "map.h"
+#include "mazelib.h"
 
 int main()
 {
-	Map<int> map ;
-	map.add("a", 1);
-	cout << map.getValue("a") << endl;
+struct pointT(1.0, 1.0);
+cout <<  << endl;
 }

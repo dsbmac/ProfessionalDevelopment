@@ -163,15 +163,31 @@
 			>
 		</File>
 		<File
-			RelativePath=".\Pt.cpp"
+			RelativePath=".\ChaosGame.cpp"
 			>
 		</File>
 		<File
-			RelativePath=".\Pt.h"
+			RelativePath=".\ChaosGame.h"
+			>
+		</File>
+		<File
+			RelativePath=".\HistoScores.cpp"
+			>
+		</File>
+		<File
+			RelativePath=".\HistoScores.h"
+			>
+		</File>
+		<File
+			RelativePath="..\scores.txt"
 			>
 		</File>
 		<File
 			RelativePath=".\Soundex.cpp"
+			>
+		</File>
+		<File
+			RelativePath=".\Soundex.h"
 			>
 		</File>
 	</Files>

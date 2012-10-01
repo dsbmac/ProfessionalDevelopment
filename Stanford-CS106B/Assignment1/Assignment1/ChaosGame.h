@@ -1,20 +1,21 @@
 #pragma once
 
-#include "Pt.h"
-
 class ChaosGame
 {
 public:
 	ChaosGame();
-private:	
-	Vector<Pt> vertices;
-	double lastX;
-	double lastY;
-	Pt relativePt;
-	Pt vertex;
+private:
+	struct pointT {
+	double x;
+	double y;
+	};
+	Vector<pointT> vertices;
+	pointT last;
+	pointT relativePt;
+	pointT target;
 
-	void calcDiff(Pt & b, double factor = 1.0);
-	void DrawLineToPt (Pt & b);
+	void calcDiff(pointT & b, double factor = 1.0);
+	void DrawLineToPt (pointT & b);
 	void mark();
 	void moveHalfway() ;
 	void randomVertex() ;

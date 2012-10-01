@@ -4,13 +4,10 @@
 #include "map.h"
 #include <iostream>
 #include <string>
+#include "soundex.h"
 
-string parseName(string surname, Map<int> & soundexCodes);
-void setup(Map<int> & map);
-bool isValid(string input);
-string getInput();
-
-int main() {
+Soundex::Soundex()
+{
 /* Keep the first letter of the surname (convert to uppercase if necessary)
 2. Convert all other letters in the surname to a digit using the table below (discard any non-
 letter characters: dashes, spaces, and so on)
@@ -21,12 +18,13 @@ letter characters: dashes, spaces, and so on)
 	Map<int> soundexCodes;	
 	setup(soundexCodes);
 	while(true) {
-		string input = getInput();		
+		string input = getInput();	
+		//quit on enter
 		if (input == "") break;
 		cout << "Soundex code for "  << input << " is " << parseName(input, soundexCodes) << endl;
 	}
-}
-string getInput() {
+}	
+string Soundex::getInput() {
 	string input;
 	while (true) {
 			cout << "Enter surname (RETURN to quit): ";
@@ -36,13 +34,13 @@ string getInput() {
 	}
 	return input;
 }
-bool isValid(string input) {
+bool Soundex::isValid(string input) {
 	for (int i = 0; i < input.length(); i++) {
 		if (!isalpha(input[i])) return false;
 	}
 	return true;
 }
-string parseName(string surname, Map<int> & soundexCodes) {
+string Soundex::parseName(string surname, Map<int> & soundexCodes) {
 	//keep first letter and upper case it
 	string result = "";
 	for (int i = 0; i < surname.length(); i ++) {
@@ -65,7 +63,7 @@ string parseName(string surname, Map<int> & soundexCodes) {
 	}		
 	return result;
 }
-void setup(Map<int> & map){
+void Soundex::setup(Map<int> & map){
 	Vector<string> codes;
 	codes.add("A E I O U H W Y");
 	codes.add("B F P V");
@@ -74,8 +72,10 @@ void setup(Map<int> & map){
 	codes.add("M N");
 	codes.add("L");
 	codes.add("R");
-	//fill map. i will be the key values
+	//fill map. i will be the key and code values
+	//loop through groups
 	for (int i = 0; i < codes.size(); i++) {
+		//traverse string and add valid values
 		for (int j = 0; j < codes[i].length(); j++) {
 			string key = codes[i].substr(j,1);
 			if (isalpha(key[0])) map.add(key, i);

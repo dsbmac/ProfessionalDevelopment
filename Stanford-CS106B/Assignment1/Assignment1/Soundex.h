@@ -5,10 +5,9 @@ class Soundex
 {
 public:
 	Soundex(void);
-public:
-	~Soundex(void);
 private:
-	Map<int> soundexMap;
-	void setup();
-	string parseName(string surname);
+	string parseName(string surname, Map<int> & soundexCodes);
+	void setup(Map<int> & map);
+	bool isValid(string input);
+	string getInput();
 };
