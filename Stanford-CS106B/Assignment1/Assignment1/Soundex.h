@@ -1,6 +1,6 @@
 #pragma once
-
 #include "map.h"
+
 class Soundex
 {
 public:

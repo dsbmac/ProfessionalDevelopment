@@ -7,10 +7,15 @@
 #include "simpio.h"
 #include "queue.h"
 #include "map.h"
-#include "mazelib.h"
+#include "grid.h"
 
-int main()
-{
-struct pointT(1.0, 1.0);
-cout <<  << endl;
+/*
+* The user enters the total number of votes, the vote spread,
+* and the percentage of error. The program prints the percentage
+* of an invalid election based on multiple trial runs.
+*/
+
+int main() {
+	Grid<bool> test(6,6);
+	cout << test.numCols() << endl;
 }

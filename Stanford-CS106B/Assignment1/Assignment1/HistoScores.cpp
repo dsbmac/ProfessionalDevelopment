@@ -38,9 +38,7 @@ void HistoScores::sortScores(Vector<int> & groupCounts, Vector<string> & labels)
 	}
 	for (int i = 0; i <scores.size(); i++) {
 		int score = StringToInteger(scores[i]);
-		int index = score / 10;
-		int x = groupCounts.getAt(index);
-		groupCounts.setAt(index, ++x);
+		groupCounts[score / 10] += 1;
 	}	
 }
 

@@ -2,9 +2,9 @@
 <VisualStudioProject
 	ProjectType="Visual C++"
 	Version="8.00"
-	Name="Assignment1"
-	ProjectGUID="{7423513C-5F28-44DB-A520-F9A59EC8D3E0}"
-	RootNamespace="Assignment1"
+	Name="SectionHandout2"
+	ProjectGUID="{B70BB44B-E99D-4060-90CF-9BED97E49875}"
+	RootNamespace="SectionHandout2"
 	>
 	<Platforms>
 		<Platform
@@ -159,43 +159,11 @@
 			>
 		</Filter>
 		<File
-			RelativePath=".\Assign1warmup.cpp"
+			RelativePath=".\characters.txt"
 			>
 		</File>
 		<File
-			RelativePath=".\ChaosGame.cpp"
-			>
-		</File>
-		<File
-			RelativePath=".\ChaosGame.h"
-			>
-		</File>
-		<File
-			RelativePath=".\Election.cpp"
-			>
-		</File>
-		<File
-			RelativePath=".\Election.h"
-			>
-		</File>
-		<File
-			RelativePath=".\HistoScores.cpp"
-			>
-		</File>
-		<File
-			RelativePath=".\HistoScores.h"
-			>
-		</File>
-		<File
-			RelativePath="..\scores.txt"
-			>
-		</File>
-		<File
-			RelativePath=".\Soundex.cpp"
-			>
-		</File>
-		<File
-			RelativePath=".\Soundex.h"
+			RelativePath=".\main.cpp"
 			>
 		</File>
 	</Files>
