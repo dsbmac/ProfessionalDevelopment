@@ -4,6 +4,7 @@
 	Version="8.00"
 	Name="Assignment 2"
 	ProjectGUID="{147A8AD7-62B9-48C9-A524-EA485F9A4337}"
+	RootNamespace="Assignment 2"
 	>
 	<Platforms>
 		<Platform
@@ -158,7 +159,27 @@
 			>
 		</Filter>
 		<File
-			RelativePath=".\test.cpp"
+			RelativePath=".\main.cpp"
+			>
+		</File>
+		<File
+			RelativePath=".\maze.cpp"
+			>
+		</File>
+		<File
+			RelativePath=".\maze.h"
+			>
+		</File>
+		<File
+			RelativePath=".\RandomWriting.cpp"
+			>
+		</File>
+		<File
+			RelativePath=".\RandomWriting.h"
+			>
+		</File>
+		<File
+			RelativePath=".\text1.txt"
 			>
 		</File>
 	</Files>
