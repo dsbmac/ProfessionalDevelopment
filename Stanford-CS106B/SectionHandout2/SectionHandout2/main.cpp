@@ -6,6 +6,8 @@
 #include <map.h>
 #include <fstream>
 #include <grid.h>
+#include <scanner.h>
+#include <stack.h>
 /*
  * Project: SectionHandout2
  * Created by CS106 C++ Assignment Wizard 0.1
@@ -63,6 +65,7 @@ void getMail() {
 	mailVect.add(spam2);
 }
 /* Problem 2: Queues */
+//solution is actually supposed to use a stack
 void ReverseQueue(Queue<int> & q) {
 	Vector<int> temp;
 	while(true) {
@@ -82,27 +85,44 @@ void testReverseQueue() {
 }
 /*Problem 3: Using the Scanner and Stack classes*/
 bool IsCorrectlyNested(string htmlStr) {
-	int bracketCnt = 0;
-	int closeCnt = 0;
-	string sentinel = " < > /";
-	for(int i = 0; i < htmlStr.length(); i++) {
-		if(sentinel.find(htmlStr[i])) {
-			if(htmlStr[i] == '<' ) {
-				bracketCnt++;
-				closeCnt++;
-			}
-			if(htmlStr[i] == '>') {
-				bracketCnt--;
-			}
-			if(i != 0 && htmlStr[i] == '/' && htmlStr[i-1] == '<') {
-				closeCnt -= 2;
-			}
+	Scanner scanner;
+	Stack<string> stack;
+	scanner.setInput(htmlStr);
+	while(scanner.hasMoreTokens()) {
+		string s = scanner.nextToken();
+		if(s == "<") {
+			stack.push(s);
+			stack.push("/");
+		}
+		else if(s == ">") string p = stack.pop();
+		else if(s == "/" ) stack.pop();
 		}
 	}
-	return closeCnt == 0 && bracketCnt ==0;
+	return stack.isEmpty();
 }
+//bool IsCorrectlyNested(string htmlStr) {
+//	int bracketCnt = 0;
+//	int closeCnt = 0;
+//	string sentinel = " < > /";
+//	for(int i = 0; i < htmlStr.length(); i++) {
+//		if(sentinel.find(htmlStr[i])) {
+//			if(htmlStr[i] == '<' ) {
+//				bracketCnt++;
+//				closeCnt++;
+//			}
+//			if(htmlStr[i] == '>') {
+//				bracketCnt--;
+//			}
+//			if(i != 0 && htmlStr[i] == '/' && htmlStr[i-1] == '<') {
+//				closeCnt -= 2;
+//			}
+//		}
+//	}
+//	return closeCnt == 0 && bracketCnt ==0;
+//}
 void testIsCorrectlyNested() {	
-	string s = "<html><b><i>CS106 rules!</i></b></html>";
+	//string s = "<html><b><i>CS106 rules!</i></b></html>";
+	string s = "<html></html>";
 	cout << boolalpha << IsCorrectlyNested(s) << endl;
 }
 // Problem 4: Map Warm-up
@@ -158,7 +178,6 @@ bool isInBounds(Location rc, Grid<bool> & bombLocations) {
 	return result;
 }
 int scanForBombs(Location rc, Grid<bool> & bombLocations) {
-	int factor = -1;
 	int cnt = 0;
 	for(int i = 0; i < compass.size(); i++) {
 		Location newRC = {rc.row + compass[i].row, rc.col + compass[i].col};
@@ -223,8 +242,8 @@ void testMakeGridOfCounts() {
 int main ()
 {
 	//testReverseQueue();
-	//testIsCorrectlyNested();
+	testIsCorrectlyNested();
 	//testMostFrequentCharacter();
-	testMakeGridOfCounts();
+	//testMakeGridOfCounts();
 	return 0;
 }
