@@ -171,6 +171,14 @@
 			>
 		</File>
 		<File
+			RelativePath=".\Mazify.cpp"
+			>
+		</File>
+		<File
+			RelativePath=".\Mazify.h"
+			>
+		</File>
+		<File
 			RelativePath=".\RandomWriting.cpp"
 			>
 		</File>

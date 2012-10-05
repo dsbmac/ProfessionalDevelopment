@@ -5,6 +5,7 @@
 #include "simpio.h"
 #include <iostream>
 #include "strutils.h"
+#include "random.h"
 
 RandomWriting::RandomWriting(void)
 {
@@ -13,13 +14,28 @@ RandomWriting::RandomWriting(void)
 	AskUserForInput(inFile, seed);
 	Map<Vector<string> > chOccurrences;
 	ParseTextFile(inFile, chOccurrences, seed);
-	Vector<markov> chOrder;
-	createCounts(chOrder, chOccurrences);
 	inFile.close();
+	Vector<markov> chOrder;
+	createCounts(chOrder, chOccurrences);	
 	PrintMap(chOccurrences);
 	PrintOrder(chOrder);
+	int nChars = 2000;
+	WriteRandomly(nChars, chOrder, chOccurrences);
 }
-
+void RandomWriting::WriteRandomly(int & nChars,Vector<markov> & chOrder, Map<Vector<string> > & chOccurrences) {
+	Randomize();
+	int cnt = 0;
+	string seed = chOrder[0].key;
+	cout << seed;
+	while(cnt < nChars && chOccurrences.containsKey(seed)) {		
+		int index = RandomInteger(0, chOccurrences[seed].size()-1);
+		string nextChar = chOccurrences[seed][index];		
+		cout << nextChar;
+		seed += nextChar;
+		seed.erase(0,1);
+		cnt++;
+	}	
+}
 void RandomWriting::AskUserForInput(ifstream & inFile, int & seed) {
 	while (true) {
 	/*	cout << "Input file: ";
@@ -34,7 +50,7 @@ void RandomWriting::AskUserForInput(ifstream & inFile, int & seed) {
 		cout << endl << "Enter seed: "; 
 		seed = GetInteger();
 	}*/
-	seed = 2;
+	seed = 3;
 }
 void RandomWriting::ParseTextFile(ifstream & inFile, Map<Vector<string> > & chOccurrences, int & seed) {
 	int nextChar;
@@ -46,7 +62,7 @@ void RandomWriting::ParseTextFile(ifstream & inFile, Map<Vector<string> > & chOc
 			nextChar = tolower(nextChar);
 			str += char(nextChar);
 			if (str.length() == seed+1) {
-				string key = str.substr(0,2);
+				string key = str.substr(0,seed);
 				if (!chOccurrences.containsKey(key)) {
 					Vector<string> initialVect;
 					chOccurrences.add(key, initialVect);
@@ -69,14 +85,24 @@ void RandomWriting::PrintMap(Map<Vector<string> > & chOccurrences) {
 	}
 }
 void RandomWriting::PrintOrder(Vector<markov> & chOrder) {
+	cout << endl << "Sorted Occurrences" << endl;
 	for (int i = 0; i < chOrder.size(); i++) {
 		cout << chOrder[i].count << " " << chOrder[i].key << endl;
 	}
 }
-void RandomWriting::swap(Vector<markov> & chOrder) {
-	markov tmp = chOrder[0];
-	chOrder[0] = chOrder[chOrder.size()-1];
-	chOrder[chOrder.size()-1] = tmp;
+void RandomWriting::sort(Vector<markov> & chOrder) {
+	markov noob = chOrder[chOrder.size()-1];
+	int index = chOrder.size()-1;
+	int i = chOrder.size()-2;
+	while(chOrder.size() > 1 && i >=0) {
+		if (chOrder[i].count < chOrder[chOrder.size()-1].count ) {
+			index = i;
+			i--;
+		}
+		else break;
+	}
+	chOrder.insertAt(index, noob);
+	chOrder.removeAt(chOrder.size()-1);	
 }
 void RandomWriting::createCounts(Vector<markov> & chOrder, Map<Vector<string> > & chOccurrences) {
 	Map<Vector<string> >::Iterator iter = chOccurrences.iterator();
@@ -85,8 +111,6 @@ void RandomWriting::createCounts(Vector<markov> & chOrder, Map<Vector<string> > 
 		int freq = chOccurrences[key].size();
 		markov mkv = {key, freq};
 		chOrder.add(mkv);
-		if (mkv.count > chOrder[0].count) {
-			swap(chOrder);
-		}
+		sort(chOrder);
 	}
 }

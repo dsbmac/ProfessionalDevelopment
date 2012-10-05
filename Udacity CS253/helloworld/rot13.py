@@ -17,17 +17,19 @@ class MainPage(webapp.RequestHandler):
         self.write_form()
 
     def write_form(self, text=''):
-        self.response.out.write(form % {'text':text})
+        user_text = self.request.get('text')
+        self.response.out.write(form % {'text':user_text})
 
     def post(self):
-#        user_text = self.request.get('text')
+
         self.write_form()
-        if self.request.get('text') == '':
+        if self.request.get('text') == '':            
             self.response.out.write("No input")
 
-intab = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-outtab = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM"
-trantab = maketrans(intab, outtab)
+    def rot13(self):
+        intab = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        outtab = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM"
+        trantab = maketrans(intab, outtab)
         
 application = webapp.WSGIApplication([('/', MainPage)], debug=True)
 

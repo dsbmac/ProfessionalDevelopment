@@ -1,5 +1,6 @@
 #include "RandomWriting.h"
-
+#include "Mazify.h"
 int main() {
-	RandomWriting test;
+	//RandomWriting test;
+	Mazify play;
 }

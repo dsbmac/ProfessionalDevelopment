@@ -16,7 +16,8 @@ private:
 	void ParseTextFile(ifstream & infile, Map<Vector<string> > & chOccurrences, int & seed);
 	void PrintMap(Map<Vector<string> > & chOccurrences);
 	void createCounts(Vector<markov> & chOrder, Map<Vector<string> > & chOccurrences);
-	void swap(Vector<markov> & chOrder);
+	void sort(Vector<markov> & chOrder);
 	void PrintOrder(Vector<markov> & chOrder);
+	void WriteRandomly(int & nChars,Vector<markov> & chOrder, Map<Vector<string> > & chOccurrences);
 
 };
