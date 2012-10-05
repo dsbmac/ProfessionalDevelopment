@@ -9,16 +9,16 @@ class Mazify
 public:
 	Mazify(void);
 private:	
-	int maxRow, maxCol;
-	pointT includedMark, currentPt, start, finish;
+	int maxRow, maxCol, excludedCnt;
+	pointT currentPt;
 	void setup(Maze & maze);
 	void Include(pointT &pt);
 	void createMaze(Maze & maze);
-	pointT RandomPt(Maze & maze, bool neighbour=true);
-	Vector<pointT> dirPts;
 	Grid<bool> included;
-	Stack<bool> excluded;
 	Stack<pointT> SolveMaze(Maze & maze);
 	void displaySolution(Stack<pointT> solution, Maze & maze );
 	bool samePt(pointT a, pointT b);
+	bool isBacktrack(pointT & neighbour, Stack<pointT> & path);
+	enum dirT { North, East, South, West };
+	pointT newPt(dirT direction);
 };

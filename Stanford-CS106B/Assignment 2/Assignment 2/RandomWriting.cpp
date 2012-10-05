@@ -12,10 +12,10 @@ RandomWriting::RandomWriting(void)
 	ifstream inFile;
 	int seed;
 	AskUserForInput(inFile, seed);
-	Map<Vector<string> > chOccurrences;
+	Map<Vector<string> > chOccurrences; //main collector. seed with occurences
 	ParseTextFile(inFile, chOccurrences, seed);
 	inFile.close();
-	Vector<markov> chOrder;
+	Vector<markov> chOrder;//ordered charater frequencies
 	createCounts(chOrder, chOccurrences);	
 	PrintMap(chOccurrences);
 	PrintOrder(chOrder);

@@ -7,8 +7,8 @@
 Mazify::Mazify(void)
 {
 	Randomize();
-	maxRow = 20;
-	maxCol = 40;
+	maxRow = 10;
+	maxCol = 20;
 	Maze maze(maxRow, maxCol, true);
 	setup(maze);
 	createMaze(maze);
@@ -17,18 +17,24 @@ Mazify::Mazify(void)
 }
 void Mazify::createMaze(Maze & maze) {
 /* 1. Randomly choose one of the neighbors of the current point
-2. If  neighbor is  "excluded", remove wall between current point and neighbor and mark
+2. If  neighbor is  "excludedCnt", remove wall between current point and neighbor and mark
 neighbor as "included"
 3. Neighbor becomes current point (whether or not wall was removed)
 4. Repeat steps 1-3 until all cells in the maze have been included
 */
-	currentPt = RandomPt(maze, false);
+	pointT randomPt = {RandomInteger(0,maxRow-1), RandomInteger(0,maxCol-1)};//initial point
+	currentPt = randomPt;
 	Include(currentPt);
 	int i = 0;
 	//step 4 loop
-	while (!excluded.isEmpty()) {
+	while (excludedCnt>0) {
 		//step 1
-		pointT neighbour = RandomPt(maze);
+		pointT neighbour;
+		while (true) {
+		//pointT neighbour = RandomPt(maze);
+			neighbour = newPt(dirT(RandomInteger(0,3)));
+			if (maze.pointInBounds(neighbour)) break;
+		}
 		//step 2: break wall down
 		if ( !included.getAt(neighbour.row, neighbour.col) ) {
 			maze.setWall(currentPt, neighbour, false);
@@ -41,49 +47,20 @@ neighbor as "included"
 }
 void Mazify::Include(pointT &pt) {
 	included.setAt(pt.row, pt.col, true);
-	excluded.pop();
+	excludedCnt--;
 }
 void Mazify::setup(Maze & maze) {
 	maze.draw();
 	included.resize(maxRow, maxCol);
+	excludedCnt = 0;
 
-	//fill dirPts with reference pts
-	pointT dirN = {-1,0};
-	pointT dirE = {0,1};
-	pointT dirS = {1,0};
-	pointT dirW = {0,-1};
-	dirPts.add(dirN);
-	dirPts.add(dirE);
-	dirPts.add(dirS);
-	dirPts.add(dirW);
-	
-	//populate included and excluded collectors
+	//populate included and excludedCnt collectors
 	for (int i = 0; i < included.numRows(); i++) {
 	  for (int j = 0; j < included.numCols(); j++) {
 		  included.setAt(i,j,false);
-		  excluded.push(true);
+		  excludedCnt++;
 	  }
 	}
-}
-//multipurpose pt chooser. true (default) will give a random neighbour. false will give any maze pt
-pointT Mazify::RandomPt(Maze & maze, bool neighbour) {	
-	//cout << "RandomPt..." << endl;	
-	pointT result = {maze.numRows(), maze.numCols()};
-	int r, c;
-	while(!maze.pointInBounds(result) ) {
-		if(neighbour) {
-			int index = RandomInteger(0, dirPts.size()-1);
-			r = currentPt.row + dirPts[index].row;
-			c = currentPt.col + dirPts[index].col;
-		
-		} else {
-			r = RandomInteger(0, maze.numRows()-1);
-			c = RandomInteger(0, maze.numCols()-1);			
-		}
-		result.row = r;
-		result.col = c;
-	}	
-	return result;
 }
 Stack<pointT> Mazify::SolveMaze(Maze & maze) {
 	/*1. Create path with just start location and enqueue it
@@ -96,32 +73,24 @@ neighbor and enqueue it
 	//step 1
 	pointT start = {0,0};
 	pointT end = {maxRow-1, maxCol-1};
-	Stack<pointT> path;
-	Queue<Stack<pointT> > paths;
-	Stack<pointT> solution;
+	Stack<pointT> path, solution;
+	Queue<Stack<pointT> > paths;//collects all path variations
 	path.push(start);
-	paths.enqueue(path);
+	paths.enqueue(path); 
 	//step 2
 	while (true) {
-		path = paths.dequeue();
+		path = paths.dequeue(); //get smallest path
+		currentPt = path.peek();
 		//step 3
-		if ( samePt(path.peek(), end)) {
+		if ( samePt(currentPt, end)) {
 			solution = path;
 			break;
 		} else {
 			int index = 0;
-			while (index < dirPts.size()) {
-				pointT neighbour = {path.peek().row + dirPts[index].row, path.peek().col + dirPts[index].col};
-				bool backtrack = false;
-				//avoid backtracking
-				if (path.size() > 1 ) {
-					pointT tmp = path.pop();
-					pointT backtrackPt = path.peek();
-					path.push(tmp);
-					backtrack = samePt(backtrackPt, neighbour);
-				}
+			while (index < 4) {				
+				pointT neighbour = newPt(dirT(index));
 				//if inbounds and not a through a wall create new path and add into paths
-				if (maze.pointInBounds(neighbour) && !maze.isWall(path.peek(), neighbour) && !backtrack) {
+				if (maze.pointInBounds(neighbour) && !maze.isWall(path.peek(), neighbour) && !isBacktrack(neighbour, path)) {
 					Stack<pointT> newPath = path;
 					newPath.push(neighbour);
 					paths.enqueue(newPath);
@@ -131,6 +100,13 @@ neighbor and enqueue it
 		}	
 	}
 	return solution;
+}
+bool Mazify::isBacktrack(pointT & neighbour, Stack<pointT> & path) {
+	if (path.size() <= 1) return false;
+	path.pop();
+	pointT backtrackPt = path.peek();
+	path.push(currentPt);
+	return samePt(backtrackPt, neighbour);
 }
 bool Mazify::samePt(pointT a, pointT b) {
 	return a.row == b.row && a.col == b.col;
@@ -142,4 +118,14 @@ void Mazify::displaySolution(Stack<pointT> solution, Maze & maze ) {
 		maze.drawMark(solution.pop(),"Blue");
 	}
 	maze.drawMark(solution.pop(),"Red");
+}
+pointT Mazify::newPt(dirT direction) {
+	pointT newPt = currentPt;
+	switch (direction) {
+		case North: newPt.row++; break;
+		case East: newPt.col++; break;
+		case South: newPt.row--; break;
+		case West: newPt.col--; break;;
+	}
+	return newPt;
 }
