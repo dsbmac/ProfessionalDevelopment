@@ -45,6 +45,14 @@ neighbor as "included"
 	}	
 	maze.draw();	
 }
+int Mazify::ComparePointTs(pointT a, pointT b) {
+	if ( a.row == b.row ) {
+		if (a.col == b.col) return 0;
+		else if (a.col < b.col) return -1;
+	else if ( a.row < b.row ) return -1;
+	return 1;
+	}
+}
 void Mazify::Include(pointT &pt) {
 	included.setAt(pt.row, pt.col, true);
 	excludedCnt--;
