@@ -12,6 +12,8 @@
 #include "map.h"
 #include "vector.h"
 #include "strutils.h"
+#include "queue.h"
+#include "stack.h"
 #include <iostream>
 #include <string>
 
@@ -35,35 +37,6 @@ int CompareStrings(string a, string b) {//case insensitive callback
 	else if (lowerA < lowerB) return -1;
 	else return 1;
 }
-//Problem 3: Cartesian Products
-struct pairT
-{
-         string first, second;
-};
-int ComparePairs(string a, string b) {
-	string lowerA = ConvertToLowerCase(a);
-	string lowerB = ConvertToLowerCase(b);
-	if (lowerA == lowerB) return 0;
-	else if (lowerA < lowerB) return -1;
-	else return 1;
-}
-//Set<pairT> CartesianProduct(Set<string> & one, Set<string> & two) {
-//	Set<pairT> result(ComparePairs);
-//	Set<string>::Iterator iter = one.iterator();
-//	while(iter.hasNext()) {
-//		string first = iter.next();
-//		Set<string>::Iterator iter2 = two.iterator();
-//		while(iter2.hasNext()) {
-//			string second = iter.next();
-//			pairT product = {first, second};
-//		}
-//	}
-//}
-//void testCartesian(){
-//	Set<string> one =  {"A", "B", "C"} ;
-//	Set<string> two = {"X", "Y"};	
-//	CartesianProduct(one, two);
-//}
 void AddressBook() {
 	entryT a = {"Danny", "More", "1234337989"};
 	entryT b = {"Jimmy", "Mass", "5149337989"};
@@ -76,41 +49,81 @@ void AddressBook() {
 	addressBook.add(d);
 	cout << addressBook.size() << endl;
 }
-//void makeCombos(Vector<string> & sequence, Vector<string> sequence, Map<string> & keypad) {
-//	//create 3 strings and iterate through each letter
-//	//for (int i = 0 ; i < sequence.size(); i++) {
-//	//	
-//	//}
-//	string first = keypad.getValue(str.substr(0,1));
-//	string second = keypad.getValue(str.substr(1,1));
-//	string third = keypad.getValue(str.substr(2,1));
-//	for (int i = 0; i < first.length(); i++) {
-//		for (int j = 0; j < second.length(); j++) {
-//			for (int k = 0; k < third.length(); k++) {
-//				cout << first[i] << second[j] << third[k] << endl;
-//			}
-//		}
-//	}
-//}
-//void ListMnemonics(string str) {
-//	Map <string> keypad; //maps letters to keypad nums
-//	Vector<string> sequence;
-//	keypad.add("0", "   ");
-//	keypad.add("1", "   ");
-//	string alpha = "abcdefghijklmnoprstuvwxy";
-//	for (int i = 0; i <= 7; i++) {
-//		keypad.add( IntegerToString(i+2), alpha.substr((i*3), 3) ); 
-//	}
-//	Map<string>::Iterator iter = keypad.iterator();
-//	while (iter.hasNext()) {
-//		string key = iter.next();
-//		cout << key << ": " << keypad.getValue(key) << endl;
-//	}
-//	for (int i = 0 ; i < str.length(); i++) {
-//		sequence.add(keypad.getValue( str.substr(i,1) ));
-//	}
-//	makeCombos(sequence, str, keypad);
-//}
+//Problem 2: Maps
+struct pointT {
+	int x, y;
+};
+struct cityT {
+	string name;		
+};
+cityT lookupCity(string loc, Map<cityT>  cities) {
+	return cities.getValue(loc);
+}
+string PointToString(pointT point) {
+	string result = IntegerToString(point.x) + "," + IntegerToString(point.y);
+	return result;
+}
+void addCity(Map<cityT>  &cities, cityT city, pointT point ) {
+	string key = PointToString(point);
+	cout << key << endl;
+	cities.add(key, city);
+}
+void testLookupCity() {
+	Map<cityT> cities;
+	cityT mtl = {"Montreal"};
+	pointT pt = {47, 80};
+	addCity(cities, mtl, pt);
+	lookupCity("47,80", cities);
+}
+//Problem 3: Cartesian Products
+struct pairT {
+	string first, second;
+};
+int ComparePairs(pairT a, pairT b) {
+	int firstComparison = a.first.compare(b.first);
+	if (firstComparison == 0) {
+		return a.second.compare(b.second);
+	}
+	return firstComparison;
+}
+Set<pairT> CartesianProduct(Set<string> & one, Set<string> & two) {
+	Set<pairT> result(ComparePairs);
+	Set<string>::Iterator iter = one.iterator();	
+	while(iter.hasNext()) {
+		cout << "loop1..." << endl;
+		string first = iter.next();
+		Set<string>::Iterator iter2 = two.iterator();
+		cout << "loop2..." << endl;
+		while(iter2.hasNext()) {			
+			string second = iter2.next();
+			cout << second << endl;
+			pairT product = {first, second};
+			result.add(product);
+			cout << result.size() << endl;
+		}
+		cout << "...loop2" << endl;
+	}
+	return result;
+}
+void testCartesian(){
+	//fill up sets
+	Set<string> one;
+	one.add("A");
+	one.add("B");
+	one.add("C");
+	Set<string> two;
+	two.add("X");
+	two.add("Y");
+	Set<pairT> products = CartesianProduct(one, two);
+	//print out values
+	Set<pairT>::Iterator iter = products.iterator();	
+	while(iter.hasNext()) {
+		pairT product = iter.next();
+		string first = product.first;
+		string second = product.second;
+		cout << first << ", " << second << endl;
+	}
+}
 //Problem 4: Cannonballs
 int Cannonball(int height) {
 	if (height == 0) {
@@ -135,18 +148,21 @@ string RecReverseString(string soFar="", string str="") {
 		return  RecReverseString(soFar, str);
 	}
 }
-
+string RecReverseString2(string str) {
+	if (str.length() == 0) return "";
+	return  RecReverseString2(str.substr(1) ) + str[0];
+}
 void testReverseString(){
 	string s = "abcd";
 	cout << ReverseString(s) << endl;
 	cout << RecReverseString("", s) << endl;
+	cout << RecReverseString2(s) << endl;
 }
 //Problem 6: GCD
 int GCD(int x, int y) {
 	if ( x % y == 0 ) return y;
 	else {
-		int remainder = x % y;
-		return  GCD(y, remainder);
+		return  GCD(y, x % y);
 	}
 }
 void testGCD(int x, int y) {
@@ -155,39 +171,68 @@ void testGCD(int x, int y) {
 	}
 }
 //Problem 7: Old-Fashioned Measuring
-void sumVector(Vector<int> vect) {
+int sumVector(Vector<int> vect) {
 	int result = 0;
 	for (int i = 0; i < vect.size(); i++) {
 		result += vect[i];
 	}
 	return result;
 }
-bool RecIsMeasurable(int target, Vector<int> & weights, Vector<int> & opposite, Vector<int> & off) {
-	int o, w, off = 0;
-	w = sumVector(weights);
-	o = sumVector(opposite);	
-	if (weights == target + opposite) return true;
-	else {
-		int swap	
-	}	
+bool RecMakeCombos(int target, Vector<int> & weights, int index) {	
+	cout << "rec..." << endl;
+	if (target == 0) return true;
+	if (index >= weights.size() ) return false;
+	return RecMakeCombos(target + weights[index], weights, index + 1) ||
+		RecMakeCombos(target - weights[index], weights, index + 1) ||
+		RecMakeCombos(target, weights, index + 1);
 }
 bool IsMeasurable(int target, Vector<int> & weights) {
-	
+	return RecMakeCombos(target, weights, 0);
 }
 void testIsMeasurable(int x) {
-	Vector<int> sampleWeights;
-	sampleWeights.add(1);
-	sampleWeights.add(3);
-	cout << boolalpha << IsMeasurable(x, sampleWeights);
-
+	Vector<int> weights;
+	weights.add(1);
+	weights.add(3);
+	cout << boolalpha << IsMeasurable(x, weights);
 }
-
+//Problem 8: List Mnemonics
+void makeCombos(string prefix, string rest, Map<string> & keypad ) {
+	if ( rest.length() == 0 ) cout  << prefix << endl;
+	else {
+		string options = keypad.getValue(rest.substr(0,1));
+		for ( int i = 0; i < options.length(); i++) {
+			makeCombos(prefix + options[i], rest.substr(1), keypad);
+		}
+	}
+}
+void ListMnemonics(string str) {
+	Map <string> keypad; //maps letters to keypad nums
+	Vector<string> sequence;
+	keypad.add("0", "0");
+	keypad.add("1", "1");
+	string alpha = "abcdefghijklmnoprstuvwxy";
+	for (int i = 0; i <= 7; i++) {
+		keypad.add( IntegerToString(i+2), alpha.substr((i*3), 3) ); 
+	}
+	Map<string>::Iterator iter = keypad.iterator();
+	while (iter.hasNext()) {
+		string key = iter.next();
+		cout << key << ": " << keypad.getValue(key) << endl;
+	}
+	for (int i = 0 ; i < str.length(); i++) {
+		sequence.add(keypad.getValue( str.substr(i,1) ));
+	}
+	string prefix = "";
+	makeCombos(prefix, str, keypad);
+}
 int main ()
 {
 //	cout << Cannonball(4) << endl;
+	//testLookupCity();
 	//testCartesian();
-	//ListMnemonics("703");
 	//testReverseString();
-	testGCD(100,60);
+	//testGCD(100,60);
+	//testIsMeasurable(4);
+	ListMnemonics("763");
 	return 0;
 }

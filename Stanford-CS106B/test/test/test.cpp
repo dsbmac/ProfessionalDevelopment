@@ -52,6 +52,8 @@ int main() {
 	pointT b = {1,1};
 	points.add(a);
 	points.add(b);
-	cout << points.size() << endl;
+	string s = "A";
+	string t = "B";
+	cout << boolalpha << s.compare(t) << endl;
 
 }
