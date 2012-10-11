@@ -161,6 +161,22 @@
 			RelativePath=".\main.cpp"
 			>
 		</File>
+		<File
+			RelativePath=".\RulerOfTheWorld.cpp"
+			>
+		</File>
+		<File
+			RelativePath=".\RulerOfTheWorld.h"
+			>
+		</File>
+		<File
+			RelativePath=".\TwelveStep.cpp"
+			>
+		</File>
+		<File
+			RelativePath=".\TwelveStep.h"
+			>
+		</File>
 	</Files>
 	<Globals>
 	</Globals>

@@ -45,15 +45,29 @@ int ComparePointTs(pointT a, pointT b) {
 	return 1;
 	}
 }
-
+int sumVect(Vector<int> v) {
+	int sum = 0;
+	for (int i = 0 ; i < v.size(); i++) {
+		sum += v[i];
+	}
+	return sum;
+}
+int CompareVect(Vector<int> a, Vector<int> b) {
+	int sumA = sumVect(a);
+	int sumB = sumVect(b);
+	if ( sumA == sumB) return 0;
+	else if ( sumA < sumB ) return -1;
+	return 1;
+}
 int main() {
-	Set<pointT> points(ComparePointTs);
-	pointT a = {0,0};
-	pointT b = {1,1};
-	points.add(a);
-	points.add(b);
-	string s = "A";
-	string t = "B";
-	cout << boolalpha << s.compare(t) << endl;
+	Set<Vector<int> > testSet(CompareVect);
+	Vector<int> a;
+	Vector<int> b;
+	a.add(1);
+	a.add(2);
+	b.add(1);
+	//b.add(2);
+	testSet.add(a);
+	cout << testSet.contains(b) << endl;
 
 }
