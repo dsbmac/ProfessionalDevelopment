@@ -158,7 +158,31 @@
 			>
 		</Filter>
 		<File
+			RelativePath=".\CellPhone.cpp"
+			>
+		</File>
+		<File
+			RelativePath=".\CellPhone.h"
+			>
+		</File>
+		<File
+			RelativePath=".\lexicon.cpp"
+			>
+		</File>
+		<File
+			RelativePath=".\lexicon.h"
+			>
+		</File>
+		<File
 			RelativePath=".\main.cpp"
+			>
+		</File>
+		<File
+			RelativePath=".\Puzzle.cpp"
+			>
+		</File>
+		<File
+			RelativePath=".\Puzzle.h"
 			>
 		</File>
 		<File
@@ -170,11 +194,35 @@
 			>
 		</File>
 		<File
+			RelativePath=".\Stock.cpp"
+			>
+		</File>
+		<File
+			RelativePath=".\Stock.h"
+			>
+		</File>
+		<File
 			RelativePath=".\TwelveStep.cpp"
 			>
 		</File>
 		<File
 			RelativePath=".\TwelveStep.h"
+			>
+		</File>
+		<File
+			RelativePath=".\Vote.cpp"
+			>
+		</File>
+		<File
+			RelativePath=".\Vote.h"
+			>
+		</File>
+		<File
+			RelativePath=".\Warmup.cpp"
+			>
+		</File>
+		<File
+			RelativePath=".\Warmup.h"
 			>
 		</File>
 	</Files>

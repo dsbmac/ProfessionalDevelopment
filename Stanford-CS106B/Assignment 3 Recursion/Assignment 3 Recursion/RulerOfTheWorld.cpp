@@ -20,7 +20,6 @@ void RulerOfTheWorld::RecDrawRuler(double x, double y, double w, double h) {
 			double newX = x + (space * i);
 			RecDrawRuler(newX, y, w/2, h/2);			
 		}
-
 	}
 }
 RulerOfTheWorld::~RulerOfTheWorld(void)
