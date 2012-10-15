@@ -76,7 +76,7 @@ void testLookupCity() {
 	lookupCity("47,80", cities);
 }
 //Problem 3: Cartesian Products
-struct pairT {
+struct pairT { //basic unit for this function
 	string first, second;
 };
 int ComparePairs(pairT a, pairT b) {
@@ -90,18 +90,14 @@ Set<pairT> CartesianProduct(Set<string> & one, Set<string> & two) {
 	Set<pairT> result(ComparePairs);
 	Set<string>::Iterator iter = one.iterator();	
 	while(iter.hasNext()) {
-		cout << "loop1..." << endl;
 		string first = iter.next();
 		Set<string>::Iterator iter2 = two.iterator();
-		cout << "loop2..." << endl;
 		while(iter2.hasNext()) {			
 			string second = iter2.next();
 			cout << second << endl;
 			pairT product = {first, second};
 			result.add(product);
-			cout << result.size() << endl;
 		}
-		cout << "...loop2" << endl;
 	}
 	return result;
 }
@@ -159,10 +155,13 @@ void testReverseString(){
 	cout << RecReverseString2(s) << endl;
 }
 //Problem 6: GCD
+/*If x is evenly divisible by y, then y is the greatest common divisor. Otherwise, the
+greatest common divisor of x and y is always equal to the greatest common
+divisor of y and the remainder of x divided by y.*/
 int GCD(int x, int y) {
 	if ( x % y == 0 ) return y;
 	else {
-		return  GCD(y, x % y);
+		return  GCD(y, x % y); //remainder of x divided by y
 	}
 }
 void testGCD(int x, int y) {
@@ -182,9 +181,9 @@ bool RecMakeCombos(int target, Vector<int> & weights, int index) {
 	cout << "rec..." << endl;
 	if (target == 0) return true;
 	if (index >= weights.size() ) return false;
-	return RecMakeCombos(target + weights[index], weights, index + 1) ||
-		RecMakeCombos(target - weights[index], weights, index + 1) ||
-		RecMakeCombos(target, weights, index + 1);
+	return RecMakeCombos(target + weights[index], weights, index + 1) || //weight on target side
+		RecMakeCombos(target - weights[index], weights, index + 1) || //weight on opposite side
+		RecMakeCombos(target, weights, index + 1); //weight left off
 }
 bool IsMeasurable(int target, Vector<int> & weights) {
 	return RecMakeCombos(target, weights, 0);
@@ -197,30 +196,21 @@ void testIsMeasurable(int x) {
 }
 //Problem 8: List Mnemonics
 void makeCombos(string prefix, string rest, Map<string> & keypad ) {
-	if ( rest.length() == 0 ) cout  << prefix << endl;
+	if ( rest.length() == 0 ) cout << prefix << endl;
 	else {
-		string options = keypad.getValue(rest.substr(0,1));
-		for ( int i = 0; i < options.length(); i++) {
-			makeCombos(prefix + options[i], rest.substr(1), keypad);
+		string options = keypad.getValue( rest.substr(0,1) );
+		for (int i = 0 ; i < options.length(); i++) {
+			makeCombos( prefix + options[i], rest.substr(1), keypad ) ;
 		}
 	}
 }
 void ListMnemonics(string str) {
 	Map <string> keypad; //maps letters to keypad nums
-	Vector<string> sequence;
 	keypad.add("0", "0");
 	keypad.add("1", "1");
-	string alpha = "abcdefghijklmnoprstuvwxy";
+	string alpha = "abcdefghijklmnoprstuvwxy"; //fill keypad map
 	for (int i = 0; i <= 7; i++) {
 		keypad.add( IntegerToString(i+2), alpha.substr((i*3), 3) ); 
-	}
-	Map<string>::Iterator iter = keypad.iterator();
-	while (iter.hasNext()) {
-		string key = iter.next();
-		cout << key << ": " << keypad.getValue(key) << endl;
-	}
-	for (int i = 0 ; i < str.length(); i++) {
-		sequence.add(keypad.getValue( str.substr(i,1) ));
 	}
 	string prefix = "";
 	makeCombos(prefix, str, keypad);
@@ -233,6 +223,6 @@ int main ()
 	//testReverseString();
 	//testGCD(100,60);
 	//testIsMeasurable(4);
-	ListMnemonics("763");
+	ListMnemonics("723");
 	return 0;
 }

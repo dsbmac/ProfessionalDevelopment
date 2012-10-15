@@ -9,6 +9,7 @@
 #include "map.h"
 #include "grid.h"
 #include "set.h"
+#include "strutils.h"
 
 void RecPermute(string soFar, string rest) 
 {
@@ -60,6 +61,10 @@ int CompareVect(Vector<int> a, Vector<int> b) {
 	return 1;
 }
 int main() {
+	Set<int> test;
+	test.add(0);
+	test.add(1);
+	test.add(2);
 	Set<Vector<int> > testSet(CompareVect);
 	Vector<int> a;
 	Vector<int> b;
@@ -68,6 +73,6 @@ int main() {
 	b.add(1);
 	//b.add(2);
 	testSet.add(a);
-	cout << testSet.contains(b) << endl;
+	cout << IntegerToString(test.find("0") ) << endl;
 
 }

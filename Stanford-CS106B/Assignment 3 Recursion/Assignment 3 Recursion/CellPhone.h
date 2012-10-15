@@ -1,13 +1,9 @@
 #pragma once
 #include "genlib.h"
 #include "strutils.h"
-#include "set.h"
-#include "map.h"
 #include "vector.h"
-#include "strutils.h"
-#include "queue.h"
-#include "stack.h"
 #include "lexicon.h"
+#include "simpio.h"
 #include <iostream>
 #include <string>
 
@@ -19,7 +15,7 @@ public:
 public:
 	~CellPhone(void);
 private:
-	Stack<string> makeCombos(string prefix, string rest, Lexicon & lex, Stack<string> & prefixes);
-	void BuildWords(string word, string alphabet, Stack<string> & prefixes, Lexicon & lex, Set<string> & words) ;
-	string DigitLetters(char ch);
+	void RecListCompletions(string prefix, string sequence,  Lexicon  &  lex) ;
+	void ListWords(string prefix, string alphabet, Lexicon & lex ) ;
+	string DigitToLetters(char ch);
 };

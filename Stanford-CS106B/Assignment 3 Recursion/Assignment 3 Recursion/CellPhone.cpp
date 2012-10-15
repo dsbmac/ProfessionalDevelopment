@@ -4,13 +4,38 @@ CellPhone::CellPhone(void)
 {
 }
 void CellPhone::ListCompletions(string sequence,  Lexicon  &  lex) {
-	Stack<string> empty;
-	Stack<string> prefixes = makeCombos("", sequence, lex, empty);	
-	string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	Set<string> words;
-	BuildWords("", alphabet, prefixes, lex, words);
+	RecListCompletions("", sequence, lex);	
 }
-string CellPhone::DigitLetters(char ch)
+void CellPhone::RecListCompletions(string prefix, string sequence,  Lexicon  &  lex) {
+	if (sequence == "") { //used all possible letters
+		if (lex.containsPrefix( prefix ) ){
+			cout << endl << "prefix: " << prefix	 << endl;
+			ListWords(prefix, "ABCDEFGHIJKLMNOPQRSTUVWXYZ", lex); //list possible words of made prefix
+		}
+	}
+	else {
+		string options = DigitToLetters( sequence[0] );
+		for (int i = 0 ; i < options.length(); i++) { //traverse keypad letters
+			string newPrefix = prefix + options[i]; //current prefix + one letter from options
+			if (lex.containsPrefix( newPrefix )) { //filter valid prefixes
+				RecListCompletions(newPrefix, sequence.substr(1), lex) ; //decrement sequence
+			}
+		}
+	}
+}
+void CellPhone::ListWords(string prefix, string alphabet, Lexicon & lex) {
+	//cout << endl << "word so far: " << prefix << endl;
+	if ( lex.containsWord( prefix ) ) cout << prefix << endl;
+	if ( alphabet.length() > 0 ) {
+		for ( int i = 0; i < alphabet.length() ; i++) {
+			string newWord = prefix + alphabet[i];
+			if (lex.containsPrefix(newWord) ) {
+				ListWords(newWord, alphabet, lex ) ;
+			}
+		}		
+	}
+}
+string CellPhone::DigitToLetters(char ch)
 {
   switch (ch) {
     case '0': return ("0");
@@ -25,42 +50,6 @@ string CellPhone::DigitLetters(char ch)
     case '9': return ("WXYZ");
     default: Error("Illegal digit");
   }
-}
-void CellPhone::BuildWords(string word, string alphabet, Stack<string> & prefixes, Lexicon & lex, Set<string> & words) {
-	if (lex.containsWord(word) && !words.contains(word) ) {
-		words.add(word);
-		cout << word << endl;
-		return;
-	} else if ( alphabet == "") {
-		return;
-	}
-	else {
-		while(!prefixes.isEmpty() ) {
-			string base = prefixes.pop();	
-			for ( int i = 0; i < alphabet.length(); i++) {
-				string newWord = base + alphabet[i];
-				if (lex.containsPrefix(newWord)) {
-					prefixes.push(newWord);					
-					BuildWords(newWord, alphabet, prefixes, lex, words);								
-				}			
-			}
-			BuildWords(base, "", prefixes, lex, words);
-		}		
-	}
-}
-Stack<string> CellPhone::makeCombos(string prefix, string rest, Lexicon & lex, Stack<string> & prefixes) {
-	if ( rest.length() == 0 ) {
-			prefixes.push(prefix);
-	}
-	else {
-		string options = DigitLetters( rest[0] );
-		for ( int i = 0; i < options.length(); i++) {
-			if (lex.containsPrefix(newPrefix)) {
-				makeCombos(prefix + options[i], rest.substr(1), lex, prefixes);			
-			}			
-		}
-	}
-	return prefixes;
 }
 CellPhone::~CellPhone(void)
 {

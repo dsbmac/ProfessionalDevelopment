@@ -12,8 +12,8 @@ private:
 	Vector<int> foobar ( Vector<int> foo, Vector<int> bar) ;
 	int CompareVects(Vector<int> & votes) ;
 	int sumVector(Vector<int> & vect) ;
-	void RecCriticalVotes(int target , int & count, Set<Vector<int> > & uniques, 
-		Vector<int> & foo = Vector<int>(), Vector<int> & bar = Vector<int>()) ;
+	int RecCriticalVotes(int index, Vector<int> & blocks, int foo, int bar, int swing, int count) ;
 	bool IsCriticalVote(Vector<int> & foo, Vector<int> & bar, int target) ;
 	void printVector(Vector<int> & vect) ;
+	bool IsVoteCritical(int & foo, int & bar, int swing) ;
 };

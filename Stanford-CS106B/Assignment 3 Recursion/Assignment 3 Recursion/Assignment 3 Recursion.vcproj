@@ -194,19 +194,19 @@
 			>
 		</File>
 		<File
+			RelativePath=".\Stairs.cpp"
+			>
+		</File>
+		<File
+			RelativePath=".\Stairs.h"
+			>
+		</File>
+		<File
 			RelativePath=".\Stock.cpp"
 			>
 		</File>
 		<File
 			RelativePath=".\Stock.h"
-			>
-		</File>
-		<File
-			RelativePath=".\TwelveStep.cpp"
-			>
-		</File>
-		<File
-			RelativePath=".\TwelveStep.h"
 			>
 		</File>
 		<File

@@ -10,12 +10,11 @@
 #include <iostream>
 #include <string>
 
-class TwelveStep
+class Stairs
 {
 public:
-	TwelveStep(void);
+	Stairs(void);
 	int CountWays(int  numStairs);
 private:
-	Vector<Stack<int> > RecCountWays(Stack<int> & stepsTaken, int  & numStairs, Vector<Stack<int> > & perms);
-	void printPerms(Vector<Stack<int> > & perms) ;
+	int RecCountWays (int numStairs) ;
 };

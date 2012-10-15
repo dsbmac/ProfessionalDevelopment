@@ -16,7 +16,7 @@
 #include "strutils.h"
 #include "queue.h"
 #include "stack.h"
-#include "TwelveStep.h"
+#include "Stairs.h"
 #include "RulerOfTheWorld.h"
 #include "Puzzle.h"
 #include "CellPhone.h"
@@ -28,28 +28,44 @@ using namespace std;
 Vector <int> arrayTransfer(int arr []) {
 	Vector <int> result;
 	int size = sizeof arr/sizeof(int);
-	cout << "size of array: " << size << endl;
 	for (int i = 0 ; i <  4; i++) {
 		result.add(arr[i]);
 		cout << arr[i] << endl;
 	}
 	return result;
 }
-//void testCanMakeSum() {
-//	Warmup routine;
-//	int target = 4;
-//	//fill vector with values
-//	Vector<int> nums;
-//	nums.add(4);
-//	nums.add(7);
-//	//nums.add(1);
-//	nums.add(8);
-//	//nums.add(-3);
-//	//set for unique vector with a callback comaparing the summed vector
-//	Set<Vector<int> > numSet(CompareVect);
-//	//cout << boolalpha << CanMakeSum(nums, target) << endl;
-//	cout << boolalpha << CanMakeSum2(nums, target, numSet) << endl;
-//}
+
+//1. The 12-step program to recursive enlightenment
+void testStairs() {
+	Stairs stairs;
+	cout << IntegerToString( stairs.CountWays(5) ) << endl;
+}
+
+//2. Ruler of the world
+void testRuler() {
+	RulerOfTheWorld ruler;
+	ruler.DrawRuler(0.0, 0.0, 10.0, 4.0);
+}
+
+//3. Every vote counts
+void testVote() {
+	//parameters
+	int nums [] = {4,2,7,4};
+	Vector<int> block = arrayTransfer(nums);
+	int swing = 3;
+
+	Vote election;
+	cout << endl << "Critical Votes: " << IntegerToString( election.CountCriticalVotes(block, swing) ) << endl;
+}
+// 4. Cell phone mind reading
+void testCellPhone() {
+	//test parameters
+	Lexicon lex("lexicon.dat");
+	string sequence = "72547";
+
+	CellPhone test;
+	test.ListCompletions(sequence, lex);
+}
 void testPuzzle() {
 	Puzzle puzzle;
 	//int numbers [] = {3,6,4,1,3,4,2,5,3,0};
@@ -64,44 +80,29 @@ void testPuzzle() {
 	int start = 0;
 	cout << boolalpha << puzzle.Solvable(start, squares) << endl;
 }
-void testRuler() {
-	RulerOfTheWorld ruler;
-	ruler.DrawRuler(0.0, 0.0, 10.0, 4.0);
-}
-void testCellPhone() {
-	CellPhone test;
-	Lexicon lex("lexicon.dat");
-	string sequence = "9956";
-	test.ListCompletions(sequence, lex);
-}
 void testStock() {
-	int cuts [] =  {4, 7, 1};
+	int cuts [] =  {4,3,4,1,7,8} ;
 	Vector<int> requests;
 	for (int i = 0 ; i <  sizeof cuts/sizeof(int); i++) {
 		requests.add(cuts[i]);
 	}
 	Stock job;
 	int stockLength = 10;
-	job.CutStock(requests, stockLength); 
+	cout << "final solution :" << job.CutStock(requests, stockLength) << endl; 
 }
-void testVote() {
-	int nums [] = {4,2,7,4};
-	Vector<int> block = arrayTransfer(nums);
-	Vote election;
-	int target = 3;
-	election.CountCriticalVotes(block, target);
-}
+
 
 int main ()
 {
+	//testStairs();
 	//PrintInBinary(6);
-	//testCanMakeSum();
-	/*TwelveStep climbStairs;
-	cout << climbStairs.CountWays(10);*/
+	//testCanMakeSum();	
 	//testRuler();
+	//testVote();
 	//testPuzzle();
 	//testCellPhone();
-	//testStock();
-	testVote();
+	testStock();
+	
 	return 0;
 }
+
