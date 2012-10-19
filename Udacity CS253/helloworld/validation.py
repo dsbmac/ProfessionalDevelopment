@@ -1,6 +1,5 @@
-from google.appengine.ext import webapp
+from google.appengine.ext import webapp2
 from google.appengine.ext.webapp.util import run_wsgi_app
-from string import maketrans
 from valid_date import *
 
 form="""
@@ -20,7 +19,7 @@ form="""
 </form>
 """
 
-class MainPage(webapp.RequestHandler):
+class MainPage(webapp2.RequestHandler):
     def write_form(self, error="",month="", day="", year=""):
         self.response.out.write(form % {"error":error,
                                         "month":month,
@@ -52,7 +51,7 @@ class MainPage(webapp.RequestHandler):
 ##        outtab = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM"
 ##        trantab = maketrans(intab, outtab)
         
-application = webapp.WSGIApplication([('/', MainPage)], debug=True)
+application = webapp2.WSGIApplication([('/', MainPage)], debug=True)
 
 def main():
     run_wsgi_app(application)
