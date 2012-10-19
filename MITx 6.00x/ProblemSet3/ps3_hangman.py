@@ -54,7 +54,10 @@ def isWordGuessed(secretWord, lettersGuessed):
       False otherwise
     '''
     # FILL IN YOUR CODE HERE...
-
+    for char in secretWord:
+        if char not in lettersGuessed:
+            return False
+    return True
 
 
 def getGuessedWord(secretWord, lettersGuessed):
@@ -65,7 +68,14 @@ def getGuessedWord(secretWord, lettersGuessed):
       what letters in secretWord have been guessed so far.
     '''
     # FILL IN YOUR CODE HERE...
-
+    result = ''
+    for char in secretWord:
+        if char in lettersGuessed:
+            result += char
+        else:
+            result += '_'
+        result += ' '
+    return result
 
 
 def getAvailableLetters(lettersGuessed):
@@ -75,8 +85,14 @@ def getAvailableLetters(lettersGuessed):
       yet been guessed.
     '''
     # FILL IN YOUR CODE HERE...
+    result = ''
+    for char in string.ascii_lowercase:
+        if char not in lettersGuessed:
+            result += char
+    return result
+        
     
-
+mistakesMade = 0
 def hangman(secretWord):
     '''
     secretWord: string, the secret word to guess.
@@ -98,10 +114,60 @@ def hangman(secretWord):
     Follows the other limitations detailed in the problem write-up.
     '''
     # FILL IN YOUR CODE HERE...
+    global mistakesMade
+    mistakesMade = 0
+    guessesAllowed = 8
+    lettersGuessed = []
+    
+    #begin game
+    print "Welcome to the game, Hangman!"    
+    print "I'm thinking of a word that is", len(secretWord), "letters long."
+    
+    play(secretWord, guessesAllowed, lettersGuessed) #play loop
+        
+    if isWordGuessed(secretWord, lettersGuessed):
+        salutation = "Congratulations, you won!"
+    else:
+        salutation = "Sorry, you ran out of guesses. The word was " + secretWord + "."
+    print "-----------"
+    print salutation
 
+def play(secretWord, guessesAllowed, lettersGuessed):
+     while mistakesMade != guessesAllowed and not isWordGuessed(secretWord, lettersGuessed):
+        print "-----------"
+        print "You have", guessesAllowed - mistakesMade, "guesses left"
+        availableLetters = getAvailableLetters(lettersGuessed)
+        print "Available letters:", availableLetters
+        guessPrompt =  "Please guess a letter: "
+        guess = raw_input(guessPrompt).lower()    # prompt user for a guess
+        reply = checkGuess(secretWord, guess, lettersGuessed)
+        print reply, ':', getGuessedWord(secretWord, lettersGuessed)
+        
+def checkGuess(secretWord, guess, lettersGuessed):
+    global mistakesMade
+    if guess in lettersGuessed:
+        return "Oops! You've already guessed that letter:"
+    elif guess in secretWord:
+        reply = "Good guess"
+    else:
+        reply = "Oops! That letter is not in my word:"
+        mistakesMade +=1
+    lettersGuessed.append(guess)
+    return reply
 
+def test():
+    secretWord = 'apple' 
+##    lettersGuessed = ['e', 'i', 'k', 'p', 'r', 's']
+##    print getGuessedWord(secretWord, lettersGuessed)
+##
+##    #availableLetters
+##    print 'availableLetters: '
+##    lettersGuessed = ['e', 'i', 'k', 'p', 'r', 's']
+##    print getAvailableLetters(lettersGuessed)
 
+    hangman(secretWord)
 
+test()
 
 
 # When you've completed your hangman function, uncomment these two lines
