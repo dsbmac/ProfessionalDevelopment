@@ -1,0 +1,64 @@
+/* 
+ * File: FacePamphlet.java
+ * -----------------------
+ * When it is finished, this program will implement a basic social network
+ * management system.
+ */
+
+import acm.program.*;
+import acm.graphics.*;
+import acm.util.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class FacePamphlet extends Program 
+					implements FacePamphletConstants {
+
+	/**
+	 * This method has the responsibility for initializing the 
+	 * interactors in the application, and taking care of any other 
+	 * initialization that needs to be performed.
+	 */
+	public void init() {
+		createDisplay();
+    }    
+	
+	private void createDisplay() {
+		canvas = new GCanvas();
+		addNameBox();
+		addSideBar();
+		add(canvas);
+	}
+	
+	private void addNameBox() {
+		nameLabel = new JLabel("Name");
+		nameField = new JTextField(TEXT_FIELD_SIZE);		
+		add(nameLabel,NORTH);
+		add(nameField,NORTH);
+	}
+
+	private void addSideBar() {
+		statusField = new JTextField(TEXT_FIELD_SIZE);		
+		add(nameLabel,WEST);
+		pictureField = new JTextField(TEXT_FIELD_SIZE);
+		add(nameLabel,WEST);
+		friendField = new JTextField(TEXT_FIELD_SIZE);
+		add(nameLabel,WEST);
+	}
+	
+    /**
+     * This class is responsible for detecting when the buttons are
+     * clicked or interactors are used, so you will have to add code
+     * to respond to these actions.
+     */
+    public void actionPerformed(ActionEvent e) {
+		// You fill this in as well as add any additional methods
+	}
+
+    private GCanvas canvas;
+    private JLabel nameLabel;
+	private JTextField nameField;
+	private JTextField statusField;
+	private JTextField pictureField;
+	private JTextField friendField;
+}

@@ -1,0 +1,12 @@
+import acm.program.*;
+
+public class test {
+	public static void main(String[] args) {
+		String name = "Johnny";
+		FacePamphletDatabase db = new FacePamphletDatabase();
+		FacePamphletProfile p = new FacePamphletProfile (name); 
+		db.addProfile(p);
+		System.out.println("p.getName(): " + p.getName());
+	}
+
+}

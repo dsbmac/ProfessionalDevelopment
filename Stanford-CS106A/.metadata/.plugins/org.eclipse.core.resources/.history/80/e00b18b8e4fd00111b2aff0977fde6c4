@@ -1,0 +1,10 @@
+import acm.program.*;
+
+public class test extends ConsoleProgram {
+	public void run() {
+		ExpandableArray a = new ExpandableArray();
+		a.set(4, "Made it");
+		println(a.get(4));
+	}
+	
+}
