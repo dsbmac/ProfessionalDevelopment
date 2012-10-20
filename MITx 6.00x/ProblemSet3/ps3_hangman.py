@@ -77,7 +77,6 @@ def getGuessedWord(secretWord, lettersGuessed):
         result += ' '
     return result
 
-
 def getAvailableLetters(lettersGuessed):
     '''
     lettersGuessed: list, what letters have been guessed so far
@@ -114,26 +113,28 @@ def hangman(secretWord):
     Follows the other limitations detailed in the problem write-up.
     '''
     # FILL IN YOUR CODE HERE...
-    global mistakesMade
-    mistakesMade = 0
+    global mistakesMade #counts errors
     guessesAllowed = 8
-    lettersGuessed = []
+    lettersGuessed = [] #tracks guessed letters
     
     #begin game
     print "Welcome to the game, Hangman!"    
     print "I'm thinking of a word that is", len(secretWord), "letters long."
     
     play(secretWord, guessesAllowed, lettersGuessed) #play loop
-        
+    endGame(secretWord, lettersGuessed)
+    
+    
+def endGame(secretWord, lettersGuessed):
     if isWordGuessed(secretWord, lettersGuessed):
         salutation = "Congratulations, you won!"
     else:
         salutation = "Sorry, you ran out of guesses. The word was " + secretWord + "."
     print "-----------"
-    print salutation
+    print salutation    
 
 def play(secretWord, guessesAllowed, lettersGuessed):
-     while mistakesMade != guessesAllowed and not isWordGuessed(secretWord, lettersGuessed):
+     while mistakesMade < guessesAllowed and not isWordGuessed(secretWord, lettersGuessed):
         print "-----------"
         print "You have", guessesAllowed - mistakesMade, "guesses left"
         availableLetters = getAvailableLetters(lettersGuessed)
@@ -155,24 +156,9 @@ def checkGuess(secretWord, guess, lettersGuessed):
     lettersGuessed.append(guess)
     return reply
 
-def test():
-    secretWord = 'apple' 
-##    lettersGuessed = ['e', 'i', 'k', 'p', 'r', 's']
-##    print getGuessedWord(secretWord, lettersGuessed)
-##
-##    #availableLetters
-##    print 'availableLetters: '
-##    lettersGuessed = ['e', 'i', 'k', 'p', 'r', 's']
-##    print getAvailableLetters(lettersGuessed)
-
-    hangman(secretWord)
-
-test()
-
 
 # When you've completed your hangman function, uncomment these two lines
 # and run this file to test! (hint: you might want to pick your own
 # secretWord while you're testing)
-
-# secretWord = chooseWord(wordlist).lower()
-# hangman(secretWord)
+secretWord = chooseWord(wordlist).lower()
+hangman(secretWord)
