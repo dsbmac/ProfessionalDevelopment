@@ -10,7 +10,7 @@ import string
 
 VOWELS = 'aeiou'
 CONSONANTS = 'bcdfghjklmnpqrstvwxyz'
-HAND_SIZE = 7
+HAND_SIZE = 6
 
 SCRABBLE_LETTER_VALUES = {
     'a': 1, 'b': 3, 'c': 3, 'd': 2, 'e': 1, 'f': 4, 'g': 2, 'h': 4, 'i': 1, 'j': 8, 'k': 5, 'l': 1, 'm': 3, 'n': 1, 'o': 1, 'p': 3, 'q': 10, 'r': 1, 's': 1, 't': 1, 'u': 1, 'v': 4, 'w': 4, 'x': 8, 'y': 4, 'z': 10
@@ -101,6 +101,7 @@ def displayHand(hand):
 
     hand: dictionary (string -> int)
     """
+    print "Current Hand:",
     for letter in hand.keys():
         for j in range(hand[letter]):
              print letter,              # print all on the same line
@@ -259,6 +260,7 @@ def playHand(hand, wordList, n):
     if lettersLeft == 0:
         salutation = 'Ran out of letters.'
     print salutation, ' Total score:', totalScore, 'points.'
+    print
 
 #
 # Problem #5: Playing a game
@@ -276,10 +278,37 @@ def playGame(wordList):
  
     2) When done playing the hand, repeat from step 1    
     """
-    # TO DO ... <-- Remove this comment when you code this function
-    print "playGame not yet implemented." # <-- Remove this line when you code the function
-   
-
+    #initialize variables
+    n = HAND_SIZE
+    userReply = ""
+    currentHand = {}
+    
+    userReply = getUserInput()
+    while(not userReply == 'e'):
+        if userReply == 'n':
+            currentHand = dealHand(n)
+            hand = currentHand.copy()
+            playHand(hand, wordList, n)
+        elif userReply == 'r':
+            if currentHand == {}:
+                print "Last hand unavailable. Please play a hand first."
+            else:
+                hand = currentHand.copy()
+                playHand(hand, wordList, n)
+        userReply = getUserInput()        
+    
+def getUserInput():
+    userReply = ''
+    while(True):
+        userReply = raw_input("Enter n to deal a new hand, r to replay the last hand, or e to end game: ")
+        userReply.lower()
+        if (not validCommand(userReply)): print "Invalid command."
+        else: return userReply
+    
+def validCommand(userReply):
+    validReplies = ['n', 'r', 'e']
+    return userReply in validReplies
+    
 
 
 #
@@ -287,5 +316,5 @@ def playGame(wordList):
 #
 if __name__ == '__main__':
     wordList = loadWords()
-    playHand({'n':1, 'e':1, 't':1, 'a':1, 'r':1, 'i':2}, wordList, 7)
-    #playGame(wordList)
+    #playHand({'n':1, 'e':1, 't':1, 'a':1, 'r':1, 'i':2}, wordList, 7)
+    playGame(wordList)
