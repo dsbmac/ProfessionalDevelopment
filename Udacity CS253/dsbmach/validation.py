@@ -52,19 +52,30 @@ def valid_email(email):
 
 #signup 
 USER_RE = re.compile(r"^[a-zA-Z0-9_-]{3,20}$")
-PASSWORD_RE = re.compile(r "^.{3,20}$")
+PASSWORD_RE = re.compile(r"^.{3,20}$")
 EMAIL_RE = re.compile(r"^[\S]+@[\S]+\.[\S]+$")
 def valid_username(username):
     return USER_RE.match(username)
-def valid_password(password, verifyPassword):
-    return PASSWORD_RE.match(password) and password = verifyPassword
-def valid_verifyPassword(verifyPassword,password):
-    return PASSWORD_RE.match(verifyPassword) and password = verifyPassword
+def valid_password(password):
+    return PASSWORD_RE.match(password)
+def valid_verify(verify, password):
+    return PASSWORD_RE.match(verify) and password == verify
 def valid_email(email):
     return EMAIL_RE.match(email)
 
+
+##def test():
 # valid_month("january") => "January"    
 # valid_month("January") => "January"
 # valid_month("foo") => None
 # valid_month("") => None
-
+##    username = 'munchkin'
+##    password = 'assdf'
+##    verify = 'assdf'
+##    email = '23swfd@jimmy.com'
+##    print valid_username(username)
+##    print valid_password(password)
+##    print valid_verify(verify, password)
+##    print valid_email(email)
+##
+##test()
