@@ -13,30 +13,22 @@ import random
 # 4 - scissors
 
 # helper functions
-reference = ['rock','Spock','paper','lizard', 'scissors']
-def number_to_name(number):
-    # fill in your code below
-    
+reference = ['rock', 'Spock', 'paper', 'lizard', 'scissors']
+def number_to_name(number):    
     # convert number to a name using if/elif/else
     # don't forget to return the result!
     return reference[number]
     
-def name_to_number(name):
-    # fill in your code below
-    
+def name_to_number(name):    
     # convert name to number using if/elif/else
     # don't forget to return the result!
     return reference.index(name)
 
 def rpsls(name): 
-    # fill in your code below
-
     # convert name to player_number using name_to_number
-    player_number = name_to_number(name)
-    
+    player_number = name_to_number(name)    
     # compute random guess for comp_number using random.randrange()
-    comp_number = random.randrange(0,5)
-
+    comp_number = random.randrange(0, len(reference))
     # compute difference of player_number and comp_number modulo five
     score = ( comp_number - player_number) % len(reference)
 
@@ -58,7 +50,6 @@ def rpsls(name):
     print
     
 # test your code
-
 rpsls("rock")
 rpsls("Spock")
 rpsls("paper")
