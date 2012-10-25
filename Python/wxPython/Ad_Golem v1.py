@@ -2,41 +2,31 @@
 
 import wx
 import sys
-from wx.lib.mixins.listctrl import ListCtrlAutoWidthMixin, ColumnSorterMixin
-#from wx.lib.mixins.listctrl import ColumnSorterMixin
 
 packages = [('jessica alba', 'pomona', '1981'), ('sigourney weaver', 'new york', '1949'),
     ('angelina jolie', 'los angeles', '1975'), ('natalie portman', 'jerusalem', '1981'),
     ('rachel weiss', 'london', '1971'), ('scarlett johansson', 'new york', '1984' )]
 
-APPLICATION_WIDTH = 600
-APPLICATION_HEIGHT = 400
+class Items(wx.Frame):
+    def __init__(self, parent, id, title):
+        wx.Frame.__init__(self, parent,id,title, size=(380,230))
+        hbox = wx.BoxSizer(wx.HORIZONTAL)
+        panel = wx.Panel(self, -1)
 
-class AutoWidthListCtrl(wx.ListCtrl, ListCtrlAutoWidthMixin):
-    def __init__(self, parent):
-        wx.ListCtrl.__init__(self, parent, -1, style=wx.LC_REPORT)
-        ListCtrlAutoWidthMixin.__init__(self)
+        self.list = wx.ListCtrl(panel, -1, style=wx.LC_REPORT)
+        self.list.InsertColumn(0, 'Name', width=140)
+        self.list.InsertColumn(1, 'Place', width=130)
+        self.list.InsertColumn(2, 'Year', wx.LIST_FORMAT_RIGHT, 90)
 
-class SortedListCtrl(wx.ListCtrl, ColumnSorterMixin):
-    def __init__(self, parent):
-        wx.ListCtrl.__init__(self, parent, -1, style=wx.LC_REPORT)
-        ColumnSorterMixin.__init__(self, len(packages))
-        self.itemDataMap = packages
+        for i in packages:
+            index = self.list.InsertStringItem(sys.maxint, i[2])
+            self.list.SetStringItem(index, 1, i[1])
+            self.list.SetStringItem(index, 2, i[0])
 
-    def GetListCtrl(self):
-        return self
+            #color alternating rows
+            if (index % 2) == 0:
+                self.list.SetItemBackgroundColour(index, '#e6f1f5')
 
-class Example(wx.Frame):
-    def __init__(self, *args, **kwargs):
-        super(Example, self).__init__(*args, **kwargs)
-
-        self.InitUI()
-
-    def InitUI(self):    
-
-        
-        
-        #menu
         filemenu= wx.Menu()
         filemenu.Append(wx.ID_EXIT,"E&xit"," Terminate the program")
         editmenu = wx.Menu()
@@ -53,72 +43,6 @@ class Example(wx.Frame):
         menuBar.Append(configmenu, "&Config")
         menuBar.Append(helpmenu, "&Help")
         self.SetMenuBar(menuBar)
-        
-
-        #toolbar
-        toolbar = self.CreateToolBar()
-        qtool = toolbar.AddLabelTool(wx.ID_ANY, 'NewItem',
-                                     wx.Bitmap('images/Button Add-01.png'))
-        qtool = toolbar.AddLabelTool(wx.ID_ANY, 'DeleteItem',
-                                     wx.Bitmap('images/Button Delete-01.png'))
-        qtool = toolbar.AddLabelTool(wx.ID_ANY, 'PostItems',
-                                     wx.Bitmap('images/up.png'))
-        
-        toolbar.Realize()
-        self.Bind(wx.EVT_TOOL, self.OnQuit, qtool)
-
-        self.SetSize((APPLICATION_WIDTH, APPLICATION_HEIGHT))
-        self.SetTitle('Simple toolbar')
-        self.Centre()
-        self.Show(True)
-
-        #ListCtrl
-        hbox = wx.BoxSizer(wx.HORIZONTAL)
-        panel = wx.Panel(self, -1)
-
-        self.list = SortedListCtrl(panel)
-        #self.list = wx.ListCtrl(panel, -1, style=wx.LC_REPORT)
-        self.list.InsertColumn(0, 'Name', width=140)
-        self.list.InsertColumn(1, 'Place', width=130)
-        self.list.InsertColumn(2, 'Year', wx.LIST_FORMAT_RIGHT, 90)
-        #add data
-        for i in packages:
-            index = self.list.InsertStringItem(sys.maxint, i[2])
-            self.list.SetStringItem(index, 1, i[1])
-            self.list.SetStringItem(index, 2, i[0])
-
-            #color alternating rows
-            if (index % 2) == 0:
-                self.list.SetItemBackgroundColour(index, '#e6f1f5')
-
-
-        hbox.Add(self.list, 1, wx.EXPAND)
-        panel.SetSizer(hbox)
-         
-    def OnQuit(self, e):
-        self.Close()
-    
-    
-class Items(wx.Frame):
-    def __init__(self, parent, id, title):
-        wx.Frame.__init__(self, parent,id,title, size=(APPLICATION_WIDTH, APPLICATION_HEIGHT))
-##        hbox = wx.BoxSizer(wx.HORIZONTAL)
-##        panel = wx.Panel(self, -1)
-
-        self.list = wx.ListCtrl(panel, -1, style=wx.LC_REPORT)
-        self.list.InsertColumn(0, 'Name', width=140)
-        self.list.InsertColumn(1, 'Place', width=130)
-        self.list.InsertColumn(2, 'Year', wx.LIST_FORMAT_RIGHT, 90)
-
-        for i in packages:
-            index = self.list.InsertStringItem(sys.maxint, i[2])
-            self.list.SetStringItem(index, 1, i[1])
-            self.list.SetStringItem(index, 2, i[0])
-
-            #color alternating rows
-            if (index % 2) == 0:
-                self.list.SetItemBackgroundColour(index, '#e6f1f5')
-
 
         hbox.Add(self.list, 1, wx.EXPAND)
         panel.SetSizer(hbox)
@@ -127,8 +51,7 @@ class Items(wx.Frame):
         self.Show(True)
 
 app = wx.App()
-Example(None)
-#Items(None, -1, 'Items')
+Items(None, -1, 'Items')
 app.MainLoop()
 
 
