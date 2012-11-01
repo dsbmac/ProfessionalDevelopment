@@ -12,68 +12,78 @@
 #include "vector.h"
 #include <iostream>
 
-
 struct Cell {
 	Cell *next;
 	int value;
 };
-Cell * ConvertToListIter(Vector<int> vector)
-{
+Cell * ConvertToListIter(Vector<int> vect) {
 	Cell *head = new Cell;
 	head->next = NULL;
-	head->value = vector[0];
-	Cell *curr = head;
-	for(int i = 1; i < vector.size(); i++)
-	{
+	head->value = vect[0];
+
+	for(int i = 1; i < vect.size(); i++)	{
 		Cell *newCell = new Cell;
-		newCell->next = NULL;
-		newCell->value = vector[i];
-		curr->next = newCell;
-		newCell = curr;
+		newCell->next = head;
+		newCell->value = vect[i];
+
+		head = newCell;
 	}
 	return head;
 }
-
-//Cell * ConvertToList(Vector<int> vector) {
-//	Cell *listHead = new Cell;
-//	listHead->next = NULL;
-//	listHead->value = vector[0];
-//
-//	Cell * curr = listHead;
-//	for (int i = 1; i < vector.size(); i++) {
-//		Cell *newCell = new Cell;
-//		newCell->value = vector[i];
-//		newCell->next = NULL;
-//
-//		curr->next = newCell;
-//		newCell = curr;
-//	}
-//	return listHead;
-//}
+Cell * ConvertToListRec(Vector<int> & vect, int index = 0) {
+	if (index >= vect.size()) return NULL;
+	else {
+		Cell *newCell = new Cell;
+		newCell->value = vect[index];
+		newCell->next = ConvertToListRec(vect, index + 1);
+		return newCell;
+	}
+}
+int SumList(Cell *list) {
+	int sum = 0;
+	for (Cell *curr = list; curr != NULL; curr = curr->next) {
+		sum += curr->value;
+	}
+	return sum;
+}
+int SumListRec(Cell *list) {
+	if (list == NULL) return 0;
+	else {
+		Cell *curr = list;
+		return curr->value + SumListRec(curr->next);
+	}
+}
 void PrintEntry(Cell *cur) {
 	cout << cur->value << endl;
 }
 void PrintList(Cell *list)
 {
-  for (Cell *cur = list; cur!= NULL; cur = cur->next)
-PrintEntry(cur);
+	for (Cell *cur = list; cur!= NULL; cur = cur->next) {
+		PrintEntry(cur);
+	}
 }
-//void PrintList(Cell *list) {
-//	for (Cell *cur = list; cur != NULL; cur = cur->next) {
-//		PrintEntry(cur);
-//	}
-//}
+//Problem 6: Append
+void AppendListsRec(Cell *list1, Cell *list2) {
+	if (next == NULL) ptr->next = list2;
+	else
+		Cell nextPtr = list1->next;
+		AppendListsRec(nextPtr, list2) 
 
 
+	
+}
 int main ()
 {
 	Vector<int> vec;
-	vec.add(12);
-	vec.add(25);
-	vec.add(33);
+	vec.add(1);
+	vec.add(2);
+	vec.add(3);
 	vec.add(99);
-	Cell *list = ConvertToListIter(vec);
+	//Cell *list = ConvertToListIter(vec);
+	Cell *list = ConvertToListRec(vec);
 	PrintList(list);
+	cout << SumList(list) << endl;
+	cout << SumListRec(list) << endl;
 	//Maze test();
 	//test.ReadMazeMap("maze1.txt");
 	//pointT start = test.GetStartPosition();
