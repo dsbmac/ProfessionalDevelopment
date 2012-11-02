@@ -23,6 +23,7 @@ struct entryT {
   string lastName;
   string phoneNumber;
 };
+
 int CompareEntries(entryT a, entryT b) {
 	if ( a.lastName == b.lastName) {
 		if ( a.firstName == b.firstName) return 0;

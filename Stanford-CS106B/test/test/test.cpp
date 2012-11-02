@@ -61,18 +61,7 @@ int CompareVect(Vector<int> a, Vector<int> b) {
 	return 1;
 }
 int main() {
-	Set<int> test;
-	test.add(0);
-	test.add(1);
-	test.add(2);
-	Set<Vector<int> > testSet(CompareVect);
-	Vector<int> a;
-	Vector<int> b;
-	a.add(1);
-	a.add(2);
-	b.add(1);
-	//b.add(2);
-	testSet.add(a);
-	cout << IntegerToString(test.find("0") ) << endl;
+	string s = "a";
+	cout << s << endl << s.substr(1) << endl;
 
 }
