@@ -71,14 +71,8 @@ void Shuffle(string cubes[], Grid<char> & board, Set<int> & usedCubes) {
 		}
 	}
 }
-void HighlightWord(Set<squareT> &path) {
-	Set<squareT>::Iterator iter = path.iterator();
-	while(iter.hasNext()){
-		squareT square = iter.next();
-		HighlightCube(square.row, square.col, true);
-	}
-}
 void PrintSolution(Set<squareT> &path) {
+	cout << "printing solution..." << endl;
 	if (!path.isEmpty()) {
 		Set<squareT>::Iterator iter = path.iterator();
 		while(iter.hasNext()){
@@ -87,11 +81,12 @@ void PrintSolution(Set<squareT> &path) {
 		}
 	}
 }
-void Setup(	int boardSize, Grid<char> &board) {
-	Randomize();	
-	Set<int> usedCubes; //tracks which dice have been used
-	DrawBoard(boardSize, boardSize);
-	Shuffle(StandardCubes, board, usedCubes);	
+void HighlightWord(Set<squareT> &path) {
+	Set<squareT>::Iterator iter = path.iterator();
+	while(iter.hasNext()){
+		squareT square = iter.next();
+		HighlightCube(square.row, square.col, true);
+	}
 }
 void ClearHighlights(Grid<char> &board) {
 	for (int i = 0 ; i < board.numRows(); i++) {
@@ -99,6 +94,25 @@ void ClearHighlights(Grid<char> &board) {
 			HighlightCube(i, j, false);
 		}
 	}
+}
+void RecordWord(string word, Set<squareT> &solution, Grid<char> &board,
+				playerT player, MasterWordList &playedWords) {
+	playedWords[player].add(word);
+	PrintSolution(solution);
+	HighlightWord(solution);
+	RecordWordForPlayer(word, player);
+	if (player == Computer) {
+		Pause(1.);
+		ClearHighlights(board);
+		Pause(0.2);
+	}
+}
+
+void Setup(	int boardSize, Grid<char> &board) {
+	Randomize();	
+	Set<int> usedCubes; //tracks which dice have been used
+	DrawBoard(boardSize, boardSize);
+	Shuffle(StandardCubes, board, usedCubes);	
 }
 
 int CompareSquares(squareT A, squareT B) { //callback for struct squareT 
@@ -122,56 +136,55 @@ bool isValidSquare(squareT square, Grid<char> & board, Set<squareT> &solution) {
  * Starts at square (0, 0) and iterates recursively all surrounding squares
  * returns Set<squareT> as solution
  */
-Set<squareT> WordPathRec(string input, squareT square, Set<squareT> solution, Grid<char> &board) {
-	if (input == "") return solution;
+Set<squareT> WordPathRec(string input, int index, squareT square, Set<squareT> solution, Grid<char> &board, 
+						 Lexicon &lex, playerT player, MasterWordList &playedWords) {
+							 cout << endl << "letter: " << input[index] << endl;
+							 PrintSolution(solution);
+	if (index == input.length()) {
+		cout << "returning..." << endl;
+		return solution;
+	}
 	else {	
 		for (int i = -1; i <= 1; i++) { //traverse surrounding squares by row and column 
 			for (int j = -1; j <= 1; j++) {
 				squareT newSquare = {square.row + i, square.col + j};
 				if (isValidSquare(newSquare, board, solution) ) cout << newSquare.row << ", " << newSquare.col << " is valid" << endl;
 				else cout << newSquare.row << ", " << newSquare.col << " is invalid" << endl;
-				if ( isValidSquare(newSquare, board, solution) && board.getAt(newSquare.row, newSquare.col) == input[0] ) {
+				if ( isValidSquare(newSquare, board, solution) && board.getAt(newSquare.row, newSquare.col) == input[index] ) {
 					Set<squareT> newSolution = solution;
 					newSolution.add(newSquare); 
-					Set<squareT> soln = WordPathRec(input.substr(1), newSquare, newSolution,board) ;
+					index +=1;
+					Set<squareT> soln = WordPathRec(input, index, newSquare, newSolution, board, lex, player, playedWords) ;
 					if (!soln.isEmpty()) return soln;
+					//WordPathRec(input, index, newSquare, newSolution, board, lex, player, playedWords);
 				}
 			}
-		}
-		Set<squareT> empty(CompareSquares);
+		}			
+		Set<squareT> empty (CompareSquares);
 		return empty;
 	}
 }
-Set<squareT> FindPath(string input, Grid<char> &board) {
-	for (int i = 0; i < board.numRows(); i++) { //traverse surrounding squares by row and column position
-		for (int j = 0; j < board.numCols(); j++) {
-			if (board.getAt(i, j) == input[0]) { //if first letter of word is found then call recursive function to find solution
-				squareT square = {i, j};
-				Set<squareT> solution(CompareSquares);
-				solution.add(square);
-				Set<squareT> path = WordPathRec(input.substr(1), square, solution, board);
-				if (!path.isEmpty()) return path;
-			}
-		}
-	}
-	Set<squareT> empty (CompareSquares);
-	return empty;
-}
+//Set<squareT> FindPath(string input, Grid<char> &board) {
+//	for (int i = 0; i < board.numRows(); i++) { //traverse surrounding squares by row and column position
+//		for (int j = 0; j < board.numCols(); j++) {
+//			if (board.getAt(i, j) == input[0]) { //if first letter of word is found then call recursive function to find solution
+//				squareT square = {i, j};
+//				Set<squareT> solution(CompareSquares);
+//				solution.add(square);
+//				Set<squareT> path = WordPathRec(input.substr(1), square, solution, board, lex, player, playedWords);
+//				if (!path.isEmpty()) return path;
+//			}
+//		}
+//	}
+//	Set<squareT> empty (CompareSquares);
+//	return empty;
+//}
 
 /*ensures input is valid */
 bool isValidInput(string input, Lexicon &lex, Set<string> playedWords) {
 	return input.length() >= 4 && lex.containsWord(input) && !playedWords.contains(input) ;
 }
 
-void RecordWord(string word, Set<squareT> &solution, Grid<char> &board,
-				playerT player, MasterWordList &playedWords) {
-	playedWords[player].add(word);
-	HighlightWord(solution);
-	RecordWordForPlayer(word, player);
-	Pause(1.);
-	ClearHighlights(board);
-	if (player == Computer) Pause(0.2);
-}
 void FindWords(string prefix, squareT square, Set<squareT> solution, Grid<char> &board, Lexicon & lex, playerT player, MasterWordList &playedWords) {
 	if ( isValidInput(prefix, lex, playedWords[1])) RecordWord(prefix, solution, board, player, playedWords) ;
 	for (int i = -1; i <= 1; i++) { //traverse surrounding squares by row and column 
@@ -198,7 +211,14 @@ void TraverseBoard(Grid<char> &board, Lexicon & lex, playerT player, MasterWordL
 			string prefix = "";
 			prefix += board.getAt(i, j);
 			if (player == Computer) FindWords(prefix, square, solution, board, lex, player, playedWords);
-			else if (prefix == input.substr(0,1)) WordPathRec(input.substr(1), square, solution, board);
+			else if (prefix == input.substr(0,1)) {
+				Set<squareT> soln = WordPathRec(input, 1, square, solution, board, lex, player, playedWords);
+				if (!soln.isEmpty()) {
+					cout << "returen to traverse" << endl;
+					PrintSolution(soln);
+					RecordWord(input, soln, board, player, playedWords);
+				}
+			}
 		}
 	}
 }
@@ -218,19 +238,17 @@ void HumanPlay(Grid<char> &board, Lexicon & lex, playerT player, MasterWordList 
 	}	
 }
 void Play(Grid<char> & board) {
-	Lexicon lex("lexicon.dat");
-	
+	Lexicon lex("lexicon.dat");	
 	//setup wordLists for played words
 	MasterWordList playedWords; //tracks already inputted words for each players
 	for (int i = 0; i < 2; i++) {
 		Set<string> empty;
     	playedWords.add(empty);
 	}
-
 	playerT player = Human;	
-
+	HumanPlay(board, lex, player, playedWords);
 	player = Computer;
-	CompPlay(board, lex, player, playedWords);
+	//CompPlay(board, lex, player, playedWords);
 }
 int main()
 {
