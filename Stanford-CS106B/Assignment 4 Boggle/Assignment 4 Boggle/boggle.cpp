@@ -49,7 +49,7 @@ static void Welcome()
 
 typedef Vector<Set<string> > MasterWordList; //master list used to contain each player's played words
 
-struct squareT {	
+struct squareT { //for board positioning
 	int row;
 	int col;	
 };
