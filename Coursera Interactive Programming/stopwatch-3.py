@@ -13,8 +13,7 @@ width = 300
 height = 200
 
 #time variables
-interval = 1 #timer interval
-milliDivisor = 100 / interval
+interval = 100 #timer interval
 time = 0 #stores the time elapsed in millisecs
 prevTime = -1;
 
@@ -32,13 +31,13 @@ scoreboard = "Welcome!" #shows scores/attempts
 
 #converts aggregate time into units of time
 def convertToSplit(): #tenths of second
-    tenths = int(time / milliDivisor * 10) % 10
+    tenths = time % 10
     return tenths
 def convertToSeconds():
-    seconds = (time // milliDivisor) % 60   
+    seconds = (time // 10) % 60   
     return seconds
 def convertToMinutes():
-    minutes = (time / milliDivisor)// 60
+    minutes = (time / 10)// 60
     return minutes
 def updateClock():
     global clock
@@ -70,7 +69,7 @@ def updateScoreboard():
     {"score":score, "att":attempts, "perc":percentage}
     
 def moveSplitHand(): #controls the split hand position
-    points = milliDivisor #theta angle points
+    points = 1000 / interval #theta angle points
     slice = 2 * math.pi / points;
     theta = slice * ((time % points) - (points/4) );
     splitPosition[0] = clockCtr[0] + splitRadius * math.cos(theta)
