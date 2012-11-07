@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>New Post</title>
+    </head>
+    <body>
+        <form method="post" action = "/newpost">
+            <label>
+            subject
+            <br>
+                <input name="subject">                
+            </label>
+            <br>
+            <label>
+            blog
+            <br>                
+                <textarea name="text" style="height: 300px; width: 400px;">
+                    {{ text }}
+                </textarea>                
+            </label>            
+            <br>
+            <input type = "submit">
+        </form>
+    </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>/ascii/</title>
+    </head>
+
+    <body>
+        <h1>/blog/</h1>
+
+
+        <form method="post">
+            <label>
+                <div>subject</div>
+                <input type="text" name="title" value={{title}}>
+            </label>
+
+
+            <label>
+                <div>blog</div>
+                <textarea name="entry">{{entry}}</textarea>
+            </label>
+
+            <div class="error">{{error}}</div>
+
+            <input type="submit">
+        </form>
+        <hr>
+
+        {% for art in arts %}
+            <div class="art">
+                <div class="art-title">{{art.title}}</div>
+                <pre class="art-body">{{art.art}}</pre>
+            </div>
+        {% endfor %}
+    </body>
+
+</html>

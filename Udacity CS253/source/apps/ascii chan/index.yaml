@@ -1,0 +1,9 @@
+indexes:
+
+- kind: Art
+  ancestor: no
+  properties:
+  - name: title
+  - name: art
+  - name: created
+    direction: desc
