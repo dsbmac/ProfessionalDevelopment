@@ -46,11 +46,14 @@ static void Welcome()
 	 << "bad news is that you're probably going to lose miserably to this little "
 	 << "dictionary-toting hunk of silicon.  If only YOU had a gig of RAM..." << endl << endl;
 }
-typedef Vector<Set<string> > MasterWordList;
+
+typedef Vector<Set<string> > MasterWordList; //master list used to contain each player's played words
+
 struct squareT {	
 	int row;
 	int col;	
 };
+
 int CompareSquares(squareT A, squareT B) { //callback for struct squareT 
 	if (A.col > B.col ) return 1; //larger column
 	else if (A.col < B.col ) return -1;
@@ -60,18 +63,23 @@ int CompareSquares(squareT A, squareT B) { //callback for struct squareT
 		else return 0;
 	}
 }
+
+//chooses a letter from one side of letter cube
 char chooseLetter(string cubes[], int cubeIndex) {
 	return cubes[cubeIndex][RandomInteger(0,5)];
 }
+
+//chooses a random cube, returns a random letter from it
 char RandomLetter(int nCubes, string cubes[], Set<int> & usedCubes) {
 	int cubeIndex = RandomInteger(0, nCubes-1); 
-	while (usedCubes.contains(cubeIndex)) { //ensure random cube not already selected
+	while (usedCubes.contains(cubeIndex)) { //ensure cube not already selected
 		cubeIndex = RandomInteger(0, nCubes-1); 
 	}
 	usedCubes.add(cubeIndex);
-	return chooseLetter(cubes, cubeIndex);
+	return chooseLetter(cubes, cubeIndex); //choose a letter from cube
 }
-/* shuffles the game board letters */
+
+/* fills the game board letters: either randomly or with custom string if given*/
 void FillBoardWithLetters(string cubes[], Grid<char> & board, Set<int> & usedCubes, string custom="") {
 	int nCubes = board.numCols() * board.numRows();
 	for (int i = 0; i < board.numRows(); i++) { //traverse board row & cols
@@ -87,6 +95,7 @@ void FillBoardWithLetters(string cubes[], Grid<char> & board, Set<int> & usedCub
 		}
 	}
 }
+
 void PrintSolution(Set<squareT> &path) {
 	cout << "printing solution..." << endl;
 	if (!path.isEmpty()) {
@@ -97,6 +106,7 @@ void PrintSolution(Set<squareT> &path) {
 		}
 	}
 }
+
 void HighlightWord(Set<squareT> &path) {
 	Set<squareT>::Iterator iter = path.iterator();
 	while(iter.hasNext()){
@@ -104,6 +114,7 @@ void HighlightWord(Set<squareT> &path) {
 		HighlightCube(square.row, square.col, true);
 	}
 }
+
 void ClearHighlights(Grid<char> &board) {
 	for (int i = 0 ; i < board.numRows(); i++) {
 		for (int j = 0 ; j < board.numCols(); j++) {
@@ -111,6 +122,7 @@ void ClearHighlights(Grid<char> &board) {
 		}
 	}
 }
+
 void RecordWord(string word, Set<squareT> &solution, Grid<char> &board,
 				playerT player, MasterWordList &playedWords) {
 	playedWords[player].add(word);
@@ -123,17 +135,15 @@ void RecordWord(string word, Set<squareT> &solution, Grid<char> &board,
 	}
 }
 
-void Setup(	int boardSize, Grid<char> &board, string custom="") {
+//pregame setup
+void Setup(int boardSize, Grid<char> &board, string custom="") {
 	Randomize();	
 	Set<int> usedCubes; //tracks which dice have been used
 	DrawBoard(boardSize, boardSize);
 	FillBoardWithLetters(StandardCubes, board, usedCubes, custom);	
 }
 
-/*ensures input is valid
-checks within bounds
-checks list
-*/
+/*ensures input is valid: meets length min and not used */
 bool isValidInput(string input, Lexicon &lex, playerT player, MasterWordList &playedWords) {
 	if (input.length() >= 4 && lex.containsWord(input)) {
 		for (int i = 0; i <= player; i++) { //look through which list			
@@ -142,21 +152,27 @@ bool isValidInput(string input, Lexicon &lex, playerT player, MasterWordList &pl
 		return true;
 	} else return false;
 }
+
+//checks: not out of bounds, not backtracking path
 bool isValidSquare(squareT square, Grid<char> & board, Set<squareT> &solution) {	
 	if (solution.contains(square)) return false;
 	bool isValidCol = 0 <= square.col && square.col <= board.numCols()-1; //within bounds
 	bool isValidRow = 0 <= square.row && square.row <= board.numRows()-1; //within bounds
 	return isValidCol && isValidRow ;
 }
+
 /* 
- * Recursively searches for a valid path containing the letters of the user's word (input)
- * Starts at square (0, 0) and iterates recursively all surrounding squares
- * returns Set<squareT> as solution
+ * Recursively searches for a valid path for the human's word (input)
+ * Is called from TraverseBoard when a the beginning letter of the word is found.
+ * Is given the initial squareT then recursively finds a path for the entire word.
+ * uses an incrementing index to track search progress
+ * returns bool
  */
 bool FindPath(string input, int index, squareT square, Set<squareT> solution, Grid<char> &board
 						 , Lexicon &lex, playerT player, MasterWordList &playedWords) {
 	if ( !isValidSquare(square, board, solution) ) return false;
 	if ( board.getAt(square.row, square.col) != input[index] ) return false ;
+ 	//if letter is found on valid square add it to the solution path and incr index
 	solution.add(square);
 	index++;
 	if (index == input.length() && isValidInput(input, lex, player, playedWords)) {
@@ -174,12 +190,18 @@ bool FindPath(string input, int index, squareT square, Set<squareT> solution, Gr
 	return false;
 }
 
+/* finds all words for the comp at the initial given square. called from TraverseBoard 
+ * builds partial words (prefix) recursively. if a word is found it is recorded and 
+ * continues finding more words
+ */ 
 void CompFindWords(string prefix, squareT square, Set<squareT> solution, Grid<char> &board, Lexicon & lex, playerT player, MasterWordList &playedWords) {
+	// Gatekeeper
 	if (!isValidSquare(square, board, solution)) return;
 	prefix += board.getAt(square.row, square.col);				
-	if (!lex.containsPrefix(prefix) ) return;
+	if (!lex.containsPrefix(prefix) ) return; //partial world is a valid prefix
+	// passed the gate
 	solution.add(square);
-	if ( isValidInput(prefix, lex, player, playedWords)) {
+	if ( isValidInput(prefix, lex, player, playedWords)) { /base case
 		RecordWord(prefix, solution, board, player, playedWords);
 		return;
 	}
@@ -192,7 +214,9 @@ void CompFindWords(string prefix, squareT square, Set<squareT> solution, Grid<ch
 	return;
 }
 
-/*uses traverse for both human and comp but call different recursive functions respectively */
+/* main function used to start the recursive search of valid words for both human and comp 
+ * calls respective recursive search for each board letter
+ */
 void TraverseBoard(Grid<char> &board, Lexicon & lex, playerT player, MasterWordList &playedWords, string input="") {
 	Set<squareT> solution(CompareSquares);
 	for (int i = 0; i < board.numRows(); i++) { //traverse surrounding squares by row and column position
@@ -206,6 +230,7 @@ void TraverseBoard(Grid<char> &board, Lexicon & lex, playerT player, MasterWordL
 	}
 	if (player == Human) cout << "Word not found!" << endl;
 }
+
 void HumanPlay(Grid<char> &board, Lexicon & lex, playerT player, MasterWordList &playedWords) {
 	cout << "Enter words: " << endl;
 	while(true) {
@@ -218,9 +243,11 @@ void HumanPlay(Grid<char> &board, Lexicon & lex, playerT player, MasterWordList 
 		}
 	}	
 }
+
 void CompPlay(Grid<char> &board, Lexicon & lex, playerT player, MasterWordList &playedWords) {
 	TraverseBoard(board, lex, player, playedWords) ;
 }
+
 void Play(Grid<char> & board) {
 	//setup wordLists and lexicon to track valid words
 	Lexicon lex("lexicon.dat");	
@@ -235,6 +262,7 @@ void Play(Grid<char> & board) {
 	player = Computer;
 	CompPlay(board, lex, player, playedWords);
 }
+
 int main()
 {
 	SetWindowSize(9, 5);
