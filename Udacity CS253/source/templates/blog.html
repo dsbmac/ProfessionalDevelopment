@@ -11,13 +11,13 @@
         <form method="post">
             <label>
                 <div>subject</div>
-                <input type="text" name="title" value={{title}}>
+                <input type="text" name="subject" value={{subject}}>
             </label>
 
 
             <label>
                 <div>blog</div>
-                <textarea name="entry">{{entry}}</textarea>
+                <textarea name="body">{{body}}</textarea>
             </label>
 
             <div class="error">{{error}}</div>
@@ -26,10 +26,10 @@
         </form>
         <hr>
 
-        {% for art in arts %}
-            <div class="art">
-                <div class="art-title">{{art.title}}</div>
-                <pre class="art-body">{{art.art}}</pre>
+        {% for post in posts %}
+            <div class="post">
+                <div class="post-subject">{{post.subject}}</div>
+                <pre class="post-body">{{post.body}}</pre>
             </div>
         {% endfor %}
     </body>

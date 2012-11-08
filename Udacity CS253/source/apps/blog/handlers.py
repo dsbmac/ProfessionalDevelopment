@@ -21,32 +21,39 @@ class Handler(webapp2.RequestHandler):
     def render(self, template, **kw):
         self.write(self.render_str(template, **kw))
 
-class Art(db.Model):
-    title = db.StringProperty(required = True)
-    art =  db.TextProperty(required = True) #text allows for longer than 500 chars
+class Blog(db.Model):
+    subject = db.StringProperty(required = True)
+    body =  db.TextProperty(required = True) #text allows for longer than 500 chars
     created = db.DateTimeProperty(auto_now_add = True)
     
-class MainPage(Handler):
-    def render_front(self, title='', art='', error=''):
-        arts = db.GqlQuery("SELECT * "
-                           "FROM Art")
+class NewPost(Handler):
+    def render_blog(self, subject='', body='', error=''):
+        posts = db.GqlQuery("SELECT * "
+                           "FROM Blog")
                            #"ORDER BY created DESC")        
-        self.render('blog.html', title=title, art=art, error=error, arts=arts)        
-    def get(self):
-        self.render_front()
+        self.render('blog.html', subject=subject, body=body, error=error, posts=posts)        
+    def get(self):        
+        self.render_blog()
     def post(self):
-        title = self.request.get('title')
-        art = self.request.get('art')
+        subject = self.request.get('subject')
+        body = self.request.get('body')
 
-        if title and art:
-            a = Art(title = title, art = art)
-            a.put()
+        if subject and body:
+            blog = Blog(subject = subject, body = body)
+            b_key = blog.put() # Key('Blog', id)      
 
-            self.redirect("/cs253/unit3/blog")
+            #blog.put()
+
+            self.redirect("/cs253/unit3/blog/%d" % b_key.id())
         else:
             error = 'there was an error'
-            self.render_front(title = title, art = art, error = error)
+            self.render_front(subject = subject, body = body, error = error)
+
+class Permalink(NewPost):
+        def get(self, blog_id):
+            s = Blog.get_by_id(int(blog_id))
+            self.render("blog.html", posts=[s])
+                        
         
                 
-app = webapp2.WSGIApplication( [('/', MainPage)], debug=True)
 
