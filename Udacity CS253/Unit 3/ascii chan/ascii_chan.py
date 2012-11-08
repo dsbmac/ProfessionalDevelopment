@@ -26,7 +26,7 @@ class Art(db.Model):
     art =  db.TextProperty(required = True) #text allows for longer than 500 chars
     created = db.DateTimeProperty(auto_now_add = True)
     
-class MainPage(Handler):
+class AsciiArt(Handler):
     def render_front(self, title='', art='', error=''):
         arts = db.GqlQuery("SELECT * "
                            "FROM Art")
@@ -42,14 +42,23 @@ class MainPage(Handler):
             a = Art(title = title, art = art)
             a.put()
 
-            self.redirect("/")
+            self.redirect("/ascii_art/display")
         else:
             error = 'there was an error'
-            self.render_front(title = title, art = art, error = error)
+            self.render_front(title = title, art = art, error = error)        
+
+class DisplayAsciiArt(Handler):
+    def render_page(self, art=''):
+        arts = db.GqlQuery("SELECT * "
+                           "FROM Art")
         
-                
+        self.render('ascii_art_display.html', arts=arts)        
+    def get(self):
+        
+        self.render_page()
+    
 app = webapp2.WSGIApplication(
-    [('/', MainPage)     ],
+    [('/ascii_art/entry', AsciiArt), ('/ascii_art/display', DisplayAsciiArt)],
     debug=True)
 
 
