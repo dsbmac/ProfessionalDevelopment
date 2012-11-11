@@ -1,9 +1,16 @@
-def b(data):
-    data += 1
+from numpy import *
 
-def a():
-    data = 1
-    b(data)
-    print data
+a = array([2,3,4])
 
-a()
+lst = [1,2,3]
+
+def test(lst):
+    arr = array(lst)
+    mean = arr.mean()
+    sd = arr.std()
+    
+    print mean, sd
+
+
+test(lst)
+

@@ -1,5 +1,6 @@
 import os
 import math
+from numpy import *
 
 directoryPath = "C:\Program Files\AmiBroker\Test Data"
 masterStockFilename = 'quotes.csv'
