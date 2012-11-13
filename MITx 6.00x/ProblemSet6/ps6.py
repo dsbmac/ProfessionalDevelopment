@@ -6,6 +6,7 @@ import string
 import time
 from project_util import translate_html
 from Tkinter import *
+import re
 
 
 #-----------------------------------------------------------------------
@@ -37,6 +38,7 @@ def process(url):
         newsStory = NewsStory(guid, title, subject, summary, link)
         ret.append(newsStory)
     return ret
+
 #======================
 
 #======================
@@ -85,9 +87,40 @@ class Trigger(object):
 # Whole Word Triggers
 # Problems 2-5
 
-# TODO: WordTrigger
+class WordTrigger(Trigger):
+    def __init__(self, word):
+        self.word = word
+        
+    def isWordIn(self, text):
+        pat = self.word
+        match = re.search(pat, text, re.IGNORECASE)
+        print match.group()
+        return match != None
 
 # TODO: TitleTrigger
+class TitleTrigger(WordTrigger):
+    def __init__(self, word):
+        self.word =word
+        
+    def evaluate(self, story):
+        s = story.getTitle()
+        print s
+        return self.isWordIn(s)
+
+def test():
+    wt = WordTrigger('cum')
+    s = 'Why Cum now, in peace'
+    wt = WordTrigger('cum')
+    print wt.isWordIn(s)
+    
+##    koala = NewsStory('', 'Koala bears are soft and cuddly', '', '', '')
+##    soda      = NewsStory('', 'Soft drinks are great', '', '', '')
+##    microsoft = NewsStory('', 'Microsoft announced today that pillows are bad', '', '', '')
+##    tt = TitleTrigger('soft')
+##    print tt.evaluate(soda)    
+
+test() 
+    
 # TODO: SubjectTrigger
 # TODO: SummaryTrigger
 

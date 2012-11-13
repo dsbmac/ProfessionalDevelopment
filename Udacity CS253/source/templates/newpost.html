@@ -1,25 +1,30 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>New Post</title>
+        <title>/blog/</title>
     </head>
+
     <body>
-        <form method="post" action = "/newpost">
+        <h1>/blog/</h1>
+
+
+        <form method="post">
             <label>
-            subject
-            <br>
-                <input name="subject">                
+                <div>subject</div>
+                <input type="text" name="subject" value={{subject}}>
             </label>
             <br>
             <label>
-            blog
-            <br>                
-                <textarea name="text" style="height: 300px; width: 400px;">
-                    {{ text }}
-                </textarea>                
-            </label>            
-            <br>
-            <input type = "submit">
+                <div>blog</div>
+                <textarea name="body">{{body}}</textarea>
+            </label>
+
+            <div class="error">{{error}}</div>
+
+            <input type="submit">
         </form>
+        <hr>
+
     </body>
+
 </html>

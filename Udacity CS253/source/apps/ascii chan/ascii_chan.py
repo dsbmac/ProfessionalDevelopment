@@ -42,7 +42,7 @@ class MainPage(Handler):
             a = Art(title = title, art = art)
             a.put()
 
-            self.redirect("/cs253/unit3/ascii_chan")
+            self.redirect("/cs253/ascii_chan")
         else:
             error = 'there was an error'
             self.render_front(title = title, art = art, error = error)
