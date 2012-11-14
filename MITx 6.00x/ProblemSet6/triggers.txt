@@ -4,7 +4,7 @@
 # Problem 11: 
 
 # subject trigger named t1
-t1 SUBJECT world
+t1 SUMMARY obama
 
 # title trigger named t2
 t2 TITLE Intel
@@ -14,6 +14,10 @@ t3 PHRASE New York City
 
 # composite trigger named t4
 t4 AND t2 t3
+
+t5 NOT t2
+
+t6 OR t1 t2
 
 # the trigger set contains t1 and t4
 ADD t1 t4
