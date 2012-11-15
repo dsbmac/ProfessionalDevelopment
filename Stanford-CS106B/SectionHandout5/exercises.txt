@@ -1,0 +1,16 @@
+Section Handout #5
+
+a) iteration twice, the second one is decreasing O(n) * O(log n) = O(n log n)
+b) O(1)
+c) O(log n)
+d) O(1)
+
+problem 5
+a)
+
+for each number in the vector:
+  sum the combo
+  if the combo is the max make it the max
+  make a new combo with all other ramaining numbers in the vector
+
+
