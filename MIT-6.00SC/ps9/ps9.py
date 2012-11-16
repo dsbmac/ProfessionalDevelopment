@@ -95,13 +95,13 @@ def greedyAdvisor(subjects, maxWork, comparator):
     assert type(subjects) == dict and maxWork >= 0
     sortParams = getSortParams(comparator)
     subjectsCopy = sorted( subjects.items(), key=sortParams[0], reverse = sortParams[1])
-    totalWork = 0
     result = {}
-    i = 0
+    i, totalWork = 0, 0
     while totalWork < maxWork and i < len(subjectsCopy):
-        if subjectsCopy[i][1][WORK] + totalWork <= maxWork:
-            result[ subjectsCopy[i][0] ] =   subjectsCopy[i][1]
-            totalWork += subjectsCopy[i][1][WORK]            
+        subjectsCopy[i][1] = subjData
+        if subjData[WORK] + totalWork <= maxWork:
+            result[ subjectsCopy[i][0] ] =   subjData
+            totalWork += subjData[WORK]            
         i +=1
     return result
 

@@ -1,0 +1,25 @@
+import string
+
+def is_word_in(word, text):
+    str = ""
+    for i, char in enumerate(text):
+        if char in string.punctuation:
+            str += " "
+        else:
+            str += char.lower()
+
+    print str
+    words = str.split()
+    print words
+
+    if word in words:
+        return True
+    else:
+        return False
+            
+s1 =  "Koala bears are soft and cuddly."
+s2 = "I prefer pillows that are soft." 
+s3 = "Soft's the new pink!"
+s4 = "\"Soft!\" he exclaimed as he threw the football."
+
+print is_word_in('soft',s3)

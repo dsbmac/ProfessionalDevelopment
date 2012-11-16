@@ -1,0 +1,6 @@
+Your algorithms should be plain English explanations for the steps your program will take to solve these problems.
+
+Write out your algorithm for Problem 2 here:
+
+
+Write out your algorithm for Problem 4 here:

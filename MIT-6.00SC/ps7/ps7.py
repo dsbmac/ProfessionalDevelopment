@@ -48,8 +48,7 @@ class SimpleVirus(object):
         patient's body at a time step. 
         returns: True with probability self.clearProb and otherwise returns
         False.
-        """
-        
+        """        
         return random.random() <= self.clearProb
             
     def reproduce(self, popDensity):
@@ -127,14 +126,10 @@ class SimplePatient(object):
         returns: The total virus population at the end of the update (an
         integer)
         """        
-##        print "self.viruses before:", self.getTotalPop()
         self.viruses = clearViruses(self.viruses)
-##        print "self.viruses after:", self.getTotalPop()
         self.popDensity = float( self.getTotalPop() ) / self.maxPop
-        
-##        print "self.getTotalPop() before:", self.getTotalPop()
         self.viruses = newReproductionList(self.viruses, self.popDensity)
-##        print "self.getTotalPop() after:", self.getTotalPop()
+        
         return self.getTotalPop
 
 def clearViruses(viruses):
@@ -147,8 +142,6 @@ def clearViruses(viruses):
     
     
 def newReproductionList(viruses, popDensity):
-##    print "newReproductionList..."
-##    print "len(viruses):", len(viruses)
     result = []
     for v in viruses:
         result.append(v)
