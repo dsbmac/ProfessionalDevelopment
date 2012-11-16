@@ -7,7 +7,7 @@ import ps7_visualize
 import pylab
 
 # For Python 2.7:
-#from ps7_verify_movement27 import testRobotMovement
+from ps7_verify_movement27 import testRobotMovement
 
 # If you get a "Bad magic number" ImportError, comment out what's above and
 # uncomment this line (for Python 2.6):
@@ -162,13 +162,7 @@ class RectangularRoom(object):
 
         returns: an integer
         """
-        total = sum([
-            sum(
-                [1 for col in range(self.width)
-                 if self.room[row][col]]
-                )
-             for row in range(self.height)
-             ])
+        total = sum([sum([1 for col in range(self.width) if self.room[row][col]]) for row in range(self.height)])
         return total
 
     def getRandomPosition(self):
@@ -177,8 +171,8 @@ class RectangularRoom(object):
 
         returns: a Position object.
         """
-        rX = random.randrange(self.width)
-        rY = random.randrange(self.height)
+        rX = random.uniform(0, self.width)
+        rY = random.uniform(0, self.height)
         return Position(rX, rY)
 
     def isPositionInRoom(self, pos):
@@ -211,13 +205,10 @@ class Robot(object):
         speed: a float (speed > 0)
         """
         self.direction = random.randint(0, 360)
-        x = random.random() + random.randrange(0, room.width)
-        y = random.random() + random.randrange(0, room.height)
-        
-        self.position = Position(x, y)
+        self.position = room.getRandomPosition()
         room.cleanTileAtPosition(self.position)
         self.speed = speed
-        
+        self.room = room
 
     def getRobotPosition(self):
         """
@@ -261,18 +252,7 @@ class Robot(object):
         """
         raise NotImplementedError # don't change this!
 
-def testRobot():
-    room = RectangularRoom(2, 3)
-    robot = Robot(room, 1)
-    print 'robot.getRobotPosition()', robot.getRobotPosition()
-    print 'robot.getRobotDirection()', robot.getRobotDirection()
-    pos = Position(1.1, 2.1)
-    robot.setRobotPosition(pos)
-    print 'robot.getRobotPosition()', robot.getRobotPosition()
-    robot.setRobotDirection(360)
-    print 'robot.getRobotDirection()', robot.getRobotDirection()
-    
-testRobot()
+
 # === Problem 2
 class StandardRobot(Robot):
     """
@@ -289,11 +269,27 @@ class StandardRobot(Robot):
         Move the robot to a new position and mark the tile it is on as having
         been cleaned.
         """
-        raise NotImplementedError
+        self.room.cleanTileAtPosition(self.position)
+        
+        while(True):
+            newPosition = self.position.getNewPosition(self.direction, self.speed)
+            if self.room.isPositionInRoom(newPosition):
+                self.position = newPosition
+                break
+            self.direction = random.randint(0, 360)
+    
+        
 
 # Uncomment this line to see your implementation of StandardRobot in action!
-##testRobotMovement(StandardRobot, RectangularRoom)
+#testRobotMovement(StandardRobot, RectangularRoom)
+def test():
+    random.seed(1)
+    speed = 0.75
+    room = RectangularRoom(3, 4)
+    robot = StandardRobot(room, speed)
+    print robot.position
 
+test()
 
 # === Problem 3
 def runSimulation(num_robots, speed, width, height, min_coverage, num_trials,
