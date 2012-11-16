@@ -19,7 +19,7 @@ import webapp2
 
 routes = [ ('/cs253/ascii_chan', 'apps.ascii chan.ascii_chan.MainPage'),
            ('/cs253/blog', 'apps.blog.handlers.MainPage'),
-           ('/cs253/blog/(\d+)', 'apps.blog.handlers.Permalink'),
+           ('/cs253/blog/(\d+)', 'apps.blog.handlers.PostPage'),
            ('/cs253/blog/newpost', 'apps.blog.handlers.NewPost'),
            ]
 

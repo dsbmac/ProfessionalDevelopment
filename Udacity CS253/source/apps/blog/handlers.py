@@ -32,7 +32,17 @@ class MainPage(Handler):
                            "FROM Blog")
                            #"ORDER BY created DESC")        
         self.render('blog.html', posts=posts)
-    
+
+class PostPage(Handler):
+    def get(self, blog_id):
+        post = Blog.get_by_id(int(blog_id))
+        
+        if not post:
+            self.error(404)
+            return
+        
+        self.render("single_blog.html", posts = [post])  
+        
 class NewPost(Handler):
     def render_form(self, subject='', body='', error=''):
         posts = db.GqlQuery("SELECT * "

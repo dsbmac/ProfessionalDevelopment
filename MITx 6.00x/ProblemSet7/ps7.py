@@ -59,6 +59,50 @@ class Position(object):
 
 
 # === Problem 1
+class Position(object):
+    """
+    A Position represents a location in a two-dimensional room.
+    """
+    def __init__(self, x, y):
+        """
+        Initializes a position with coordinates (x, y).
+        """
+        self.x = x
+        self.y = y
+        
+    def getX(self):
+        return self.x
+    
+    def getY(self):
+        return self.y
+    
+    def getNewPosition(self, angle, speed):
+        """
+        Computes and returns the new Position after a single clock-tick has
+        passed, with this object as the current position, and with the
+        specified angle and speed.
+
+        Does NOT test whether the returned position fits inside the room.
+
+        angle: float representing angle in degrees, 0 <= angle < 360
+        speed: positive float representing speed
+
+        Returns: a Position object representing the new position.
+        """
+        old_x, old_y = self.getX(), self.getY()
+        # Compute the change in position
+        delta_y = speed * math.cos(math.radians(angle))
+        delta_x = speed * math.sin(math.radians(angle))
+        # Add that to the existing position
+        new_x = old_x + delta_x
+        new_y = old_y + delta_y
+        return Position(new_x, new_y)
+
+    def __str__(self):  
+        return "(%0.2f, %0.2f)" % (self.x, self.y)
+
+
+# === Problem 1
 class RectangularRoom(object):
     """
     A RectangularRoom represents a rectangular region containing clean or dirty
@@ -88,7 +132,9 @@ class RectangularRoom(object):
 
         pos: a Position
         """
-        self.room[pos.getY()][pos.getX()] = True
+        x = int(pos.getX())
+        y = int(pos.getY())
+        self.room[y][x] = True
 
     def isTileCleaned(self, m, n):
         """
@@ -116,7 +162,13 @@ class RectangularRoom(object):
 
         returns: an integer
         """
-        total = sum([sum([1 for col in range(self.width) if self.room[row][col]]) for row in range(self.height)])
+        total = sum([
+            sum(
+                [1 for col in range(self.width)
+                 if self.room[row][col]]
+                )
+             for row in range(self.height)
+             ])
         return total
 
     def getRandomPosition(self):
@@ -136,25 +188,8 @@ class RectangularRoom(object):
         pos: a Position object.
         returns: True if pos is in the room, False otherwise.
         """
-        return 0 <= pos.getX() < self.width and 0 <= pos.getY() < self.height)
+        return 0 <= pos.getX() < self.width and 0 <= pos.getY() < self.height        
 
-def test():
-    width = 3
-    height = 2
-    print 'test'
-    room = RectangularRoom(2, 3)
-    print 'room.getNumTiles()', room.getNumTiles()
-    print 'room.getNumCleanedTiles()', room.getNumCleanedTiles()
-    pos = room.getRandomPosition()
-    print 'isPositionInRoom(pos)', room.isPositionInRoom(pos)
-    room.cleanTileAtPosition(pos)
-    print 'room.getNumCleanedTiles()', room.getNumCleanedTiles()
-    print 'room.isTileCleaned(x, y)', room.isTileCleaned(pos.getX(), pos.getY())
-    pos2 = Position(width, height)
-    print 'isPositionInRoom(pos)', room.isPositionInRoom(pos2)
-    pos3 = Position(1.1, 0.3)
-    print 'isPositionInRoom(pos3)', room.isPositionInRoom(pos3)
-test()
 
 class Robot(object):
     """
@@ -175,7 +210,14 @@ class Robot(object):
         room:  a RectangularRoom object.
         speed: a float (speed > 0)
         """
-        raise NotImplementedError
+        self.direction = random.randint(0, 360)
+        x = random.random() + random.randrange(0, room.width)
+        y = random.random() + random.randrange(0, room.height)
+        
+        self.position = Position(x, y)
+        room.cleanTileAtPosition(self.position)
+        self.speed = speed
+        
 
     def getRobotPosition(self):
         """
@@ -183,7 +225,7 @@ class Robot(object):
 
         returns: a Position object giving the robot's position.
         """
-        raise NotImplementedError
+        return self.position
     
     def getRobotDirection(self):
         """
@@ -192,7 +234,7 @@ class Robot(object):
         returns: an integer d giving the direction of the robot as an angle in
         degrees, 0 <= d < 360.
         """
-        raise NotImplementedError
+        return self.direction
 
     def setRobotPosition(self, position):
         """
@@ -200,7 +242,7 @@ class Robot(object):
 
         position: a Position object.
         """
-        raise NotImplementedError
+        self.position = position
 
     def setRobotDirection(self, direction):
         """
@@ -208,7 +250,7 @@ class Robot(object):
 
         direction: integer representing an angle in degrees
         """
-        raise NotImplementedError
+        self.direction = direction
 
     def updatePositionAndClean(self):
         """
@@ -219,7 +261,18 @@ class Robot(object):
         """
         raise NotImplementedError # don't change this!
 
-
+def testRobot():
+    room = RectangularRoom(2, 3)
+    robot = Robot(room, 1)
+    print 'robot.getRobotPosition()', robot.getRobotPosition()
+    print 'robot.getRobotDirection()', robot.getRobotDirection()
+    pos = Position(1.1, 2.1)
+    robot.setRobotPosition(pos)
+    print 'robot.getRobotPosition()', robot.getRobotPosition()
+    robot.setRobotDirection(360)
+    print 'robot.getRobotDirection()', robot.getRobotDirection()
+    
+testRobot()
 # === Problem 2
 class StandardRobot(Robot):
     """
