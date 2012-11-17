@@ -204,7 +204,8 @@ class Robot(object):
         room:  a RectangularRoom object.
         speed: a float (speed > 0)
         """
-        self.direction = random.randint(0, 360)
+        
+        self.direction = random.randint(0, 359)
         self.position = room.getRandomPosition()
         room.cleanTileAtPosition(self.position)
         self.speed = speed
@@ -268,17 +269,13 @@ class StandardRobot(Robot):
 
         Move the robot to a new position and mark the tile it is on as having
         been cleaned.
-        """
-        self.room.cleanTileAtPosition(self.position)
+        """              
         
-        while(True):
-            newPosition = self.position.getNewPosition(self.direction, self.speed)
-            if self.room.isPositionInRoom(newPosition):
-                self.position = newPosition
-                break
-            self.direction = random.randint(0, 360)
-    
-        
+        newPosition = self.position.getNewPosition(self.direction, self.speed)        
+        if self.room.isPositionInRoom(newPosition): 
+            self.position = newPosition
+            self.room.cleanTileAtPosition(self.position)      
+        else: self.direction =  random.randint(0, 359)        
 
 # Uncomment this line to see your implementation of StandardRobot in action!
 #testRobotMovement(StandardRobot, RectangularRoom)
@@ -289,8 +286,11 @@ def test():
     robot = StandardRobot(room, speed)
     print robot.position
 
-test()
+#test()
 
+def calcCoverage(room):
+    return room.getNumCleanedTiles() / float(room.getNumTiles())
+    
 # === Problem 3
 def runSimulation(num_robots, speed, width, height, min_coverage, num_trials,
                   robot_type):
@@ -310,8 +310,33 @@ def runSimulation(num_robots, speed, width, height, min_coverage, num_trials,
     robot_type: class of robot to be instantiated (e.g. StandardRobot or
                 RandomWalkRobot)
     """
-    raise NotImplementedError
+    
+    total = 0
+    
+    for i in range(num_trials):
+        #initialization
+        #anim = ps7_visualize.RobotVisualization(num_robots, width, height, 1)
+        steps, covered = 0, 0
+        robots = []
+        room = RectangularRoom(width, height)
+        for j in range(num_robots): #init robots
+            robot = robot_type(room, speed)
+            robots.append(robot)
+            
+        covered = calcCoverage(room)
+        #anim.update(room, robots)
+        while covered < min_coverage:            
+            for r in robots:
+                r.updatePositionAndClean()            
+            covered = calcCoverage(room)
+            #anim.update(room, robots)
+            steps +=1            
 
+        total += steps
+        #anim.done()
+    
+    return float(total) / num_trials
+        
 
 # === Problem 4
 class RandomWalkRobot(Robot):
@@ -325,16 +350,28 @@ class RandomWalkRobot(Robot):
 
         Move the robot to a new position and mark the tile it is on as having
         been cleaned.
-        """
-        raise NotImplementedError
+        """        
+        newPosition = self.position.getNewPosition(self.direction, self.speed)        
+        if self.room.isPositionInRoom(newPosition): 
+            self.position = newPosition
+            self.room.cleanTileAtPosition(self.position)
+        self.direction =  random.randint(0, 359)
 
+def testSim():
+    
+    avg = runSimulation(2, 0.9, 11, 11, 0.99, 100, StandardRobot)
+    #avg2 = runSimulation(1, 1, 5, 5, 1, 100, RandomWalkRobot)
+    print avg
+    #avg2 = runSimulation(1, 1.0, 10, 10, 0.75, 100, StandardRobot)
+    #print avg2
+    #avg3 = runSimulation(3, 1.0, 20, 20, 1.0, 100, StandardRobot)
+    #print avg3
 
+#testSim()
 # === Problem 5
 #
 # 1) Write a function call to showPlot1 that generates an appropriately-labeled
 #     plot.
-#
-#       (... your call here ...)
 #
 
 #
@@ -364,6 +401,7 @@ def showPlot1(title, x_label, y_label):
     pylab.ylabel(y_label)
     pylab.show()
 
+#showPlot1('Title', 'x', 'y')
     
 def showPlot2(title, x_label, y_label):
     """
@@ -386,3 +424,4 @@ def showPlot2(title, x_label, y_label):
     pylab.ylabel(y_label)
     pylab.show()
     
+showPlot2('Title', 'x', 'y')
