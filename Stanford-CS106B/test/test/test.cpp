@@ -61,7 +61,10 @@ int CompareVect(Vector<int> a, Vector<int> b) {
 	return 1;
 }
 int main() {
-	string s = "a";
-	cout << s << endl << s.substr(1) << endl;
-
+	string s = "abcd";
+	Vector<int> vec;
+	for(int i = 0; i < 4; i++){
+		vec.add(i);
+	}	
+	cout << vec[1] << endl ;
 }

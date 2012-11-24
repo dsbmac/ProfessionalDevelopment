@@ -48,6 +48,7 @@ Entry *ConvertMapToBook(Map<Vector<string> > mappy) {
 	}
 	return listHead;
 }
+
 Entry *BuildAddressBook() {
   Entry *listHead = NULL;
   while (true)  {
