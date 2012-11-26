@@ -1,0 +1,9 @@
+multiple arrays
+iterate through row 
+	iterate second time thru col
+while not blockled
+move in direction
+if movement is good then
+  put number in list
+   if get to end make product
+     if product 2 is greater than pdt 1 change

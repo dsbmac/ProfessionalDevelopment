@@ -1,0 +1,14 @@
+class Kangaroo(object):
+    def __init__(self):
+        self.pouch_contents = []
+
+    def __str__(self):
+        return self, self.pouch_contents
+    
+    def put_in_pouch(self, obj):
+        self.pouch_contents.append(obj)
+        
+
+
+    
+    
