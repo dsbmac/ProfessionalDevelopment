@@ -28,9 +28,28 @@
 # written, this code will not RUN. Clicking SUBMIT will 
 # tell you if you are correct.
 
+import random # this will be a useful library for shuffling
+
+    
+def card_ranks(hand):
+    "Return a list of the ranks, sorted with higher first."
+    ranks = ['--23456789TJQKA'.index(r) for r, s in hand]
+    ranks.sort(reverse = True)
+    if ranks == [14,5,4,3,2]:
+        return [5,4,3,2,1]
+    else:
+        return ranks
+
 def poker(hands):
-    "Return the best hand: poker([hand,...]) => hand"
-    return max(hands, key=hand_rank)
+    "Return a list of winning hands: poker([hand,...]) => [hand,...]"
+    return allmax(hands, key=hand_rank)
+
+def allmax(iterable, key=None):
+    "Return a list of all items equal to the max of the iterable."        
+    if not key: key = lambda x: x
+    ranks = [key(i)  for i in iterable]
+    sentinel = max(ranks)
+    return [iterable[i]  for i in range(len(iterable))  if ranks[i]==sentinel]
 
 def hand_rank(hand):
     ranks = card_ranks(hand)
@@ -94,27 +113,34 @@ def kind(n, ranks):
        if ranks.count(r) == n:
             return r
     return None             
-        
-def test2():
+
+
+# This builds a deck of 52 cards. If you are unfamiliar
+# with this notation, check out Andy's supplemental video
+# on list comprehensions (you can find the link in the 
+# Instructor Comments box below).
+
+mydeck = [r+s for r in '23456789TJQKA' for s in 'SHDC'] 
+
+def deal(numhands, n=5, deck=mydeck):    
+    if numhands * n <= len(deck):
+        tmpDeck = deck[:]
+        random.shuffle(tmpDeck)    
+        return [[tmpDeck.pop()  for j in range(n)]  for i in range(numhands)  ]
+    else:
+        return []
+
+def test():
     "Test cases for the functions in poker program."
     sf = "6C 7C 8C 9C TC".split() # Straight Flush
     fk = "9D 9H 9S 9C 7D".split() # Four of a Kind
     fh = "TD TC TH 7C 7D".split() # Full House
-    fkranks = card_ranks(fk)
-    #tpranks = card_ranks(tp)
-    assert kind(4, fkranks) == 9
-    assert kind(3, fkranks) == None
-    assert kind(2, fkranks) == None
-    assert kind(1, fkranks) == 7
+    al = "AC 2D 4H 3D 5S".split() # Ace-Low Straight
+    assert straight(card_ranks(al)) == True 
     return 'tests pass'
-    
-def card_ranks(hand):
-    "Return a list of the ranks, sorted with higher first."
-    ranks = ['--23456789TJQKA'.index(r) for r, s in hand]
-    ranks.sort(reverse = True)
-    return ranks
 
-test2()
+
+print deal(10,5,mydeck)
 
 ##def test():
 ##    "Test cases for the functions in poker program"
