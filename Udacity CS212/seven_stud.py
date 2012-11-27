@@ -139,8 +139,16 @@ def best_wild_hand(hand):
             tmp.append(list(blacks))
             continue
         tmp.append([card])
-    wildhands= []
-    rec_wild(tmp, [], wildhands )
+    result = []
+    for i in range(len(tmp)):
+        result += tmp[i]
+        if len(tmp[i]) == 1:
+            l = min(len(result), 5)
+
+            result = itertools.combinations(result, l)
+        else:
+            result = itertools.product(result)
+    
     print wildhands
             
 #hands = ["6C 7C 8C 9C TC 5C ?B".split()]
