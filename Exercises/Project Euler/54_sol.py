@@ -1,6 +1,7 @@
 def score(c):
 	c = sorted(c)
 	v = [x for x, y in c][::-1]
+	#v = [x for x, y in c]
 	print "v:", v
 	if len(set(y for x, y in c)) == 1:	# flush
 		if v[0] - v[4] == 4:			# straight flush
@@ -25,7 +26,7 @@ def score(c):
 
 counter = 0
 for line in open("poker.txt"):
-	cards = [("23456789TJQKA".find(x), y) for x,y in line.split()]
-	print cards
-	counter += score(cards[:5]) > score(cards[5:])
+        cards = [("23456789TJQKA".find(x), y) for x,y in line.split()]        
+        print cards
+        counter += score(cards[:5]) > score(cards[5:])
 print counter

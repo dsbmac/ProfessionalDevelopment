@@ -46,6 +46,38 @@ def collision_prob(numIndices, numInsertions):
         prob = prob * ((numIndices - i) / float(numIndices))
     return 1 - prob
 
+def find_collision_singularity_for(numIndices, epsilon):
+#for style search
+    for i in range(numIndices):
+        prob = collision_prob(numIndices, i)
+        print i, prob
+        if prob >= epsilon:
+            return i-1
+
+def find_collision_singularity(numIndices, epsilon=0.1):
+    high = numIndices
+    low = 0
+    i = 0
+    while True:
+        mid = (high + low) / 2
+        prob = collision_prob(numIndices, mid)
+        print 'high, low, prob<1', high, low, prob<1
+        
+        if high - low == 1: return low, i
+        if prob < 0.99:
+            print 'low changed to :', mid
+            low = mid
+            
+        else:
+            print 'high changed to :', mid
+            high = mid
+        i +=1
+        print
+        
+numIndices  = 1000
+print find_collision_singularity_for(numIndices, 0.99)            
+print find_collision_singularity(numIndices)
+
 def sim_insertions(numIndices, numInsertions):
     '''
     Run a simulation for numInsertions insertions into the hash table.
@@ -70,7 +102,9 @@ def find_prob(numIndices, numInsertions, numTrials):
         probs.append(sim_insertions(numIndices, numInsertions))
     return 1 - sum(probs)/float(numTrials)
 
-print find_prob(365,30,1000)
+
+
+    
 
 def main():
     hash_table = intDict(25)
