@@ -40,7 +40,7 @@ void RandomWriting::AskUserForInput(ifstream & inFile, int & seed) {
 	while (true) {
 	/*	cout << "Input file: ";
 		string filename = GetLine();*/
-		string filename = "text1.txt";
+		string filename = "text1.txt"; //input txt file to analyze
 		inFile.open(filename.c_str());
 		if (!inFile.fail()) break;
 		cout << "Unable to open " << filename << endl;
