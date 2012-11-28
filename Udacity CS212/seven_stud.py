@@ -17,9 +17,21 @@
 # hands: 4 kings along with any of the three queens).
 
 import itertools
-import timeit
+import time
 
 DECK = [r+s for r in '23456789TJQKA' for s in 'SHDC'] 
+
+def timedcall(fn, *args):
+    "Call function and return eapsed time"
+    t0 = time.clock()
+    result = fn(*args)
+    t1 = time.clock()
+    return t1-t0, result
+
+def timedcalls(n, fn, *args):
+    "Call function n times; return min, avg, max"
+    times = [timedcall(fn, *args)[0]  for _ in range(n)]
+    return min(times), sum(times) / float(n), max(times)
 
 # ------------------
 # Provided Functions
@@ -28,11 +40,13 @@ DECK = [r+s for r in '23456789TJQKA' for s in 'SHDC']
 # you have already defined in the unit to write 
 # your best_hand function.
 
-def hand_rank(hand):
+def hand_rank(hand,depth=0):
     "Return a value indicating the ranking of a hand."
-    ranks = card_ranks(hand) 
-    if straight(ranks) and flush(hand):
+    ranks = card_ranks(hand)
+    cnt = 8
+    if cnt >= depth and straight(ranks) and flush(hand):
         return (8, max(ranks))
+    cnt-=1
     elif kind(4, ranks):
         return (7, kind(4, ranks), kind(1, ranks))
     elif kind(3, ranks) and kind(2, ranks):
@@ -87,11 +101,12 @@ def best_hand(hand):
     "From a 7-card hand, return the best 5 card hand." 
     
     return max(itertools.combinations(hand, 5), key=hand_rank)
-                 
+
+reds = [c  for c in DECK  if c[1] in 'DH']
+blacks = [c  for c in DECK  if c[1] in 'SC']
+
 ##def best_wild_hand(hand):
 ##    "Try all values for jokers in all 5-card selections."
-##    reds = [c  for c in DECK  if c[1] in 'DH']
-##    blacks = [c  for c in DECK  if c[1] in 'SC']
 ##    tmp, wild = [], []
 ##    for card in hand:
 ##        if card == '?R':
@@ -107,8 +122,6 @@ def best_hand(hand):
 ##    wild = list(itertools.product(*wild))
 ##    result = max((tuple(list(i) + list(j)) for i in nonwild  for j in wild) , key=hand_rank)
 ##    return result
-reds = [c  for c in DECK  if c[1] in 'DH']
-blacks = [c  for c in DECK  if c[1] in 'SC']
 
 def replacement(card):
     if card == '?B': return blacks
@@ -118,9 +131,9 @@ def replacement(card):
 def best_wild_hand(hand):
     "Try all values for jokers in all 5-card selections."
     rawCombi = list(itertools.combinations(hand, 5))
-    combiItr = [itertools.product(*map(replacement, hand)) for hand in rawCombi] #replace wildcard with cards
-    result = max((h  for lst in combiItr  for h in lst), key=hand_rank)
-    return result
+    return max((j  for c in rawCombi
+                for j in itertools.product(*map(replacement, c))),
+               key=hand_rank)
 
 def test_best_hand():
     assert (sorted(best_hand("6C 7C 8C 9C TC 5C JS".split()))
@@ -141,14 +154,9 @@ def test_best_wild_hand():
     return 'test_best_wild_hand passes'
 
 
-#hands = ["6C 7C 8C 9C TC ?R ?B".split()]
-###hands = [['6C', '7C', '?B']]
-##
-###print best_hand(hands[0])
+
 #print sorted(best_wild_hand("6C 7C 8C 9C TC 5C ?B".split()))
-##print sorted(best_wild_hand("6C 7C 8C 9C TC 5C ?B".split()))
-#print sorted(best_wild_hand("JD TC TH 7C 7D 7S 7H".split())) == ['7C', '7D', '7H', '7S', 'JD']
-print test_best_wild_hand()
+print timedcalls(30, test_best_wild_hand)
 
 
 
