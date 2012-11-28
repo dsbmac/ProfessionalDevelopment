@@ -105,54 +105,35 @@ def best_hand(hand):
     "From a 7-card hand, return the best 5 card hand." 
     
     return max(itertools.combinations(hand, 5), key=hand_rank)
-
-
-def rec_wild(tmp, soFar=[], hands=[]):
-    if len(tmp) <= 0: return    
-    while [] in tmp:
-        tmp.pop(tmp.index([]))
-    print 'soFar', soFar
-    if len(soFar) == 5:
-        entry = sorted(soFar)
-        if entry not in hands:
-            hands.append(entry)
-            return
-    print 'tmp', tmp        
-    for i in tmp:
-        for j in tmp[i]:
-            x = tmp[i].pop()
-            print x
-            newFar = soFar[:]
-            newFar.append(x)
-            rec_wild(tmp, newFar, hands)
                  
 def best_wild_hand(hand):
     "Try all values for jokers in all 5-card selections."
     reds = [c  for c in DECK  if c[1] in 'DH']
     blacks = [c  for c in DECK  if c[1] in 'SC']
-    tmp = []
+    tmp, wild = [], []
     for card in hand:
         if card == '?R':
-            tmp.append(list(reds))
+            wild.append(list(reds))
             continue
         if card == '?B':
-            tmp.append(list(blacks))
+            wild.append(list(blacks))
             continue
-        tmp.append([card])
-    result = []
-    for i in range(len(tmp)):
-        result += tmp[i]
-        if len(tmp[i]) == 1:
-            l = min(len(result), 5)
+        tmp.append(card)
 
-            result = itertools.combinations(result, l)
-        else:
-            result = itertools.product(result)
-    
-    print wildhands
-            
-#hands = ["6C 7C 8C 9C TC 5C ?B".split()]
-hands = [['6C', '7C', '?B']]
+    r = 5 - len(wild)
+    print 'r', r
+    nonwild = list(itertools.combinations(tmp, r))
+    result = []
+    wild = list(itertools.product(*wild))
+#    print wildcombi
+##    for i in nonwild:
+##        for j in wildcombi:
+##            c = list(i) + list(j)
+##            if c not in
+    result = set(tuple(list(i) + list(j)) for i in nonwild  for j in wild )
+    print result
+hands = ["6C 7C 8C 9C TC ?R ?B".split()]
+#hands = [['6C', '7C', '?B']]
 
 #print best_hand(hands[0])
 best_wild_hand(hands[0])
