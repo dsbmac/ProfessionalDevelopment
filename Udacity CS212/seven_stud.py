@@ -17,6 +17,7 @@
 # hands: 4 kings along with any of the three queens).
 
 import itertools
+import timeit
 
 DECK = [r+s for r in '23456789TJQKA' for s in 'SHDC'] 
 
@@ -82,7 +83,45 @@ def two_pair(ranks):
         return (pair, lowpair)
     else:
         return None 
+def best_hand(hand):
+    "From a 7-card hand, return the best 5 card hand." 
     
+    return max(itertools.combinations(hand, 5), key=hand_rank)
+                 
+##def best_wild_hand(hand):
+##    "Try all values for jokers in all 5-card selections."
+##    reds = [c  for c in DECK  if c[1] in 'DH']
+##    blacks = [c  for c in DECK  if c[1] in 'SC']
+##    tmp, wild = [], []
+##    for card in hand:
+##        if card == '?R':
+##            wild.append(list(reds))
+##            continue
+##        if card == '?B':
+##            wild.append(list(blacks))
+##            continue
+##        tmp.append(card)
+##
+##    r = 5 - len(wild)
+##    nonwild = list(itertools.combinations(tmp, r))
+##    wild = list(itertools.product(*wild))
+##    result = max((tuple(list(i) + list(j)) for i in nonwild  for j in wild) , key=hand_rank)
+##    return result
+reds = [c  for c in DECK  if c[1] in 'DH']
+blacks = [c  for c in DECK  if c[1] in 'SC']
+
+def replacement(card):
+    if card == '?B': return blacks
+    elif card == '?R': return reds
+    else: return [card]
+    
+def best_wild_hand(hand):
+    "Try all values for jokers in all 5-card selections."
+    rawCombi = list(itertools.combinations(hand, 5))
+    combiItr = [itertools.product(*map(replacement, hand)) for hand in rawCombi] #replace wildcard with cards
+    result = max((h  for lst in combiItr  for h in lst), key=hand_rank)
+    return result
+
 def test_best_hand():
     assert (sorted(best_hand("6C 7C 8C 9C TC 5C JS".split()))
             == ['6C', '7C', '8C', '9C', 'TC'])
@@ -101,44 +140,15 @@ def test_best_wild_hand():
             == ['7C', '7D', '7H', '7S', 'JD'])
     return 'test_best_wild_hand passes'
 
-def best_hand(hand):
-    "From a 7-card hand, return the best 5 card hand." 
-    
-    return max(itertools.combinations(hand, 5), key=hand_rank)
-                 
-def best_wild_hand(hand):
-    "Try all values for jokers in all 5-card selections."
-    reds = [c  for c in DECK  if c[1] in 'DH']
-    blacks = [c  for c in DECK  if c[1] in 'SC']
-    tmp, wild = [], []
-    for card in hand:
-        if card == '?R':
-            wild.append(list(reds))
-            continue
-        if card == '?B':
-            wild.append(list(blacks))
-            continue
-        tmp.append(card)
 
-    r = 5 - len(wild)
-    print 'r', r
-    nonwild = list(itertools.combinations(tmp, r))
-    result = []
-    wild = list(itertools.product(*wild))
-#    print wildcombi
-##    for i in nonwild:
-##        for j in wildcombi:
-##            c = list(i) + list(j)
-##            if c not in
-    result = set(tuple(list(i) + list(j)) for i in nonwild  for j in wild )
-    print result
-hands = ["6C 7C 8C 9C TC ?R ?B".split()]
-#hands = [['6C', '7C', '?B']]
-
-#print best_hand(hands[0])
-best_wild_hand(hands[0])
+#hands = ["6C 7C 8C 9C TC ?R ?B".split()]
+###hands = [['6C', '7C', '?B']]
+##
+###print best_hand(hands[0])
+#print sorted(best_wild_hand("6C 7C 8C 9C TC 5C ?B".split()))
+##print sorted(best_wild_hand("6C 7C 8C 9C TC 5C ?B".split()))
+#print sorted(best_wild_hand("JD TC TH 7C 7D 7S 7H".split())) == ['7C', '7D', '7H', '7S', 'JD']
+print test_best_wild_hand()
 
 
-    
 
-#print test_best_hand()
