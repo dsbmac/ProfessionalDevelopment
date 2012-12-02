@@ -68,7 +68,7 @@ def boolFirstLtr(perm, firstLtrsIndex):
 def genOuttab(intab, firstLtrs):
     itr = (''.join(list(i))  for i in itertools.permutations(string.digits, len(intab))
            if boolFirstLtr(i, firstLtrs))
-    return itr   
+    return itr    
 
 def getGenArgs(formula):
     pat = re.compile(r"\b([^\W\d]+)")
@@ -113,12 +113,28 @@ def compile_word(word):
     """Compile a word of uppercase letters as numeric digits.
     E.g., compile_word('YOU') => '(1*U+10*O+100*Y)'
     Non-uppercase words uncahanged: compile_word('+') => '+'"""
-    if word.isupper():
-        terms = [('%s*%s' % (10**i, d)) 
-                 for (i, d) in enumerate(word[::-1])]
-        return '(' + '+'.join(terms) + ')'
-    else:
-        return word
+    
+    result = ''
+    for i,ltr in enumerate(word):
+        result = str(10**(len(word)-i-1)) + '*' + ltr + result
+        if i != len(word)-1:
+            result = '+' + result
+
+    return result
+
+    
+    
+#old compile word
+##def compile_word(word):
+##    """Compile a word of uppercase letters as numeric digits.
+##    E.g., compile_word('YOU') => '(1*U+10*O+100*Y)'
+##    Non-uppercase words uncahanged: compile_word('+') => '+'"""
+##    if word.isupper():
+##        terms = [('%s*%s' % (10**i, d)) 
+##                 for (i, d) in enumerate(word[::-1])]
+##        return '(' + '+'.join(terms) + ')'
+##    else:
+##        return word
     
 def faster_solve(formula):
     """Given a formula like 'ODD + ODD == EVEN', fill in digits to solve it.
@@ -141,8 +157,8 @@ def test():
     for s in strings:
         #print solve(s)
         print faster_solve(s)
+cProfile.run('test()', sort=2)
 #cProfile.run('test()')
-cProfile.run('test()')
 
 
 
