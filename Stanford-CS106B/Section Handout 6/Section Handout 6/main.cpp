@@ -9,6 +9,8 @@
 
 #include "genlib.h"
 #include "vector.h"
+#include "queue.h"
+#include "rectangle.h"
 
 /*Problem 1
 a) What is a class? A class is an OOP concept object that has certain related function (data ) and data members in
@@ -51,6 +53,21 @@ ElemType FindMax(Vector<ElemType> &v, int (cmp)(ElemType, ElemType)=OperatorCmp)
 		if ( cmp(max, v[i]) > 0 ) max = v[i];
 	return max;
 }
+
+//Problem 4
+
+template <typename Type>
+void Filter(Queue<Type> &collection, bool (fn)(Type)) {
+	Queue<Type> tmp;
+	while(!collection.isEmpty()) {
+		Type item = collection.dequeue();
+		if (!fn(item)) {
+			tmp.enqueue(item);
+		}
+	}
+	collection = tmp;
+}
+
 
 int main ()
 {
