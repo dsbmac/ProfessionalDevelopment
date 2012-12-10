@@ -211,7 +211,7 @@ def simulationWithoutDrug(numViruses, maxPop, maxBirthProb, clearProb,
     pylab.title('Virus Population Simulation')
     pylab.xlabel('Time Steps')
     pylab.ylabel('Avg Virus Population Size')
-    pylab.legend()
+    pylab.legend(loc='best')
     pylab.show()   
 
 #
@@ -485,7 +485,7 @@ def simulationWithDrug(numViruses, maxPop, maxBirthProb, clearProb, resistances,
     pylab.xlabel('time step')
     pylab.ylabel('# viruses')
     pylab.title('ResistantVirus simulation')
-    pylab.legend()
+    pylab.legend(loc = 'best')
     pylab.show()
 
     
@@ -506,7 +506,7 @@ def test2():
     maxPop = 1000
     maxBirthProb = 0.1
     clearProb = 0.05
-    numTrials = 100
+    numTrials = 1
     simulationWithoutDrug(numViruses, maxPop, maxBirthProb, clearProb, numTrials)
 
 def test3():
@@ -547,4 +547,4 @@ def test6():
     simulationWithDrug(numViruses, maxPop, maxBirthProb, clearProb, resistances,
                        mutProb, numTrials)
     
-test6()
+test2()
