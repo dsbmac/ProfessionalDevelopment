@@ -10,6 +10,7 @@
 #include "genlib.h"
 #include "vector.h"
 #include "queue.h"
+#include "set.h"
 #include "rectangle.h"
 
 /*Problem 1
@@ -68,6 +69,21 @@ void Filter(Queue<Type> &collection, bool (fn)(Type)) {
 	collection = tmp;
 }
 
+//Problem 5
+template <typename ElemType>
+void RemoveDuplicates(Vector<ElemType> &v, int (cmp)(ElemType, ElemType)=OperatorCmp) {
+	Set<ElemType> vSet(cmp);
+	for (int i =0; i < v.length(); i++) {
+		vSet.add(v[i])
+	}
+
+	Vector<ElemType> result;
+	Set::Iterator iter = vSet.iterator();
+	while (iter.hasNext()) {
+		result.add(iter.next());
+	}
+	v = result;
+}
 
 int main ()
 {
