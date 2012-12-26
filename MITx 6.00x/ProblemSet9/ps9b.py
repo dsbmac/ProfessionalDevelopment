@@ -493,7 +493,7 @@ def simulationWithDrug(numViruses, maxPop, maxBirthProb, clearProb, resistances,
 # PROBLEM 1
 #
 def simulationWithDrug_split(numViruses, maxPop, maxBirthProb, clearProb, resistances,
-                       mutProb, numTrials, timesteps):
+                       mutProb, timesteps):
     """
     runs n timesteps then an additional 150 steps
 
@@ -513,27 +513,24 @@ def simulationWithDrug_split(numViruses, maxPop, maxBirthProb, clearProb, resist
              (a float between 0-1). 
     numTrials: number of simulation runs to execute (an integer)
     
-    """              
+    """
+    
     timestepParams = [timesteps, 150]
-    totalPopData = [0] * sum(timestepParams)
-    results = []
+    totalPop = 0    
     
-    for i in range(numTrials):
-        viruses = [] # a list of 100 ResistantVirus instances
-        for j in range(numViruses):
-            v = ResistantVirus(maxBirthProb, clearProb, resistances, mutProb)
-            viruses.append(v)
-        
-        p = TreatedPatient(viruses, maxPop)
-        for m in range(2): #split the test in half once after adding the drug
-            for k in range(timestepParams[m]):            
-                totalPopData[k + (m * timesteps/2)] += p.update()
-                
-            p.addPrescription('guttagonol')
-        results.append(totalPopData[-1])
+    viruses = [] # a list of 100 ResistantVirus instances
+    for j in range(numViruses):
+        v = ResistantVirus(maxBirthProb, clearProb, resistances, mutProb)
+        viruses.append(v)
+    
+    p = TreatedPatient(viruses, maxPop)
+    for m in range(2): #split the test in half once after adding the drug
+        for k in range(timestepParams[m]):            
+            totalPop = p.update()
             
-    return results
-    
+        p.addPrescription('guttagonol')        
+            
+    return totalPop    
     
 def test():
     virus = SimpleVirus(0.2, 0.5)
@@ -544,8 +541,7 @@ def test():
     print p.getMaxPop()
     print p.getTotalPop()
     
-    print p.update()
-    
+    print p.update()    
 
 def test2():
     numViruses = 100
@@ -603,11 +599,14 @@ def test7():
     mutProb = 0.005    
     numTrials = 10
     timesteps = 0
-    
-    trial = simulationWithDrug_split(numViruses, maxPop, maxBirthProb, clearProb, resistances,
-                       mutProb, numTrials, timesteps)
+    results = []
 
-    pylab.hist(trial)
+    for i in range(numTrials):
+        trial = simulationWithDrug_split(numViruses, maxPop, maxBirthProb, clearProb, resistances,
+                           mutProb, timesteps)
+        results.append(trial)
+
+    pylab.hist(results)
     pylab.show()
     
 test7()
