@@ -11,7 +11,6 @@ from ps8b_precompiled_27 import *
 
 def runSplitTrial(numViruses, maxPop, maxBirthProb, clearProb, resistances,
                        mutProb, timeSteps):
-    
     totalPop = 0
     viruses = []
     for i in range(numViruses):
@@ -19,13 +18,19 @@ def runSplitTrial(numViruses, maxPop, maxBirthProb, clearProb, resistances,
         viruses.append(v)
         
     p = TreatedPatient(viruses, maxPop)
-    for i in range(2): #split the test in half, the latter after adding the drug
+    for i in range(len(timeSteps)): #split the test in parts
+#        print 'i:', i, timeSteps[i]
         for j in range(timeSteps[i]):
             totalPop = p.update()
-            #print 'totalPop:', totalPop
+#            print 'totalPop:', totalPop
         if i == 0:
-            p.addPrescription('guttagonol')            
-    return totalPop    
+            p.addPrescription('guttagonol')
+#            print 'adding guttagonol', i
+        elif len(timeSteps) > 2 and i == 1:
+            p.addPrescription('grimpex')
+#            print 'adding grimpex', i
+                   
+    return totalPop             
     
 def simulationDelayedTreatment(numTrials):
     """
@@ -40,6 +45,7 @@ def simulationDelayedTreatment(numTrials):
 
     numTrials: number of simulation runs to execute (an integer)
     """
+
     numViruses = 100
     maxPop = 1000
     maxBirthProb = 0.1
@@ -47,7 +53,6 @@ def simulationDelayedTreatment(numTrials):
     resistances = {'guttagonol': False}
     mutProb = 0.005        
 
-    #pylab.title('Split Drug Trials')   
     timeStepParams = [300, 150, 75, 0]
     for k, steps in enumerate(timeStepParams):
         results = []
@@ -62,16 +67,16 @@ def simulationDelayedTreatment(numTrials):
         numBins = min(len(results), 10)
         pylab.hist(results, numBins)
         pylab.ylabel("Trials")        
-
     
     pylab.xlabel("Final Virus Population")
     pylab.show()   
+
+
     
 def test():
     numTrials = 100
     simulationDelayedTreatment(numTrials)
 
-test()
 
 #
 # PROBLEM 2
@@ -89,4 +94,34 @@ def simulationTwoDrugsDelayedTreatment(numTrials):
 
     numTrials: number of simulation runs to execute (an integer)
     """
-    # TODO
+    
+    numViruses = 100
+    maxPop = 1000
+    maxBirthProb = 0.1
+    clearProb = 0.05
+    resistances = {'guttagonol': False, 'grimpex': False}
+    mutProb = 0.005        
+
+    timeStepParams = [300, 150, 75, 0]
+    for k, steps in enumerate(timeStepParams):
+        results = []
+        for i in range(numTrials):
+            result = []
+            timeSteps = [150, steps, 150]
+            result = runSplitTrial(numViruses, maxPop, maxBirthProb, clearProb, resistances,
+                               mutProb, timeSteps)        
+            results.append(result)            
+#        print results
+        pylab.subplot(len(timeStepParams), 1, k + 1)
+        numBins = min(len(results), 10)
+        pylab.hist(results, numBins)
+        pylab.ylabel("Trials")        
+    
+    pylab.xlabel("Final Virus Population")
+    pylab.show()  
+
+def test2():
+    numTrials = 100
+    simulationTwoDrugsDelayedTreatment(numTrials)
+
+test2()
