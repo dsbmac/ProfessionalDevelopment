@@ -1,0 +1,3 @@
+def identity_decorator(func):
+	def wrapper():
+		func()
