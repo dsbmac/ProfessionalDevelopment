@@ -21,14 +21,13 @@ class Node(object):
 class Edge(object):
     def __init__(self, src, dest):
         self.src = src
-        self.dest = dest        
+        self.dest = dest
     def getSource(self):
         return self.src
     def getDestination(self):
         return self.dest
     def __str__(self):
         return '%s->%s' % (str(self.src), str(self.dest))
-
 
 class Digraph(object):
     """
@@ -59,45 +58,3 @@ class Digraph(object):
             for d in self.edges[str(k)]:
                 res = '%s%s->%s\n' % (res, str(k), str(d))
         return res[:-1]
-
-
-class W_Node(Node):
-    def __hash__(self):
-        return int(self.name)
-
-
-class WeightedEdge(Edge):
-    def __init__(self, src, dest, distance, distanceOutdoors):
-        self.src = src
-        self.dest = dest
-        self.distance = distance
-        self.distanceOutdoors = distanceOutdoors
-
-    def getDistance(self):
-        return self.distance
-
-    def getDistanceOutdoors(self):
-        return self.distanceOutdoors
-
-    def __str__(self):
-        return '%s->%s (%s, %s)'  % (str(self.src), str(self.dest),
-            str(self.distance), str(self.distanceOutdoors))
-
-class WeightedDigraph(Digraph):
-    def __str__(self):
-        res = ''
-        for k in self.edges:
-            for e in self.edges[k]:
-                dest = e.getDestination()
-                d = e.getDistance()
-                do = e.getDistanceOutdoors()
-                res = '%s%s->%s (%s, %s)\n' % (res, str(k), str(dest), str(d), str(do))
-        return res[:-1]
-
-    def addWeightedEdge(self, edge):            
-        src = edge.getSource()
-        dest = edge.getDestination()
-        if not(src in self.nodes and dest in self.nodes):
-            raise ValueError('Node not in graph')
-        self.edges[src].append(edge)
-

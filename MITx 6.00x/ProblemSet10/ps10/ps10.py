@@ -7,18 +7,13 @@
 # 
 
 import string
-from graph import WeightedDigraph, WeightedEdge, W_Node
+from graph import Digraph, Edge, Node
 
 #
 # Problem 2: Building up the Campus Map
 #
 # Write a couple of sentences describing how you will model the
 # problem as a graph
-#
-# will need to show the distance between nodes and how much
-# of it is outdoors. 
-# a dictionary will store all nodes. each node entry will be a 
-# dictionary containing 'children' (set), 
 #
 
 def load_map(mapFilename):
@@ -41,27 +36,7 @@ def load_map(mapFilename):
     """
     # TODO
     print "Loading map from file..."
-    result = WeightedDigraph()
-    with open(mapFilename, 'r') as inFile:
-        for line in inFile.readlines():
-            print 'line:', line
-            s, toNode, totalDist, distOut = line.split()
-            fromNode = int(s)
-            #print 'type', type(fromNode)
-            node1 = W_Node(int(fromNode))
-            node2 = W_Node(int(toNode))
-            weightedEdge = WeightedEdge(node1, node2, int(totalDist), int(distOut))       
-            print 'weightedEdge', weightedEdge
-
-            if node1 not in result.nodes:
-                result.addNode(node1)            
-            if node2 not in result.nodes:
-                result.addNode(node2)            
-            result.addWeightedEdge(weightedEdge)
-            print result
-
-
-load_map("mit_map.txt")
+        
 
 #
 # Problem 3: Finding the Shortest Path using Brute Force Search
