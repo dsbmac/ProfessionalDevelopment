@@ -1,0 +1,13 @@
+class Time(object):
+
+    def print_time(time):
+        
+        print '%.2d' % time.hour
+
+
+time = Time()
+time.hour = 11
+time.minute = 59
+time.second = 30
+
+print_time(time)

@@ -1,0 +1,29 @@
+##onetoten = range(1,21)
+##for count in onetoten:
+##    ##divisable by 3
+##    if count%3 == 0 and count%5 == 0:
+##        print('FizzBuzz')
+##    elif count%3 == 0:
+##        print('Fizz')
+##    elif count%5 == 0:
+##        print('Buzz')         
+##    else:
+##        print(count)
+##
+####divisible by 5
+##
+####divisible by 3 and 5
+
+
+for i in range(1,21):
+    fb = str(i)
+    if i % 3 == 0 or i % 5 == 0:
+        fb = ''
+        if i%3 == 0:
+            fb = fb + 'Fizz'
+        if i % 5 == 0:
+            fb = fb + 'Buzz'
+    print(fb)    
+
+    
+        

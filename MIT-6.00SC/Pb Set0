@@ -1,0 +1,3 @@
+x = raw_input('Enter your date of birth: ')
+y = raw_input('Last Name: ')
+print y + ' ' + x

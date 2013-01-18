@@ -1,0 +1,35 @@
+##outBal = float(raw_input('Outstanding Balance: '))
+##annIntRate = float(raw_input('annual interest rate: '))
+
+outBal = float(320000)
+annIntRate = float(0.2)
+minMonthlyPayRate = float(0.04)
+balance = outBal
+totalAmtPaid = 0
+updatedMonthlyBal =  0
+monthlyIntRate = annIntRate/12
+
+
+print 'Enter the outstanding balance on your credit card: ' + str(outBal)
+print 'Enter the annual credit card interest rate as a decimal: ' + str(annIntRate) 
+
+minMonthlyPayoff = round((outBal/12),2)
+while balance > 0 :
+    minMonthlyPayoff+=0.01 
+    balance = outBal
+    ##print 'Monthly Payment: ' + str(minMonthlyPayoff)
+    i = 0
+    while i <= 11 and balance > 0:
+        i+=1       
+        balance = round((balance * (1 + monthlyIntRate) - minMonthlyPayoff),2)
+      ##  print 'Balance: ' + str(balance)
+
+
+
+##final result
+print 'RESULT'
+print 'Monthly payment to pay off debt in 1 year: ' + str(round(minMonthlyPayoff,2))
+print 'Number of months needed: ' + str(i)
+print 'Balance: ' + str(balance)
+
+     
