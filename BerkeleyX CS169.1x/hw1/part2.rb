@@ -30,11 +30,20 @@ def rps_game_winner(game)
 end
 
 def rps_tournament_winner(tournament)
-  players = tournament.flatten(2)
-  
+  flat = tournament.flatten
+
+  players = Array.new
+  player = Array.new
+  flat.each do |x|    
+    player << x
+    if player.length == 2
+      players.insert(0, player)
+      player = []
+    end
+  end
+
   while players.length > 1
     players.insert(0, rps_game_winner( [players.pop, players.pop]) ) 
   end
   return players[0]
-
 end
