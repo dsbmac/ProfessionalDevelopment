@@ -1,0 +1,23 @@
+Mini-project description - Rock-paper-scissors-lizard-Spock
+http://www.codeskulptor.org/#user2-cyvEmgwohl-2.py
+
+Mini-project description - "Guess the number" game
+http://www.codeskulptor.org/#user3-tgh6w1tPmoEmJPJ-0.py
+
+Mini-project description -  "Stopwatch: The Game"
+http://www.codeskulptor.org/#user4-KHfCRP9ceo-1.py
+
+Mini-project #4 -  "Pong"
+http://www.codeskulptor.org/#user4-N9KE8jbClt-29.py
+
+Mini-project description - Memory
+http://www.codeskulptor.org/#user5-Sb26NNSxxg-13.py
+
+Mini-project description - Blackjack
+http://www.codeskulptor.org/#user5-bnQ4RKiVDD-0.py
+
+Mini-project description - Spaceship
+http://www.codeskulptor.org/#user7-A13ipSN4nN-18.py
+
+Mini-project description - RiceRocks (Asteroids)
+http://www.codeskulptor.org/#user7-Fl4tE6mTpr-25.py
