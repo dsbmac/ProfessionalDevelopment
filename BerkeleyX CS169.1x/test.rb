@@ -9,4 +9,5 @@ def mystery_sequence(start1, start2, limit=4)
     end
 
 s=[]
-mystery_sequence(2,3).each do |elt| ;s <<elt; end
+mystery_sequence(2,3) do |elt| ;s <<elt; end
+print s
