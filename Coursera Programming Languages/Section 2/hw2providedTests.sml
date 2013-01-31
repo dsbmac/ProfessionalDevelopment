@@ -23,25 +23,27 @@ val test_all_except_option =
 val test_get_substitutions1 =
     get_substitutions1([["Fred","Fredrick"],["Elizabeth","Betty"],["Freddie","Fred","F"]],"Fred")
 
+val test_get_substitutions1' =
+    get_substitutions1([],"Fred")
+
 val test_get_substitutions2 =
     get_substitutions1([["Fred","Fredrick"],["Elizabeth","Betty"],["Freddie","Fred","F"]],"Fred")
 
 val test_similar_names =
     similar_names([["Fred","Fredrick"],["Elizabeth","Betty"],["Freddie","Fred","F"]],{first="Fred", middle="W", last="Smith"})
 
-val q01_tests = 
-    test_all_except_option = [SOME ["Changes","Everything"], NONE]
-val q02_tests = 
-    test_get_substitutions1 = ["Fredrick","Freddie","F"]
-val q03_tests = 
+val q01a_test = 
+    test_all_except_option = [SOME ["Changes","Everything"],NONE]
+val q01b_test = 
+    test_get_substitutions1 = ["Fredrick","Freddie","F"] andalso test_get_substitutions1' = []
+val q01c_test = 
     test_get_substitutions2 = ["Fredrick","Freddie","F"]
-val q04_tests =
-    test_similar_names = [{first="Fred", last="Smith", middle="W"},{first="Fredrick", last="Smith", middle="W"},{first="Freddie", last="Smith", middle="W"}, {first="F", last="Smith", middle="W"}]
+val q01d_test =
+    test_similar_names = [{first="Fredrick",last="Smith",middle="W"},
+   {first="F",last="Smith",middle="W"},
+   {first="Freddie",last="Smith",middle="W"},
+   {first="Fred",last="Smith",middle="W"}]
 
-val all_tests = 
-    q01_tests andalso q02_tests andalso q03_tests andalso q04_tests
-
-(*
 fun provided_test1 () = (* correct behavior: raise IllegalMove *)
     let val cards = [(Clubs,Jack),(Spades,Num(8))]
 	val moves = [Draw,Discard(Hearts,Jack)]
@@ -53,6 +55,8 @@ fun provided_test2 () = (* correct behavior: return 3 *)
     let val cards = [(Clubs,Ace),(Spades,Ace),(Clubs,Ace),(Spades,Ace)]
 	val moves = [Draw,Draw,Draw,Draw,Draw]
     in
- 	officiate(cards,moves,42)
+ 	officiate(cards,moves,42) = 3
     end
-*)
+
+val all_tests = 
+    q01a_test andalso q01b_test andalso q01c_test andalso q01d_test andalso provided_test2()
