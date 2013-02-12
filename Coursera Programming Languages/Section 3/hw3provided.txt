@@ -56,7 +56,7 @@ fun longest_string1 xs =
     end
 *)
 
-fun longest_string1 xs = List.foldl (fn (x,y) => if String.size x > String.size y then x else y ) "" xs
+fun longest_string1 xs = foldl (fn (x,y) => if String.size x > String.size y then x else y ) "" xs
 
 
 
@@ -67,12 +67,12 @@ fun longest_string2 xs =
 	    then x
 	    else s
     in
-	List.foldl f "" xs
+	foldl f "" xs
     end
 
 
 
-fun longest_string_helper (f,xs) = List.foldl (fn(x,y) => if f(String.size x, String.size y) then x else y) "" xs
+fun longest_string_helper (f,xs) = foldl (fn(x,y) => if f(String.size x, String.size y) then x else y) "" xs
 
 fun longest_string3 xs = 
     longest_string_helper (fn (x,y) =>  x > y, xs)
@@ -89,7 +89,7 @@ val sqrt_of_abs = Math.sqrt o Real.fromInt o abs
 val rev_string = implode o rev o explode 
 
 
-fun first_answer f xs = 
+fun first_answer (f,xs) = 
     let exception NoAnswer
 	fun f' (acc,xs) =
 	    case xs of
@@ -101,7 +101,7 @@ fun first_answer f xs =
 	f' (NONE, xs)
     end
 
-fun all_answers f xs = 
+fun all_answers (f,xs) = 
     let fun f' (acc,xs) =
 	    case xs of
 		[] => SOME acc
