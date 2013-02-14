@@ -1,0 +1,58 @@
+// These exercises are meant to get you familiar with basic variable declerations and JavaScript primitive types. The exercises below will as you to print things to the console. This can be done with a console.log function call. Example:
+console.log( "hello there." );
+
+// If you choose to "run" the fiddle using the above run button, you'll see the console log statement in the result pane to the left.
+
+// The questions will give you an answer area to fill in with your console.log statements.
+
+// Question1 : Log to the console only those values that are considered "truthy"
+
+var q1Var1 = "hello",
+    q1Var2 = 0,
+    q1Var3 = true,
+    q1Var4 = "false",
+    q1Var5 = -1,
+    q1Var6 = undefined,
+    q1Var7 = null,
+    q1Var8;
+
+// BEGIN Question 1 Answer
+console.log(q1Var1);
+console.log(q1Var3);
+console.log(q1Var4);
+console.log(q1Var5);
+
+// END Question 1 Answer
+
+// Question 2: Log to the console the items that are considered primitive types.
+var q2Var1 = "hi there.",
+    q2Var2 = String( "another string here." ),
+    q2Var3 = Number( 1.41 ),
+    q2Var4 = !!Boolean( true );
+
+// BEGIN Question 2 Answer
+console.log(q2Var1)
+console.log(q2Var2)
+console.log(q2Var3)
+console.log(q2Var4)
+
+// END Question 2 Answer
+
+// Question 3: Print the contactenation of theses two strings to the console.
+var q3Var1 = "hello, ",
+    q3Var2 = "is it me you're looking for?";
+
+// BEGIN Question 3 Answer
+console.log( q3Var1 +q3Var2)
+
+// END Question 3 Answer
+
+
+// Question 4: Coerce the first variable to a number, add the two variables together and log the result to the console.
+var q4Var1 = "24",
+    q4Var2 = 18;
+
+// BEGIN Question 4 Answer
+console.log(parseInt(q4Var1) + q4Var2);
+
+// END Question 4 Answer
