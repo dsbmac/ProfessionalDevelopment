@@ -1,6 +1,6 @@
 <map version="0.9.0">
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
-<node COLOR="#000000" CREATED="1359982230999" ID="ID_1271875710" MODIFIED="1360588242079">
+<node COLOR="#000000" CREATED="1359982230999" ID="ID_1271875710" MODIFIED="1361213057273">
 <richcontent TYPE="NODE"><html>
   <head>
     
@@ -14,787 +14,9 @@
     </p>
   </body>
 </html></richcontent>
-<font NAME="Verdana" SIZE="30"/>
+<font NAME="Verdana" SIZE="36"/>
 <hook NAME="accessories/plugins/AutomaticLayout.properties"/>
-<node COLOR="#0033ff" CREATED="1359982377329" ID="ID_1795020779" MODIFIED="1360582308847" POSITION="right">
-<richcontent TYPE="NODE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      Understand functional and
-    </p>
-    <p>
-      object-oriented programs
-    </p>
-  </body>
-</html></richcontent>
-<edge STYLE="sharp_bezier" WIDTH="8"/>
-<font NAME="Georgia" SIZE="24"/>
-<node COLOR="#cc0000" CREATED="1360238138828" ID="ID_1039009066" MODIFIED="1360680117617" TEXT="A functional program is a just a sequence of bindings">
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="20"/>
-<icon BUILTIN="idea"/>
-</node>
-<node COLOR="#cc0000" CREATED="1360279616734" ID="ID_1681294643" MODIFIED="1360680117618" TEXT="Avoiding mutation">
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="20"/>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360237665449" ID="ID_327473395" MODIFIED="1360680117618" TEXT="Immutable Data">
-<font NAME="Georgia" SIZE="16"/>
-<node COLOR="#111111" CREATED="1360237683576" ID="ID_1275495174" MODIFIED="1360588242081">
-<richcontent TYPE="NODE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      This is the core of functional programming!
-    </p>
-  </body>
-</html></richcontent>
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360033161895" ID="ID_1345295613" MODIFIED="1360680117618">
-<richcontent TYPE="NODE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      Benefits of no mutation
-    </p>
-  </body>
-</html></richcontent>
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Georgia" SIZE="16"/>
-<node COLOR="#111111" CREATED="1360279645806" ID="ID_590255026" MODIFIED="1360588242081" TEXT="be confident no one changes your code">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1360748715587" ID="ID_1586228212" MODIFIED="1360748720618" TEXT="Java security leak">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1360748720620" ID="ID_1912960728" MODIFIED="1360748744715" TEXT="returns an alias you can change the list of allowed users">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-</node>
-<node COLOR="#111111" CREATED="1360747977688" ID="ID_62309598" MODIFIED="1360747981534" TEXT="Alias">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1360747872457" ID="ID_1058604614" MODIFIED="1360747885639" TEXT="ML creates aliases all the time">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1360747885640" ID="ID_1600849500" MODIFIED="1360747903600" TEXT="impossible to tell, which is fine">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-<node COLOR="#111111" CREATED="1360747910488" ID="ID_1829513113" MODIFIED="1360747919697" TEXT="allows you to focus on the algorithm">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-<node COLOR="#111111" CREATED="1360747993160" ID="ID_800794684" MODIFIED="1360748028061" TEXT="languages that mutate data (Java) programmers have to obsess if the objects alias">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-</node>
-</node>
-<node COLOR="#cc0000" CREATED="1360279750597" ID="ID_1480013565" MODIFIED="1360680117618" TEXT="Using functions as values">
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="20"/>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360279930435" ID="ID_1356647071" MODIFIED="1360680117619" TEXT="First-class functions">
-<font NAME="Georgia" SIZE="16"/>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1360033161876" ID="ID_491676561" MODIFIED="1360588242082">
-<richcontent TYPE="NODE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      Higher-order functions
-    </p>
-  </body>
-</html></richcontent>
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1360033161863" ID="ID_1432374590" MODIFIED="1360588242082">
-<richcontent TYPE="NODE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      Currying
-    </p>
-  </body>
-</html></richcontent>
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="12"/>
-</node>
-<node COLOR="#111111" CREATED="1360285441388" ID="ID_993106401" MODIFIED="1360588242082" TEXT="often polymorphic but not always">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1360288457456" ID="ID_76440692" MODIFIED="1360588242083">
-<richcontent TYPE="NODE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      fun times_until_zero (f,x) =
-    </p>
-    <p>
-      &#160;&#160;&#160;&#160;if x=0 then 0 else 1 + times_until_zero(f, fx)
-    </p>
-  </body>
-</html></richcontent>
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-</node>
-<node COLOR="#111111" CREATED="1360279954516" ID="ID_160232736" MODIFIED="1360588242083" TEXT="functions are values">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-<node COLOR="#111111" CREATED="1360279968803" ID="ID_1297763280" MODIFIED="1360588242083" TEXT="can use them wherever we use values">
-<font NAME="Verdana" SIZE="12"/>
-<icon BUILTIN="idea"/>
-<node COLOR="#111111" CREATED="1360280160409" ID="ID_1955595259" MODIFIED="1360588242083" TEXT="most common use is as an argument/result  of another function">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1360280235474" ID="ID_133652359" MODIFIED="1360588242084">
-<richcontent TYPE="NODE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      the other function is called a <i>higher-order function</i>
-    </p>
-  </body>
-</html></richcontent>
-<arrowlink DESTINATION="ID_491676561" ENDARROW="Default" ENDINCLINATION="222;8;" ID="Arrow_ID_371717414" STARTARROW="None" STARTINCLINATION="-240;-42;"/>
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-</node>
-<node COLOR="#111111" CREATED="1360283057960" ID="ID_1260475361" MODIFIED="1360588242084" TEXT="function as arguments">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1360283092390" ID="ID_303507059" MODIFIED="1360588242084" TEXT="fun f(g,...) = g(...)">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-<node COLOR="#111111" CREATED="1360283447075" ID="ID_305234561" MODIFIED="1360588242084" TEXT="good technique to reuse code">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-<node COLOR="#111111" CREATED="1360287970939" ID="ID_783793342" MODIFIED="1360588242085" TEXT="Type">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1360287977546" ID="ID_323935551" MODIFIED="1360588242085">
-<richcontent TYPE="NODE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      fun n_times (f,n,x) =
-    </p>
-    <p>
-      &#160;&#160;&#160;&#160;if n = 0
-    </p>
-    <p>
-      &#160;&#160;&#160;&#160;then x
-    </p>
-    <p>
-      &#160;&#160;&#160;&#160;else f(n_times(f, n-1, x))
-    </p>
-  </body>
-</html></richcontent>
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1360288046266" ID="ID_1509506845" MODIFIED="1360588242085" TEXT="val n_times : (&apos;a -&gt; &apos;a) * int * &apos;a -&gt; &apos;a">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1360288326312" ID="ID_1677230853" MODIFIED="1360588242085" TEXT="A function of type &#x2032;a&#x2212;&gt;&#x2032;a indicates it takes one argument and returns a value of the same type as the argument.">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-</node>
-<node COLOR="#111111" CREATED="1360288164345" ID="ID_1948875305" MODIFIED="1360588242085" TEXT="&apos;a means any type can be used">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-</node>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360205516462" ID="ID_61580563" MODIFIED="1360680117621" TEXT="Closures">
-<arrowlink DESTINATION="ID_1356647071" ENDARROW="Default" ENDINCLINATION="-6;24;" ID="Arrow_ID_1828335752" STARTARROW="Default" STARTINCLINATION="3;-12;"/>
-<font NAME="Georgia" SIZE="16"/>
-<node COLOR="#111111" CREATED="1360280472759" ID="ID_771140487" MODIFIED="1360588242086" TEXT="can use bindings from outside the function definition">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-<node COLOR="#111111" CREATED="1360280499424" ID="ID_489499515" MODIFIED="1360588242086" TEXT="makes 1st-class functions much more powerful">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1360364005729" ID="ID_55150341" MODIFIED="1360588242086" TEXT="fold">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-<node COLOR="#111111" CREATED="1360364012896" ID="ID_1690890120" MODIFIED="1360588242087" TEXT="private data">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-<node COLOR="#111111" CREATED="1360364019695" ID="ID_1402387868" MODIFIED="1360588242087" TEXT="lexical scope">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-<node COLOR="#111111" CREATED="1360358554152" ID="ID_1530468876" MODIFIED="1360588242087" TEXT="recomputation savings">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360292338868" ID="ID_1268681033" MODIFIED="1360680117622" TEXT="Anonymous">
-<font NAME="Georgia" SIZE="16"/>
-<node COLOR="#111111" CREATED="1360292346907" ID="ID_1082665501" MODIFIED="1360588242087" TEXT="cannot use with recursion ">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-<node COLOR="#111111" CREATED="1360292351972" ID="ID_1977566871" MODIFIED="1360588242088" TEXT="most common use is as an argument to higher order function">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-<node COLOR="#111111" CREATED="1360292445835" ID="ID_1797608789" MODIFIED="1360588242088" TEXT="great for use in only one place">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-</node>
-<node COLOR="#cc0000" CREATED="1360279849323" ID="ID_889804456" MODIFIED="1360680117623" TEXT="no clear yes/no for a particular language">
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="20"/>
-</node>
-<node COLOR="#cc0000" CREATED="1360279874371" ID="ID_1671089419" MODIFIED="1360680117623" TEXT="Style">
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="20"/>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360033161791" ID="ID_1873965344" MODIFIED="1360680117623">
-<richcontent TYPE="NODE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      Laziness, streams, and memoization
-    </p>
-  </body>
-</html></richcontent>
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Georgia" SIZE="16"/>
-</node>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360279779519" ID="ID_388725695" MODIFIED="1360680117624" TEXT="closer to mathematical definitions">
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Georgia" SIZE="16"/>
-</node>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360238258911" ID="ID_1962718393" MODIFIED="1360680117624" TEXT="Recursion affinity">
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Georgia" SIZE="16"/>
-</node>
-</node>
-</node>
-<node COLOR="#0033ff" CREATED="1359982430637" ID="ID_629579194" MODIFIED="1360582308856" POSITION="right">
-<richcontent TYPE="NODE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      How to learn
-    </p>
-    <p>
-      new programming
-    </p>
-    <p>
-      languages quickly
-    </p>
-  </body>
-</html></richcontent>
-<edge STYLE="sharp_bezier" WIDTH="8"/>
-<font NAME="Georgia" SIZE="24"/>
-<node COLOR="#cc0000" CREATED="1360748069471" ID="ID_1563956048" MODIFIED="1360748093342" TEXT="Syntax">
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="20"/>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360748073175" ID="ID_496570450" MODIFIED="1360748082319" TEXT="How do you write language constructs">
-<font NAME="Georgia" SIZE="16"/>
-</node>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360241571299" ID="ID_817354878" MODIFIED="1360748225868" TEXT="3 Rules">
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Georgia" SIZE="16"/>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1360033218497" ID="ID_875308996" MODIFIED="1360748225868" TEXT="Syntax">
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="12"/>
-<icon BUILTIN="stop"/>
-<node COLOR="#111111" CREATED="1360238767539" ID="ID_1839216680" MODIFIED="1360588242092" TEXT="type checking">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-<node COLOR="#111111" CREATED="1360239662960" ID="ID_942876054" MODIFIED="1360588242092" TEXT="how you write something valid">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1360239813989" ID="ID_1639485916" MODIFIED="1360748225869" TEXT="Evaluation">
-<font NAME="Verdana" SIZE="12"/>
-<icon BUILTIN="go"/>
-<node COLOR="#111111" CREATED="1360239826583" ID="ID_786276893" MODIFIED="1360588242093" TEXT="as the program runs">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-<node COLOR="#111111" CREATED="1360240120194" ID="ID_1136395115" MODIFIED="1360588242093" TEXT="extends the dynamic env.">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-<node COLOR="#111111" CREATED="1360241814745" ID="ID_1523572351" MODIFIED="1360588242093" TEXT="must type check first">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1360241797532" ID="ID_704096861" MODIFIED="1360588242093" TEXT="produces a value">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1360244179849" ID="ID_489282001" MODIFIED="1360588242094" TEXT="all values are expressions">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-<node COLOR="#111111" CREATED="1360244237253" ID="ID_566949980" MODIFIED="1360588242094" TEXT="not all expressions are values">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-<node COLOR="#111111" CREATED="1360244255516" ID="ID_1252301042" MODIFIED="1360588242094" TEXT="evaluates to itself in 0 steps">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-</node>
-</node>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1360239801091" ID="ID_1559677290" MODIFIED="1360748225871" TEXT="Type Checking">
-<font NAME="Verdana" SIZE="12"/>
-<icon BUILTIN="prepare"/>
-<node COLOR="#111111" CREATED="1360239838887" ID="ID_888927622" MODIFIED="1360588242095" TEXT="before the program runs">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-<node COLOR="#111111" CREATED="1360240104139" ID="ID_543078809" MODIFIED="1360588242095" TEXT="extends the static environment">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-<node COLOR="#111111" CREATED="1360244319846" ID="ID_146160701" MODIFIED="1360588242095" TEXT="Types">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1360244331140" ID="ID_860706922" MODIFIED="1360588242095" TEXT="int">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-<node COLOR="#111111" CREATED="1360244334346" ID="ID_548484441" MODIFIED="1360588242095">
-<richcontent TYPE="NODE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      unit ( )
-    </p>
-  </body>
-</html></richcontent>
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1360244346696" ID="ID_898966498" MODIFIED="1360588242096" TEXT="the resul of using the use command in REPL">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-<node COLOR="#111111" CREATED="1360244340228" ID="ID_1821718631" MODIFIED="1360588242096" TEXT="bool">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-<node COLOR="#111111" CREATED="1360247284312" ID="ID_1768979395" MODIFIED="1360588242096" TEXT="Function">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-</node>
-</node>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360748478077" ID="ID_1497071528" MODIFIED="1360748497769" TEXT="uninteresting but a req for getting semantics">
-<font NAME="Georgia" SIZE="16"/>
-</node>
-</node>
-<node COLOR="#cc0000" CREATED="1360239723479" ID="ID_773106793" MODIFIED="1360748432111" TEXT="Semantics">
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="20"/>
-<icon BUILTIN="yes"/>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360239732983" ID="ID_50682881" MODIFIED="1360680117626" TEXT="What the written code means">
-<font NAME="Georgia" SIZE="16"/>
-</node>
-</node>
-<node COLOR="#cc0000" CREATED="1360033223006" ID="ID_983321391" MODIFIED="1360680117624" TEXT="Idioms">
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="20"/>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360033161855" ID="ID_333611860" MODIFIED="1360680117625">
-<richcontent TYPE="NODE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      Syntactic sugar
-    </p>
-  </body>
-</html></richcontent>
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Georgia" SIZE="16"/>
-</node>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360748263205" ID="ID_330116923" MODIFIED="1360748277173" TEXT="typical patterns fo using language features">
-<font NAME="Georgia" SIZE="16"/>
-</node>
-</node>
-<node COLOR="#cc0000" CREATED="1360033227093" ID="ID_1365563441" MODIFIED="1360680117625" TEXT="Libraries">
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="20"/>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360748286182" ID="ID_1949954391" MODIFIED="1360748304788" TEXT="what facilities does the language provide">
-<font NAME="Georgia" SIZE="16"/>
-</node>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360748342333" ID="ID_735048834" MODIFIED="1360748350250" TEXT="how much do you have write yourself">
-<font NAME="Georgia" SIZE="16"/>
-</node>
-</node>
-<node COLOR="#cc0000" CREATED="1360033231542" ID="ID_1572582425" MODIFIED="1360680117625" TEXT="Tools">
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="20"/>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360748307445" ID="ID_339621089" MODIFIED="1360748327177" TEXT="REPL, debugger, code formatter, etc.">
-<font NAME="Georgia" SIZE="16"/>
-</node>
-</node>
-<node COLOR="#cc0000" CREATED="1360245982303" ID="ID_297285607" MODIFIED="1360680117626" TEXT="Play around">
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="20"/>
-</node>
-</node>
-<node COLOR="#0033ff" CREATED="1359982430628" ID="ID_1435228231" MODIFIED="1360582308864" POSITION="right">
-<richcontent TYPE="NODE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      Master language
-    </p>
-    <p>
-      concepts and
-    </p>
-    <p>
-      recognize them in
-    </p>
-    <p>
-      strange guises
-    </p>
-  </body>
-</html></richcontent>
-<edge STYLE="sharp_bezier" WIDTH="8"/>
-<font NAME="Georgia" SIZE="24"/>
-<node COLOR="#cc0000" CREATED="1360033161903" ID="ID_1238292414" MODIFIED="1360680117632">
-<richcontent TYPE="NODE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      Recursive functions and recursive types
-    </p>
-  </body>
-</html></richcontent>
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="20"/>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360033161882" ID="ID_944928480" MODIFIED="1360680117632">
-<richcontent TYPE="NODE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <ul style="font-style: normal; color: rgb(51, 51, 51); text-transform: none; padding-bottom: 0px; margin-right: 0px; font-size: 14.44444465637207px; line-height: 20.98958396911621px; white-space: normal; margin-left: 25px; margin-top: 0px; font-variant: normal; text-align: start; background-color: rgb(255, 255, 255); text-indent: 0px; margin-bottom: 10.5px; letter-spacing: normal; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-weight: normal; padding-left: 0px; padding-top: 0px; padding-right: 0px; word-spacing: 0px">
-      <li style="line-height: 21px">
-        Tail recursion
-      </li>
-    </ul>
-  </body>
-</html></richcontent>
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Georgia" SIZE="16"/>
-</node>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360248940034" ID="ID_1554032695" MODIFIED="1360680117633" TEXT="more powerful than loops">
-<font NAME="Georgia" SIZE="16"/>
-</node>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360735663831" ID="ID_576027498" MODIFIED="1360735689059" TEXT="Functions over lists are usually recursive">
-<font NAME="Georgia" SIZE="16"/>
-</node>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360735689726" ID="ID_1056457259" MODIFIED="1360735700601" TEXT="The way to construct them">
-<font NAME="Georgia" SIZE="16"/>
-<node COLOR="#111111" CREATED="1360735700602" ID="ID_252875344" MODIFIED="1360735712066" TEXT="What should be the answer for the empty list">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-<node COLOR="#111111" CREATED="1360735712566" ID="ID_1416443954" MODIFIED="1360735726089" TEXT="What should be the answer for the non empty list?">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-</node>
-<node COLOR="#cc0000" CREATED="1360033161888" ID="ID_1008572280" MODIFIED="1360680117633">
-<richcontent TYPE="NODE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      Algebraic datatypes
-    </p>
-  </body>
-</html></richcontent>
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="20"/>
-</node>
-<node COLOR="#cc0000" CREATED="1360033161846" ID="ID_1329948428" MODIFIED="1360680117633">
-<richcontent TYPE="NODE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      Equivalence and effects
-    </p>
-  </body>
-</html></richcontent>
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="20"/>
-</node>
-<node COLOR="#cc0000" CREATED="1360033161837" ID="ID_1097045453" MODIFIED="1360680117633">
-<richcontent TYPE="NODE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      Parametric polymorphism and container types
-    </p>
-  </body>
-</html></richcontent>
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="20"/>
-</node>
-<node COLOR="#cc0000" CREATED="1360033161821" ID="ID_719263836" MODIFIED="1360680491525">
-<richcontent TYPE="NODE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      Abstract types and modules
-    </p>
-  </body>
-</html></richcontent>
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="20"/>
-</node>
-<node COLOR="#cc0000" CREATED="1360033161800" ID="ID_1314280091" MODIFIED="1360680500545">
-<richcontent TYPE="NODE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      Dynamic vs. static typing
-    </p>
-  </body>
-</html></richcontent>
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="20"/>
-</node>
-<node COLOR="#cc0000" CREATED="1360033161784" ID="ID_431220756" MODIFIED="1360680117634">
-<richcontent TYPE="NODE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <ul style="font-style: normal; color: rgb(51, 51, 51); text-transform: none; padding-bottom: 0px; margin-right: 0px; font-size: 14.44444465637207px; line-height: 20.98958396911621px; white-space: normal; margin-left: 25px; margin-top: 0px; font-variant: normal; text-align: start; background-color: rgb(255, 255, 255); text-indent: 0px; margin-bottom: 10.5px; letter-spacing: normal; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-weight: normal; padding-left: 0px; padding-top: 0px; padding-right: 0px; word-spacing: 0px">
-      <li style="line-height: 21px">
-        Implementing languages, especially higher-order functions
-      </li>
-    </ul>
-  </body>
-</html></richcontent>
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="20"/>
-</node>
-<node COLOR="#cc0000" CREATED="1360033161775" ID="ID_722622727" MODIFIED="1360680117634">
-<richcontent TYPE="NODE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <ul style="font-style: normal; color: rgb(51, 51, 51); text-transform: none; padding-bottom: 0px; margin-right: 0px; font-size: 14.44444465637207px; line-height: 20.98958396911621px; white-space: normal; margin-left: 25px; margin-top: 0px; font-variant: normal; text-align: start; background-color: rgb(255, 255, 255); text-indent: 0px; margin-bottom: 10.5px; letter-spacing: normal; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-weight: normal; padding-left: 0px; padding-top: 0px; padding-right: 0px; word-spacing: 0px">
-      <li style="line-height: 21px">
-        Macros
-      </li>
-    </ul>
-  </body>
-</html></richcontent>
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="20"/>
-</node>
-<node COLOR="#cc0000" CREATED="1360033161758" ID="ID_1994567019" MODIFIED="1360680117635">
-<richcontent TYPE="NODE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <ul style="font-style: normal; color: rgb(51, 51, 51); text-transform: none; padding-bottom: 0px; margin-right: 0px; font-size: 14.44444465637207px; line-height: 20.98958396911621px; white-space: normal; margin-left: 25px; margin-top: 0px; font-variant: normal; text-align: start; background-color: rgb(255, 255, 255); text-indent: 0px; margin-bottom: 10.5px; letter-spacing: normal; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-weight: normal; padding-left: 0px; padding-top: 0px; padding-right: 0px; word-spacing: 0px">
-      <li style="line-height: 21px">
-        Abstract types via dynamic type-creation and simple contracts
-      </li>
-    </ul>
-  </body>
-</html></richcontent>
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="20"/>
-</node>
-<node COLOR="#cc0000" CREATED="1360033161745" ID="ID_1777262570" MODIFIED="1360680117635">
-<richcontent TYPE="NODE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <ul style="font-style: normal; color: rgb(51, 51, 51); text-transform: none; padding-bottom: 0px; margin-right: 0px; font-size: 14.44444465637207px; line-height: 20.98958396911621px; white-space: normal; margin-left: 25px; margin-top: 0px; font-variant: normal; text-align: start; background-color: rgb(255, 255, 255); text-indent: 0px; margin-bottom: 10.5px; letter-spacing: normal; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-weight: normal; padding-left: 0px; padding-top: 0px; padding-right: 0px; word-spacing: 0px">
-      <li style="line-height: 21px">
-        Object-oriented programming is dynamic dispatch
-      </li>
-    </ul>
-  </body>
-</html></richcontent>
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="20"/>
-</node>
-<node COLOR="#cc0000" CREATED="1360033161738" ID="ID_1336278848" MODIFIED="1360680117635">
-<richcontent TYPE="NODE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <ul style="font-style: normal; color: rgb(51, 51, 51); text-transform: none; padding-bottom: 0px; margin-right: 0px; font-size: 14.44444465637207px; line-height: 20.98958396911621px; white-space: normal; margin-left: 25px; margin-top: 0px; font-variant: normal; text-align: start; background-color: rgb(255, 255, 255); text-indent: 0px; margin-bottom: 10.5px; letter-spacing: normal; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-weight: normal; padding-left: 0px; padding-top: 0px; padding-right: 0px; word-spacing: 0px">
-      <li style="line-height: 21px">
-        Pure object-orientation
-      </li>
-    </ul>
-  </body>
-</html></richcontent>
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="20"/>
-</node>
-<node COLOR="#cc0000" CREATED="1360033161731" ID="ID_783333515" MODIFIED="1360680117636">
-<richcontent TYPE="NODE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <ul style="font-style: normal; color: rgb(51, 51, 51); text-transform: none; padding-bottom: 0px; margin-right: 0px; font-size: 14.44444465637207px; line-height: 20.98958396911621px; white-space: normal; margin-left: 25px; margin-top: 0px; font-variant: normal; text-align: start; background-color: rgb(255, 255, 255); text-indent: 0px; margin-bottom: 10.5px; letter-spacing: normal; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-weight: normal; padding-left: 0px; padding-top: 0px; padding-right: 0px; word-spacing: 0px">
-      <li style="line-height: 21px">
-        Implementing dynamic dispatch
-      </li>
-    </ul>
-  </body>
-</html></richcontent>
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="20"/>
-</node>
-<node COLOR="#cc0000" CREATED="1360033161724" ID="ID_1277941858" MODIFIED="1360680117636">
-<richcontent TYPE="NODE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <ul style="font-style: normal; color: rgb(51, 51, 51); text-transform: none; padding-bottom: 0px; margin-right: 0px; font-size: 14.44444465637207px; line-height: 20.98958396911621px; white-space: normal; margin-left: 25px; margin-top: 0px; font-variant: normal; text-align: start; background-color: rgb(255, 255, 255); text-indent: 0px; margin-bottom: 10.5px; letter-spacing: normal; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-weight: normal; padding-left: 0px; padding-top: 0px; padding-right: 0px; word-spacing: 0px">
-      <li style="line-height: 21px">
-        Multiple inheritance, interfaces, and mixins
-      </li>
-    </ul>
-  </body>
-</html></richcontent>
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="20"/>
-</node>
-<node COLOR="#cc0000" CREATED="1360033161718" ID="ID_1791557834" MODIFIED="1360680117636">
-<richcontent TYPE="NODE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <ul style="font-style: normal; color: rgb(51, 51, 51); text-transform: none; padding-bottom: 0px; margin-right: 0px; font-size: 14.44444465637207px; line-height: 20.98958396911621px; white-space: normal; margin-left: 25px; margin-top: 0px; font-variant: normal; text-align: start; background-color: rgb(255, 255, 255); text-indent: 0px; margin-bottom: 10.5px; letter-spacing: normal; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-weight: normal; padding-left: 0px; padding-top: 0px; padding-right: 0px; word-spacing: 0px">
-      <li style="line-height: 21px">
-        OO vs. functional decomposition and extensibility
-      </li>
-    </ul>
-  </body>
-</html></richcontent>
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="20"/>
-</node>
-<node COLOR="#cc0000" CREATED="1360033161711" ID="ID_551832753" MODIFIED="1360680117636">
-<richcontent TYPE="NODE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <ul style="font-style: normal; color: rgb(51, 51, 51); text-transform: none; padding-bottom: 0px; margin-right: 0px; font-size: 14.44444465637207px; line-height: 20.98958396911621px; white-space: normal; margin-left: 25px; margin-top: 0px; font-variant: normal; text-align: start; background-color: rgb(255, 255, 255); text-indent: 0px; margin-bottom: 10.5px; letter-spacing: normal; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-weight: normal; padding-left: 0px; padding-top: 0px; padding-right: 0px; word-spacing: 0px">
-      <li style="line-height: 21px">
-        Subtyping for records, functions, and objects
-      </li>
-    </ul>
-  </body>
-</html></richcontent>
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="20"/>
-</node>
-<node COLOR="#cc0000" CREATED="1360033161704" ID="ID_139630241" MODIFIED="1360680117637">
-<richcontent TYPE="NODE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <ul style="font-style: normal; color: rgb(51, 51, 51); text-transform: none; padding-bottom: 0px; margin-right: 0px; font-size: 14.44444465637207px; line-height: 20.98958396911621px; white-space: normal; margin-left: 25px; margin-top: 0px; font-variant: normal; text-align: start; background-color: rgb(255, 255, 255); text-indent: 0px; margin-bottom: 10.5px; letter-spacing: normal; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-weight: normal; padding-left: 0px; padding-top: 0px; padding-right: 0px; word-spacing: 0px">
-      <li style="line-height: 21px">
-        Class-based subtyping
-      </li>
-    </ul>
-  </body>
-</html></richcontent>
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="20"/>
-</node>
-<node COLOR="#cc0000" CREATED="1360033161697" ID="ID_192820981" MODIFIED="1360680117637">
-<richcontent TYPE="NODE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <ul style="font-style: normal; color: rgb(51, 51, 51); text-transform: none; padding-bottom: 0px; margin-right: 0px; font-size: 14.44444465637207px; line-height: 20.98958396911621px; white-space: normal; margin-left: 25px; margin-top: 0px; font-variant: normal; text-align: start; background-color: rgb(255, 255, 255); text-indent: 0px; margin-bottom: 10.5px; letter-spacing: normal; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-weight: normal; padding-left: 0px; padding-top: 0px; padding-right: 0px; word-spacing: 0px">
-      <li style="line-height: 21px">
-        Subtyping
-      </li>
-    </ul>
-  </body>
-</html></richcontent>
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="20"/>
-</node>
-<node COLOR="#cc0000" CREATED="1360033161683" ID="ID_541734409" MODIFIED="1360680117637">
-<richcontent TYPE="NODE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <ul style="font-style: normal; color: rgb(51, 51, 51); text-transform: none; padding-bottom: 0px; margin-right: 0px; font-size: 14.44444465637207px; line-height: 20.98958396911621px; white-space: normal; margin-left: 25px; margin-top: 0px; font-variant: normal; text-align: start; background-color: rgb(255, 255, 255); text-indent: 0px; margin-bottom: 10.5px; letter-spacing: normal; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-weight: normal; padding-left: 0px; padding-top: 0px; padding-right: 0px; word-spacing: 0px">
-      <li style="line-height: 21px">
-        Subtyping vs. parametric polymorphism; bounded polymorphism
-      </li>
-    </ul>
-  </body>
-</html></richcontent>
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="20"/>
-</node>
-<node COLOR="#cc0000" CREATED="1360584327714" ID="ID_1185248730" MODIFIED="1360680117638" TEXT="Syntactic Sugar">
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="20"/>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360584337235" ID="ID_622121463" MODIFIED="1360680117638" TEXT="Syntactic">
-<font NAME="Georgia" SIZE="16"/>
-<node COLOR="#111111" CREATED="1360584345553" ID="ID_901369877" MODIFIED="1360588242105" TEXT="Can describe the semantics entirely by the corresponding record syntax">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360584372833" ID="ID_1185592668" MODIFIED="1360680117638" TEXT="Sugar">
-<font NAME="Georgia" SIZE="16"/>
-<node COLOR="#111111" CREATED="1360584377645" ID="ID_1287383500" MODIFIED="1360588242105" TEXT="Makes the language easier to use">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360584473056" ID="ID_646389465" MODIFIED="1360680117639" TEXT="simplifies">
-<font NAME="Georgia" SIZE="16"/>
-<node COLOR="#111111" CREATED="1360584482580" ID="ID_469398837" MODIFIED="1360588242106" TEXT="understanding the language">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-<node COLOR="#111111" CREATED="1360584491576" ID="ID_1123960679" MODIFIED="1360588242106" TEXT="implementing the language">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-</node>
-</node>
-<node COLOR="#0033ff" CREATED="1359982430620" ID="ID_1783454412" MODIFIED="1360582308869" POSITION="right">
+<node COLOR="#0033ff" CREATED="1359982430620" FOLDED="true" ID="ID_1783454412" MODIFIED="1361216213518" POSITION="right">
 <richcontent TYPE="NODE"><html>
   <head>
     
@@ -815,7 +37,7 @@
   </body>
 </html></richcontent>
 <edge STYLE="sharp_bezier" WIDTH="8"/>
-<font NAME="Georgia" SIZE="24"/>
+<font NAME="Georgia" SIZE="30"/>
 <node COLOR="#cc0000" CREATED="1360293066054" ID="ID_1638949918" MODIFIED="1360680117640" TEXT="Functions">
 <edge STYLE="bezier" WIDTH="thin"/>
 <font NAME="Verdana" SIZE="20"/>
@@ -1303,7 +525,430 @@
 <font NAME="Verdana" SIZE="20"/>
 </node>
 </node>
-<node COLOR="#0033ff" CREATED="1359982430607" ID="ID_878814675" MODIFIED="1360582308882" POSITION="right" STYLE="fork">
+<node COLOR="#0033ff" CREATED="1359982430637" ID="ID_629579194" MODIFIED="1360947207951" POSITION="left">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      How to learn
+    </p>
+    <p>
+      new programming
+    </p>
+    <p>
+      languages quickly
+    </p>
+  </body>
+</html></richcontent>
+<edge STYLE="sharp_bezier" WIDTH="8"/>
+<font NAME="Georgia" SIZE="30"/>
+<node COLOR="#cc0000" CREATED="1360748069471" ID="ID_1563956048" MODIFIED="1360748093342" TEXT="Syntax">
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="20"/>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360748073175" ID="ID_496570450" MODIFIED="1360748082319" TEXT="How do you write language constructs">
+<font NAME="Georgia" SIZE="16"/>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360241571299" ID="ID_817354878" MODIFIED="1360748225868" TEXT="3 Rules">
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Georgia" SIZE="16"/>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1360033218497" ID="ID_875308996" MODIFIED="1360748225868" TEXT="Syntax">
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="12"/>
+<icon BUILTIN="stop"/>
+<node COLOR="#111111" CREATED="1360238767539" ID="ID_1839216680" MODIFIED="1360588242092" TEXT="type checking">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360239662960" ID="ID_942876054" MODIFIED="1360588242092" TEXT="how you write something valid">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1360239813989" ID="ID_1639485916" MODIFIED="1360748225869" TEXT="Evaluation">
+<font NAME="Verdana" SIZE="12"/>
+<icon BUILTIN="go"/>
+<node COLOR="#111111" CREATED="1360239826583" ID="ID_786276893" MODIFIED="1360588242093" TEXT="as the program runs">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360240120194" ID="ID_1136395115" MODIFIED="1360588242093" TEXT="extends the dynamic env.">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360241814745" ID="ID_1523572351" MODIFIED="1360588242093" TEXT="must type check first">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360241797532" ID="ID_704096861" MODIFIED="1360588242093" TEXT="produces a value">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360244179849" ID="ID_489282001" MODIFIED="1360588242094" TEXT="all values are expressions">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360244237253" ID="ID_566949980" MODIFIED="1360588242094" TEXT="not all expressions are values">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360244255516" ID="ID_1252301042" MODIFIED="1360588242094" TEXT="evaluates to itself in 0 steps">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1360239801091" ID="ID_1559677290" MODIFIED="1360748225871" TEXT="Type Checking">
+<font NAME="Verdana" SIZE="12"/>
+<icon BUILTIN="prepare"/>
+<node COLOR="#111111" CREATED="1360239838887" ID="ID_888927622" MODIFIED="1360588242095" TEXT="before the program runs">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360240104139" ID="ID_543078809" MODIFIED="1360588242095" TEXT="extends the static environment">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360244319846" ID="ID_146160701" MODIFIED="1360588242095" TEXT="Types">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360244331140" ID="ID_860706922" MODIFIED="1360588242095" TEXT="int">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360244334346" ID="ID_548484441" MODIFIED="1360588242095">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      unit ( )
+    </p>
+  </body>
+</html></richcontent>
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360244346696" ID="ID_898966498" MODIFIED="1360588242096" TEXT="the resul of using the use command in REPL">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1360244340228" ID="ID_1821718631" MODIFIED="1360588242096" TEXT="bool">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360247284312" ID="ID_1768979395" MODIFIED="1360588242096" TEXT="Function">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360748478077" ID="ID_1497071528" MODIFIED="1360748497769" TEXT="uninteresting but a req for getting semantics">
+<font NAME="Georgia" SIZE="16"/>
+</node>
+</node>
+<node COLOR="#cc0000" CREATED="1360239723479" ID="ID_773106793" MODIFIED="1360748432111" TEXT="Semantics">
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="20"/>
+<icon BUILTIN="yes"/>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360239732983" ID="ID_50682881" MODIFIED="1360680117626" TEXT="What the written code means">
+<font NAME="Georgia" SIZE="16"/>
+</node>
+</node>
+<node COLOR="#cc0000" CREATED="1360033223006" ID="ID_983321391" MODIFIED="1360680117624" TEXT="Idioms">
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="20"/>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360033161855" ID="ID_333611860" MODIFIED="1360680117625">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Syntactic sugar
+    </p>
+  </body>
+</html></richcontent>
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Georgia" SIZE="16"/>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360748263205" ID="ID_330116923" MODIFIED="1360748277173" TEXT="typical patterns fo using language features">
+<font NAME="Georgia" SIZE="16"/>
+</node>
+</node>
+<node COLOR="#cc0000" CREATED="1360033227093" ID="ID_1365563441" MODIFIED="1360680117625" TEXT="Libraries">
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="20"/>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360748286182" ID="ID_1949954391" MODIFIED="1360748304788" TEXT="what facilities does the language provide">
+<font NAME="Georgia" SIZE="16"/>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360748342333" ID="ID_735048834" MODIFIED="1360748350250" TEXT="how much do you have write yourself">
+<font NAME="Georgia" SIZE="16"/>
+</node>
+</node>
+<node COLOR="#cc0000" CREATED="1360033231542" ID="ID_1572582425" MODIFIED="1360680117625" TEXT="Tools">
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="20"/>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360748307445" ID="ID_339621089" MODIFIED="1360748327177" TEXT="REPL, debugger, code formatter, etc.">
+<font NAME="Georgia" SIZE="16"/>
+</node>
+</node>
+<node COLOR="#cc0000" CREATED="1360245982303" ID="ID_297285607" MODIFIED="1360680117626" TEXT="Play around">
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="20"/>
+</node>
+</node>
+<node COLOR="#0033ff" CREATED="1359982377329" ID="ID_1795020779" MODIFIED="1360947207947" POSITION="left">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Understand functional and
+    </p>
+    <p>
+      object-oriented programs
+    </p>
+  </body>
+</html></richcontent>
+<edge STYLE="sharp_bezier" WIDTH="8"/>
+<font NAME="Georgia" SIZE="30"/>
+<node COLOR="#cc0000" CREATED="1360238138828" ID="ID_1039009066" MODIFIED="1360680117617" TEXT="A functional program is a just a sequence of bindings">
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="20"/>
+<icon BUILTIN="idea"/>
+</node>
+<node COLOR="#cc0000" CREATED="1360279616734" ID="ID_1681294643" MODIFIED="1360680117618" TEXT="Avoiding mutation">
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="20"/>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360237665449" ID="ID_327473395" MODIFIED="1360680117618" TEXT="Immutable Data">
+<font NAME="Georgia" SIZE="16"/>
+<node COLOR="#111111" CREATED="1360237683576" ID="ID_1275495174" MODIFIED="1360588242081">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      This is the core of functional programming!
+    </p>
+  </body>
+</html></richcontent>
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360033161895" ID="ID_1345295613" MODIFIED="1360680117618">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Benefits of no mutation
+    </p>
+  </body>
+</html></richcontent>
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Georgia" SIZE="16"/>
+<node COLOR="#111111" CREATED="1360279645806" ID="ID_590255026" MODIFIED="1360588242081" TEXT="be confident no one changes your code">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360748715587" ID="ID_1586228212" MODIFIED="1360748720618" TEXT="Java security leak">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360748720620" ID="ID_1912960728" MODIFIED="1360748744715" TEXT="returns an alias you can change the list of allowed users">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1360747977688" ID="ID_62309598" MODIFIED="1360747981534" TEXT="Alias">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360747872457" ID="ID_1058604614" MODIFIED="1360747885639" TEXT="ML creates aliases all the time">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360747885640" ID="ID_1600849500" MODIFIED="1360747903600" TEXT="impossible to tell, which is fine">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360747910488" ID="ID_1829513113" MODIFIED="1360747919697" TEXT="allows you to focus on the algorithm">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1360747993160" ID="ID_800794684" MODIFIED="1360748028061" TEXT="languages that mutate data (Java) programmers have to obsess if the objects alias">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
+</node>
+<node COLOR="#cc0000" CREATED="1360279750597" ID="ID_1480013565" MODIFIED="1360680117618" TEXT="Using functions as values">
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="20"/>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360279930435" ID="ID_1356647071" MODIFIED="1360680117619" TEXT="First-class functions">
+<font NAME="Georgia" SIZE="16"/>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1360033161876" ID="ID_491676561" MODIFIED="1360588242082">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Higher-order functions
+    </p>
+  </body>
+</html></richcontent>
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360033161863" ID="ID_1432374590" MODIFIED="1360588242082">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Currying
+    </p>
+  </body>
+</html></richcontent>
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360285441388" ID="ID_993106401" MODIFIED="1360588242082" TEXT="often polymorphic but not always">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360288457456" ID="ID_76440692" MODIFIED="1360588242083">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      fun times_until_zero (f,x) =
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;if x=0 then 0 else 1 + times_until_zero(f, fx)
+    </p>
+  </body>
+</html></richcontent>
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1360279954516" ID="ID_160232736" MODIFIED="1360588242083" TEXT="functions are values">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360279968803" ID="ID_1297763280" MODIFIED="1360588242083" TEXT="can use them wherever we use values">
+<font NAME="Verdana" SIZE="12"/>
+<icon BUILTIN="idea"/>
+<node COLOR="#111111" CREATED="1360280160409" ID="ID_1955595259" MODIFIED="1360588242083" TEXT="most common use is as an argument/result  of another function">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360280235474" ID="ID_133652359" MODIFIED="1360588242084">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      the other function is called a <i>higher-order function</i>
+    </p>
+  </body>
+</html></richcontent>
+<arrowlink DESTINATION="ID_491676561" ENDARROW="Default" ENDINCLINATION="222;8;" ID="Arrow_ID_1228330632" STARTARROW="None" STARTINCLINATION="-240;-42;"/>
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1360283057960" ID="ID_1260475361" MODIFIED="1360588242084" TEXT="function as arguments">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360283092390" ID="ID_303507059" MODIFIED="1360588242084" TEXT="fun f(g,...) = g(...)">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360283447075" ID="ID_305234561" MODIFIED="1360588242084" TEXT="good technique to reuse code">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1360287970939" ID="ID_783793342" MODIFIED="1360588242085" TEXT="Type">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360287977546" ID="ID_323935551" MODIFIED="1360588242085">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      fun n_times (f,n,x) =
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;if n = 0
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;then x
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;else f(n_times(f, n-1, x))
+    </p>
+  </body>
+</html></richcontent>
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360288046266" ID="ID_1509506845" MODIFIED="1360588242085" TEXT="val n_times : (&apos;a -&gt; &apos;a) * int * &apos;a -&gt; &apos;a">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360288326312" ID="ID_1677230853" MODIFIED="1360588242085" TEXT="A function of type &#x2032;a&#x2212;&gt;&#x2032;a indicates it takes one argument and returns a value of the same type as the argument.">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1360288164345" ID="ID_1948875305" MODIFIED="1360588242085" TEXT="&apos;a means any type can be used">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360205516462" ID="ID_61580563" MODIFIED="1360680117621" TEXT="Closures">
+<arrowlink DESTINATION="ID_1356647071" ENDARROW="Default" ENDINCLINATION="-6;24;" ID="Arrow_ID_735745465" STARTARROW="Default" STARTINCLINATION="3;-12;"/>
+<font NAME="Georgia" SIZE="16"/>
+<node COLOR="#111111" CREATED="1360280472759" ID="ID_771140487" MODIFIED="1360588242086" TEXT="can use bindings from outside the function definition">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360280499424" ID="ID_489499515" MODIFIED="1360588242086" TEXT="makes 1st-class functions much more powerful">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360364005729" ID="ID_55150341" MODIFIED="1360588242086" TEXT="fold">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360364012896" ID="ID_1690890120" MODIFIED="1360588242087" TEXT="private data">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360364019695" ID="ID_1402387868" MODIFIED="1360588242087" TEXT="lexical scope">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1360358554152" ID="ID_1530468876" MODIFIED="1360588242087" TEXT="recomputation savings">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360292338868" ID="ID_1268681033" MODIFIED="1360680117622" TEXT="Anonymous">
+<font NAME="Georgia" SIZE="16"/>
+<node COLOR="#111111" CREATED="1360292346907" ID="ID_1082665501" MODIFIED="1360588242087" TEXT="cannot use with recursion ">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360292351972" ID="ID_1977566871" MODIFIED="1360588242088" TEXT="most common use is as an argument to higher order function">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360292445835" ID="ID_1797608789" MODIFIED="1360588242088" TEXT="great for use in only one place">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
+<node COLOR="#cc0000" CREATED="1360279849323" ID="ID_889804456" MODIFIED="1360680117623" TEXT="no clear yes/no for a particular language">
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="20"/>
+</node>
+<node COLOR="#cc0000" CREATED="1360279874371" ID="ID_1671089419" MODIFIED="1360680117623" TEXT="Style">
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="20"/>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360033161791" ID="ID_1873965344" MODIFIED="1360680117623">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Laziness, streams, and memoization
+    </p>
+  </body>
+</html></richcontent>
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Georgia" SIZE="16"/>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360279779519" ID="ID_388725695" MODIFIED="1360680117624" TEXT="closer to mathematical definitions">
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Georgia" SIZE="16"/>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360238258911" ID="ID_1962718393" MODIFIED="1360680117624" TEXT="Recursion affinity">
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Georgia" SIZE="16"/>
+</node>
+</node>
+</node>
+<node COLOR="#0033ff" CREATED="1359982430607" ID="ID_878814675" MODIFIED="1360947207970" POSITION="right" STYLE="fork">
 <richcontent TYPE="NODE"><html>
   <head>
     
@@ -1327,8 +972,16 @@
   </body>
 </html></richcontent>
 <edge STYLE="sharp_bezier" WIDTH="8"/>
-<font NAME="Georgia" SIZE="24"/>
-<node COLOR="#cc0000" CREATED="1359982522312" ID="ID_182957583" MODIFIED="1360680117654" TEXT="ML">
+<font NAME="Georgia" SIZE="30"/>
+<node COLOR="#cc0000" CREATED="1359982522312" FOLDED="true" ID="ID_182957583" MODIFIED="1361215752342">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="../../../Users/Denis/Pictures/Lindig2.jpeg" />
+  </body>
+</html></richcontent>
 <edge STYLE="bezier" WIDTH="thin"/>
 <font NAME="Verdana" SIZE="20"/>
 <node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360238984907" ID="ID_1915988689" MODIFIED="1360680117654" TEXT="Dynamic &amp; Static environment">
@@ -1365,7 +1018,7 @@
 </node>
 </node>
 </node>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360240801120" ID="ID_1482028639" MODIFIED="1360680117655" TEXT="Expressions">
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360240801120" ID="ID_1482028639" MODIFIED="1360769532652" TEXT="Expressions">
 <font NAME="Georgia" SIZE="16"/>
 <node COLOR="#111111" CREATED="1360245005569" ID="ID_1993584588" MODIFIED="1360588242128" TEXT="Kinds of Expressions">
 <font NAME="Verdana" SIZE="12"/>
@@ -1685,8 +1338,7 @@
       &#160;&#160;else hd xs + sum_list(tl xs)
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <font NAME="Verdana" SIZE="12"/>
 </node>
 </node>
@@ -1704,8 +1356,9 @@
 </node>
 </node>
 </node>
-<node COLOR="#111111" CREATED="1360736141164" ID="ID_1239226852" MODIFIED="1360738397651" TEXT="Functions">
+<node COLOR="#111111" CREATED="1360736141164" ID="ID_1239226852" MODIFIED="1360953158603" TEXT="Functions">
 <font BOLD="true" NAME="Verdana" SIZE="12"/>
+<icon BUILTIN="yes"/>
 <node COLOR="#111111" CREATED="1360736147811" ID="ID_1287383955" MODIFIED="1360736149613" TEXT="Build">
 <font NAME="Verdana" SIZE="12"/>
 <node COLOR="#111111" CREATED="1360736153411" ID="ID_801528429" MODIFIED="1360736158909" TEXT="syntax">
@@ -1822,6 +1475,40 @@
 </node>
 </node>
 </node>
+<node COLOR="#111111" CREATED="1360763808077" ID="ID_88681244" MODIFIED="1360763822237" TEXT="Mutual Recursion">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360763822238" ID="ID_1969113610" MODIFIED="1360763831007" TEXT="keyword and">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1360861912126" ID="ID_382358956" MODIFIED="1360861923424" TEXT="Partial application">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360861923426" ID="ID_1320490687" MODIFIED="1360862028816" TEXT="if you call a function with too  few args you get back a closure waiting for the rest">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360862779690" ID="ID_711649510" MODIFIED="1360862799219" TEXT="can use this to build other functions">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1360248277535" ID="ID_1048817481" MODIFIED="1360588242141" TEXT="the most important building block in the course">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360248550360" ID="ID_1230768021" MODIFIED="1360829087810" TEXT="takes exactly 1 argument">
+<font NAME="Verdana" SIZE="12"/>
+<icon BUILTIN="ksmiletris"/>
+<node COLOR="#111111" CREATED="1360248537682" ID="ID_238604073" MODIFIED="1360588242141" TEXT="Unless a function has exactly one argument, you need to use parentheses to call it">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1360735918020" ID="ID_274221559" MODIFIED="1360735926470" TEXT="Local Variables">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360735926471" ID="ID_359676437" MODIFIED="1360735936185" TEXT="Let expressions">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360735936186" ID="ID_1173993456" MODIFIED="1360735936186" TEXT="">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
 </node>
 <node COLOR="#111111" CREATED="1360736355817" ID="ID_1160059423" MODIFIED="1360738394715" TEXT="Let-expression">
 <font BOLD="true" NAME="Verdana" SIZE="12"/>
@@ -1931,8 +1618,7 @@
       else false
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <font NAME="Verdana" SIZE="12"/>
 <node COLOR="#111111" CREATED="1360747352556" ID="ID_1374405460" MODIFIED="1360747359089" TEXT="don&apos;t do this.">
 <font NAME="Verdana" SIZE="12"/>
@@ -1965,267 +1651,8 @@
 </node>
 </node>
 </node>
-</node>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360033161910" ID="ID_581777638" MODIFIED="1360680117668" STYLE="fork">
-<richcontent TYPE="NODE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      Bindings
-    </p>
-  </body>
-</html></richcontent>
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Georgia" SIZE="16"/>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1360238393585" ID="ID_440021972" MODIFIED="1360588242140" TEXT="can&apos;t use later bindings">
+<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1360582343730" ID="ID_459527501" MODIFIED="1360952026603" TEXT="Types">
 <font NAME="Verdana" SIZE="12"/>
-</node>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1360247473754" ID="ID_1381026485" MODIFIED="1360588242140">
-<richcontent TYPE="NODE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <font size="13px" color="rgb(0, 0, 0)" face="sans-serif"><span class="Apple-converted-space">&#160;</span><span style="display: inline !important; font-family: sans-serif; float: none; line-height: 19.1875px; white-space: normal; font-weight: normal; word-spacing: 0px; font-size: 13px; font-variant: normal; background-color: rgb(255, 255, 255); text-transform: none; font-style: normal; color: rgb(0, 0, 0); letter-spacing: normal; text-align: start; text-indent: 0px">the association of objects (data and/or code) with</span><span class="Apple-converted-space">&#160;</span></font><u><font size="13px" face="sans-serif" color="rgb(11, 0, 128)"><a href="http://en.wikipedia.org/wiki/Identifier" style="font-family: sans-serif; background-position: initial initial; background-repeat: repeat; line-height: 19.1875px; white-space: normal; font-weight: normal; text-decoration: underline; font-size: 13px; word-spacing: 0px; font-variant: normal; background-color: rgb(255, 255, 255); background-image: none; text-transform: none; font-style: normal; color: rgb(11, 0, 128); letter-spacing: normal; text-align: start; text-indent: 0px" title="Identifier">identifiers</a></font></u><span style="font-family: sans-serif; display: inline !important; float: none; line-height: 19.1875px; white-space: normal; font-weight: normal; font-size: 13px; word-spacing: 0px; font-variant: normal; background-color: rgb(255, 255, 255); text-transform: none; font-style: normal; color: rgb(0, 0, 0); letter-spacing: normal; text-align: start; text-indent: 0px"><font size="13px" face="sans-serif" color="rgb(0, 0, 0)">.</font></span><span><sup id="cite_ref-tkac08_1-0" class="reference" style="font-family: sans-serif; line-height: 1em; white-space: normal; font-weight: normal; word-spacing: 0px; font-variant: normal; background-color: rgb(255, 255, 255); text-transform: none; font-style: normal; color: rgb(0, 0, 0); letter-spacing: normal; text-align: start; text-indent: 0px"><font face="sans-serif" color="rgb(11, 0, 128)"><a href="http://en.wikipedia.org/wiki/Name_binding#cite_note-tkac08-1" style="background-position: initial initial; background-repeat: repeat; white-space: nowrap; text-decoration: initial; background-image: none; color: rgb(11, 0, 128)">[</a></font></sup></span>
-  </body>
-</html></richcontent>
-<font NAME="Verdana" SIZE="12"/>
-</node>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1360247858091" ID="ID_1626569086" MODIFIED="1360588242140" TEXT="Kinds of Bindings">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1360238387315" ID="ID_1088836687" MODIFIED="1360588242141">
-<richcontent TYPE="NODE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      functions
-    </p>
-  </body>
-</html></richcontent>
-<font NAME="Verdana" SIZE="12"/>
-<icon BUILTIN="yes"/>
-<node COLOR="#111111" CREATED="1360248277535" ID="ID_1048817481" MODIFIED="1360588242141" TEXT="the most important building block in the course">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-<node COLOR="#111111" CREATED="1360248550360" ID="ID_1230768021" MODIFIED="1360588242141" TEXT="takes exactly 1 argument">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1360248537682" ID="ID_238604073" MODIFIED="1360588242141" TEXT="Unless a function has exactly one argument, you need to use parentheses to call it">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-<node COLOR="#111111" CREATED="1360245061982" ID="ID_920622251" MODIFIED="1360588242141" STYLE="fork" TEXT="Syntax">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1360248105210" ID="ID_506194620" MODIFIED="1360588242141" TEXT="fun">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-<node COLOR="#111111" CREATED="1360245085936" ID="ID_1794295925" MODIFIED="1360588242142" STYLE="fork" TEXT="Type-checking">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-<node COLOR="#111111" CREATED="1360245144045" ID="ID_1645328277" MODIFIED="1360588242142" STYLE="fork" TEXT="Evaluation">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-<node COLOR="#111111" CREATED="1360735918020" ID="ID_274221559" MODIFIED="1360735926470" TEXT="Local Variables">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1360735926471" ID="ID_359676437" MODIFIED="1360735936185" TEXT="Let expressions">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1360735936186" ID="ID_1173993456" MODIFIED="1360735936186" TEXT="">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-</node>
-</node>
-<node COLOR="#111111" CREATED="1360238387325" ID="ID_1878771626" MODIFIED="1360588242142">
-<richcontent TYPE="NODE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      records
-    </p>
-  </body>
-</html></richcontent>
-<font NAME="Verdana" SIZE="12"/>
-</node>
-<node COLOR="#111111" CREATED="1360289520688" ID="ID_516240198" MODIFIED="1360588242142" TEXT="Variables">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1360358207226" ID="ID_1601402434" MODIFIED="1360588242142" TEXT="binding evaluates its expression when the binding is evaluated not every time it is used">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-<node COLOR="#111111" CREATED="1360585685879" ID="ID_1056292024" MODIFIED="1360588242143" TEXT="Datatype">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1360586640553" ID="ID_1793352456" MODIFIED="1360588242143" TEXT="Building">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1360585966502" ID="ID_1717065222" MODIFIED="1360588242143">
-<richcontent TYPE="NODE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      datatype mytype = TwoInts of int * int
-    </p>
-    <p>
-      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;| Str of string
-    </p>
-    <p>
-      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;| Pizza
-    </p>
-  </body>
-</html></richcontent>
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1360586358795" ID="ID_1409066586" MODIFIED="1360588242143" TEXT="any value of type mytype is made from one of the constructors">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-<node COLOR="#111111" CREATED="1360586388467" ID="ID_447604245" MODIFIED="1360588242143" TEXT="Constructors">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1360586088974" ID="ID_1272880046" MODIFIED="1360588242143" TEXT="TwoInts : int * int -&gt; mytype">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-<node COLOR="#111111" CREATED="1360586123597" ID="ID_1305304219" MODIFIED="1360588242144" TEXT="Str : string -&gt; mytype">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-<node COLOR="#111111" CREATED="1360586132092" ID="ID_180304570" MODIFIED="1360588242144" TEXT="Pizza : mytype">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-</node>
-<node COLOR="#111111" CREATED="1360585772170" ID="ID_1332315139" MODIFIED="1360588242144" TEXT="Constructors aka tags">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1360585786070" ID="ID_988150779" MODIFIED="1360588242144" TEXT="Capitalized">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-<node COLOR="#111111" CREATED="1360585864039" ID="ID_1634133314" MODIFIED="1360588242144" TEXT="is either">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1360585831071" ID="ID_1816759760" MODIFIED="1360588242144" TEXT="a function that makes values of the new type">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-<node COLOR="#111111" CREATED="1360585883711" ID="ID_1343960199" MODIFIED="1360588242145" TEXT="or a value of the new type">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-<node COLOR="#111111" CREATED="1360585957678" ID="ID_183307320" MODIFIED="1360588242145" TEXT="can be named anything">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-<node COLOR="#111111" CREATED="1360594814175" ID="ID_1548837243" MODIFIED="1360594840475" TEXT="Syntax: datatype t = C1 of t1 | C2 of t2 | ... | Cn of tn">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1360595060726" ID="ID_923286670" MODIFIED="1360595081837" TEXT="adds type t and constructors Ci of type ti -&gt; t">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1360595081838" ID="ID_1131886673" MODIFIED="1360595101052" TEXT="Ci v is a value ie the result includes the tag">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-</node>
-</node>
-<node COLOR="#111111" CREATED="1360586644760" ID="ID_882539264" MODIFIED="1360588242145" TEXT="Access">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1360595324316" ID="ID_1461513027" MODIFIED="1360595415580" TEXT="Case Expression">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1360586665089" ID="ID_1905638132" MODIFIED="1360588242145" TEXT="check what variant it is (what constructor made it)">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-<node COLOR="#111111" CREATED="1360586682216" ID="ID_764239212" MODIFIED="1360595339316" TEXT="extract the data (if that variant has any)">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-</node>
-</node>
-</node>
-<node COLOR="#111111" CREATED="1360033161829" ID="ID_1647647581" MODIFIED="1360743940577">
-<richcontent TYPE="NODE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      polymorphic
-    </p>
-  </body>
-</html>
-</richcontent>
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1360286762451" ID="ID_53631507" MODIFIED="1360588242140" TEXT="inferred based on how arguments are used">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-<node COLOR="#111111" CREATED="1360738911713" ID="ID_373043331" MODIFIED="1360738915845" TEXT="Key Steps">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1360738915848" ID="ID_1289842441" MODIFIED="1360738925649" TEXT="determine types of bindings in order">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1360738934104" ID="ID_556883977" MODIFIED="1360738941987" TEXT="except mutual recursion">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-<node COLOR="#111111" CREATED="1360738942399" ID="ID_882214009" MODIFIED="1360738974653" TEXT="cannot use later bindings: won&apos;t type check">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-<node COLOR="#111111" CREATED="1360739479332" ID="ID_149420451" MODIFIED="1360739487866" TEXT="collect all the facts for type checking">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-<node COLOR="#111111" CREATED="1360739488276" ID="ID_1172906432" MODIFIED="1360739509984" TEXT="facts constrain the type of the function">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-<node COLOR="#111111" CREATED="1360739330405" ID="ID_805733825" MODIFIED="1360739342353" TEXT="it can infer types with type variables">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1360739343084" ID="ID_950293588" MODIFIED="1360739352295" TEXT="great for code reuse and understanding functions">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-</node>
-</node>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360245509490" ID="ID_1360587793" MODIFIED="1360680117673" TEXT="REPL">
-<font NAME="Georgia" SIZE="16"/>
-<node COLOR="#111111" CREATED="1360245516195" ID="ID_1952172383" MODIFIED="1360588242146" TEXT="Error Messages">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-<node COLOR="#111111" CREATED="1360245559135" ID="ID_818101232" MODIFIED="1360588242146" TEXT="use command">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1360245569762" ID="ID_932035963" MODIFIED="1360588242146" TEXT="types in the file&apos;s bindings line by line">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-<node COLOR="#111111" CREATED="1360245651767" ID="ID_1635382740" MODIFIED="1360588242146">
-<richcontent TYPE="NODE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      Read, Eval, Print, Loop
-    </p>
-  </body>
-</html></richcontent>
-<font NAME="Verdana" SIZE="12"/>
-</node>
-<node COLOR="#111111" CREATED="1360245781759" ID="ID_926846695" MODIFIED="1360588242146" TEXT="always restart the REPL C-d">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-<node COLOR="#111111" CREATED="1360295024160" ID="ID_738944707" MODIFIED="1360588242147" TEXT="never parentheses it doesn&apos;t have to">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360366734757" ID="ID_92543980" MODIFIED="1360680117674" TEXT="Idioms">
-<font NAME="Georgia" SIZE="16"/>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1360366718390" ID="ID_1252997074" MODIFIED="1360588242147" TEXT="infix">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1360366907140" ID="ID_1988508449" MODIFIED="1360588242147" TEXT="o">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1360366910812" ID="ID_1165531687" MODIFIED="1360588242147" TEXT="combines functions">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-</node>
-</node>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360582343730" ID="ID_459527501" MODIFIED="1360680117675" TEXT="Types">
-<font NAME="Georgia" SIZE="16"/>
 <node COLOR="#111111" CREATED="1360582347632" ID="ID_866102204" MODIFIED="1360588242147" TEXT="Basic">
 <font NAME="Verdana" SIZE="12"/>
 <node COLOR="#111111" CREATED="1360582356215" ID="ID_238655209" MODIFIED="1360591886044" TEXT="int">
@@ -2244,7 +1671,7 @@
 <font BOLD="true" NAME="Verdana" SIZE="12"/>
 </node>
 </node>
-<node COLOR="#111111" CREATED="1360582351656" FOLDED="true" ID="ID_837302319" MODIFIED="1360746617313" TEXT="Compound">
+<node COLOR="#111111" CREATED="1360582351656" ID="ID_837302319" MODIFIED="1360952982622" TEXT="Compound">
 <font NAME="Verdana" SIZE="12"/>
 <node COLOR="#111111" CREATED="1360582480998" ID="ID_1991010376" MODIFIED="1360588242148" TEXT="Each of">
 <font NAME="Verdana" SIZE="12"/>
@@ -2290,7 +1717,7 @@
 <font NAME="Verdana" SIZE="12"/>
 </node>
 <node COLOR="#111111" CREATED="1360582422871" ID="ID_343566070" MODIFIED="1360588242150" TEXT="tuples">
-<arrowlink DESTINATION="ID_1724111495" ENDARROW="Default" ENDINCLINATION="91;0;" ID="Arrow_ID_1788499725" STARTARROW="Default" STARTINCLINATION="91;0;"/>
+<arrowlink DESTINATION="ID_1724111495" ENDARROW="Default" ENDINCLINATION="91;0;" ID="Arrow_ID_29657031" STARTARROW="Default" STARTINCLINATION="91;0;"/>
 <font NAME="Verdana" SIZE="12"/>
 <node COLOR="#111111" CREATED="1360583810788" ID="ID_127722144" MODIFIED="1360588242150" TEXT="good for short fields">
 <font NAME="Verdana" SIZE="12"/>
@@ -2307,12 +1734,6 @@
 </node>
 <node COLOR="#111111" CREATED="1360582485470" ID="ID_1230419323" MODIFIED="1360588242151" TEXT="One of">
 <font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1360582429494" ID="ID_1015464258" MODIFIED="1360588242151" TEXT="options">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-<node COLOR="#111111" CREATED="1360582958115" ID="ID_1885709979" MODIFIED="1360588242151" TEXT="list">
-<font NAME="Verdana" SIZE="12"/>
-</node>
 <node COLOR="#111111" CREATED="1360582438135" ID="ID_632169948" MODIFIED="1360591858366" TEXT="datatypes">
 <font BOLD="true" NAME="Verdana" SIZE="12"/>
 <node COLOR="#111111" CREATED="1360591613215" ID="ID_1966307824" MODIFIED="1360591625190" TEXT="simlilar to enums in other languages">
@@ -2470,6 +1891,73 @@
 </node>
 <node COLOR="#111111" CREATED="1360591926051" ID="ID_4417475" MODIFIED="1360591933213" TEXT="defines a new type">
 <font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360768983264" ID="ID_211344416" MODIFIED="1360769022773" TEXT="only way to create values of that type are with its constructors">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1360745123484" ID="ID_1419649173" MODIFIED="1360825751605" TEXT="Options">
+<font BOLD="true" NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360745126659" ID="ID_875676050" MODIFIED="1360745355647" TEXT="Building">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360745488594" ID="ID_1350462776" MODIFIED="1360745490927" TEXT="NONE">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360826179090" ID="ID_1452339101" MODIFIED="1360826185401" TEXT="are also constructors">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1360745491441" ID="ID_282798554" MODIFIED="1360745496680" TEXT="SOME e">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1360745368274" ID="ID_1491613061" MODIFIED="1360745443064" TEXT="Accessing">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360745443066" ID="ID_1368550309" MODIFIED="1360745447321" TEXT="isSome">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360745633353" ID="ID_553118774" MODIFIED="1360745640498" TEXT="&apos;a option -&gt; bool">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1360745447809" ID="ID_954136172" MODIFIED="1360745452063" TEXT="valOf">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360745647145" ID="ID_1252245018" MODIFIED="1360745652142" TEXT="&apos;a option -&gt; &apos;a">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1360745469618" ID="ID_954138893" MODIFIED="1360745472319" TEXT="Type">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360745472320" ID="ID_285654487" MODIFIED="1360745478351" TEXT="t option">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1360582958115" ID="ID_1885709979" MODIFIED="1360825769444" TEXT="list">
+<font BOLD="true" NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360826238200" ID="ID_1766585519" MODIFIED="1360826258578" TEXT="[] and :: are constructors">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360826474967" ID="ID_32944554" MODIFIED="1360826524182">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      fun append (xs,ys) =
+    </p>
+    <p>
+      &#160;&#160;case xs of
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;&#160;&#160;[ ] =&gt; ys
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;| x::xs' =&gt; x::append(xs', ys)
+    </p>
+  </body>
+</html></richcontent>
+<font NAME="Verdana" SIZE="12"/>
+</node>
 </node>
 </node>
 <node COLOR="#111111" CREATED="1360592063531" ID="ID_44637022" MODIFIED="1360592079285" TEXT="avoid using each of types when one-of is better">
@@ -2528,39 +2016,6 @@
 <font NAME="Verdana" SIZE="12"/>
 </node>
 </node>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1360745123484" ID="ID_1419649173" MODIFIED="1360745343825" TEXT="Options">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1360745126659" ID="ID_875676050" MODIFIED="1360745355647" TEXT="Building">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1360745488594" ID="ID_1350462776" MODIFIED="1360745490927" TEXT="NONE">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-<node COLOR="#111111" CREATED="1360745491441" ID="ID_282798554" MODIFIED="1360745496680" TEXT="SOME e">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-<node COLOR="#111111" CREATED="1360745368274" ID="ID_1491613061" MODIFIED="1360745443064" TEXT="Accessing">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1360745443066" ID="ID_1368550309" MODIFIED="1360745447321" TEXT="isSome">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1360745633353" ID="ID_553118774" MODIFIED="1360745640498" TEXT="&apos;a option -&gt; bool">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-<node COLOR="#111111" CREATED="1360745447809" ID="ID_954136172" MODIFIED="1360745452063" TEXT="valOf">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1360745647145" ID="ID_1252245018" MODIFIED="1360745652142" TEXT="&apos;a option -&gt; &apos;a">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-</node>
-<node COLOR="#111111" CREATED="1360745469618" ID="ID_954138893" MODIFIED="1360745472319" TEXT="Type">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1360745472320" ID="ID_285654487" MODIFIED="1360745478351" TEXT="t option">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-</node>
 </node>
 <node COLOR="#111111" CREATED="1360582490854" ID="ID_1635824615" MODIFIED="1360588242151" TEXT="Self reference">
 <font NAME="Verdana" SIZE="12"/>
@@ -2572,11 +2027,360 @@
 <font NAME="Verdana" SIZE="12"/>
 </node>
 </node>
+<node COLOR="#111111" CREATED="1360769056452" ID="ID_1668060154" MODIFIED="1360769063247" TEXT="Synonym">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360769063249" ID="ID_508139835" MODIFIED="1360769066740" TEXT="Syntax">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360769066742" ID="ID_1740073936" MODIFIED="1360769084012" TEXT="type aname = t">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1360769374292" ID="ID_1999183569" MODIFIED="1360769390840" TEXT="convenient to shorten things">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360769395431" ID="ID_1888351221" MODIFIED="1360769407291" TEXT="type card = suit * rank">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1360033161821" ID="ID_719263836" MODIFIED="1360947548827">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Abstract types and modules
+    </p>
+  </body>
+</html></richcontent>
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="12"/>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1360947315278" ID="ID_580598614" MODIFIED="1360947548828" TEXT="signatures">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360947332046" ID="ID_891888620" MODIFIED="1360947368376">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      signature SIGNAME =
+    </p>
+    <p>
+      sig types-for-bindings end
+    </p>
+  </body>
+</html></richcontent>
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360947377502" ID="ID_512168092" MODIFIED="1360947386190" TEXT="ALLCAPS convention">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1360947431406" ID="ID_1345786230" MODIFIED="1360947436545" TEXT="ascribing">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360947436546" ID="ID_1719900137" MODIFIED="1360947465788">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      structure MyModule :&gt; SIGNAME =
+    </p>
+    <p>
+      struct bindings end
+    </p>
+  </body>
+</html></richcontent>
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1360952643801" ID="ID_1073055056" MODIFIED="1360952651912" TEXT="ADT">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360947711444" ID="ID_184764059" MODIFIED="1360947745644" TEXT="hides binding and types">
+<font NAME="Verdana" SIZE="12"/>
+<icon BUILTIN="idea"/>
+</node>
+<node COLOR="#111111" CREATED="1360952656481" ID="ID_190471114" MODIFIED="1360952669161" TEXT="you can know something exists but you can&apos;t know it definition">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360952706289" ID="ID_862633544" MODIFIED="1360952710201" TEXT="Syntax">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360952717392" ID="ID_1663777292" MODIFIED="1360952727357">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <b>type</b>&#160;rational
+    </p>
+  </body>
+</html></richcontent>
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1360953291628" ID="ID_1610655314" MODIFIED="1360953449432" TEXT="2 key restrictions">
+<font NAME="Verdana" SIZE="12"/>
+<icon BUILTIN="yes"/>
+<node COLOR="#111111" CREATED="1360953264629" ID="ID_1662432222" MODIFIED="1360953441499" TEXT="deny bindings exist">
+<font BOLD="true" NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360953278060" ID="ID_1228057586" MODIFIED="1360953442347" TEXT="make types abstract">
+<font BOLD="true" NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360953310084" ID="ID_1136808601" MODIFIED="1360953332512" TEXT="clients cannot create values of them">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360953333068" ID="ID_1222241024" MODIFIED="1360953338426" TEXT="can&apos;t access their pieces directly">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1360949493839" ID="ID_1365314141" MODIFIED="1360949498806" TEXT="invariants">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360949498807" ID="ID_869804330" MODIFIED="1360949515610" TEXT="control what can be inputted from the outside">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360949520951" ID="ID_647044355" MODIFIED="1360949535915" TEXT="functions rely on these conditions to function correctly">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1360033161910" ID="ID_581777638" MODIFIED="1360952976597" STYLE="fork">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Bindings
+    </p>
+  </body>
+</html></richcontent>
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="12"/>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1360238393585" ID="ID_440021972" MODIFIED="1360588242140" TEXT="can&apos;t use later bindings">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1360247473754" ID="ID_1381026485" MODIFIED="1360829081807">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <font size="13px" color="rgb(0, 0, 0)" face="sans-serif"><span class="Apple-converted-space">&#160;</span><span style="display: inline !important; font-family: sans-serif; float: none; line-height: 19.1875px; white-space: normal; font-weight: normal; word-spacing: 0px; font-size: 13px; font-variant: normal; background-color: rgb(255, 255, 255); text-transform: none; font-style: normal; color: rgb(0, 0, 0); letter-spacing: normal; text-align: start; text-indent: 0px">the association of objects (data and/or code) with</span><span class="Apple-converted-space">&#160;</span></font><u><font size="13px" face="sans-serif" color="rgb(11, 0, 128)"><a href="http://en.wikipedia.org/wiki/Identifier" style="font-family: sans-serif; background-position: initial initial; background-repeat: repeat; line-height: 19.1875px; white-space: normal; font-weight: normal; text-decoration: underline; font-size: 13px; word-spacing: 0px; font-variant: normal; background-color: rgb(255, 255, 255); background-image: none; text-transform: none; font-style: normal; color: rgb(11, 0, 128); letter-spacing: normal; text-align: start; text-indent: 0px" title="Identifier">identifiers</a></font></u><span style="font-family: sans-serif; display: inline !important; float: none; line-height: 19.1875px; white-space: normal; font-weight: normal; font-size: 13px; word-spacing: 0px; font-variant: normal; background-color: rgb(255, 255, 255); text-transform: none; font-style: normal; color: rgb(0, 0, 0); letter-spacing: normal; text-align: start; text-indent: 0px"><font size="13px" face="sans-serif" color="rgb(0, 0, 0)">.</font></span><span><sup id="cite_ref-tkac08_1-0" class="reference" style="font-family: sans-serif; line-height: 1em; white-space: normal; font-weight: normal; word-spacing: 0px; font-variant: normal; background-color: rgb(255, 255, 255); text-transform: none; font-style: normal; color: rgb(0, 0, 0); letter-spacing: normal; text-align: start; text-indent: 0px"><font face="sans-serif" color="rgb(11, 0, 128)"><a href="http://en.wikipedia.org/wiki/Name_binding#cite_note-tkac08-1" style="background-position: initial initial; background-repeat: repeat; white-space: nowrap; text-decoration: initial; background-image: none; color: rgb(11, 0, 128)">[</a></font></sup></span>
+  </body>
+</html></richcontent>
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1360247858091" ID="ID_1626569086" MODIFIED="1360588242140" TEXT="Kinds of Bindings">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360238387315" ID="ID_1088836687" LINK="#ID_1239226852" MODIFIED="1360953110045">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      functions
+    </p>
+  </body>
+</html></richcontent>
+<font NAME="Verdana" SIZE="12"/>
+<icon BUILTIN="yes"/>
+</node>
+<node COLOR="#111111" CREATED="1360238387325" ID="ID_1878771626" MODIFIED="1360588242142">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      records
+    </p>
+  </body>
+</html></richcontent>
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360289520688" ID="ID_516240198" MODIFIED="1360588242142" TEXT="Variables">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360358207226" ID="ID_1601402434" MODIFIED="1360588242142" TEXT="binding evaluates its expression when the binding is evaluated not every time it is used">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1360585685879" ID="ID_1056292024" MODIFIED="1360588242143" TEXT="Datatype">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360586640553" ID="ID_1793352456" MODIFIED="1360588242143" TEXT="Building">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360585966502" ID="ID_1717065222" MODIFIED="1360588242143">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      datatype mytype = TwoInts of int * int
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;| Str of string
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;| Pizza
+    </p>
+  </body>
+</html></richcontent>
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360586358795" ID="ID_1409066586" MODIFIED="1360588242143" TEXT="any value of type mytype is made from one of the constructors">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360586388467" ID="ID_447604245" MODIFIED="1360588242143" TEXT="Constructors">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360586088974" ID="ID_1272880046" MODIFIED="1360588242143" TEXT="TwoInts : int * int -&gt; mytype">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360586123597" ID="ID_1305304219" MODIFIED="1360588242144" TEXT="Str : string -&gt; mytype">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360586132092" ID="ID_180304570" MODIFIED="1360588242144" TEXT="Pizza : mytype">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1360585772170" ID="ID_1332315139" MODIFIED="1360588242144" TEXT="Constructors aka tags">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360585786070" ID="ID_988150779" MODIFIED="1360588242144" TEXT="Capitalized">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360585864039" ID="ID_1634133314" MODIFIED="1360588242144" TEXT="is either">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360585831071" ID="ID_1816759760" MODIFIED="1360588242144" TEXT="a function that makes values of the new type">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360585883711" ID="ID_1343960199" MODIFIED="1360588242145" TEXT="or a value of the new type">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1360585957678" ID="ID_183307320" MODIFIED="1360588242145" TEXT="can be named anything">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1360594814175" ID="ID_1548837243" MODIFIED="1360594840475" TEXT="Syntax: datatype t = C1 of t1 | C2 of t2 | ... | Cn of tn">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360595060726" ID="ID_923286670" MODIFIED="1360595081837" TEXT="adds type t and constructors Ci of type ti -&gt; t">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360595081838" ID="ID_1131886673" MODIFIED="1360595101052" TEXT="Ci v is a value ie the result includes the tag">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1360586644760" ID="ID_882539264" MODIFIED="1360588242145" TEXT="Access">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360595324316" ID="ID_1461513027" MODIFIED="1360595415580" TEXT="Case Expression">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360586665089" ID="ID_1905638132" MODIFIED="1360588242145" TEXT="check what variant it is (what constructor made it)">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360586682216" ID="ID_764239212" MODIFIED="1360595339316" TEXT="extract the data (if that variant has any)">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1360033161829" ID="ID_1647647581" MODIFIED="1360743940577">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      polymorphic
+    </p>
+  </body>
+</html></richcontent>
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360286762451" ID="ID_53631507" MODIFIED="1360588242140" TEXT="inferred based on how arguments are used">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360738911713" ID="ID_373043331" MODIFIED="1360738915845" TEXT="Key Steps">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360738915848" ID="ID_1289842441" MODIFIED="1360738925649" TEXT="determine types of bindings in order">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360738934104" ID="ID_556883977" MODIFIED="1360738941987" TEXT="except mutual recursion">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360738942399" ID="ID_882214009" MODIFIED="1360738974653" TEXT="cannot use later bindings: won&apos;t type check">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1360739479332" ID="ID_149420451" MODIFIED="1360739487866" TEXT="collect all the facts for type checking">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360739488276" ID="ID_1172906432" MODIFIED="1360739509984" TEXT="facts constrain the type of the function">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1360739330405" ID="ID_805733825" MODIFIED="1360739342353" TEXT="it can infer types with type variables">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360739343084" ID="ID_950293588" MODIFIED="1360739352295" TEXT="great for code reuse and understanding functions">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
+</node>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360245509490" ID="ID_1360587793" MODIFIED="1360680117673" TEXT="REPL">
+<font NAME="Georgia" SIZE="16"/>
+<node COLOR="#111111" CREATED="1360245516195" ID="ID_1952172383" MODIFIED="1360588242146" TEXT="Error Messages">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360245559135" ID="ID_818101232" MODIFIED="1360588242146" TEXT="use command">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360245569762" ID="ID_932035963" MODIFIED="1360588242146" TEXT="types in the file&apos;s bindings line by line">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1360245651767" ID="ID_1635382740" MODIFIED="1360588242146">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Read, Eval, Print, Loop
+    </p>
+  </body>
+</html></richcontent>
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360245781759" ID="ID_926846695" MODIFIED="1360588242146" TEXT="always restart the REPL C-d">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360295024160" ID="ID_738944707" MODIFIED="1360588242147" TEXT="never parentheses it doesn&apos;t have to">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360366734757" ID="ID_92543980" MODIFIED="1360680117674" TEXT="Idioms">
+<font NAME="Georgia" SIZE="16"/>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1360366718390" ID="ID_1252997074" MODIFIED="1360588242147" TEXT="infix">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360366907140" ID="ID_1988508449" MODIFIED="1360588242147" TEXT="o">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360366910812" ID="ID_1165531687" MODIFIED="1360588242147" TEXT="combines functions">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
 </node>
 <node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360590399767" ID="ID_224017698" MODIFIED="1360680117683" TEXT="Pattern Matching">
 <font NAME="Georgia" SIZE="16"/>
 <node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1360589326129" ID="ID_125697976" MODIFIED="1360595415579" TEXT="Case Expression">
-<arrowlink DESTINATION="ID_1461513027" ENDARROW="Default" ENDINCLINATION="1325;0;" ID="Arrow_ID_942115172" STARTARROW="Default" STARTINCLINATION="1325;0;"/>
+<arrowlink DESTINATION="ID_1461513027" ENDARROW="Default" ENDINCLINATION="1325;0;" ID="Arrow_ID_661892248" STARTARROW="Default" STARTINCLINATION="1325;0;"/>
 <font NAME="Verdana" SIZE="12"/>
 <node COLOR="#111111" CREATED="1360595440499" ID="ID_1603042469" MODIFIED="1360595442262" TEXT="Syntax">
 <font NAME="Verdana" SIZE="12"/>
@@ -2710,25 +2514,300 @@
 </node>
 </node>
 </node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360766956778" ID="ID_885654680" MODIFIED="1360766960895" TEXT="Module">
+<font NAME="Georgia" SIZE="16"/>
+<node COLOR="#111111" CREATED="1360817162697" ID="ID_1320829544" MODIFIED="1360817166965" TEXT="Signature">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360817166967" ID="ID_159757941" MODIFIED="1360817175704" TEXT="type for a module">
+<font NAME="Verdana" SIZE="12"/>
 </node>
-<node COLOR="#cc0000" CREATED="1359982527259" FOLDED="true" ID="ID_628526100" MODIFIED="1360680117687" TEXT="Racket">
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="20"/>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360033161807" ID="ID_318290288" MODIFIED="1360680117687">
+<node COLOR="#111111" CREATED="1360817204505" ID="ID_1773003235" MODIFIED="1360820976274" TEXT="hide bindings inside module">
+<font NAME="Verdana" SIZE="12"/>
+<icon BUILTIN="idea"/>
+<node COLOR="#111111" CREATED="1360820853175" ID="ID_319478701" MODIFIED="1360821001782" TEXT="Deny bindings exist">
+<font BOLD="true" NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360820861007" ID="ID_59743180" MODIFIED="1360821001239" TEXT="Make types abstract">
+<font BOLD="true" NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360820883684" ID="ID_315202491" MODIFIED="1360820899964" TEXT="clients cannot create values of them or acces their pieces directly">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360821804657" ID="ID_1228877938" MODIFIED="1360821819290" TEXT="allow different implementations to be equivalent">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360821819291" ID="ID_562118247" MODIFIED="1360821828842" TEXT="no client can tell which you are using">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360821829168" ID="ID_1918640667" MODIFIED="1360821837948" TEXT="can improve/replace/choose implementations later">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360821838616" ID="ID_1711039760" MODIFIED="1360821852975" TEXT="easier to do if you start with more abstract sigs">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1360817260792" ID="ID_300095280" MODIFIED="1360817268209" TEXT="conventional to use ALLCAPS">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360817398407" ID="ID_560182310" MODIFIED="1360817401200" TEXT="Syntax">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360817401203" ID="ID_108708681" MODIFIED="1360817447975">
 <richcontent TYPE="NODE"><html>
   <head>
     
   </head>
   <body>
     <p>
-      Racket basics
+      signature SIGNAME =
+    </p>
+    <p>
+      sig types-for-bindings end
     </p>
   </body>
 </html></richcontent>
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360817865653" ID="ID_1458355106" MODIFIED="1360819953403" TEXT="can define the signature seperately then ascribe to the module">
+<arrowlink DESTINATION="ID_339792833" ENDARROW="Default" ENDINCLINATION="299;0;" ID="Arrow_ID_1619132517" STARTARROW="None" STARTINCLINATION="67;0;"/>
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1360817458735" ID="ID_1927039546" MODIFIED="1360819939932" TEXT="ascribing">
+<cloud/>
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360817462037" ID="ID_339792833" MODIFIED="1360819953403">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      structure MyModule :&gt; SIGNAME =
+    </p>
+    <p>
+      struct bindings end
+    </p>
+  </body>
+</html></richcontent>
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
+</node>
+</node>
+</node>
+<node COLOR="#cc0000" CREATED="1359982527259" ID="ID_628526100" MODIFIED="1361215280588">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="../../../Users/Denis/Pictures/racketicon.png" />
+  </body>
+</html></richcontent>
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="20"/>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1361213047727" ID="ID_118042513" MODIFIED="1361213085904" TEXT="Tools &amp; Resources">
 <font NAME="Georgia" SIZE="16"/>
+<node COLOR="#111111" CREATED="1361213062374" ID="ID_1336801006" MODIFIED="1361213065733" TEXT="DrRacket">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361213133789" ID="ID_352459336" MODIFIED="1361213143004" TEXT="ctrl-e">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1361213157149" ID="ID_612199545" MODIFIED="1361213166452" TEXT="#lang racket">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1361213173749" ID="ID_911143548" MODIFIED="1361213188278" TEXT="(provide (all-defined-out))">
+<font NAME="Verdana" SIZE="12"/>
 </node>
 </node>
-<node COLOR="#cc0000" CREATED="1359982533086" FOLDED="true" ID="ID_56951974" MODIFIED="1360680117687" TEXT="Ruby">
+<node COLOR="#111111" CREATED="1361213085907" ID="ID_1115107937" MODIFIED="1361213103949" TEXT="http://racket-lang.org">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1361213812688" ID="ID_584791204" MODIFIED="1361213815567" TEXT="Constructs">
+<font NAME="Georgia" SIZE="16"/>
+<node COLOR="#111111" CREATED="1361213633729" ID="ID_1022175165" MODIFIED="1361213638018" TEXT="functions">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361213663145" ID="ID_1966937439" MODIFIED="1361213669927" TEXT="anonymous function">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361213669928" ID="ID_921296512" MODIFIED="1361213711734">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      (lambda (x)
+    </p>
+    <p>
+      &#160;&#160;expression)
+    </p>
+  </body>
+</html></richcontent>
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361213911584" ID="ID_1241237084" MODIFIED="1361213991438">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      (define cube
+    </p>
+    <p>
+      &#160;&#160;(lambda (x)
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;(* x x x)))
+    </p>
+  </body>
+</html></richcontent>
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361213994432" ID="ID_516171550" MODIFIED="1361214027229">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      (define (cube x)
+    </p>
+    <p>
+      &#160;&#160;(* x x x))
+    </p>
+  </body>
+</html></richcontent>
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1361213145621" ID="ID_1460225780" MODIFIED="1361213824612" TEXT="Syntax">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361213638021" ID="ID_1726317367" MODIFIED="1361213659383">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      (<b>define</b>&#160;x)
+    </p>
+  </body>
+</html></richcontent>
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361213837352" ID="ID_1296834166" MODIFIED="1361213856569" TEXT="can take any number of arguments">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361213856571" ID="ID_908913043" MODIFIED="1361213866230" TEXT="ex. (define x x x x)">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1361213149367" ID="ID_885590312" MODIFIED="1361213151640" TEXT="comment">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361213151642" ID="ID_1087799507" MODIFIED="1361213154345" TEXT=";">
+<font BOLD="true" NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1361214101054" ID="ID_1628152059" MODIFIED="1361214106079" TEXT="conditional">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361214106081" ID="ID_4294159" MODIFIED="1361214176644">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      (define (pow x y)
+    </p>
+    <p>
+      &#160;&#160;(if (= y 0)
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;1
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;(* x&#160;&#160;(pow1 x (- y 1)))))
+    </p>
+  </body>
+</html></richcontent>
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1361214489212" ID="ID_1626195525" MODIFIED="1361214492662" TEXT="Lists">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361214492664" ID="ID_269668932" MODIFIED="1361214495908" TEXT="empty list">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361214495910" ID="ID_303060031" MODIFIED="1361214497114" TEXT="null">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1361214538379" ID="ID_1092682797" MODIFIED="1361214543813" TEXT="boolean">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361214543816" ID="ID_1546041768" MODIFIED="1361214547078" TEXT="null?">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1361214499500" ID="ID_1248674795" MODIFIED="1361214506004" TEXT="cons constructor">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361214506006" ID="ID_1385459930" MODIFIED="1361214507347" TEXT="cons">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1361214521819" ID="ID_380724800" MODIFIED="1361214524548" TEXT="head">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361214524550" ID="ID_1125213282" MODIFIED="1361214525753" TEXT="car">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1361214527387" ID="ID_301488334" MODIFIED="1361214530277" TEXT="tail">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361214530279" ID="ID_591672254" MODIFIED="1361214532983" TEXT="cdr">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1361214561355" ID="ID_1511255664" MODIFIED="1361214569733" TEXT="Build">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361214569735" ID="ID_58171586" MODIFIED="1361214713312">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      (<b>list</b>&#160;e1 ... en)
+    </p>
+  </body>
+</html></richcontent>
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361215074144" ID="ID_1443562572" MODIFIED="1361215084655" TEXT="&gt; &apos;(e1 ... en)">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
+</node>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1361214757386" ID="ID_1683768944" MODIFIED="1361214765769" TEXT="Style">
+<font NAME="Georgia" SIZE="16"/>
+<node COLOR="#111111" CREATED="1361214765776" ID="ID_499362302" MODIFIED="1361214773963" TEXT="dash names">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361214773966" ID="ID_1608958859" MODIFIED="1361214777030" TEXT="my-append">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
+</node>
+<node COLOR="#cc0000" CREATED="1359982533086" FOLDED="true" ID="ID_56951974" MODIFIED="1361216312572">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="../../../Users/Denis/Pictures/ruby.png" />
+  </body>
+</html></richcontent>
 <edge STYLE="bezier" WIDTH="thin"/>
 <font NAME="Verdana" SIZE="20"/>
 <node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360033161751" ID="ID_908277988" MODIFIED="1360680117687">
@@ -2746,6 +2825,461 @@
 </html></richcontent>
 <font NAME="Georgia" SIZE="16"/>
 </node>
+</node>
+</node>
+<node COLOR="#0033ff" CREATED="1359982430628" HGAP="18" ID="ID_1435228231" MODIFIED="1361216249333" POSITION="left" VSHIFT="347">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Master language
+    </p>
+    <p>
+      concepts and
+    </p>
+    <p>
+      recognize them in
+    </p>
+    <p>
+      strange guises
+    </p>
+  </body>
+</html></richcontent>
+<edge STYLE="sharp_bezier" WIDTH="8"/>
+<font NAME="Georgia" SIZE="30"/>
+<node COLOR="#cc0000" CREATED="1360033161903" ID="ID_1238292414" MODIFIED="1360680117632">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Recursive functions and recursive types
+    </p>
+  </body>
+</html></richcontent>
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="20"/>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360033161882" ID="ID_944928480" MODIFIED="1361153175607">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Tail recursion
+    </p>
+  </body>
+</html></richcontent>
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Georgia" SIZE="16"/>
+<node COLOR="#111111" CREATED="1361153179504" ID="ID_584624828" MODIFIED="1361213057207" TEXT="no more work to be done">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360248940034" ID="ID_1554032695" MODIFIED="1360680117633" TEXT="more powerful than loops">
+<font NAME="Georgia" SIZE="16"/>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360735663831" ID="ID_576027498" MODIFIED="1360735689059" TEXT="Functions over lists are usually recursive">
+<font NAME="Georgia" SIZE="16"/>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360735689726" ID="ID_1056457259" MODIFIED="1360735700601" TEXT="The way to construct them">
+<font NAME="Georgia" SIZE="16"/>
+<node COLOR="#111111" CREATED="1360735700602" ID="ID_252875344" MODIFIED="1360735712066" TEXT="What should be the answer for the empty list">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360735712566" ID="ID_1416443954" MODIFIED="1360735726089" TEXT="What should be the answer for the non empty list?">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1361153196103" ID="ID_410397113" MODIFIED="1361213057212" TEXT="mutual recursion">
+<font NAME="Georgia" SIZE="16"/>
+<node COLOR="#111111" CREATED="1361153761548" ID="ID_1311262905" MODIFIED="1361213057215">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      fun
+    </p>
+    <p>
+      and
+    </p>
+  </body>
+</html></richcontent>
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
+<node COLOR="#cc0000" CREATED="1360033161888" ID="ID_1008572280" MODIFIED="1360680117633">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Algebraic datatypes
+    </p>
+  </body>
+</html></richcontent>
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="20"/>
+</node>
+<node COLOR="#cc0000" CREATED="1360033161846" ID="ID_1329948428" MODIFIED="1360680117633">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Equivalence and effects
+    </p>
+  </body>
+</html></richcontent>
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="20"/>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360858439991" ID="ID_1473889371" MODIFIED="1360858499303" TEXT="thniking about this all the time refactoring">
+<font NAME="Georgia" SIZE="16"/>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360858523770" ID="ID_277581739" MODIFIED="1360858531750" TEXT="code maintenance">
+<font NAME="Georgia" SIZE="16"/>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360858532169" ID="ID_1460843692" MODIFIED="1360858546794" TEXT="backward compatibility">
+<font NAME="Georgia" SIZE="16"/>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360858547211" ID="ID_1515514353" MODIFIED="1360858552342" TEXT="optimization">
+<font NAME="Georgia" SIZE="16"/>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360858552828" ID="ID_901101624" MODIFIED="1360858556566" TEXT="abstraction">
+<font NAME="Georgia" SIZE="16"/>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360858699800" ID="ID_1911331014" MODIFIED="1360858702538" TEXT="definition">
+<font NAME="Georgia" SIZE="16"/>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1360858657318" ID="ID_1883134132" MODIFIED="1360858705936" TEXT="two functions are quivalent if they have the sam observable behaviour no matter how they are used anywhere in any program">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360858730854" ID="ID_907941518" MODIFIED="1360858741812" TEXT="produce quivalent results">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360858742148" ID="ID_1307688729" MODIFIED="1360858751240" TEXT="have the same termination behaviour">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360858751506" ID="ID_393853655" MODIFIED="1360858759440" TEXT="mutate memory in the same way">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360858759964" ID="ID_742094722" MODIFIED="1360858768453" TEXT="do the same input/output">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360858768962" ID="ID_1582902431" MODIFIED="1360858780840" TEXT="raise the same exceptions">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1360860062289" ID="ID_600181624" MODIFIED="1360860067016" TEXT="types">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360860067018" ID="ID_1177134492" MODIFIED="1360860084671" TEXT="PL equivalence">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360860085178" ID="ID_872980621" MODIFIED="1360860091665" TEXT="asymptotic">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360860092508" ID="ID_264437291" MODIFIED="1360860095855" TEXT="systems">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360858838931" ID="ID_1255588819" MODIFIED="1360858853041" TEXT="easier to be equivalent if">
+<font NAME="Georgia" SIZE="16"/>
+<node COLOR="#111111" CREATED="1360858853043" ID="ID_1386209539" MODIFIED="1360858882788" TEXT="there are fewer possible arguments with a type sys and abstraction">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360858883195" ID="ID_1903740219" MODIFIED="1360858891391" TEXT="avoid side effects">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360858891392" ID="ID_1583144428" MODIFIED="1360858894810" TEXT="mutation">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360858895306" ID="ID_1653857478" MODIFIED="1360858900694" TEXT="input/output">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360858902857" ID="ID_393038812" MODIFIED="1360858906498" TEXT="exceptions">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1360859161145" ID="ID_365240930" MODIFIED="1360859176457" TEXT="functional programming has advantages">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360859234217" ID="ID_394402813" MODIFIED="1360859242760" TEXT="standard equivalences">
+<font NAME="Georgia" SIZE="16"/>
+<node COLOR="#111111" CREATED="1360859242761" ID="ID_571344955" MODIFIED="1360859256586" TEXT="syntactic sugar">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360859257063" ID="ID_688132982" MODIFIED="1360859356569" TEXT="consistently rename bound vars and uses">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360859521257" ID="ID_792228784" MODIFIED="1360859531271" TEXT="use a helper function or do not">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360859656865" ID="ID_1746096482" MODIFIED="1360859667225" TEXT="unecessary function wrapping">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360859893959" ID="ID_1785466087" MODIFIED="1360859899112" TEXT="beware shadowing">
+<font NAME="Georgia" SIZE="16"/>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360860039498" ID="ID_1812417200" MODIFIED="1360860050326" TEXT="doesn&apos;t take into account performance">
+<font NAME="Georgia" SIZE="16"/>
+</node>
+</node>
+<node COLOR="#cc0000" CREATED="1360033161837" ID="ID_1097045453" MODIFIED="1360680117633">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Parametric polymorphism and container types
+    </p>
+  </body>
+</html></richcontent>
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="20"/>
+</node>
+<node COLOR="#cc0000" CREATED="1360033161800" ID="ID_1314280091" MODIFIED="1360680500545">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      Dynamic vs. static typing
+    </p>
+  </body>
+</html></richcontent>
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="20"/>
+</node>
+<node COLOR="#cc0000" CREATED="1360033161784" ID="ID_431220756" MODIFIED="1360680117634">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <ul style="font-style: normal; color: rgb(51, 51, 51); text-transform: none; padding-bottom: 0px; margin-right: 0px; font-size: 14.44444465637207px; line-height: 20.98958396911621px; white-space: normal; margin-left: 25px; margin-top: 0px; font-variant: normal; text-align: start; background-color: rgb(255, 255, 255); text-indent: 0px; margin-bottom: 10.5px; letter-spacing: normal; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-weight: normal; padding-left: 0px; padding-top: 0px; padding-right: 0px; word-spacing: 0px">
+      <li style="line-height: 21px">
+        Implementing languages, especially higher-order functions
+      </li>
+    </ul>
+  </body>
+</html></richcontent>
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="20"/>
+</node>
+<node COLOR="#cc0000" CREATED="1360033161775" ID="ID_722622727" MODIFIED="1360680117634">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <ul style="font-style: normal; color: rgb(51, 51, 51); text-transform: none; padding-bottom: 0px; margin-right: 0px; font-size: 14.44444465637207px; line-height: 20.98958396911621px; white-space: normal; margin-left: 25px; margin-top: 0px; font-variant: normal; text-align: start; background-color: rgb(255, 255, 255); text-indent: 0px; margin-bottom: 10.5px; letter-spacing: normal; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-weight: normal; padding-left: 0px; padding-top: 0px; padding-right: 0px; word-spacing: 0px">
+      <li style="line-height: 21px">
+        Macros
+      </li>
+    </ul>
+  </body>
+</html></richcontent>
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="20"/>
+</node>
+<node COLOR="#cc0000" CREATED="1360033161758" ID="ID_1994567019" MODIFIED="1360680117635">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <ul style="font-style: normal; color: rgb(51, 51, 51); text-transform: none; padding-bottom: 0px; margin-right: 0px; font-size: 14.44444465637207px; line-height: 20.98958396911621px; white-space: normal; margin-left: 25px; margin-top: 0px; font-variant: normal; text-align: start; background-color: rgb(255, 255, 255); text-indent: 0px; margin-bottom: 10.5px; letter-spacing: normal; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-weight: normal; padding-left: 0px; padding-top: 0px; padding-right: 0px; word-spacing: 0px">
+      <li style="line-height: 21px">
+        Abstract types via dynamic type-creation and simple contracts
+      </li>
+    </ul>
+  </body>
+</html></richcontent>
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="20"/>
+</node>
+<node COLOR="#cc0000" CREATED="1360033161745" ID="ID_1777262570" MODIFIED="1360680117635">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <ul style="font-style: normal; color: rgb(51, 51, 51); text-transform: none; padding-bottom: 0px; margin-right: 0px; font-size: 14.44444465637207px; line-height: 20.98958396911621px; white-space: normal; margin-left: 25px; margin-top: 0px; font-variant: normal; text-align: start; background-color: rgb(255, 255, 255); text-indent: 0px; margin-bottom: 10.5px; letter-spacing: normal; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-weight: normal; padding-left: 0px; padding-top: 0px; padding-right: 0px; word-spacing: 0px">
+      <li style="line-height: 21px">
+        Object-oriented programming is dynamic dispatch
+      </li>
+    </ul>
+  </body>
+</html></richcontent>
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="20"/>
+</node>
+<node COLOR="#cc0000" CREATED="1360033161738" ID="ID_1336278848" MODIFIED="1360680117635">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <ul style="font-style: normal; color: rgb(51, 51, 51); text-transform: none; padding-bottom: 0px; margin-right: 0px; font-size: 14.44444465637207px; line-height: 20.98958396911621px; white-space: normal; margin-left: 25px; margin-top: 0px; font-variant: normal; text-align: start; background-color: rgb(255, 255, 255); text-indent: 0px; margin-bottom: 10.5px; letter-spacing: normal; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-weight: normal; padding-left: 0px; padding-top: 0px; padding-right: 0px; word-spacing: 0px">
+      <li style="line-height: 21px">
+        Pure object-orientation
+      </li>
+    </ul>
+  </body>
+</html></richcontent>
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="20"/>
+</node>
+<node COLOR="#cc0000" CREATED="1360033161731" ID="ID_783333515" MODIFIED="1360680117636">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <ul style="font-style: normal; color: rgb(51, 51, 51); text-transform: none; padding-bottom: 0px; margin-right: 0px; font-size: 14.44444465637207px; line-height: 20.98958396911621px; white-space: normal; margin-left: 25px; margin-top: 0px; font-variant: normal; text-align: start; background-color: rgb(255, 255, 255); text-indent: 0px; margin-bottom: 10.5px; letter-spacing: normal; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-weight: normal; padding-left: 0px; padding-top: 0px; padding-right: 0px; word-spacing: 0px">
+      <li style="line-height: 21px">
+        Implementing dynamic dispatch
+      </li>
+    </ul>
+  </body>
+</html></richcontent>
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="20"/>
+</node>
+<node COLOR="#cc0000" CREATED="1360033161724" ID="ID_1277941858" MODIFIED="1360680117636">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <ul style="font-style: normal; color: rgb(51, 51, 51); text-transform: none; padding-bottom: 0px; margin-right: 0px; font-size: 14.44444465637207px; line-height: 20.98958396911621px; white-space: normal; margin-left: 25px; margin-top: 0px; font-variant: normal; text-align: start; background-color: rgb(255, 255, 255); text-indent: 0px; margin-bottom: 10.5px; letter-spacing: normal; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-weight: normal; padding-left: 0px; padding-top: 0px; padding-right: 0px; word-spacing: 0px">
+      <li style="line-height: 21px">
+        Multiple inheritance, interfaces, and mixins
+      </li>
+    </ul>
+  </body>
+</html></richcontent>
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="20"/>
+</node>
+<node COLOR="#cc0000" CREATED="1360033161718" ID="ID_1791557834" MODIFIED="1360680117636">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <ul style="font-style: normal; color: rgb(51, 51, 51); text-transform: none; padding-bottom: 0px; margin-right: 0px; font-size: 14.44444465637207px; line-height: 20.98958396911621px; white-space: normal; margin-left: 25px; margin-top: 0px; font-variant: normal; text-align: start; background-color: rgb(255, 255, 255); text-indent: 0px; margin-bottom: 10.5px; letter-spacing: normal; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-weight: normal; padding-left: 0px; padding-top: 0px; padding-right: 0px; word-spacing: 0px">
+      <li style="line-height: 21px">
+        OO vs. functional decomposition and extensibility
+      </li>
+    </ul>
+  </body>
+</html></richcontent>
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="20"/>
+</node>
+<node COLOR="#cc0000" CREATED="1360033161711" ID="ID_551832753" MODIFIED="1360680117636">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <ul style="font-style: normal; color: rgb(51, 51, 51); text-transform: none; padding-bottom: 0px; margin-right: 0px; font-size: 14.44444465637207px; line-height: 20.98958396911621px; white-space: normal; margin-left: 25px; margin-top: 0px; font-variant: normal; text-align: start; background-color: rgb(255, 255, 255); text-indent: 0px; margin-bottom: 10.5px; letter-spacing: normal; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-weight: normal; padding-left: 0px; padding-top: 0px; padding-right: 0px; word-spacing: 0px">
+      <li style="line-height: 21px">
+        Subtyping for records, functions, and objects
+      </li>
+    </ul>
+  </body>
+</html></richcontent>
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="20"/>
+</node>
+<node COLOR="#cc0000" CREATED="1360033161704" ID="ID_139630241" MODIFIED="1360680117637">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <ul style="font-style: normal; color: rgb(51, 51, 51); text-transform: none; padding-bottom: 0px; margin-right: 0px; font-size: 14.44444465637207px; line-height: 20.98958396911621px; white-space: normal; margin-left: 25px; margin-top: 0px; font-variant: normal; text-align: start; background-color: rgb(255, 255, 255); text-indent: 0px; margin-bottom: 10.5px; letter-spacing: normal; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-weight: normal; padding-left: 0px; padding-top: 0px; padding-right: 0px; word-spacing: 0px">
+      <li style="line-height: 21px">
+        Class-based subtyping
+      </li>
+    </ul>
+  </body>
+</html></richcontent>
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="20"/>
+</node>
+<node COLOR="#cc0000" CREATED="1360033161697" ID="ID_192820981" MODIFIED="1360680117637">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <ul style="font-style: normal; color: rgb(51, 51, 51); text-transform: none; padding-bottom: 0px; margin-right: 0px; font-size: 14.44444465637207px; line-height: 20.98958396911621px; white-space: normal; margin-left: 25px; margin-top: 0px; font-variant: normal; text-align: start; background-color: rgb(255, 255, 255); text-indent: 0px; margin-bottom: 10.5px; letter-spacing: normal; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-weight: normal; padding-left: 0px; padding-top: 0px; padding-right: 0px; word-spacing: 0px">
+      <li style="line-height: 21px">
+        Subtyping
+      </li>
+    </ul>
+  </body>
+</html></richcontent>
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="20"/>
+</node>
+<node COLOR="#cc0000" CREATED="1360033161683" ID="ID_541734409" MODIFIED="1360680117637">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <ul style="font-style: normal; color: rgb(51, 51, 51); text-transform: none; padding-bottom: 0px; margin-right: 0px; font-size: 14.44444465637207px; line-height: 20.98958396911621px; white-space: normal; margin-left: 25px; margin-top: 0px; font-variant: normal; text-align: start; background-color: rgb(255, 255, 255); text-indent: 0px; margin-bottom: 10.5px; letter-spacing: normal; font-family: Helvetica Neue, Helvetica, Arial, sans-serif; font-weight: normal; padding-left: 0px; padding-top: 0px; padding-right: 0px; word-spacing: 0px">
+      <li style="line-height: 21px">
+        Subtyping vs. parametric polymorphism; bounded polymorphism
+      </li>
+    </ul>
+  </body>
+</html></richcontent>
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="20"/>
+</node>
+<node COLOR="#cc0000" CREATED="1360584327714" ID="ID_1185248730" MODIFIED="1360680117638" TEXT="Syntactic Sugar">
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="20"/>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360584337235" ID="ID_622121463" MODIFIED="1360680117638" TEXT="Syntactic">
+<font NAME="Georgia" SIZE="16"/>
+<node COLOR="#111111" CREATED="1360584345553" ID="ID_901369877" MODIFIED="1360588242105" TEXT="Can describe the semantics entirely by the corresponding record syntax">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360584372833" ID="ID_1185592668" MODIFIED="1360680117638" TEXT="Sugar">
+<font NAME="Georgia" SIZE="16"/>
+<node COLOR="#111111" CREATED="1360584377645" ID="ID_1287383500" MODIFIED="1360588242105" TEXT="Makes the language easier to use">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360584473056" ID="ID_646389465" MODIFIED="1360680117639" TEXT="simplifies">
+<font NAME="Georgia" SIZE="16"/>
+<node COLOR="#111111" CREATED="1360584482580" ID="ID_469398837" MODIFIED="1360588242106" TEXT="understanding the language">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1360584491576" ID="ID_1123960679" MODIFIED="1360588242106" TEXT="implementing the language">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
+<node COLOR="#cc0000" CREATED="1360764150112" ID="ID_220468747" MODIFIED="1360764159786" TEXT="State machine">
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="20"/>
 </node>
 </node>
 </node>
