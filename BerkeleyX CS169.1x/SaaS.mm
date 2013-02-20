@@ -8,8 +8,7 @@
   <body>
     <img src="../../../Users/Denis/Pictures/course_image.jpg" />
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <font NAME="Verdana" SIZE="36"/>
 <hook NAME="accessories/plugins/AutomaticLayout.properties"/>
 <node COLOR="#0033ff" CREATED="1360166491382" HGAP="-36" ID="ID_1281703065" MODIFIED="1361229877615" POSITION="right" VSHIFT="31">
@@ -304,6 +303,33 @@
 </node>
 </node>
 </node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1361292221629" ID="ID_1058101038" MODIFIED="1361292232940" TEXT="DRY">
+<font NAME="Georgia" SIZE="16"/>
+<node COLOR="#111111" CREATED="1361292232942" ID="ID_204706472" MODIFIED="1361292239695" TEXT="Aspect Oriented Programming">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361292261117" ID="ID_1570734536" MODIFIED="1361292265941" TEXT="pointcut">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361292391684" ID="ID_1177220579" MODIFIED="1361292395344" TEXT="Validation">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361292414211" ID="ID_1602806706" MODIFIED="1361292421315" TEXT="checks model">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1361292395763" ID="ID_1636302300" MODIFIED="1361292409512" TEXT="Controller">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361292424587" ID="ID_1877260325" MODIFIED="1361292432783" TEXT="checks controller">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1361292530763" ID="ID_742735226" MODIFIED="1361292532214" TEXT="Filters">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1361292375524" ID="ID_1940450927" MODIFIED="1361292380346" TEXT="cross cutting concerns">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
 </node>
 </node>
 <node COLOR="#0033ff" CREATED="1360909213191" HGAP="-55" ID="ID_1293872193" MODIFIED="1361229848943" POSITION="left" TEXT="Architecture" VSHIFT="-94">
@@ -385,8 +411,7 @@
   <body>
     <img src="../../../Users/Denis/Pictures/rails.png" />
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <edge STYLE="sharp_bezier" WIDTH="8"/>
 <font NAME="Georgia" SIZE="30"/>
 <node COLOR="#cc0000" CREATED="1361114419527" ID="ID_96899231" MODIFIED="1361229442258" TEXT="Gems">
@@ -523,6 +548,23 @@
 <font NAME="Verdana" SIZE="12"/>
 </node>
 </node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1361283374699" ID="ID_1802656266" MODIFIED="1361283432674" TEXT="run test">
+<font NAME="Georgia" SIZE="16"/>
+<node COLOR="#111111" CREATED="1361283380348" ID="ID_671480767" MODIFIED="1361283413194">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      bundle exec <b>rspec</b>&#160;spec/requests/static_pages_spec.rb
+    </p>
+  </body>
+</html>
+</richcontent>
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
 </node>
 <node COLOR="#cc0000" CREATED="1361119524242" ID="ID_4692276" MODIFIED="1361229442266" TEXT="controller">
 <edge STYLE="bezier" WIDTH="thin"/>
@@ -572,6 +614,12 @@
 <font NAME="Verdana" SIZE="12"/>
 </node>
 </node>
+<node COLOR="#111111" CREATED="1361288910908" ID="ID_85277219" MODIFIED="1361288922116" TEXT="break command">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361288922119" ID="ID_646597110" MODIFIED="1361288929935" TEXT="Ctrl-C">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
 </node>
 </node>
 </node>
@@ -582,7 +630,7 @@
 <font NAME="Georgia" SIZE="16"/>
 </node>
 </node>
-<node COLOR="#cc0000" CREATED="1361222232566" ID="ID_1088154361" MODIFIED="1361229442268" TEXT="Function">
+<node COLOR="#cc0000" CREATED="1361222232566" ID="ID_1088154361" MODIFIED="1361287484771" TEXT="Functions">
 <edge STYLE="bezier" WIDTH="thin"/>
 <font NAME="Verdana" SIZE="20"/>
 <node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1361222235567" ID="ID_1973832259" MODIFIED="1361229442268" TEXT="provide">
@@ -607,6 +655,9 @@
 </node>
 </node>
 </node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1361287489823" ID="ID_1384273375" MODIFIED="1361287492778" TEXT="Helpers">
+<font NAME="Georgia" SIZE="16"/>
+</node>
 </node>
 <node COLOR="#cc0000" CREATED="1361222537492" ID="ID_1971932674" MODIFIED="1361229442269" TEXT="Embedded Ruby">
 <edge STYLE="bezier" WIDTH="thin"/>
@@ -626,10 +677,97 @@
   </head>
   <body>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <edge STYLE="bezier" WIDTH="thin"/>
 <font NAME="Verdana" SIZE="20"/>
+</node>
+<node COLOR="#cc0000" CREATED="1361287025690" ID="ID_1602946294" MODIFIED="1361287028737" TEXT="Views">
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="20"/>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1361287028739" ID="ID_614278989" MODIFIED="1361287034810" TEXT="insert stylesheet">
+<font NAME="Georgia" SIZE="16"/>
+<node COLOR="#111111" CREATED="1361287034812" ID="ID_1886240861" MODIFIED="1361287049053" TEXT="stylesheet_link_tag">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
+<node COLOR="#cc0000" CREATED="1361289120843" ID="ID_1100632907" MODIFIED="1361289124033" TEXT="Constructs">
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="20"/>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1361289124035" ID="ID_288803323" MODIFIED="1361289126114" TEXT="Strings">
+<font NAME="Georgia" SIZE="16"/>
+<node COLOR="#111111" CREATED="1361289126116" ID="ID_1164363427" MODIFIED="1361289130274" TEXT="Interpolation">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361289471640" ID="ID_438483256" MODIFIED="1361289477459" TEXT="must use double quotes">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361289130276" ID="ID_610499509" MODIFIED="1361289150686" TEXT="&quot;#{first_name} #{last_name}&quot;">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1361291050653" ID="ID_265701566" MODIFIED="1361291053461" TEXT="inspect">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361291053464" ID="ID_1368133583" MODIFIED="1361291066904" TEXT="returns a string with literal repr of the obj called on">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361291077670" ID="ID_558899654" MODIFIED="1361291187049">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <b>p </b>:name &gt;&gt; :name
+    </p>
+  </body>
+</html>
+</richcontent>
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1361305689662" ID="ID_1905176542" MODIFIED="1361305694963" TEXT=".blank?">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1361305695750" ID="ID_1737527223" MODIFIED="1361305698854" TEXT=".empty?">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
+<node COLOR="#cc0000" CREATED="1361290554497" ID="ID_905206805" MODIFIED="1361290556400" TEXT="Ruby">
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="20"/>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1361290556403" ID="ID_1723231520" MODIFIED="1361290560748" TEXT="Array">
+<font NAME="Georgia" SIZE="16"/>
+<node COLOR="#111111" CREATED="1361290560750" ID="ID_767834713" MODIFIED="1361290563108" TEXT=".split">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
+<node COLOR="#cc0000" CREATED="1361293438909" ID="ID_642026081" MODIFIED="1361293441339" TEXT="Database">
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="20"/>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1361293441341" ID="ID_1810170779" MODIFIED="1361293441342" TEXT="">
+<font NAME="Georgia" SIZE="16"/>
+</node>
+</node>
+<node COLOR="#cc0000" CREATED="1361294437998" ID="ID_754491957" MODIFIED="1361294442933" TEXT="Cookbook">
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="20"/>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1361294442936" ID="ID_1317922392" MODIFIED="1361294459025" TEXT="Cookery 4">
+<font NAME="Georgia" SIZE="16"/>
+<node COLOR="#111111" CREATED="1361294459027" ID="ID_1706523410" MODIFIED="1361294479074" TEXT="1. Add has_many to owning side and belongs_to to owned side model files">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1361294479814" ID="ID_147277126" MODIFIED="1361294493385" TEXT="2. Create migration to add foreign key to owned side that references ownng side">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1361294494052" ID="ID_724715756" MODIFIED="1361294508602" TEXT="3. Apply migration">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1361294512604" ID="ID_972773244" MODIFIED="1361294534202" TEXT="4. rake db:test:prepare to regenerate test database schema">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
 </node>
 </node>
 <node COLOR="#0033ff" CREATED="1360909490158" HGAP="123" ID="ID_541574035" MODIFIED="1361229861775" POSITION="left" VSHIFT="-241">
@@ -656,8 +794,7 @@
   <body>
     <img src="../../../Users/Denis/Pictures/2color-lightbg@2x%20(160x54).jpg" />
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <edge STYLE="bezier" WIDTH="thin"/>
 <font NAME="Verdana" SIZE="20"/>
 <node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1361123208673" ID="ID_367032364" MODIFIED="1361229442298" TEXT="you should make smaller, more frequent commits">
