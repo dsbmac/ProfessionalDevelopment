@@ -18,5 +18,13 @@
       (cons (string-append (car xs) suffix)
             (string-append-map (cdr xs) suffix))))
 
-
+;p3
+(define (list-nth-mod xs n)
+  (cond [(< n 0) (error "list-nth-mod: negative number")]
+        [(null? xs) (error "list-nth-mod: empty list")]
+        [#t (list-ref xs (remainder
+                          (length xs)
+                          n))]))
+           
+                 
                            
