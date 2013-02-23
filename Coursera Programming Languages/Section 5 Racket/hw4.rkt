@@ -27,8 +27,6 @@
   (if (= n 0)
       null
       (cons (car (s)) (stream-for-n-steps (cdr (s)) (- n 1)))))
-
-
 ;p5
 (define funny-number-stream 
   (letrec ([f (lambda (x) (cons 
@@ -49,13 +47,19 @@
     (lambda () (f "dan.jpg"))))
 ;p7
 (define (stream-add-zero s)
-  (letrec ([f (lambda (x)
-                (cons (cons 0 (car x)) (lambda () (f (cdr x)))))])
+  (letrec 
+      ([fn (lambda (x) (cons 0 x))]
+       [f (lambda (x)
+            (cons (fn (car (x))) (lambda () (f (cdr (x))))))])
     (lambda () (f s))))
   
-  
-(define (stream-maker fn arg)
-  (letrec ([f (lambda (x) 
-                (cons x (lambda () (f (fn x arg)))))])
-    (lambda () (f arg))))
-
+;p8
+(define (cycle-lists xs ys)
+  (letrec
+      ([f (lambda (x)
+            (cons (cons (list-ref xs x) (list-ref ys x)) 
+                  (lambda () (f (+ x 1)))))])
+    (lambda () (f 0))))
+ 
+(define list1 (list 1 2 3))
+(define list2 (list "a" "b"))

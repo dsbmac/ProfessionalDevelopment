@@ -15,7 +15,7 @@
 
 ;summ all the numbers in a list
 (define (sum xs)
-  (if (null? xs)
+  (if (null? xs) 
       0
       (+ (car xs) (sum (cdr xs)))))
 
@@ -31,7 +31,11 @@
             (my-map f (cdr xs)))))
 
 
+(define ones (lambda () (cons 1 ones)))
 
-
-
+;cond nest if then else
+(define (silly-double x)
+  (let ([x (+ x 3)]
+        [y (+ x 2)])
+    (+ x y -5)))
 
