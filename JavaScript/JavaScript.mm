@@ -1,57 +1,15 @@
 <map version="0.9.0">
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
-<node CREATED="1360834084916" ID="ID_1257388830" MODIFIED="1361010536946" TEXT="JavaScript">
-<font NAME="SansSerif" SIZE="12"/>
-<node CREATED="1360834132734" ID="ID_1504473025" MODIFIED="1361010536946" POSITION="right" TEXT="variables">
-<font NAME="SansSerif" SIZE="12"/>
-<node CREATED="1360834141826" ID="ID_1543135376" MODIFIED="1361010536945" TEXT="syntax">
-<font NAME="SansSerif" SIZE="12"/>
-<node CREATED="1360834146918" ID="ID_287191374" MODIFIED="1361010536945" TEXT="var foo = true;">
-<font NAME="SansSerif" SIZE="12"/>
-</node>
-<node CREATED="1360834168502" ID="ID_340786934" MODIFIED="1361010536945" TEXT="multiple declaration">
-<font NAME="SansSerif" SIZE="12"/>
-<node CREATED="1360834175424" ID="ID_762954139" MODIFIED="1361010536945" TEXT="var foo = true, baz = false;">
-<font NAME="SansSerif" SIZE="12"/>
-</node>
-<node CREATED="1360834175424" ID="ID_731893848" MODIFIED="1361010536943">
+<node CREATED="1360834084916" ID="ID_1257388830" MODIFIED="1361540266990">
 <richcontent TYPE="NODE"><html>
   <head>
     
   </head>
   <body>
-    <p>
-      var foo = true,
-    </p>
-    <p>
-      baz = false;
-    </p>
+    <img src="../../../Users/Denis/Pictures/Education/Javascript.gif" />
   </body>
 </html></richcontent>
 <font NAME="SansSerif" SIZE="12"/>
-</node>
-</node>
-<node CREATED="1360834284154" ID="ID_1594727389" MODIFIED="1361010536942" TEXT="case sensitive">
-<font NAME="SansSerif" SIZE="12"/>
-</node>
-</node>
-<node CREATED="1360834325616" ID="ID_1960787967" MODIFIED="1361010536942" TEXT="simply point to something">
-<font NAME="SansSerif" SIZE="12"/>
-<icon BUILTIN="yes"/>
-<node CREATED="1360834339890" ID="ID_1312706919" MODIFIED="1361010536941" TEXT="can later change to point to somthing else">
-<font NAME="SansSerif" SIZE="12"/>
-<node CREATED="1360836107976" ID="ID_365797961" MODIFIED="1361010536941" TEXT="change type">
-<font NAME="SansSerif" SIZE="12"/>
-</node>
-<node CREATED="1360836114287" ID="ID_588657347" MODIFIED="1361010536941" TEXT="find the variable type">
-<font NAME="SansSerif" SIZE="12"/>
-<node CREATED="1360836119417" ID="ID_1124954799" MODIFIED="1361010536941" TEXT="typeof parameter">
-<font NAME="SansSerif" SIZE="12"/>
-</node>
-</node>
-</node>
-</node>
-</node>
 <node CREATED="1360836928568" ID="ID_537501493" MODIFIED="1361010536941" POSITION="left" TEXT="Operators">
 <font NAME="SansSerif" SIZE="12"/>
 <node CREATED="1360836438569" ID="ID_1761359202" MODIFIED="1361010536941" TEXT="Comparisons">
@@ -87,6 +45,17 @@
 <node CREATED="1360836994300" ID="ID_787939460" MODIFIED="1361010536939" TEXT="use these by default">
 <font NAME="SansSerif" SIZE="12"/>
 </node>
+</node>
+</node>
+<node CREATED="1361475082359" ID="ID_729000038" MODIFIED="1361475728573" TEXT="Unary">
+<node CREATED="1361475088583" ID="ID_657612513" MODIFIED="1361475094533" TEXT="work on only one value"/>
+<node CREATED="1361475334398" ID="ID_1636449896" MODIFIED="1361475344548" TEXT="Postfix/Prefix">
+<node CREATED="1361475113095" ID="ID_1700545005" MODIFIED="1361475206433" TEXT="++x"/>
+<node CREATED="1361475124623" ID="ID_1625303367" MODIFIED="1361475209501" TEXT="--x"/>
+</node>
+<node CREATED="1361475731266" ID="ID_398037385" MODIFIED="1361475733001" TEXT="can be used on int, str, boolean, floats and obj"/>
+<node CREATED="1361475740442" ID="ID_282442745" MODIFIED="1361475743557" TEXT="single">
+<node CREATED="1361475743559" ID="ID_630547609" MODIFIED="1361475755849" TEXT="converts to number but does not increment"/>
 </node>
 </node>
 </node>
@@ -289,6 +258,11 @@
 <font NAME="SansSerif" SIZE="12"/>
 </node>
 </node>
+<node CREATED="1361583582126" ID="ID_1363050406" MODIFIED="1361583588678" TEXT="arguments">
+<node CREATED="1361583588680" ID="ID_1487106905" MODIFIED="1361583594230" TEXT="special object array"/>
+<node CREATED="1361583595078" ID="ID_663602562" MODIFIED="1361583600750" TEXT="accessed inside the function"/>
+</node>
+<node CREATED="1361583842940" ID="ID_1736576624" MODIFIED="1361583845053" TEXT="If two functions are defi ned to have the same name in ECMAScript, it is the last function that becomes the owner of that name"/>
 </node>
 <node CREATED="1360839735326" ID="ID_491425842" MODIFIED="1361010536896" TEXT="Date">
 <font NAME="SansSerif" SIZE="12"/>
@@ -451,6 +425,15 @@
 <font NAME="SansSerif" SIZE="12"/>
 </node>
 </node>
+<node CREATED="1361474942848" ID="ID_1306219112" MODIFIED="1361474953196" TEXT="Properties &amp; Methods">
+<node CREATED="1361474953198" ID="ID_1771865308" MODIFIED="1361474958095" TEXT="constructor"/>
+<node CREATED="1361474960687" ID="ID_837802251" MODIFIED="1361474973006" TEXT="hasOwnProperty(name)"/>
+<node CREATED="1361474973496" ID="ID_1540105078" MODIFIED="1361474980687" TEXT="isPrototypeOf(obj)"/>
+<node CREATED="1361474981024" ID="ID_718083602" MODIFIED="1361475025886" TEXT="propertyIsEnumerable(propertyName)"/>
+<node CREATED="1361474994511" ID="ID_448619348" MODIFIED="1361475002583" TEXT="toLocaleString()"/>
+<node CREATED="1361475003216" ID="ID_1019840124" MODIFIED="1361475006630" TEXT="toString()"/>
+<node CREATED="1361475007127" ID="ID_260846845" MODIFIED="1361475011486" TEXT="valueOf()"/>
+</node>
 </node>
 <node CREATED="1360834384958" ID="ID_1665714226" MODIFIED="1361010536878" TEXT="primitives">
 <font NAME="SansSerif" SIZE="12"/>
@@ -559,7 +542,99 @@
 <font NAME="SansSerif" SIZE="12"/>
 </node>
 </node>
+<node CREATED="1361474504665" ID="ID_1955000435" MODIFIED="1361474508345" TEXT="immutable"/>
+<node CREATED="1361474782649" ID="ID_1637639228" MODIFIED="1361474784491" TEXT="conversion">
+<node CREATED="1361474683474" ID="ID_161631114" MODIFIED="1361474701759" TEXT=".toString()"/>
+<node CREATED="1361474788313" ID="ID_1349361057" MODIFIED="1361474797961" TEXT="String(var)">
+<node CREATED="1361474798401" ID="ID_1644353717" MODIFIED="1361474811425" TEXT="always returns a string"/>
 </node>
+</node>
+</node>
+</node>
+</node>
+<node CREATED="1360834132734" ID="ID_1504473025" MODIFIED="1361010536946" POSITION="left" TEXT="variables">
+<font NAME="SansSerif" SIZE="12"/>
+<node CREATED="1360834141826" ID="ID_1543135376" MODIFIED="1361010536945" TEXT="syntax">
+<font NAME="SansSerif" SIZE="12"/>
+<node CREATED="1360834146918" ID="ID_287191374" MODIFIED="1361010536945" TEXT="var foo = true;">
+<font NAME="SansSerif" SIZE="12"/>
+</node>
+<node CREATED="1360834168502" ID="ID_340786934" MODIFIED="1361010536945" TEXT="multiple declaration">
+<font NAME="SansSerif" SIZE="12"/>
+<node CREATED="1360834175424" ID="ID_762954139" MODIFIED="1361010536945" TEXT="var foo = true, baz = false;">
+<font NAME="SansSerif" SIZE="12"/>
+</node>
+<node CREATED="1360834175424" ID="ID_731893848" MODIFIED="1361010536943">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      var foo = true,
+    </p>
+    <p>
+      baz = false;
+    </p>
+  </body>
+</html></richcontent>
+<font NAME="SansSerif" SIZE="12"/>
+</node>
+</node>
+<node CREATED="1360834284154" ID="ID_1594727389" MODIFIED="1361010536942" TEXT="case sensitive">
+<font NAME="SansSerif" SIZE="12"/>
+</node>
+</node>
+<node CREATED="1360834325616" ID="ID_1960787967" MODIFIED="1361010536942" TEXT="simply point to something">
+<font NAME="SansSerif" SIZE="12"/>
+<icon BUILTIN="yes"/>
+<node CREATED="1360834339890" ID="ID_1312706919" MODIFIED="1361010536941" TEXT="can later change to point to somthing else">
+<font NAME="SansSerif" SIZE="12"/>
+<node CREATED="1360836107976" ID="ID_365797961" MODIFIED="1361010536941" TEXT="change type">
+<font NAME="SansSerif" SIZE="12"/>
+</node>
+<node CREATED="1360836114287" ID="ID_588657347" MODIFIED="1361010536941" TEXT="find the variable type">
+<font NAME="SansSerif" SIZE="12"/>
+<node CREATED="1360836119417" ID="ID_1124954799" MODIFIED="1361010536941" TEXT="typeof parameter">
+<font NAME="SansSerif" SIZE="12"/>
+</node>
+</node>
+</node>
+</node>
+</node>
+<node CREATED="1361582813611" ID="ID_1477293522" MODIFIED="1361582818805" POSITION="left" TEXT="Environments">
+<node CREATED="1361582824044" ID="ID_1625332480" MODIFIED="1361582828195" TEXT="BOM"/>
+<node CREATED="1361582828691" ID="ID_1683952212" MODIFIED="1361582831902" TEXT="DOM"/>
+</node>
+<node CREATED="1361583078273" ID="ID_282514082" MODIFIED="1361583084014" POSITION="right" TEXT="Statements">
+<node CREATED="1361583084016" ID="ID_1283190729" MODIFIED="1361583093469" TEXT="switch">
+<node CREATED="1361583093471" ID="ID_1483729301" MODIFIED="1361583133352">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      switch (expression) {
+    </p>
+    <p>
+      &#160;&#160;case value: statement
+    </p>
+    <p>
+      &#160;&#160;&#160;&#160;break;
+    </p>
+    <p>
+      &#160;&#160;default: statement
+    </p>
+    <p>
+      }
+    </p>
+  </body>
+</html>
+</richcontent>
+</node>
+<node CREATED="1361583171482" ID="ID_1328252660" MODIFIED="1361583178569" TEXT="works with all data types"/>
+<node CREATED="1361583199657" ID="ID_1698775176" MODIFIED="1361583208242" TEXT="case values can be expressions"/>
 </node>
 </node>
 </node>
