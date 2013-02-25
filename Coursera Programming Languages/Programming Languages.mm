@@ -2606,7 +2606,7 @@
 </html></richcontent>
 <edge STYLE="bezier" WIDTH="thin"/>
 <font NAME="Verdana" SIZE="20"/>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1361213047727" ID="ID_118042513" MODIFIED="1361213085904" TEXT="Tools &amp; Resources">
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1361213047727" FOLDED="true" ID="ID_118042513" MODIFIED="1361645129313" TEXT="Tools &amp; Resources">
 <font NAME="Georgia" SIZE="16"/>
 <node COLOR="#111111" CREATED="1361213062374" ID="ID_1336801006" MODIFIED="1361213065733" TEXT="DrRacket">
 <font NAME="Verdana" SIZE="12"/>
@@ -2772,8 +2772,7 @@
       <b>#|</b>&#160;... <b>|#</b>
     </p>
   </body>
-</html>
-</richcontent>
+</html></richcontent>
 <font NAME="Verdana" SIZE="12"/>
 <node COLOR="#111111" CREATED="1361569873926" ID="ID_892570320" MODIFIED="1361569878069" TEXT="multi line">
 <font NAME="Verdana" SIZE="12"/>
@@ -2804,33 +2803,40 @@
 </html></richcontent>
 <font NAME="Verdana" SIZE="12"/>
 </node>
-<node COLOR="#111111" CREATED="1361360418282" ID="ID_1747679959" MODIFIED="1361360424255" TEXT="nested">
-<font NAME="Verdana" SIZE="12"/>
 <node COLOR="#111111" CREATED="1361360424256" ID="ID_1889824301" MODIFIED="1361360427402" TEXT="cond">
 <font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1361366315516" ID="ID_1728505341" MODIFIED="1361366381635">
+<node COLOR="#111111" CREATED="1361366315516" ID="ID_1728505341" MODIFIED="1361651438970">
 <richcontent TYPE="NODE"><html>
   <head>
     
   </head>
   <body>
     <p>
-      (<b>cond</b>&#160;<b>[</b>#t 1<b>]</b>
+      (<b>cond</b>&#160;<b>[</b>#t 1<b>] </b>
+    </p>
+    <p>
+      <b>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;...</b>
     </p>
     <p>
       &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;<b>[</b>#f 0<b>]</b>)
     </p>
   </body>
-</html></richcontent>
+</html>
+</richcontent>
 <font NAME="Verdana" SIZE="12"/>
 <node COLOR="#111111" CREATED="1361366386380" ID="ID_1804583963" MODIFIED="1361366404665" TEXT="base case should be true or there will be weirdness">
 <font NAME="Verdana" SIZE="12"/>
 </node>
+<node COLOR="#111111" CREATED="1361651458539" ID="ID_313594700" MODIFIED="1361651476232" TEXT="the first is a boolean test the second is the result if true">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1361360418282" ID="ID_1747679959" MODIFIED="1361651404609" TEXT="nested if then else exps">
+<font NAME="Verdana" SIZE="12"/>
 </node>
 </node>
 </node>
-</node>
-<node COLOR="#111111" CREATED="1361214489212" ID="ID_1626195525" MODIFIED="1361214492662" TEXT="Lists">
+<node COLOR="#111111" CREATED="1361214489212" ID="ID_1626195525" MODIFIED="1361656671213" TEXT="Lists">
 <font NAME="Verdana" SIZE="12"/>
 <node COLOR="#111111" CREATED="1361214492664" ID="ID_269668932" MODIFIED="1361214495908" TEXT="empty list">
 <font NAME="Verdana" SIZE="12"/>
@@ -2900,7 +2906,7 @@
 </node>
 <node COLOR="#111111" CREATED="1361310556531" ID="ID_1039511025" MODIFIED="1361310558006" TEXT="term">
 <font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1361310561995" ID="ID_1115366604" MODIFIED="1361567625224" TEXT="atom">
+<node COLOR="#111111" CREATED="1361310561995" FOLDED="true" ID="ID_1115366604" MODIFIED="1361645108374" TEXT="atom">
 <font NAME="Verdana" SIZE="12"/>
 <node COLOR="#111111" CREATED="1361310565327" ID="ID_364452537" MODIFIED="1361310572827" TEXT="#f">
 <font NAME="Verdana" SIZE="12"/>
@@ -2951,6 +2957,23 @@
 <node COLOR="#111111" CREATED="1361390998630" ID="ID_1033250598" MODIFIED="1361391000639" TEXT="let">
 <font NAME="Verdana" SIZE="12"/>
 <node COLOR="#111111" CREATED="1361391000641" ID="ID_58432391" MODIFIED="1361391021263" TEXT="use environment before the let">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1361651649451" ID="ID_1741193504" MODIFIED="1361653369691">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      (let ([x1 e1])
+    </p>
+    <p>
+      &#160;&#160;body
+    </p>
+  </body>
+</html>
+</richcontent>
 <font NAME="Verdana" SIZE="12"/>
 </node>
 </node>

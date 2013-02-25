@@ -366,147 +366,6 @@
 </node>
 </node>
 </node>
-<node COLOR="#cc0000" CREATED="1361114924691" ID="ID_525543536" MODIFIED="1361373842320" TEXT="Creating a new app">
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="20"/>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1361115784644" ID="ID_839360745" MODIFIED="1361373842320" TEXT="initial setup">
-<font NAME="Georgia" SIZE="16"/>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1361114088297" ID="ID_342410005" MODIFIED="1361373842320" TEXT="generate file structure">
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="12"/>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1361114100297" ID="ID_554035063" MODIFIED="1361373842321">
-<richcontent TYPE="NODE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      1. navigate to app root parent ex. cd ~/rails_projects
-    </p>
-    <p>
-      2. rails new appName
-    </p>
-  </body>
-</html></richcontent>
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1361114962226" ID="ID_162823688" MODIFIED="1361373842323" TEXT="bundle install">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1361115035683" ID="ID_1019969357" MODIFIED="1361373842323" TEXT="--without production">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1361115042839" ID="ID_192466988" MODIFIED="1361373842323" TEXT="prevents the install of production gems">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-</node>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1361115087914" ID="ID_1735217782" MODIFIED="1361373842323" TEXT="place under version control">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1361115094513" ID="ID_107461608" MODIFIED="1361373842323">
-<richcontent TYPE="NODE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      git init
-    </p>
-    <p>
-      git add .
-    </p>
-    <p>
-      git commit -m &quot;Message&quot;
-    </p>
-  </body>
-</html></richcontent>
-<font NAME="Verdana" SIZE="12"/>
-</node>
-<node COLOR="#111111" CREATED="1361115711445" ID="ID_906339100" MODIFIED="1361373842326" TEXT="create folder on github, push it up to git">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-</node>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1361115776469" ID="ID_1290479273" MODIFIED="1361373842326" TEXT="create a model">
-<font NAME="Georgia" SIZE="16"/>
-<node COLOR="#111111" CREATED="1361116066139" ID="ID_54715736" MODIFIED="1361373842326" TEXT="determine database attributes">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-<node COLOR="#111111" CREATED="1361116026732" ID="ID_646172033" MODIFIED="1361373842326" TEXT="create table">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-<node COLOR="#111111" CREATED="1361116374145" ID="ID_973670446" MODIFIED="1361373842326" TEXT="create scaffolding">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1361121506212" ID="ID_1013237310" MODIFIED="1361373842327" TEXT="Resources">
-<font NAME="Georgia" SIZE="16"/>
-<node COLOR="#111111" CREATED="1361116682209" ID="ID_37895974" MODIFIED="1361373842327" TEXT="data model">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-<node COLOR="#111111" CREATED="1361116688351" ID="ID_1467557794" MODIFIED="1361373842327" TEXT="web interface">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-<node COLOR="#111111" CREATED="1361121805179" ID="ID_136843761" MODIFIED="1361373842327" TEXT="generate scaffolding">
-<arrowlink DESTINATION="ID_1840519177" ENDARROW="Default" ENDINCLINATION="3;-10;" ID="Arrow_ID_1736104038" STARTARROW="None" STARTINCLINATION="3;11;"/>
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1361121543053" ID="ID_726359871" MODIFIED="1361373842327" TEXT="example">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1361121518475" ID="ID_362718856" MODIFIED="1361373842327" TEXT="Micropost">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1361121573148" ID="ID_553528221" MODIFIED="1361373842327" TEXT="rails generate scaffold Micropost content:string user_id:integer">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1361116675678" ID="ID_970504932" MODIFIED="1361373842327" TEXT="Users resource">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1361121601763" ID="ID_1083645062" MODIFIED="1361373842328" TEXT="rails generate scaffold User name:string email:string">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-</node>
-</node>
-</node>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1361116384457" ID="ID_261192843" MODIFIED="1361373842328" TEXT="migrate db">
-<font NAME="Georgia" SIZE="16"/>
-<node COLOR="#111111" CREATED="1361116387951" ID="ID_1840519177" MODIFIED="1361373842328" TEXT="bundle exec rake db:migrate">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1361116572389" ID="ID_838858039" MODIFIED="1361373842328" TEXT="rake">
-<font BOLD="true" NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1361116576658" ID="ID_879491757" MODIFIED="1361373842328" TEXT="a special rails make cmd for db admin">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-<node COLOR="#111111" CREATED="1361121729027" ID="ID_686692367" MODIFIED="1361373842328" TEXT="updates the db with the resource data model">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-<node COLOR="#111111" CREATED="1361122051121" ID="ID_561665100" MODIFIED="1361373842328" TEXT="adds a rule to config/routes.rb">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-</node>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1361116484447" ID="ID_328128895" MODIFIED="1361373842329" TEXT="start server">
-<font NAME="Georgia" SIZE="16"/>
-<node COLOR="#111111" CREATED="1361116490315" ID="ID_577718614" MODIFIED="1361373842329" TEXT="rails s">
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1361283374699" ID="ID_1802656266" MODIFIED="1361373842329" TEXT="run test">
-<font NAME="Georgia" SIZE="16"/>
-<node COLOR="#111111" CREATED="1361283380348" ID="ID_671480767" MODIFIED="1361373842329">
-<richcontent TYPE="NODE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <p>
-      bundle exec <b>rspec</b>&#160;spec/requests/static_pages_spec.rb
-    </p>
-  </body>
-</html></richcontent>
-<font NAME="Verdana" SIZE="12"/>
-</node>
-</node>
-</node>
 <node COLOR="#cc0000" CREATED="1361119524242" ID="ID_4692276" MODIFIED="1361373842331" TEXT="controller">
 <edge STYLE="bezier" WIDTH="thin"/>
 <font NAME="Verdana" SIZE="20"/>
@@ -562,6 +421,12 @@
 </node>
 </node>
 </node>
+<node COLOR="#111111" CREATED="1361674986706" ID="ID_393790283" MODIFIED="1361674991658" TEXT="sandbox">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361674991659" ID="ID_908541755" MODIFIED="1361675000028" TEXT="rails console --sandbox">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
 </node>
 <node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1361385475933" ID="ID_184027086" MODIFIED="1361385482640" TEXT="Bootstrap">
 <font NAME="Georgia" SIZE="16"/>
@@ -604,9 +469,6 @@
 </node>
 <node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1360759995561" ID="ID_389753" MODIFIED="1361582421429" TEXT="RSpec">
 <font NAME="Georgia" SIZE="16"/>
-<node COLOR="#111111" CREATED="1360760001678" ID="ID_187798136" MODIFIED="1361373842284" TEXT="DSL">
-<font NAME="Verdana" SIZE="12"/>
-</node>
 <node COLOR="#111111" CREATED="1360823759123" ID="ID_905238409" MODIFIED="1361373842284" TEXT="Test Cookery 1">
 <font NAME="Verdana" SIZE="12"/>
 <node COLOR="#111111" CREATED="1360823763722" ID="ID_1214617283" MODIFIED="1361373842284" TEXT="each spec should test just one behaviour">
@@ -628,7 +490,18 @@
 <font NAME="Verdana" SIZE="12"/>
 </node>
 </node>
+<node COLOR="#111111" CREATED="1360918370973" ID="ID_56266211" MODIFIED="1361373842286" TEXT="fixtures">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1361133446282" ID="ID_401377114" MODIFIED="1361373842286" TEXT="request specs">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361133435506" ID="ID_676566173" MODIFIED="1361373842286" TEXT="integration tests">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
 <node COLOR="#111111" CREATED="1360823935121" ID="ID_1875738111" MODIFIED="1361373842285" TEXT="commands">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1360760001678" ID="ID_187798136" MODIFIED="1361373842284" TEXT="DSL">
 <font NAME="Verdana" SIZE="12"/>
 <node COLOR="#111111" CREATED="1360823928865" ID="ID_475524833" MODIFIED="1361373842285" TEXT="mock">
 <font NAME="Verdana" SIZE="12"/>
@@ -642,16 +515,31 @@
 <node COLOR="#111111" CREATED="1361220506251" ID="ID_480084953" MODIFIED="1361373842286" TEXT="have_selector()">
 <font NAME="Verdana" SIZE="12"/>
 </node>
-</node>
-<node COLOR="#111111" CREATED="1360918370973" ID="ID_56266211" MODIFIED="1361373842286" TEXT="fixtures">
+<node COLOR="#111111" CREATED="1361637811368" ID="ID_1152918010" MODIFIED="1361637823165" TEXT="shared examples">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361637823166" ID="ID_1123413653" MODIFIED="1361637876396">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      <b>shared_examples_for</b>&#160;&quot;all static pages&quot; do
+    </p>
+    <p>
+      &#160;&#160;it code..
+    </p>
+    <p>
+      end
+    </p>
+  </body>
+</html></richcontent>
 <font NAME="Verdana" SIZE="12"/>
 </node>
-<node COLOR="#111111" CREATED="1361133446282" ID="ID_401377114" MODIFIED="1361373842286" TEXT="request specs">
-<font NAME="Verdana" SIZE="12"/>
-<node COLOR="#111111" CREATED="1361133435506" ID="ID_676566173" MODIFIED="1361373842286" TEXT="integration tests">
-<font NAME="Verdana" SIZE="12"/>
 </node>
 </node>
+<node COLOR="#111111" CREATED="1361637973371" ID="ID_1091809770" MODIFIED="1361637976435" TEXT="console">
+<font NAME="Verdana" SIZE="12"/>
 <node COLOR="#111111" CREATED="1361133944263" ID="ID_787080606" MODIFIED="1361373842286" TEXT="generate an integration test">
 <font NAME="Verdana" SIZE="12"/>
 <node COLOR="#111111" CREATED="1361133959789" ID="ID_112905786" MODIFIED="1361373842286" TEXT="rails generate integration_test static_pages">
@@ -660,6 +548,8 @@
 <font NAME="Verdana" SIZE="12"/>
 <node COLOR="#111111" CREATED="1361134002446" ID="ID_1618578583" MODIFIED="1361373842287" TEXT="static_pages_spec.rb">
 <font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
 </node>
 </node>
 </node>
@@ -769,6 +659,29 @@
 <node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1361287489823" ID="ID_1384273375" MODIFIED="1361373842338" TEXT="Helpers">
 <font NAME="Georgia" SIZE="16"/>
 </node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1361642331316" ID="ID_618545649" MODIFIED="1361642377057" TEXT="generate model">
+<font NAME="Georgia" SIZE="16"/>
+<node COLOR="#111111" CREATED="1361642343926" ID="ID_865101312" MODIFIED="1361642370437" TEXT="rails generate model User name:string email:string">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1361642422643" ID="ID_1609515111" MODIFIED="1361677113210">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      creates a new <b>migration</b>&#160;file
+    </p>
+  </body>
+</html></richcontent>
+<arrowlink DESTINATION="ID_1317894292" ENDARROW="Default" ENDINCLINATION="498;0;" ID="Arrow_ID_1215975819" STARTARROW="None" STARTINCLINATION="498;0;"/>
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361642921120" ID="ID_1221764326" MODIFIED="1361642947266" TEXT="db/migrate/[timestamp]_create_users.rb">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
 </node>
 <node COLOR="#cc0000" CREATED="1361222537492" ID="ID_1971932674" MODIFIED="1361373842338" TEXT="Embedded Ruby">
 <edge STYLE="bezier" WIDTH="thin"/>
@@ -857,8 +770,62 @@
 <node COLOR="#cc0000" CREATED="1361293438909" ID="ID_642026081" MODIFIED="1361373842347" TEXT="Database">
 <edge STYLE="bezier" WIDTH="thin"/>
 <font NAME="Verdana" SIZE="20"/>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1361293441341" ID="ID_1810170779" MODIFIED="1361373842347" TEXT="">
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1361293441341" ID="ID_1810170779" MODIFIED="1361641770737" TEXT="default solution to data persistence">
 <font NAME="Georgia" SIZE="16"/>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1361641782824" ID="ID_1662466921" MODIFIED="1361641790538" TEXT="ActiveRecord">
+<font NAME="Georgia" SIZE="16"/>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1361641771600" ID="ID_1197714836" MODIFIED="1361641792154" TEXT="default library">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1361641850696" ID="ID_549790056" MODIFIED="1361641859095" TEXT="methods">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361641859097" ID="ID_947815481" MODIFIED="1361641864984" TEXT="create">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1361641865640" ID="ID_1314408538" MODIFIED="1361641867696" TEXT="save">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361676917472" ID="ID_1600151137" MODIFIED="1361676919526" TEXT="User.save">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1361641868472" ID="ID_789409726" MODIFIED="1361641869466" TEXT="find">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361676773721" ID="ID_1654144668" MODIFIED="1361676789042" TEXT="find_by_SOMEATTRIBUTE">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361676789045" ID="ID_444265861" MODIFIED="1361676804958" TEXT="automatically created by ActiveRecord">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1361676855809" ID="ID_147394980" MODIFIED="1361676860012" TEXT="User.all">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1361676860592" ID="ID_117563869" MODIFIED="1361676863973" TEXT="User.first">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1361677100191" ID="ID_343644265" MODIFIED="1361677103736" TEXT="update">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361677103738" ID="ID_1608023736" MODIFIED="1361677119928" TEXT="dot notation">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1361677120374" ID="ID_1142986145" MODIFIED="1361677128594" TEXT="update_attributes">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361677134319" ID="ID_1951510867" MODIFIED="1361677151322" TEXT="user.update_attributes(name: &quot;The Dude&quot;)">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1361641881351" ID="ID_1004738328" MODIFIED="1361641903799" TEXT="no direct sql needed">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1361641988823" ID="ID_1317894292" MODIFIED="1361677113210" TEXT="migrations">
+<font NAME="Georgia" SIZE="16"/>
+<node COLOR="#111111" CREATED="1361641997998" ID="ID_867792117" MODIFIED="1361642009225" TEXT="allow data definitions written in Ruby">
+<font NAME="Verdana" SIZE="12"/>
+</node>
 </node>
 </node>
 <node COLOR="#cc0000" CREATED="1361294437998" ID="ID_754491957" MODIFIED="1361373842347" TEXT="Cookbook">
@@ -883,6 +850,169 @@
 <node COLOR="#cc0000" CREATED="1361385916338" ID="ID_1688032055" MODIFIED="1361385921518" TEXT="Pipeline">
 <edge STYLE="bezier" WIDTH="thin"/>
 <font NAME="Verdana" SIZE="20"/>
+</node>
+<node COLOR="#cc0000" CREATED="1361641639194" ID="ID_567278774" MODIFIED="1361641644210" TEXT="Building">
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="20"/>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1361114924691" ID="ID_525543536" MODIFIED="1361641653838" TEXT="Creating a new app">
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Georgia" SIZE="16"/>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1361115784644" ID="ID_839360745" MODIFIED="1361641653838" TEXT="initial setup">
+<font NAME="Verdana" SIZE="12"/>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1361114088297" ID="ID_342410005" MODIFIED="1361373842320" TEXT="generate file structure">
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="12"/>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1361114100297" ID="ID_554035063" MODIFIED="1361373842321">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      1. navigate to app root parent ex. cd ~/rails_projects
+    </p>
+    <p>
+      2. rails new appName
+    </p>
+  </body>
+</html></richcontent>
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1361114962226" ID="ID_162823688" MODIFIED="1361373842323" TEXT="bundle install">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361115035683" ID="ID_1019969357" MODIFIED="1361373842323" TEXT="--without production">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361115042839" ID="ID_192466988" MODIFIED="1361373842323" TEXT="prevents the install of production gems">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1361115087914" ID="ID_1735217782" MODIFIED="1361373842323" TEXT="place under version control">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361115094513" ID="ID_107461608" MODIFIED="1361373842323">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      git init
+    </p>
+    <p>
+      git add .
+    </p>
+    <p>
+      git commit -m &quot;Message&quot;
+    </p>
+  </body>
+</html></richcontent>
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1361115711445" ID="ID_906339100" MODIFIED="1361373842326" TEXT="create folder on github, push it up to git">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1361115776469" ID="ID_1290479273" MODIFIED="1361641653844" TEXT="create a model">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361116066139" ID="ID_54715736" MODIFIED="1361373842326" TEXT="determine database attributes">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1361116026732" ID="ID_646172033" MODIFIED="1361373842326" TEXT="create table">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1361116374145" ID="ID_973670446" MODIFIED="1361373842326" TEXT="create scaffolding">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1361121506212" ID="ID_1013237310" MODIFIED="1361641653847" TEXT="Resources">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361116682209" ID="ID_37895974" MODIFIED="1361373842327" TEXT="data model">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1361116688351" ID="ID_1467557794" MODIFIED="1361373842327" TEXT="web interface">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1361121805179" ID="ID_136843761" MODIFIED="1361373842327" TEXT="generate scaffolding">
+<arrowlink DESTINATION="ID_1840519177" ENDARROW="Default" ENDINCLINATION="3;-10;" ID="Arrow_ID_1736104038" STARTARROW="None" STARTINCLINATION="3;11;"/>
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361121543053" ID="ID_726359871" MODIFIED="1361373842327" TEXT="example">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361121518475" ID="ID_362718856" MODIFIED="1361373842327" TEXT="Micropost">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361121573148" ID="ID_553528221" MODIFIED="1361373842327" TEXT="rails generate scaffold Micropost content:string user_id:integer">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1361116675678" ID="ID_970504932" MODIFIED="1361373842327" TEXT="Users resource">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361121601763" ID="ID_1083645062" MODIFIED="1361373842328" TEXT="rails generate scaffold User name:string email:string">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
+</node>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1361116384457" ID="ID_261192843" MODIFIED="1361641653853" TEXT="migrate db">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361116387951" ID="ID_1840519177" MODIFIED="1361373842328" TEXT="bundle exec rake db:migrate">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361116572389" ID="ID_838858039" MODIFIED="1361373842328" TEXT="rake">
+<font BOLD="true" NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361116576658" ID="ID_879491757" MODIFIED="1361373842328" TEXT="a special rails make cmd for db admin">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1361121729027" ID="ID_686692367" MODIFIED="1361373842328" TEXT="updates the db with the resource data model">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1361122051121" ID="ID_561665100" MODIFIED="1361373842328" TEXT="adds a rule to config/routes.rb">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1361116484447" ID="ID_328128895" MODIFIED="1361641653858" TEXT="start server">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361116490315" ID="ID_577718614" MODIFIED="1361373842329" TEXT="rails s">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1361283374699" ID="ID_1802656266" MODIFIED="1361641653860" TEXT="run test">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1361283380348" ID="ID_671480767" MODIFIED="1361373842329">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <p>
+      bundle exec <b>rspec</b>&#160;spec/requests/static_pages_spec.rb
+    </p>
+  </body>
+</html></richcontent>
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1361641683793" ID="ID_1066197419" MODIFIED="1361641693408" TEXT="Signup">
+<font NAME="Georgia" SIZE="16"/>
+<node COLOR="#111111" CREATED="1361641693411" ID="ID_932055290" MODIFIED="1361641706803" TEXT="1. make a data structure to capture and store info">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1361676324101" ID="ID_801141494" MODIFIED="1361676326753" TEXT="Model">
+<font NAME="Georgia" SIZE="16"/>
+<node COLOR="#111111" CREATED="1361676326755" ID="ID_812927059" MODIFIED="1361676337707" TEXT="User.create">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1361676339324" ID="ID_1001893201" MODIFIED="1361676342028" TEXT="User.save">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1361676344012" ID="ID_1041836995" MODIFIED="1361676346313" TEXT="User.new">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
 </node>
 </node>
 <node COLOR="#0033ff" CREATED="1360909490158" HGAP="105" ID="ID_541574035" MODIFIED="1361373928004" POSITION="left" VSHIFT="-42">
