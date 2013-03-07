@@ -58,21 +58,15 @@ class SearchProblem:
         """
         util.raiseNotDefined()
 
-def goalActions(goalState, closed):    
+def goalActions(goalState, closed):
+    def f(state, actions=[]):
+        next = closed[state][0]
+        if next == None: return actions
+        action = closed[state][1]
+        actions.insert(0, action)        
+        return f(next, actions)
 
-    actions = []
-    def f(state):
-        while True:
-            print 'state', state
-            nextState = closed[state][0]
-            if nextState == None: break
-            action = closed[state][1]
-            print 'action:', action
-            actions.insert(0, action)
-            state = nextState            
-
-    f(goalState)
-    return actions
+    return f(goalState, [])
 
 def tinyMazeSearch(problem):
     """
@@ -88,7 +82,40 @@ def testSearch(problem):
     print "Start:", problem.getStartState()
     #print "Is the start a goal?", problem.isGoalState(problem.getStartState())
     print "Start's successors:", problem.getSuccessors(problem.getStartState())
+    #box = util.PriorityQueueWithFunction(nullHeuristic)
+    box = util.PriorityQueue()
+    print 'type:', type(box)
+    print 'isinstance:', isinstance(box, util.PriorityQueue) and not isinstance(box, util.PriorityQueueWithFunction)
     util.raiseNotDefined()
+
+def genericSearch(problem, fringe):
+    addArgs = isinstance(fringe, util.PriorityQueue) and not isinstance(fringe, util.PriorityQueueWithFunction)
+    closed = {}    
+    args = [(problem.getStartState(), None, None)]
+    if addArgs: args.append(0)
+    fringe.push(*args)
+
+    #loop through the fringe, popping until finding the goal state
+    while not fringe.isEmpty():
+
+        currentNode = fringe.pop()
+#        print "currentNode:", currentNode
+        state = currentNode[0]
+
+        if not state in closed:
+            closed[state] = currentNode[1], currentNode[2]
+
+            if problem.isGoalState(state):
+ #               print "goal found!:", currentNode                
+                return state, closed
+            
+            successors = problem.getSuccessors(state)
+            for successor in successors:
+                childNode = (successor[0], state, successor[1])
+                args = [childNode]
+                priority = closed[state] + successor[2]
+                if addArgs: args.append(successor[2])
+                fringe.push(*args)
 
 def depthFirstSearch(problem):
     """
@@ -105,49 +132,25 @@ def depthFirstSearch(problem):
     print "Start's successors:", problem.getSuccessors(problem.getStartState())
     """
 
-    def helperSearch():
-        closed = {}
-        fringe = util.Stack()    
-        fringe.push((problem.getStartState(), None, None))
-
-        #loop through the fringe, popping until finding the goal state
-        while not fringe.isEmpty():
-            print
-
-            currentNode = fringe.pop()
-            print "currentNode:", currentNode
-            state = currentNode[0]
-
-            if not state in closed:
-                closed[state] = currentNode[1], currentNode[2]
-
-                if problem.isGoalState(state):
-                    print "goal found!:", currentNode                
-                    return state, closed
-                print state, "not the goal"
-                
-                successors = problem.getSuccessors(state)
-                for successor in successors:
-                    childNode = (successor[0], state, successor[1])
-                    fringe.push(childNode)
-
-    goalState, closed = helperSearch()
+    goalState, closed = genericSearch(problem, util.Stack())
     actions = goalActions(goalState, closed)       
-    print actions
     return actions
-    #node contents(state,action,stepCost,cumulativeCost,myKey,parentKey)
 
 def breadthFirstSearch(problem):
     """
     Search the shallowest nodes in the search tree first.
     """
-    "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+
+    goalState, closed = genericSearch(problem, util.Queue())
+    actions = goalActions(goalState, closed)       
+    return actions
 
 def uniformCostSearch(problem):
     "Search the node of least total cost first. "
-    "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    goalState, closed = genericSearch(problem, util.PriorityQueue())
+    actions = goalActions(goalState, closed)       
+    print actions
+    return actions
 
 def nullHeuristic(state, problem=None):
     """
@@ -158,11 +161,12 @@ def nullHeuristic(state, problem=None):
 
 def aStarSearch(problem, heuristic=nullHeuristic):
     "Search the node that has the lowest combined cost and heuristic first."
-    "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
-
+    goalState, closed = genericSearch(problem, util.PriorityQueueWithFunction(heuristic))
+    actions = goalActions(goalState, closed)       
+    return actions
 
 # Abbreviations
+ts = testSearch
 bfs = breadthFirstSearch
 dfs = depthFirstSearch
 astar = aStarSearch
