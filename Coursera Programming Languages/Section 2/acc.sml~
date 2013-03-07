@@ -1,4 +1,0 @@
-fun sum1 xs = 
-    case xs of
-	[] => 0
-     | i::xs'  => i + sum1 xs'
