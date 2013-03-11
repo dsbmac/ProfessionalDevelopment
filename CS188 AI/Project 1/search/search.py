@@ -65,8 +65,8 @@ def goalActions(goalState, closed):
         action = closed[state][1]
         actions.insert(0, action)        
         return f(next, actions)
-
-    return f(goalState, [])
+    result = f(goalState, [])
+    return result
 
 def tinyMazeSearch(problem):
     """
@@ -89,33 +89,40 @@ def testSearch(problem):
     util.raiseNotDefined()
 
 def genericSearch(problem, fringe):
-    addArgs = isinstance(fringe, util.PriorityQueue) and not isinstance(fringe, util.PriorityQueueWithFunction)
+    addPriority = isinstance(fringe, util.PriorityQueue) and not isinstance(fringe, util.PriorityQueueWithFunction)
+
+    def pusher(node):
+        if addPriority:
+            priority = node[-1]
+            fringe.push(node, priority)
+        else:            
+            fringe.push(node)
+
     closed = {}    
-    args = [(problem.getStartState(), None, None)]
-    if addArgs: args.append(0)
-    fringe.push(*args)
+    #fringe node format: state, parent, action, cost
+    startNode = (problem.getStartState(), None, None, 0)
+    pusher(startNode)
 
     #loop through the fringe, popping until finding the goal state
     while not fringe.isEmpty():
-
+        #print 'closed', closed
         currentNode = fringe.pop()
-#        print "currentNode:", currentNode
+        #print "currentNode:", currentNode
         state = currentNode[0]
-
+ 
         if not state in closed:
-            closed[state] = currentNode[1], currentNode[2]
+            closed[state] = tuple(currentNode[1:-1])
 
             if problem.isGoalState(state):
  #               print "goal found!:", currentNode                
-                return state, closed
+                return goalActions(state, closed)      
             
+            #expand the fringe
             successors = problem.getSuccessors(state)
             for successor in successors:
-                childNode = (successor[0], state, successor[1])
-                args = [childNode]
-                priority = closed[state] + successor[2]
-                if addArgs: args.append(successor[2])
-                fringe.push(*args)
+                cost = currentNode[-1] + successor[-1]
+                node = successor[0], state, successor[1], cost
+                pusher(node)
 
 def depthFirstSearch(problem):
     """
@@ -132,27 +139,21 @@ def depthFirstSearch(problem):
     print "Start's successors:", problem.getSuccessors(problem.getStartState())
     """
 
-    goalState, closed = genericSearch(problem, util.Stack())
-    actions = goalActions(goalState, closed)       
-    return actions
+    return genericSearch(problem, util.Stack())
 
 def breadthFirstSearch(problem):
     """
     Search the shallowest nodes in the search tree first.
     """
 
-    goalState, closed = genericSearch(problem, util.Queue())
-    actions = goalActions(goalState, closed)       
-    return actions
+    return genericSearch(problem, util.Queue())
 
 def uniformCostSearch(problem):
     "Search the node of least total cost first. "
-    goalState, closed = genericSearch(problem, util.PriorityQueue())
-    actions = goalActions(goalState, closed)       
-    print actions
-    return actions
 
-def nullHeuristic(state, problem=None):
+    return genericSearch(problem, util.PriorityQueue())
+
+def nullHeuristic(state, problem=None): 
     """
     A heuristic function estimates the cost from the current state to the nearest
     goal in the provided SearchProblem.  This heuristic is trivial.
@@ -161,9 +162,16 @@ def nullHeuristic(state, problem=None):
 
 def aStarSearch(problem, heuristic=nullHeuristic):
     "Search the node that has the lowest combined cost and heuristic first."
-    goalState, closed = genericSearch(problem, util.PriorityQueueWithFunction(heuristic))
-    actions = goalActions(goalState, closed)       
-    return actions
+
+    def fn(currentNode):
+        state = currentNode[0]
+        cost = currentNode[-1]
+        priority = cost + heuristic(state, problem)
+        #print 'cost', cost
+        #print 'priority', priority
+        return priority
+
+    return genericSearch(problem, util.PriorityQueueWithFunction(fn))
 
 # Abbreviations
 ts = testSearch
