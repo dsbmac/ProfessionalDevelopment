@@ -174,7 +174,6 @@ class MinimaxAgent(MultiAgentSearchAgent):
 
         # print 'index:', self.index, 'searchDepth:', self.depth, 'numAgents:', numAgents
         # print
-        
 
         def maxValue(state, agentIndex, depth):
           # print
@@ -243,7 +242,6 @@ class AlphaBetaAgent(MultiAgentSearchAgent):
             alpha = max(alpha, v[0])
           return v
 
-
         def minValue(state, agentIndex, depth, alpha, beta):
           # print 'min agent...', agentIndex
           v = float('+infinity'), None
@@ -287,7 +285,50 @@ class ExpectimaxAgent(MultiAgentSearchAgent):
           legal moves.
         """
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+
+        numAgents = gameState.getNumAgents()
+
+        # print 'index:', self.index, 'searchDepth:', self.depth, 'numAgents:', numAgents
+        # print
+
+        def maxValue(state, agentIndex, depth):
+          # print
+          # print 'max agent...', agentIndex
+          v = float("-infinity"), None
+          actions = state.getLegalActions(agentIndex)
+          # print 'actions:', actions
+          for action in actions:
+            # print 'action', action
+            newState, nextAgentIndex, newDepth = self.createParams(state, agentIndex, depth, action)            
+            v = max(v, (value(newState, nextAgentIndex, newDepth, action)[0], action))
+          return v
+
+        def expValue(state, agentIndex, depth):
+          # print 'min agent...', agentIndex
+          v = 0, None
+          actions = state.getLegalActions(agentIndex)
+          p = 1.0 / len(actions)
+          for action in actions:
+            # print 'action', action
+            newState, nextAgentIndex, newDepth = self.createParams(state, agentIndex, depth, action)
+            v = v[0] + (p * value(newState, nextAgentIndex, newDepth, action)[0]), action
+          return v
+
+        def value(state, agentIndex, depth=0, action=None): 
+          # print 'agent', agentIndex, 'depth', depth
+          if depth == self.depth or state.isLose() or state.isWin(): 
+            utility = self.evaluationFunction(state), action
+            # print 'utility:', utility
+            # print
+            return utility
+          elif agentIndex == 0:
+            return maxValue(state, agentIndex, depth)
+          else:
+            return expValue(state, agentIndex, depth)
+
+        result = value(gameState, self.index)[1]
+        return result
+        
 
 def betterEvaluationFunction(currentGameState):
     """
