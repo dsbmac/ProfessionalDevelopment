@@ -338,7 +338,47 @@ def betterEvaluationFunction(currentGameState):
       DESCRIPTION: <write something here so we know what you did>
     """
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+
+    position = currentGameState.getPacmanPosition()
+    newFood = currentGameState.getFood()
+    size = float(newFood.width * newFood.height)
+    newGhostStates = currentGameState.getGhostStates()
+    ghostPositions = currentGameState.getGhostPositions()
+
+    newScaredTimes = [ghostState.scaredTimer for ghostState in newGhostStates]
+
+    def findClosestFood(position, foodGrid):
+      for x in range(newFood.width):
+        for y in range(newFood.height):
+          if foodGrid[x][y]:
+            return util.manhattanDistance(position, (x,y))
+      return 0
+
+    def evalState(state):
+      position = state.getPacmanPosition()     
+      closestFood = findClosestFood(position, state.getFood())
+      closestGhost = min(util.manhattanDistance(position, ghostPosition) for ghostPosition in ghostPositions)
+      foodLeft = state.getNumFood()         
+      score = state.getScore()
+      scared = newScaredTimes[0] > 0
+
+      a = 0
+      if score < 0:
+        a = -1 * math.log10(abs(score))
+      elif score > 0:
+        a = math.log10(score)
+      b = -0.5 * closestFood
+      c = -20 * math.sqrt(foodLeft)
+      d = 0.5 * (( closestGhost**(1.0/4)) + ( 10 * scared * closestGhost))
+      #print 'newScaredTimes', newScaredTimes
+      #print 'score, closestFood, numFood, closestGhost', a, b, c, d
+      result = a + b
+      #print 'result', result
+      return result
+
+    currentScore = evalState(currentGameState)
+    result = currentScore
+    return result
 
 # Abbreviation
 better = betterEvaluationFunction
@@ -357,5 +397,47 @@ class ContestAgent(MultiAgentSearchAgent):
           just make a beeline straight towards Pacman (or away from him if they're scared!)
         """
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        numAgents = gameState.getNumAgents()
 
+        # print 'index:', self.index, 'searchDepth:', self.depth, 'numAgents:', numAgents
+        # print
+
+        def maxValue(state, agentIndex, depth):
+          # print
+          # print 'max agent...', agentIndex
+          v = float("-infinity"), None
+          actions = state.getLegalActions(agentIndex)
+          # print 'actions:', actions
+          for action in actions:
+            # print 'action', action
+            newState, nextAgentIndex, newDepth = self.createParams(state, agentIndex, depth, action)            
+            v = max(v, (value(newState, nextAgentIndex, newDepth, action)[0], action))
+          return v
+
+        def minValue(state, agentIndex, depth):
+          # print 'min agent...', agentIndex
+          v = float('+infinity'), None
+          actions = state.getLegalActions(agentIndex)
+          # print 'actions:', actions
+          for action in actions:
+            # print 'action', action
+            newState, nextAgentIndex, newDepth = self.createParams(state, agentIndex, depth, action)
+            v = min(v, (value(newState, nextAgentIndex, newDepth, action)[0], action))
+          return v
+
+        def value(state, agentIndex, depth=0, action=None): 
+          # print 'agent', agentIndex, 'depth', depth
+          if depth == self.depth or state.isLose() or state.isWin(): 
+            utility = self.evaluationFunction(state), action
+            # print 'utility:', utility
+            # print
+            return utility
+          elif agentIndex == 0:
+            return maxValue(state, agentIndex, depth)
+          else:
+            return minValue(state, agentIndex, depth)
+
+        result = value(gameState, self.index)[1]
+
+        return result
+            
