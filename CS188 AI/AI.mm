@@ -1,74 +1,252 @@
 <map version="0.9.0">
 <!-- To view this file, download free mind mapping software FreeMind from http://freemind.sourceforge.net -->
-<node COLOR="#000000" CREATED="1361265729488" ID="ID_892187937" MODIFIED="1361281386697" TEXT="AI">
-<font NAME="Verdana" SIZE="36"/>
+<node COLOR="#000000" CREATED="1361265729488" ID="ID_892187937" MODIFIED="1365608260722" TEXT="AI">
+<font NAME="Verdana" SIZE="20"/>
 <hook NAME="accessories/plugins/AutomaticLayout.properties"/>
-<node COLOR="#0033ff" CREATED="1361265751576" ID="ID_583026025" MODIFIED="1361265771352" POSITION="right" TEXT="Maximize your expected utility">
+<node COLOR="#0033ff" CREATED="1366077507817" ID="ID_1210484061" MODIFIED="1366077518500" POSITION="right" TEXT="Search &amp; Planning">
 <edge STYLE="sharp_bezier" WIDTH="8"/>
-<font NAME="Georgia" SIZE="30"/>
+<font NAME="Georgia" SIZE="18"/>
+<node COLOR="#cc0000" CREATED="1361281387586" ID="ID_293926581" MODIFIED="1366334683223" TEXT="Making Decisions">
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="16"/>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1361281489529" ID="ID_1738376099" MODIFIED="1366077545523" TEXT="Fast search / planning">
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Georgia" SIZE="14"/>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1361281500136" ID="ID_1942023886" MODIFIED="1366077545524" TEXT="Constrint satisfaction">
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Georgia" SIZE="14"/>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1361281507073" ID="ID_1778052198" MODIFIED="1366077545524" TEXT="Adversarial and uncertain serach">
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Georgia" SIZE="14"/>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1365608276213" ID="ID_687417067" MODIFIED="1366077545623" TEXT="Markov (MDP)">
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Georgia" SIZE="14"/>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1365610716628" ID="ID_1157285052" MODIFIED="1366077545623" TEXT="Actions can fail">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1365610805635" ID="ID_1888422861" MODIFIED="1366077545623" TEXT="If you try and take an action it might do something else">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1365611639701" ID="ID_136659435" MODIFIED="1366077545624" TEXT="State: s">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1365611646332" ID="ID_346239927" MODIFIED="1365611673065" TEXT="q-state: (s, a)">
+<font NAME="Verdana" SIZE="12"/>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1365610834075" ID="ID_1253878296" MODIFIED="1365611685715" TEXT="Transition Function">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1365610839648" ID="ID_1966904560" MODIFIED="1365610849899" TEXT="T(s,a,s&apos;)">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1365610875227" ID="ID_909307488" MODIFIED="1365610890058" TEXT="s&apos;: some possible state">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1365627726520" ID="ID_1353337653" MODIFIED="1365627730800" TEXT="chance node">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1365612414809" ID="ID_1421109435" MODIFIED="1366077545626" TEXT="Discount">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1365612418855" ID="ID_1065881754" MODIFIED="1365612421120" TEXT="Gamma">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1365612437496" ID="ID_194860475" MODIFIED="1365612451625" TEXT="sooner rewards probably have higher utility">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1365612994445" ID="ID_556541524" MODIFIED="1365613015444" TEXT="higher rate incentivate choosing farther rewards">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1365613917006" ID="ID_1246490664" MODIFIED="1366077545628" TEXT="Value Iteration">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1365613946702" ID="ID_573305366" MODIFIED="1365613952885" TEXT="vector of 0&apos;s">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1366397690234" ID="ID_68040496" MODIFIED="1366397695406" TEXT="values are cumulative">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1365618510565" ID="ID_160604340" MODIFIED="1366077545628" TEXT="Converge">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1365618529500" ID="ID_170821673" MODIFIED="1365618533402" TEXT="max depth M">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1365618638460" ID="ID_838447942" MODIFIED="1365618643573" TEXT="discount is less than 1">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1365626474189" ID="ID_905745167" MODIFIED="1366077545629" TEXT="Quantities">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1365626483219" ID="ID_614834658" MODIFIED="1365626488536" TEXT="Policy">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1365626488538" ID="ID_1809991179" MODIFIED="1365626498829" TEXT="map of states to actions">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1365627894484" ID="ID_1972765356" MODIFIED="1366077545630" TEXT="Bellman Equations">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1366397353445" ID="ID_469500579" MODIFIED="1366397363272" TEXT="Optimal Policy">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1366397363273" ID="ID_1904225930" MODIFIED="1366397375301" TEXT="pi*(s)">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1366397665193" ID="ID_1670067364" MODIFIED="1366397669012" TEXT="Rewards">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1366397669015" ID="ID_1198452556" MODIFIED="1366397679783" TEXT="are instantaneous">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1361265751576" ID="ID_583026025" MODIFIED="1366077545634" TEXT="Maximize your expected utility">
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Georgia" SIZE="14"/>
 <icon BUILTIN="idea"/>
 </node>
-<node COLOR="#0033ff" CREATED="1361266711084" ID="ID_1923429569" MODIFIED="1361266720801" POSITION="left" TEXT="AI winter">
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1361281395265" ID="ID_1411367873" MODIFIED="1366077599245" TEXT="Reasoning under Uncertainty">
 <edge STYLE="sharp_bezier" WIDTH="8"/>
-<font NAME="Georgia" SIZE="30"/>
+<font NAME="Georgia" SIZE="14"/>
+<node COLOR="#111111" CREATED="1361281516488" ID="ID_1505620087" MODIFIED="1366077599246" TEXT="Bayes&apos; nets">
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="12"/>
 </node>
-<node COLOR="#0033ff" CREATED="1361281395265" ID="ID_1411367873" MODIFIED="1361281403530" POSITION="left" TEXT="Reasoning under Uncertainty">
+<node COLOR="#111111" CREATED="1361281521600" ID="ID_1378399917" MODIFIED="1366077599246" TEXT="Decision theory">
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1361281526633" ID="ID_425757036" MODIFIED="1366077599246" TEXT="Machine learning">
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1365824680203" ID="ID_532862392" MODIFIED="1366211420759" TEXT="Reinforcement Learning">
 <edge STYLE="sharp_bezier" WIDTH="8"/>
-<font NAME="Georgia" SIZE="30"/>
-<node COLOR="#cc0000" CREATED="1361281516488" ID="ID_1505620087" MODIFIED="1361281521217" TEXT="Bayes&apos; nets">
+<font NAME="Georgia" SIZE="14"/>
+<node COLOR="#111111" CREATED="1365889956498" ID="ID_712550563" MODIFIED="1366211420760" TEXT="Model Based Learning">
 <edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="20"/>
+<font NAME="Verdana" SIZE="12"/>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1366052336572" ID="ID_1171140838" MODIFIED="1366211420760" TEXT="approximate model based on experiences">
+<font NAME="Verdana" SIZE="12"/>
 </node>
-<node COLOR="#cc0000" CREATED="1361281521600" ID="ID_1378399917" MODIFIED="1361281526314" TEXT="Decision theory">
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="20"/>
+<node COLOR="#111111" CREATED="1366215273688" ID="ID_1201066599" MODIFIED="1366215284564" TEXT="reduce the problem to a known MDP">
+<font NAME="Verdana" SIZE="12"/>
 </node>
-<node COLOR="#cc0000" CREATED="1361281526633" ID="ID_425757036" MODIFIED="1361281531682" TEXT="Machine learning">
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="20"/>
+<node COLOR="#111111" CREATED="1366215314119" ID="ID_1003866343" MODIFIED="1366215316807" TEXT="Process">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1366215369391" ID="ID_1249349462" MODIFIED="1366215372954" TEXT="Learn MDP">
+<font NAME="Verdana" SIZE="12"/>
 </node>
-</node>
-<node COLOR="#0033ff" CREATED="1361280889597" ID="ID_389591459" MODIFIED="1361280896217" POSITION="left" TEXT="agent">
-<edge STYLE="sharp_bezier" WIDTH="8"/>
-<font NAME="Georgia" SIZE="30"/>
-<node COLOR="#cc0000" CREATED="1361280896220" ID="ID_1031903789" MODIFIED="1361281356450" TEXT="perceives and acts">
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="20"/>
-</node>
-<node COLOR="#cc0000" CREATED="1361281333979" ID="ID_1707894218" MODIFIED="1361281344919">
-<richcontent TYPE="NODE"><html>
-  <head>
-    
-  </head>
-  <body>
-    <img src="../../../Users/Denis/Pictures/agent.png" />
-  </body>
-</html></richcontent>
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="20"/>
+<node COLOR="#111111" CREATED="1366215373231" ID="ID_1066372763" MODIFIED="1366215378346" TEXT="Solve MDP">
+<font NAME="Verdana" SIZE="12"/>
 </node>
 </node>
-<node COLOR="#0033ff" CREATED="1361281387586" ID="ID_293926581" MODIFIED="1361281394490" POSITION="right" TEXT="Making Decisions">
-<edge STYLE="sharp_bezier" WIDTH="8"/>
-<font NAME="Georgia" SIZE="30"/>
-<node COLOR="#cc0000" CREATED="1361281489529" ID="ID_1738376099" MODIFIED="1361281499866" TEXT="Fast search / planning">
-<edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="20"/>
 </node>
-<node COLOR="#cc0000" CREATED="1361281500136" ID="ID_1942023886" MODIFIED="1361281506298" TEXT="Constrint satisfaction">
+<node COLOR="#111111" CREATED="1366056411607" ID="ID_1735699966" MODIFIED="1366211420761" TEXT="Active">
 <edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="20"/>
+<font NAME="Verdana" SIZE="12"/>
 </node>
-<node COLOR="#cc0000" CREATED="1361281507073" ID="ID_1778052198" MODIFIED="1361281513057" TEXT="Adversarial and uncertain serach">
+<node COLOR="#111111" CREATED="1366057363439" ID="ID_854368218" MODIFIED="1366211420768" TEXT="Assume an MDP">
 <edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="20"/>
+<font NAME="Verdana" SIZE="12"/>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1366057366665" ID="ID_1245070468" MODIFIED="1366211420768" TEXT="A set of states s e S">
+<font NAME="Verdana" SIZE="12"/>
 </node>
-<node COLOR="#cc0000" CREATED="1361929463111" ID="ID_371174991" MODIFIED="1361929466253" TEXT="Search">
+<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1366057392535" ID="ID_1476361750" MODIFIED="1366211420769" TEXT="set of actions per state A">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1366057401142" ID="ID_218419493" MODIFIED="1366211420769" TEXT="a model T">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1366057407255" ID="ID_380629077" MODIFIED="1366211420769" TEXT="reward frunction R">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1366057428815" ID="ID_1825859877" MODIFIED="1366211420770" TEXT="Looking for a policy pi(s)">
 <edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="20"/>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1361929270576" FOLDED="true" ID="ID_675927626" MODIFIED="1364177791600" TEXT="search problem">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1366057445694" ID="ID_839198763" MODIFIED="1366211420771" TEXT="don&apos;t know T or R so must try out actions">
 <edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Georgia" SIZE="16"/>
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1366057456038" ID="ID_39359555" MODIFIED="1366211420771" TEXT="Compute all averages over T using sample outcomes">
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="12"/>
+<icon BUILTIN="idea"/>
+</node>
+<node COLOR="#111111" CREATED="1366211438157" ID="ID_905828536" MODIFIED="1366211442723" TEXT="Passive Learning">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1366211533690" ID="ID_858755935" MODIFIED="1366211539580" TEXT="Direct Evaluation">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1366211539582" ID="ID_1756104470" MODIFIED="1366211553564" TEXT="Act according to pi">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1366211553915" ID="ID_194299067" MODIFIED="1366211575519" TEXT="every time you visit a state, write down what the sum of discounted rewards turned out to be">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1366211575914" ID="ID_1981320532" MODIFIED="1366211581022" TEXT="avg those samples">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1366056675900" ID="ID_1493011984" MODIFIED="1366211420761" TEXT="Q Learning">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1366056810850" ID="ID_129518708" MODIFIED="1366056815797" TEXT="off policy learning">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1366057899683" ID="ID_1876797943" MODIFIED="1366057914974" TEXT="not how well you&apos;be been doing it&apos;s how well you could do">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1366056823770" ID="ID_1126904848" MODIFIED="1366056831677" TEXT="learn q values as you go">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1366057935115" ID="ID_293369634" MODIFIED="1366057937663" TEXT="Caveats">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1366057937665" ID="ID_1589652124" MODIFIED="1366057941713" TEXT="have to explore enough">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1366057942082" ID="ID_342089063" MODIFIED="1366057950195" TEXT="have to eventually make the learning rate small enough">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1366057950467" ID="ID_890783654" MODIFIED="1366057961445" TEXT="not decrease it too quickly">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1366057962162" ID="ID_358836499" MODIFIED="1366057976414" TEXT="basically, in the limit, it does&apos;t matter how you select actions">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1366068641656" ID="ID_1518403533" MODIFIED="1366068646574" TEXT="Least Squares">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+<node COLOR="#111111" CREATED="1366072182607" ID="ID_347311939" MODIFIED="1366072188206" TEXT="Policy Search">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1366072188209" ID="ID_64096164" MODIFIED="1366072198121" TEXT="Directly try and improve the policy">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+<node COLOR="#111111" CREATED="1366220903824" ID="ID_1994638146" MODIFIED="1366220909019" TEXT="Action Value Function">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1366061146580" ID="ID_1367857258" MODIFIED="1366061152499" TEXT="How to Explore">
+<font NAME="Verdana" SIZE="12"/>
+<node COLOR="#111111" CREATED="1366061152501" ID="ID_1807073302" MODIFIED="1366061160376" TEXT="epsilon greedy">
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
+</node>
+</node>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#cc0000" CREATED="1361929463111" FOLDED="true" ID="ID_371174991" MODIFIED="1366334682290" TEXT="Search">
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="16"/>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1361929270576" ID="ID_675927626" MODIFIED="1366077560147" TEXT="search problem">
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Georgia" SIZE="14"/>
 <node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1361929369411" ID="ID_1615487719" MODIFIED="1361929469413" TEXT="consists of">
 <font NAME="Verdana" SIZE="12"/>
 <node BACKGROUND_COLOR="#ffffff" COLOR="#111111" CREATED="1361929280062" ID="ID_1104630653" MODIFIED="1361929373877" TEXT="state space">
@@ -144,8 +322,8 @@
 <font NAME="Verdana" SIZE="12"/>
 </node>
 </node>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1361929470926" ID="ID_1046388201" MODIFIED="1361929473364" TEXT="Solution">
-<font NAME="Georgia" SIZE="16"/>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1361929470926" ID="ID_1046388201" MODIFIED="1366077560150" TEXT="Solution">
+<font NAME="Georgia" SIZE="14"/>
 <node COLOR="#111111" CREATED="1361929477167" ID="ID_82408994" MODIFIED="1361929497286" TEXT="sequence of actions a plan whcich transforms the start state to a goal state">
 <font NAME="Verdana" SIZE="12"/>
 <node COLOR="#111111" CREATED="1361929712133" ID="ID_898915754" MODIFIED="1361929717915" TEXT="some seq of roads">
@@ -153,8 +331,8 @@
 </node>
 </node>
 </node>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1361932378059" ID="ID_1828225057" MODIFIED="1364177450366" TEXT="tree search">
-<font NAME="Georgia" SIZE="16"/>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1361932378059" ID="ID_1828225057" MODIFIED="1366077560151" TEXT="tree search">
+<font NAME="Georgia" SIZE="14"/>
 <node COLOR="#111111" CREATED="1361932385706" ID="ID_292559345" MODIFIED="1361932406213" TEXT="expand out potential plans (tree nodes)">
 <font NAME="Verdana" SIZE="12"/>
 </node>
@@ -319,8 +497,8 @@
 </node>
 </node>
 </node>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1363203674564" FOLDED="true" ID="ID_695820806" MODIFIED="1364176931915" TEXT="Constraint Satisfaction Problems (CSP)">
-<font NAME="Georgia" SIZE="16"/>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1363203674564" FOLDED="true" ID="ID_695820806" MODIFIED="1366077560159" TEXT="Constraint Satisfaction Problems (CSP)">
+<font NAME="Georgia" SIZE="14"/>
 <node COLOR="#111111" CREATED="1363241285667" ID="ID_600666804" MODIFIED="1363241296291" TEXT="Parts">
 <font NAME="Verdana" SIZE="12"/>
 <node COLOR="#111111" CREATED="1363241297899" ID="ID_985978876" MODIFIED="1363241300179" TEXT="Variables">
@@ -502,8 +680,8 @@
 </node>
 </node>
 </node>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1363996899650" ID="ID_857167530" MODIFIED="1363996905261" TEXT="Resource Limits">
-<font NAME="Georgia" SIZE="16"/>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1363996899650" ID="ID_857167530" MODIFIED="1366077560168" TEXT="Resource Limits">
+<font NAME="Georgia" SIZE="14"/>
 <node COLOR="#111111" CREATED="1363996907914" ID="ID_639438496" MODIFIED="1363996909531" TEXT="Time">
 <font NAME="Verdana" SIZE="12"/>
 </node>
@@ -511,8 +689,8 @@
 <font NAME="Verdana" SIZE="12"/>
 </node>
 </node>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1363997544734" ID="ID_1538181626" MODIFIED="1363997551312" TEXT="Evaluation Function">
-<font NAME="Georgia" SIZE="16"/>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1363997544734" ID="ID_1538181626" MODIFIED="1366077560169" TEXT="Evaluation Function">
+<font NAME="Georgia" SIZE="14"/>
 <node COLOR="#111111" CREATED="1363997551314" ID="ID_1620242795" MODIFIED="1363997559772" TEXT="takes a state and returns a rating number">
 <font NAME="Verdana" SIZE="12"/>
 </node>
@@ -530,8 +708,8 @@
 <icon BUILTIN="messagebox_warning"/>
 </node>
 </node>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1363998295497" ID="ID_328562265" MODIFIED="1363998306255" TEXT="Game Tree Pruning">
-<font NAME="Georgia" SIZE="16"/>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1363998295497" ID="ID_328562265" MODIFIED="1366077560170" TEXT="Game Tree Pruning">
+<font NAME="Georgia" SIZE="14"/>
 <node COLOR="#111111" CREATED="1363998391047" ID="ID_192840438" MODIFIED="1363998409240" TEXT="avoid loooking through branches that are useless">
 <font NAME="Verdana" SIZE="12"/>
 </node>
@@ -539,8 +717,8 @@
 <font NAME="Verdana" SIZE="12"/>
 </node>
 </node>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1364241022482" ID="ID_212704844" MODIFIED="1364241027809" TEXT="Rational Preferences">
-<font NAME="Georgia" SIZE="16"/>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1364241022482" ID="ID_212704844" MODIFIED="1366077560170" TEXT="Rational Preferences">
+<font NAME="Georgia" SIZE="14"/>
 <node COLOR="#111111" CREATED="1364241027811" ID="ID_1432300584" MODIFIED="1364241031894" TEXT="Orderability">
 <font NAME="Verdana" SIZE="12"/>
 </node>
@@ -563,8 +741,8 @@
 </node>
 </node>
 </node>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1364243449756" ID="ID_409265297" MODIFIED="1364243452429" TEXT="Utility">
-<font NAME="Georgia" SIZE="16"/>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1364243449756" ID="ID_409265297" MODIFIED="1366077560172" TEXT="Utility">
+<font NAME="Georgia" SIZE="14"/>
 <node COLOR="#111111" CREATED="1364243452431" ID="ID_1527725268" MODIFIED="1364243477193" TEXT="principle maximum expected utitily">
 <font NAME="Verdana" SIZE="12"/>
 </node>
@@ -584,27 +762,47 @@
 </node>
 </node>
 </node>
-</node>
-</node>
-<node COLOR="#0033ff" CREATED="1364412417922" ID="ID_1141447660" MODIFIED="1364412420714" POSITION="right" TEXT="Games">
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1361280889597" ID="ID_389591459" MODIFIED="1366077560173" TEXT="agent">
 <edge STYLE="sharp_bezier" WIDTH="8"/>
-<font NAME="Georgia" SIZE="30"/>
-<node COLOR="#cc0000" CREATED="1364412420716" ID="ID_1170006997" MODIFIED="1364412425123" TEXT="Zero-Sum">
+<font NAME="Georgia" SIZE="14"/>
+<node COLOR="#111111" CREATED="1361280896220" ID="ID_1031903789" MODIFIED="1365608322153" TEXT="perceives and acts">
 <edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="20"/>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1364412429343" ID="ID_494717497" MODIFIED="1364412435223" TEXT="agents have opposite utitlites">
-<font NAME="Georgia" SIZE="16"/>
+<font NAME="Verdana" SIZE="12"/>
 </node>
-<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1364412612014" ID="ID_1796588200" MODIFIED="1364412617615" TEXT="Value of a State">
-<font NAME="Georgia" SIZE="16"/>
+<node COLOR="#111111" CREATED="1361281333979" ID="ID_1707894218" MODIFIED="1365608322153">
+<richcontent TYPE="NODE"><html>
+  <head>
+    
+  </head>
+  <body>
+    <img src="../../../Users/Denis/Pictures/agent.png" />
+  </body>
+</html></richcontent>
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="12"/>
+</node>
+</node>
+</node>
+</node>
+<node COLOR="#0033ff" CREATED="1364412417922" ID="ID_1141447660" MODIFIED="1365608260745" POSITION="left" TEXT="Games">
+<edge STYLE="sharp_bezier" WIDTH="8"/>
+<font NAME="Georgia" SIZE="18"/>
+<node COLOR="#cc0000" CREATED="1364412420716" ID="ID_1170006997" MODIFIED="1365608260745" TEXT="Zero-Sum">
+<edge STYLE="bezier" WIDTH="thin"/>
+<font NAME="Verdana" SIZE="16"/>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1364412429343" ID="ID_494717497" MODIFIED="1365608260746" TEXT="agents have opposite utitlites">
+<font NAME="Georgia" SIZE="14"/>
+</node>
+<node BACKGROUND_COLOR="#ffffff" COLOR="#009900" CREATED="1364412612014" ID="ID_1796588200" MODIFIED="1365608260746" TEXT="Value of a State">
+<font NAME="Georgia" SIZE="14"/>
 <node COLOR="#111111" CREATED="1364412617617" ID="ID_809021725" MODIFIED="1364412631223" TEXT="best achievable outcome (utility) from that state">
 <font NAME="Verdana" SIZE="12"/>
 </node>
 </node>
 </node>
-<node COLOR="#cc0000" CREATED="1364412425543" ID="ID_862402240" MODIFIED="1364412427311" TEXT="General">
+<node COLOR="#cc0000" CREATED="1364412425543" ID="ID_862402240" MODIFIED="1365608260746" TEXT="General">
 <edge STYLE="bezier" WIDTH="thin"/>
-<font NAME="Verdana" SIZE="20"/>
+<font NAME="Verdana" SIZE="16"/>
 </node>
 </node>
 </node>

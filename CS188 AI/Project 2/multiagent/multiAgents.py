@@ -10,6 +10,7 @@
 
 from util import manhattanDistance
 from game import Directions
+from searchAgents import mazeDistance
 import random, util, math, itertools
 
 from game import Agent
@@ -328,7 +329,11 @@ class ExpectimaxAgent(MultiAgentSearchAgent):
 
         result = value(gameState, self.index)[1]
         return result
-        
+
+
+
+closestFoodCache = {}
+evalCache = {}
 
 def betterEvaluationFunction(currentGameState):
     """
@@ -338,42 +343,96 @@ def betterEvaluationFunction(currentGameState):
       DESCRIPTION: <write something here so we know what you did>
     """
     "*** YOUR CODE HERE ***"
-
-    position = currentGameState.getPacmanPosition()
+    #if startNumFood == None: startNumFood = currentGameState.getNumFood()
     newFood = currentGameState.getFood()
     size = float(newFood.width * newFood.height)
     newGhostStates = currentGameState.getGhostStates()
     ghostPositions = currentGameState.getGhostPositions()
 
-    newScaredTimes = [ghostState.scaredTimer for ghostState in newGhostStates]
+    def closestCapsule(position, capsules, state):
+      result = min(mazeDistance(position, capsule, state) for capsule in capsules)
+      return result
 
-    def findClosestFood(position, foodGrid):
-      for x in range(newFood.width):
-        for y in range(newFood.height):
-          if foodGrid[x][y]:
-            return util.manhattanDistance(position, (x,y))
+    def findClosestFood(nodes, foodGrid, capsules, wallGrid):
+      # print foodGrid
+      # print
+      # print wallGrid
+      distance = 0
+      positionCache = []
+      while not nodes.isEmpty():
+        node = nodes.pop()
+        position = node[0]
+        #print 'pos:', position
+        #util.pause()
+        if position not in positionCache:
+          positionCache.append(position)
+          if foodGrid[position[0]][position[1]]  or position in capsules:
+            return node[1]
+          if not wallGrid[position[0]][position[1]]:
+            for i in [(1,0), (0,1), (-1,0), (0,-1)]:
+              newPos = (position[0] + i[0], position[1] + i[1])
+              #print 'newPos:', newPos
+              newNode = newPos, node[1]+1
+              nodes.push(newNode)
       return 0
+    
+    def cumGhostsDistance(position, ghostPositions, state):
+      ghostStates = state.getGhostStates()
+      scaredTimes = [ghostState.scaredTimer for ghostState in ghostStates]
+      total = 0
+      for i in range(len(scaredTimes)):
+        d = math.sqrt(mazeDistance(position, util.nearestPoint(state.getGhostPosition(i+1)), state))
+        if scaredTimes[i] > 0:
+          d = d * math.sqrt(scaredTimes[i])
+        else:
+          d *= -1 
+        total += int(d)
+      return total
 
     def evalState(state):
-      position = state.getPacmanPosition()     
-      closestFood = findClosestFood(position, state.getFood())
-      closestGhost = min(util.manhattanDistance(position, ghostPosition) for ghostPosition in ghostPositions)
+      position = state.getPacmanPosition()
+      capsules = state.getCapsules()
+      foodGrid = state.getFood()
+      foodState = position, foodGrid, tuple(capsules)
+      closestFood = None
+      if foodState in closestFoodCache:
+        closestFood = closestFoodCache[foodState]
+      else:
+        nodes = util.Queue()
+        node = position, 0
+        nodes.push(node)
+        closestFood = findClosestFood(nodes, foodGrid, capsules, state.getWalls())
+        closestFoodCache[foodState] = closestFood
+      
+      ghostState = position, tuple(ghostPositions)
+      closestGhost = None
+      if ghostState in evalCache:
+        closestGhost = evalCache[ghostState]
+      else:
+        closestGhost = min(mazeDistance(position, util.nearestPoint(ghostPosition), state) for ghostPosition in ghostPositions)
+        evalCache[ghostState] = closestGhost
+
       foodLeft = state.getNumFood()         
       score = state.getScore()
-      scared = newScaredTimes[0] > 0
+      #scared = newScaredTimes[0] > 0
+      #cgd = cumGhostsDistance(position, ghostPositions, state)
+      #numFoodEaten = startNumFood - foodLeft
 
-      a = 0
-      if score < 0:
-        a = -1 * math.log10(abs(score))
-      elif score > 0:
-        a = math.log10(score)
-      b = -0.5 * closestFood
-      c = -20 * math.sqrt(foodLeft)
-      d = 0.5 * (( closestGhost**(1.0/4)) + ( 10 * scared * closestGhost))
+      # a = 0
+      # if score < 0:
+      #   a = -1 * math.sqrt(abs(score))
+      # elif score > 0:
+      #   a = math.sqrt(score)
+      a = score
+      b = -1 * closestFood
+      c = -1 * foodLeft**2
+      #d = 0.5 * (( closestGhost**(1.0/4)) + ( 10 * scared * closestGhost))
+      d = -1 * closestGhost
+      #e = cgd
+      f = 100 * len(capsules) 
       #print 'newScaredTimes', newScaredTimes
-      #print 'score, closestFood, numFood, closestGhost', a, b, c, d
-      result = a + b
-      #print 'result', result
+      #print 'score, closestFood, cgd', score, b, e
+      result = a + b + d + f
       return result
 
     currentScore = evalState(currentGameState)
@@ -387,6 +446,63 @@ class ContestAgent(MultiAgentSearchAgent):
     """
       Your agent for the mini-contest
     """
+    startNumFood = None  
+
+    def getAction(self, gameState):
+        """
+          Returns the expectimax action using self.depth and self.evaluationFunction
+
+          All ghosts should be modeled as choosing uniformly at random from their
+          legal moves.
+        """
+        "*** YOUR CODE HERE ***"
+        self.evaluationFunction = better
+        self.depth = 3
+        numAgents = gameState.getNumAgents()
+
+        def maxValue(state, agentIndex, depth):
+          # print
+          # print 'max agent...', agentIndex
+          v = float("-infinity"), None
+          actions = state.getLegalActions(agentIndex)
+          # print 'actions:', actions
+          for action in actions:
+            # print 'action', action
+            newState, nextAgentIndex, newDepth = self.createParams(state, agentIndex, depth, action)            
+            v = max(v, (value(newState, nextAgentIndex, newDepth, action)[0], action))
+          return v
+
+        def expValue(state, agentIndex, depth):
+          # print 'min agent...', agentIndex
+          v = 0, None
+          actions = state.getLegalActions(agentIndex)
+          p = 1.0 / len(actions)
+          for action in actions:
+            # print 'action', action
+            newState, nextAgentIndex, newDepth = self.createParams(state, agentIndex, depth, action)
+            v = v[0] + (p * value(newState, nextAgentIndex, newDepth, action)[0]), action
+          return v
+
+        def value(state, agentIndex, depth=0, action=None): 
+          # print 'agent', agentIndex, 'depth', depth
+          if depth == self.depth or state.isLose() or state.isWin(): 
+            utility = self.evaluationFunction(state), action
+            # print 'utility:', utility
+            # print
+            return utility
+          elif agentIndex == 0:
+            return maxValue(state, agentIndex, depth)
+          else:
+            return expValue(state, agentIndex, depth)
+
+        result = value(gameState, self.index)[1]
+        return result
+            
+class ContestAgent2(MultiAgentSearchAgent):
+    """
+      Your agent for the mini-contest
+    """
+    startNumFood = None  
 
     def getAction(self, gameState):
         """
@@ -397,6 +513,8 @@ class ContestAgent(MultiAgentSearchAgent):
           just make a beeline straight towards Pacman (or away from him if they're scared!)
         """
         "*** YOUR CODE HERE ***"
+        self.depth = 3
+        
         numAgents = gameState.getNumAgents()
 
         # print 'index:', self.index, 'searchDepth:', self.depth, 'numAgents:', numAgents
@@ -410,8 +528,12 @@ class ContestAgent(MultiAgentSearchAgent):
           # print 'actions:', actions
           for action in actions:
             # print 'action', action
-            newState, nextAgentIndex, newDepth = self.createParams(state, agentIndex, depth, action)            
-            v = max(v, (value(newState, nextAgentIndex, newDepth, action)[0], action))
+            newState, nextAgentIndex, newDepth = self.createParams(state, agentIndex, depth, action)
+            option = value(newState, nextAgentIndex, newDepth, action)[0], action           
+            #if depth == 0:
+              #print 'option:', option
+            v = max(v, option)
+            
           return v
 
         def minValue(state, agentIndex, depth):
@@ -428,7 +550,7 @@ class ContestAgent(MultiAgentSearchAgent):
         def value(state, agentIndex, depth=0, action=None): 
           # print 'agent', agentIndex, 'depth', depth
           if depth == self.depth or state.isLose() or state.isWin(): 
-            utility = self.evaluationFunction(state), action
+            utility = better(state), action
             # print 'utility:', utility
             # print
             return utility
@@ -437,7 +559,10 @@ class ContestAgent(MultiAgentSearchAgent):
           else:
             return minValue(state, agentIndex, depth)
 
-        result = value(gameState, self.index)[1]
-
+        value = value(gameState, self.index)
+        result = value[1]
+        #print 'choice:', value
+        #print
+        #util.pause()
         return result
             
