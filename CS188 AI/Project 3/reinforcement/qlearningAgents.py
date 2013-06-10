@@ -55,6 +55,18 @@ class QLearningAgent(ReinforcementAgent):
           self.qValues[state] = util.Counter()
         return self.qValues[state][action]
 
+        # if state in self.qValues:
+        #   if self.qValues[state] == {}:
+        #     return 0.0
+        #   elif action in state:
+        #     return self.qValues[state][action]
+        #   else:
+        #     kv = max(self.qValues[state])
+        #     print 'kv:', self.qValues[state][kv]
+        #     return kv
+        # else:
+        #   self.qValues[state] = util.Counter()
+        # return 0.0
 
     def computeValueFromQValues(self, state):
         """
@@ -76,11 +88,16 @@ class QLearningAgent(ReinforcementAgent):
           you should return None.
         """
         "*** YOUR CODE HERE ***"
-        if not self.getLegalActions(state):
-          action = None
-        else:
-          action = self.qValues[state].argMax()
-
+        actions = self.getLegalActions(state)
+        action = None
+        maxQV = float("-infinity")
+        if actions:
+          #action = self.qValues[state].argMax()
+          for a in actions:
+            qv = self.getQValue(state, a) 
+            if qv > maxQV:
+              action = a
+              maxQV = qv
         return action
 
     def getAction(self, state):
@@ -181,14 +198,29 @@ class ApproximateQAgent(PacmanQAgent):
           where * is the dotProduct operator
         """
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        features = self.featExtractor.getFeatures(state, action)
+        qValue = 0
+        for k in features:
+          weightedValue = features[k] * self.getWeights()[k]
+          qValue += weightedValue
+                
+        return qValue
 
     def update(self, state, action, nextState, reward):
         """
            Should update your weights based on transition
         """
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        features = self.featExtractor.getFeatures(state, action)
+        weights = self.getWeights()
+        newWeight = 0
+        difference = (reward + self.discount * self.computeValueFromQValues(nextState)) - self.getQValue(state, action)
+        for k in features:
+          weights[k] += self.alpha * difference * features[k]
+        
+
+        # difference = (R + discount * MaxAction Q(s',a')) - Q(s,a)
+        # Wi <- Wi + alpha x difference x Fi(s,a)
 
     def final(self, state):
         "Called at the end of each game."
