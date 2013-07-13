@@ -1,39 +1,39 @@
-Factor (m),Multiple,Value,Item
-10?6,1 micrometre (µm),1 µm,also called one micron
-,,1–3 µm,particle size that a surgical mask removes at 80–95% efficiency[citation needed]
-,,6-8 µm,diameter of a red blood cell[12]
-10?5,10 µm,10 µm,"typical size of a fog, mist or cloud water droplet. Chip 10 µm process in 1971."
-,,12 µm,width of acrylic fibre
-,,25.4 µm,"1/1000 inch, commonly referred to as one thou or one mil"
-10?4,100 µm,100 µm,average width of a strand of human hair[1]
-,,200 µm,"typical length of Paramecium caudatum, a ciliate protist"
-,,750 µm,"maximum diameter of Thiomargarita namibiensis, the largest bacterium ever discovered"
-10?3,1 millimetre (mm),2.54 mm,1/10th inch; distance between pins in DIP (dual-inline-package) electronic components
-,,5 mm,length of average red ant
-,,7.62 mm,common military ammunition size
-10?2,1 centimetre (cm),1.5 cm,length of a large mosquito
-,,2.54 cm,1 inch
-,,4.267 cm,diameter of a golf ball
-10?1,1 decimetre (dm),10 cm,"wavelength of the highest UHF radio frequency, 3 GHz"
-,,30.48 cm,1 foot
-,,91.44 cm,1 yard
-100,1 metre,1 m,"wavelength of the lowest UHF and highest VHF radio frequency, 300 MHz"
-,,1.7 m (5 feet 7 inches),average height of a human
-,,8.38 m,The length of a London Bus (Routemaster)
-101,1 decametre (dam),10 m,"wavelength of the lowest VHF and highest shortwave radio frequency, 30 MHz"
-,,33 m,"length of longest blue whale measured, the largest animal[13]"
-,,93.47 m,height of the Statue of Liberty (foundation of pedestal to torch)
-102,1 hectometre (hm),100 m,"wavelength of the lowest shortwave radio frequency and highest medium wave radio frequency, 3 MHz"
-,,137 m (147 m),height (present and original) of the Great Pyramid of Giza
-,,979 m,"height of the Salto Angel, the world's highest free-falling waterfall (Venezuela)"
-103,1 kilometre (km),1 km,"wavelength of the lowest medium wave radio frequency, 300 kHz"
-,,1609 m,1 international mile
-,,1852 m,1 nautical mile
-,,,
-,,8848 m,"height of the highest mountain on earth, Mount Everest"
-104,10 km,10.911 km,"depth of deepest part of the ocean, Mariana Trench"
-,,13 km,"narrowest width of the Strait of Gibraltar, separating Europe and Africa"
-,,90 km,width of the Bering Strait
-105,100 km,111 km,distance covered by one degree of latitude on Earth's surface
-,,163 km,length of the Suez Canal
-,,974.6 km,greatest diameter[14] of the dwarf planet[note 1] Ceres
+Factor (m),Multiple,Value,Item,ImageFilename
+10?6,1 micrometre (µm),1 µm,also called one micron,
+,,1–3 µm,particle size that a surgical mask removes at 80–95% efficiency[citation needed],
+,,6-8 µm,diameter of a red blood cell[12],
+10?5,10 µm,10 µm,"typical size of a fog, mist or cloud water droplet. Chip 10 µm process in 1971.",
+,,12 µm,width of acrylic fibre,
+,,25.4 µm,"1/1000 inch, commonly referred to as one thou or one mil",
+10?4,100 µm,100 µm,average width of a strand of human hair[1],
+,,200 µm,"typical length of Paramecium caudatum, a ciliate protist",
+,,750 µm,"maximum diameter of Thiomargarita namibiensis, the largest bacterium ever discovered",
+10?3,1 millimetre (mm),2.54 mm,1/10th inch; distance between pins in DIP (dual-inline-package) electronic components,
+,,5 mm,length of average red ant,
+,,7.62 mm,common military ammunition size,
+10?2,1 centimetre (cm),1.5 cm,length of a large mosquito,
+,,2.54 cm,1 inch,
+,,4.267 cm,diameter of a golf ball,Golf-ball.png
+10?1,1 decimetre (dm),10 cm,"wavelength of the highest UHF radio frequency, 3 GHz",
+,,30.48 cm,1 foot,
+,,91.44 cm,1 yard,
+100,1 metre,1 m,"wavelength of the lowest UHF and highest VHF radio frequency, 300 MHz",
+,,1.7 m (5 feet 7 inches),average height of a human,327px-Logo_man.svg.png
+,,8.38 m,The length of a London Bus (Routemaster),
+101,1 decametre (dam),10 m,"wavelength of the lowest VHF and highest shortwave radio frequency, 30 MHz",
+,,33 m,"length of longest blue whale measured, the largest animal[13]",
+,,93.47 m,height of the Statue of Liberty (foundation of pedestal to torch),
+102,1 hectometre (hm),100 m,"wavelength of the lowest shortwave radio frequency and highest medium wave radio frequency, 3 MHz",
+,,137 m (147 m),height (present and original) of the Great Pyramid of Giza,
+,,979 m,"height of the Salto Angel, the world's highest free-falling waterfall (Venezuela)",
+103,1 kilometre (km),1 km,"wavelength of the lowest medium wave radio frequency, 300 kHz",
+,,1609 m,1 international mile,
+,,1852 m,1 nautical mile,
+,,,,
+,,8848 m,"height of the highest mountain on earth, Mount Everest",
+104,10 km,10.911 km,"depth of deepest part of the ocean, Mariana Trench",
+,,13 km,"narrowest width of the Strait of Gibraltar, separating Europe and Africa",
+,,90 km,width of the Bering Strait,
+105,100 km,111 km,distance covered by one degree of latitude on Earth's surface,
+,,163 km,length of the Suez Canal,
+,,974.6 km,greatest diameter[14] of the dwarf planet[note 1] Ceres,
