@@ -1,0 +1,211 @@
+
+So far, you've seen the basic intuition 
+behind local expressions and you've seen 
+how the concepts of lexical scoping and 
+scope contours allow us to know exactly 
+which definition provides the value for a 
+constant reference or a function call But 
+we don't yet have a precise model for how 
+Local is evaluated. 
+And without that model, we can't know the 
+exact value of locally defined constants, 
+When they appear inside of function 
+definitions. 
+So what I'm going to do in this video is 
+show you the exact evaluation rules for 
+Local. 
+And we'll just work through that step by 
+step. 
+And this is going to be really important 
+for the way that we use locals, when we 
+get to function abstraction. 
+In this video, I'm going to talk about 
+the actual evaluation rules for local 
+expressions. 
+And I'm going to do that because it'll 
+help you understand some of the ways that 
+we're going to be making use of local in. 
+Function abstraction a little bit later 
+in the course. 
+So here we go. 
+I've got another example here. 
+This one is slightly simpler than the 
+super complicated one we saw last time. 
+but it's complicated enough to talk about 
+what we need to talk about here. 
+So, you know, intuitively, we could see 
+what's going on here; that b and that b B 
+are the outer b. 
+And both of those inner b's are the inner 
+b. 
+So that's plus 1 times 2 2 is 4. 
+So plus 1 4 and 1. 
+Pretty sure that's 6. 
+It is. 
+Well let's talk about how, ISL actually 
+evaluates the local expression. 
+So the first thing to remember is that 
+Local is an expression. 
+It doesn't affect the evaulation of 
+expressions outside of it. 
+All expressions are like that. 
+So let's start by evaluating this whole 
+expression, open paren plus. 
+Plus is the name of a primative 
+operation. 
+So this is a call to a primative 
+operation. 
+We need to reduce the three operands: 
+this b, this local expression, and that b 
+to values. 
+We start with the first one? 
+Is it a value? 
+No it's not. 
+It's a reference to a defined constant. 
+We happen to be using lower-case names 
+here, but that's a style guide issue, not 
+a language issue. 
+So B is going to be replaced by ones, so 
+the first evaluation step is just that b 
+gets replaced by one. 
+Nothing's happened with the local yet. 
+We haven't seen it yet. 
+Okay now let's do this local. 
+Now the way local evaluation works is 
+that three things are going to happen in 
+one step. 
+See? 
+There's going to be a thing called 
+renaming. 
+There's going to be a thing called 
+lifting. 
+And then we're going to replace the 
+entire local expression with its renamed 
+body. 
+Let's first talk about the renaming. 
+The first thing we do is we take every 
+definition in the local. 
+In this case there's just one, define b. 
+And we find all the references to that 
+definition, in this case there's these 
+two. 
+We can either do that ourselves or we can 
+use check syntax to help us. 
+There's those two definitions. 
+And now we come up with a new, globally 
+unique name for b. 
+What I'll do is I'll make a copy to work 
+in. 
+Just to keep it simple, what I'm going to 
+do is, I'm going to rename b to b 
+underscore 0. 
+And at the time I do that I'm going to 
+rename all the references to be, to be 
+_0. 
+Now, if the _0 already existed I would 
+use something else. 
+The key thing is it has to be a unique 
+name. 
+There can be no other definition in the 
+world that has this name. 
+Okay. 
+Technically there could be no other 
+definition in the top level scope that 
+has this name. 
+And, technically, the actually, the 
+renaming works in a more subtle way, but 
+this explanation is good enough to 
+understand the valuation of any program 
+we're going to write. 
+Now that I've done the renaming, I do 
+another thing, which is that I take the 
+renamed definition and I lift it out of 
+the local, so that it's now in the top 
+level scope. 
+And notice I don't lift it just out of 
+the local. 
+I didn't put it here. 
+I did not put it there. 
+I have to lift it all the way to top 
+level. 
+I lifted it all the way to top level. 
+If you want you could go put it all the 
+way up here with the other definitions. 
+You don't have to do that. 
+It really just has to go to top level. 
+So I did the renaming. 
+I did the lifting. 
+Now the third step is I replace the local 
+with the body in which the renaming has 
+happened. 
+And now notice something important. 
+There's no local anymore. 
+The local is gone. 
+That's the same kind of thing we saw with 
+if and cod. 
+If tried to put itself out of the way. 
+It evaluated the question, and then it 
+replaced itself with either the true 
+answer expression or the false answer 
+expression. 
+That's what's happening here. 
+The rules for evaluating local or trying 
+to make the local go away, so that it 
+will have a program in BSL. 
+This is now a BSL program, it's not an 
+ISL program anymore. 
+Local is gone. 
+And so now we just keep evaluating and of 
+course, since it's a BSL program it's 
+quite straight forward, let's see which 
+B0 is this. 
+This. 
+Well, it's that b0, so this will become 
+in the next step, that b0 will become 
+two. 
+In the step after that, the next b0 will 
+become two. 
+In the step after that The times 2 2 will 
+become 4. 
+And the step after that, this b, well 
+which b is that? 
+That's this one way up at the top here. 
+That's going to become 1. 
+Whoops, I need to actually do the step. 
+Yeah, that's going to become 1. 
+And in the final step, that whole thing 
+is going to become six. 
+The key thing about the step by step 
+evaluation or about the evaluation rules 
+for local expression is, when you get to 
+the local, first you rename Each 
+definition and all of the references to a 
+globally unique name. 
+So if there were multiple definitions 
+here, you would do this for all the 
+definitions. 
+For this case, we renamed B to B zero. 
+We renamed the references also to B zero. 
+Then you lift the definition to top 
+level. 
+There it is. 
+And then you replace the local by it's 
+body. 
+So that's the rules for evaluating a 
+local. 
+Rename, lift, replace the local with it's 
+body. 
+You should practice that because 
+understanding how we're going to use 
+local in abstract functions. 
+Is going to require having this 
+understanding of local. 
+You need to understand how to form a 
+local. 
+You need to understand the rules of 
+lexical scoping, the contour rules, and 
+you need to understand the rules for 
+evaluating a local. 
+Just practice it and do these exercises 
+coming up. 
+
