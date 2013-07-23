@@ -19,11 +19,14 @@ Sprite [] sprites;
 class Sprite {
   PImage image;
   String value, item, imgFilename;
-  Sprite (PImage i, String v, String itm, String ifn) {
+  Float perspective, trans;
+  Sprite (PImage i, String v, String itm, String ifn, float p, float t) {
     image = i;
     value = v;
     item = itm;
     imgFilename = ifn;
+    perspective = p;
+    trans = t;
   }  
 }
 
@@ -57,13 +60,12 @@ void draw() {
   if (mousePressed) {
     fov *= 2;
   }
-  image(img2, 0, 0);
+  
   perspective(3.14*p1, aspect, cameraZ/10.0, cameraZ*10.0);
-  image(img, 0, 0,STARTSIZE,int(img.width/ratio));  
-  
-  
-  perspective(3.14*0.5, aspect, cameraZ/10.0, cameraZ*10.0);
-  
+  image(img, 0, 0,STARTSIZE,int(img.width/ratio));
+  perspective(3.14*p1, aspect, cameraZ/8.0, cameraZ*10.0);
+  image(img2, 0, 0, STARTSIZE, int(img.width/ratio));
+    
   translate(width/2+200, height/2, 0);
   scale(sx1, sy1, sz1);
   box(30, 30, 0);
