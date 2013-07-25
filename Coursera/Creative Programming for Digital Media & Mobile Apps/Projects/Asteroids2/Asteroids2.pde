@@ -36,6 +36,14 @@ Body [] sprites;
 // a handler that will detect collisions
 CollisionDetector detector; 
 
+//helpers
+Vec2 calc_radian_vector(Vec2 v, float angle, float length) {  
+  int x = int(v.x + cos(angle) * length);
+  int y = int(v.y + sin(angle) * length);
+  Vec2 bearing = new Vec2(x, y);
+  return bearing;
+}
+
 // Classes
 class ImageInfo {
   PImage image;
@@ -78,7 +86,7 @@ class Ship {
   AudioPlayer thrust_sound;
   int dist_flown;
   Body hull;
-  float SHIP_ANGLE_VEL = 0.07;
+  float SHIP_ANGLE_VEL = PI/20;
     
   // Constructor
   Ship(Vec2 p, Vec2 v, float a, PImage i, ImageInfo inf) {
@@ -110,15 +118,13 @@ class Ship {
     image_center = ctr;      
   }  
   void turn(boolean right) {
-    // !!! refactor to make the turn constant on/off instead of reacting to the keyboard
-    float newAngle = hull.getAngle();
+    // !!! refactor to make the turn constant on/off instead of reacting to the keyboard    
     if (right) {      
-      newAngle += SHIP_ANGLE_VEL;
+      angle += SHIP_ANGLE_VEL;
     } else {
-      newAngle -= SHIP_ANGLE_VEL;
+      angle -= SHIP_ANGLE_VEL;
     }
-    hull.setAngle(newAngle);
-    angle = newAngle;    
+    hull.setAngle(angle);      
   }  
   void fire_missile() {
     int x = int(pos.x + cos(angle) * (1.3 * 2*radius));
@@ -126,17 +132,17 @@ class Ship {
     //int x = 100;
     //int y = 100;
     Vec2 mpos = new Vec2(x, y);
-    physics.createCircle(mpos.x, mpos.y, MISSILE_SIZE);    
-  }
-  
+    
+    Vec2 mpos2 = calc_radian_vector(pos, angle, 2*radius);
+    //physics.createCircle(mpos.x, mpos.y, MISSILE_SIZE);    
+    physics.createCircle(mpos2.x, mpos2.y, MISSILE_SIZE);
+  }  
   void apply_thrust() {
-    Vec2 hullCenter = hull.getWorldCenter();
-    int x = int(hullCenter.x + cos(angle) * (1.0 * radius));
-    int y = int(hullCenter.y + sin(angle) * (1.0 * radius));
-    Vec2 bearing = new Vec2(x, y);
+    Vec2 hullCenter = hull.getWorldCenter();    
     Vec2 impulse = new Vec2();
-    impulse.set(bearing);
-    impulse = impulse.sub(hullCenter);
+    Vec2 bearing = calc_radian_vector(hullCenter, angle, radius/2);
+    impulse.set(hullCenter);
+    impulse = impulse.sub(bearing);
     impulse = impulse.mul(0.07);
     hull.applyImpulse(impulse, hullCenter);    
   }  
@@ -153,22 +159,34 @@ class Ship {
       thrust_sound.cue(0);
     }
   }      
-  void render(World world) {    
+  void update(World world) {    
     // get the droids position and rotation from
     // the physics engine and then apply a translate 
     // and rotate to the image using those values
     // (then do the same for the crates)
-    Vec2 screenDebugPos = physics.worldToScreen(hull.getWorldCenter());
-    float shipAngle = physics.getAngle(hull);
-    angle = shipAngle;    
+    pos = physics.worldToScreen(hull.getWorldCenter());
+    angle = physics.getAngle(hull);        
     pushMatrix();
-    translate(screenDebugPos.x, screenDebugPos.y);
-    rotate(-radians(shipAngle));    
+    translate(pos.x, pos.y);
+    rotate(-radians(angle));    
     //image(image.get(0, 0, int(info.get_size().x/2), int(info.get_size().y)), 0, 0);
-    popMatrix();               
+    popMatrix();       
+    Vec2 tip = calc_radian_vector(pos, angle, radius/2);    
+    line(pos.x, pos.y, tip.x, tip.y);
   }    
 }
-
+void setup() {
+  size(WIDTH,HEIGHT);
+  frameRate(60);
+  time = 0;
+  maxim = new Maxim(this);
+  
+  init_physics();
+  init_ship();    
+  init_images();
+  init_sounds();
+  started = true;
+}
 // init helpers    
 void init_images() {
   debris_image = loadImage("debris2_blue.png");
@@ -193,21 +211,9 @@ void init_ship() {
 }
 void init_physics() {
   physics = new Physics(this, width, height, 0, 0, width*1.2, height*1.2, width, height, 100);  
-  //physics.setCustomRenderingMethod(this, "myCustomRenderer");
+//  physics.setCustomRenderingMethod(this, "myCustomRenderer");
   physics.setDensity(10.0);  
   detector = new CollisionDetector (physics, this);
-}
-void setup() {
-  size(WIDTH,HEIGHT);
-  frameRate(60);
-  time = 0;
-  maxim = new Maxim(this);
-  
-  init_physics();
-  init_ship();    
-  init_images();
-  init_sounds();
-  started = true;
 }
 void draw_background() {
   Vec2 center = new Vec2(int(debris_image.width/2), int(debris_image.height/2));
@@ -220,10 +226,11 @@ void draw_background() {
 void draw() {
   time +=1;
   draw_background();
-  text("shipAngle: " + my_ship.angle, 20, 20);  
+  text("angle: " + (my_ship.angle*180/PI) + ", pos:" + my_ship.pos, 20, 20);  
+  myCustomRenderer(physics.getWorld());
 }
 void myCustomRenderer(World world) {
-  my_ship.render(world);  
+  my_ship.update(world);  
 }
 void keyPressed() {  
   if (key == CODED) {
