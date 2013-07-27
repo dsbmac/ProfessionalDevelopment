@@ -21,10 +21,10 @@ AudioPlayer[] crateSounds;
 
 Physics physics; // The physics handler: we'll see more of this later
 // rigid bodies for the droid and two crates
-Body droid;
+Body droid, box;
 Body [] crates;
 // the start point of the catapult 
-Vec2 startPoint;
+Vec2 startPoint, force;
 // a handler that will detect collisions
 CollisionDetector detector; 
 
@@ -66,7 +66,7 @@ void setup() {
   // with the method myCustomRenderer
   // comment out to use the debug renderer 
   // (currently broken in JS)
-  physics.setCustomRenderingMethod(this, "myCustomRenderer");
+  //physics.setCustomRenderingMethod(this, "myCustomRenderer");
   physics.setDensity(10.0);
 
   // set up the objects
@@ -82,14 +82,16 @@ void setup() {
   crates[6] = physics.createRect(600+0.75*crateSize, height-4*crateSize, 600+1.75*crateSize, height-3*crateSize);
 
   startPoint = new Vec2(200, height-150);
+  force = new Vec2(10,0);
   // this converst from processing screen 
   // coordinates to the coordinates used in the
   // physics engine (10 pixels to a meter by default)
   startPoint = physics.screenToWorld(startPoint);
+  force = physics.screenToWorld(force);
 
   // circle parameters are center x,y and radius
   droid = physics.createCircle(width/2, -100, ballSize/2);
-
+  box = physics.createRect(10,10,100,100);
   // sets up the collision callbacks
   detector = new CollisionDetector (physics, this);
 
@@ -121,7 +123,9 @@ void draw() {
   fill(0);
   text("Score: " + score, 20, 20);
 }
-
+void mousePressed() {
+  physics.applyForce(box, force);
+}
 void mouseDragged()
 {
   // tie the droid to the mouse while we are dragging
