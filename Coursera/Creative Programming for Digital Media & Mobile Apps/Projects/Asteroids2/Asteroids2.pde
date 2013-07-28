@@ -18,8 +18,11 @@ int HEIGHT = 768;
 int REVERSE_Y = -1;
 Vec2 SCREEN_CENTER = new Vec2(WIDTH/2, HEIGHT/2);
 int MISSILE_SIZE = 5;
+int ASTEROID_SIZE = 38;
 Vec2 MISSILE_IMPULSE = new Vec2(20,0);
-float MISSILE_IMPULSE_FACTOR = 20; 
+Vec2 ASTEROID_IMPULSE = new Vec2(10,0);
+float MISSILE_IMPULSE_FACTOR = 20;
+float ASTEROID_IMPULSE_FACTOR = 5;
 float THRUST_FACTOR = 0.05;
 int SHIP_RADIUS = 35;
 Vec2 THRUSTER_IMPULSE = new Vec2(10, 0);
@@ -27,7 +30,8 @@ Vec2 THRUSTER_IMPULSE = new Vec2(10, 0);
 int time;
 int score, shots = 0;
 boolean started;
-PImage ballImage, debris_image, debris_image2, nebula_image, missile_image;
+PImage ballImage, debris_image, debris_image2, nebula_image, missile_image, asteroid_image;
+ImageInfo asteroid_info, missile_info;
 // audio stuff
 Maxim maxim;
 AudioPlayer soundtrack, droidSound, wallSound, missileSound;
@@ -37,6 +41,7 @@ Physics physics; // The physics handler: we'll see more of this later
 // rigid bodies for the droid and two crates
 Ship my_ship;
 ArrayList<Sprite> missileGroup = new ArrayList<Sprite>();
+ArrayList<Sprite> asteroidGroup = new ArrayList<Sprite>();
 ArrayList<ArrayList<Sprite>> sprites = new ArrayList<ArrayList<Sprite>>(1);
 
 // a handler that will detect collisions
@@ -59,6 +64,9 @@ void init_images() {
   debris_image2 = loadImage("debris2_blue.png");
   nebula_image = loadImage("nebula_blue.png");
   missile_image = loadImage("shot2.png");
+  missile_info = new ImageInfo(missile_image, MISSILE_SIZE, 0, false);
+  asteroid_image = loadImage("asteroid_blue.png");
+  asteroid_info = new ImageInfo(asteroid_image, ASTEROID_SIZE, 0, false);
   ballImage = loadImage("tux_droid.png");  
 }
 void init_sounds() {
@@ -79,8 +87,7 @@ void init_physics() {
 //  physics.setCustomRenderingMethod(this, "myCustomRenderer");
   physics.setDensity(10.0);  
   detector = new CollisionDetector (physics, this);
-  THRUSTER_IMPULSE = physics.screenToWorld(THRUSTER_IMPULSE);
-  
+  THRUSTER_IMPULSE = physics.screenToWorld(THRUSTER_IMPULSE);  
 }
 void draw_background() {
   Vec2 center = new Vec2(int(debris_image.width/2), int(debris_image.height/2));
@@ -90,13 +97,13 @@ void draw_background() {
   image(debris_image, width/2+1.25*wtime, 0, width, height);
   image(debris_image2, 1.25*wtime-width/2, 0, 1.1*width, 1.1*height);
 }
-
+ 
 // Main drawing function
 void draw() {
   time +=1;
   draw_background();
-  text("angle: " + (my_ship.getAngle()*180/PI) + ", pos:" + my_ship.getPosition() + ", calc_vec:" 
-  + radian_vector(my_ship.getPosition(), new Vec2(my_ship.getRadius(),0), my_ship.getAngle()), 20, 20);
+  text("angle: " + (my_ship.getAngle()*180/PI) + ", ang_vel: " + my_ship.body.getAngularVelocity() + ", pos:" + my_ship.getPosition() + ", calc_vec:" 
+  + radian_vector(my_ship.getPosition(), new Vec2(my_ship.getRadius(),0), my_ship.getAngle()), 20, 20);  
   text("mouseX: " + mouseX + ", " + mouseY + ", worldX: " 
   + physics.screenToWorld(new Vec2(mouseX, mouseY)), 20, 40); 
   myCustomRenderer(physics.getWorld());
@@ -104,6 +111,7 @@ void draw() {
 void myCustomRenderer(World world) {
   my_ship.update(world);
   processSpriteGroup(missileGroup);  
+  processSpriteGroup(asteroidGroup);
 }
 void collision(Body b1, Body b2, float impulse) {
   if ((b1 == my_ship.body && b2.getMass() > 0)
@@ -158,6 +166,10 @@ void keyReleased() {
     }      
   }
 }
+void mouseClicked() {
+  spawnAsteroid(new Vec2(mouseX, mouseY));
+}
+
 
 // Classes
 class ImageInfo {
@@ -214,6 +226,8 @@ class Sprite {
     println("pos: " + screenPosition + ", radius: " + info.getRadius());
     body = physics.createCircle(screenPosition.x, screenPosition.y, info.getRadius());
     body.setAngle(angle);
+    body.setAngularVelocity(PI);
+    println("sprite_angVel: " + body.getAngularVelocity());
   }
   Vec2 getPosition() {
     return screenPosition;      
@@ -308,10 +322,10 @@ class Ship {
     shots += 1;   
     Vec2 mPos = radian_vector(position, new Vec2(radius+MISSILE_SIZE+2, 0), angle);
     println("mPos:" + mPos + ", pos: " + position + ", angle: " + angle + ", tip:" + tip);    
-    ImageInfo info = new ImageInfo(missile_image, MISSILE_SIZE, 0, false);
+    
     float angle = physics.getAngle(body);
     float angle_velocity = 0.0;   
-    Sprite missile = new Sprite(mPos, MISSILE_IMPULSE, angle, angle_velocity, info, missileSound);
+    Sprite missile = new Sprite(mPos, MISSILE_IMPULSE, angle, angle_velocity, missile_info, missileSound);
     missileGroup.add(missile);
     Vec2 bearing = radian_vector(missile.getPosition(), new Vec2(missile.getRadius(),0), missile.getAngle());
     apply_impulse(missile.body, bearing, MISSILE_IMPULSE_FACTOR);
@@ -399,24 +413,22 @@ void add_vector(Body body, Vec2 vector, float factor) {
 float myGetAngle(Body body) {
   return physics.getAngle(body) * -1;
 }
-//void update_object(Ship ship, Sprite sprite) {  
-//  if(ship == null) {
-//    println("update ship");
-//    Sprite object = sprite;
-//  } else {
-//    println("update sprite");
-//    Ship object = ship;
-//  }
-//  Body body = object.getBody();
-//  Vec2 position = physics.worldToScreen(body.getWorldCenter()); 
-//  angle = physics.getAngle(body);        
-//  pushMatrix();
-//  translate(position.x, position.y);
-//  rotate(-angle);
-//  imageMode(CENTER);    
-//  image(image.get(0, 0, int(imageInfo.getSize().x/2), int(imageInfo.getSize().y)), 0, 0);
-//  imageMode(CORNER);
-//  popMatrix();       
-//  tip = radian_vector(position, new Vec2(radius, 0), angle);    
-//  line(position.x, position.y, tip.x, tip.y);
-//}
+void update_image(Body body, PImage image, ImageInfo info) {  
+  Vec2 position = physics.worldToScreen(body.getWorldCenter()); 
+  float angle = physics.getAngle(body);        
+  pushMatrix();
+  translate(position.x, position.y);
+  rotate(-angle);
+  imageMode(CENTER);    
+  image(image.get(0, 0, int(info.getSize().x/2), int(info.getSize().y)), 0, 0);
+  imageMode(CORNER);
+  popMatrix();
+}
+void spawnAsteroid(Vec2 position) {
+  float angle = 0;
+  float angle_velocity = 100;   
+  Sprite asteroid = new Sprite(position, ASTEROID_IMPULSE, angle, angle_velocity, asteroid_info, missileSound);
+  asteroidGroup.add(asteroid);
+  Vec2 bearing = radian_vector(asteroid.getPosition(), new Vec2(asteroid.getRadius(),0), asteroid.getAngle());
+  apply_impulse(asteroid.body, bearing, ASTEROID_IMPULSE_FACTOR);  
+}
