@@ -25,16 +25,17 @@ float MISSILE_IMPULSE_FACTOR = 20;
 float ASTEROID_IMPULSE_FACTOR = 5;
 float THRUST_FACTOR = 0.05;
 int SHIP_RADIUS = 35;
-Vec2 THRUSTER_IMPULSE = new Vec2(10, 0);
+Vec2 THRUSTER_IMPULSE = new Vec2(20, 0);
 
 int time;
 int score, shots = 0;
-boolean started;
-PImage ballImage, debris_image, debris_image2, nebula_image, missile_image, asteroid_image;
-ImageInfo asteroid_info, missile_info;
+boolean started, trashDay;
+PImage ballImage, debris_image, debris_image2, nebula_image, missile_image, asteroid_image,
+ explosionImage;
+ImageInfo asteroidInfo, missileInfo, explosionInfo;
 // audio stuff
 Maxim maxim;
-AudioPlayer soundtrack, droidSound, wallSound, missileSound;
+AudioPlayer soundtrack, droidSound, wallSound, missileSound, explosionSound)
 ArrayList<AudioPlayer> missileSounds = new ArrayList<AudioPlayer>();
 
 Physics physics; // The physics handler: we'll see more of this later
@@ -43,7 +44,7 @@ Ship my_ship;
 ArrayList<Sprite> missileGroup = new ArrayList<Sprite>();
 ArrayList<Sprite> asteroidGroup = new ArrayList<Sprite>();
 ArrayList<ArrayList<Sprite>> sprites = new ArrayList<ArrayList<Sprite>>(1);
-
+Body[] trash;
 // a handler that will detect collisions
 CollisionDetector detector; 
 
@@ -60,13 +61,14 @@ void setup() {
 }
 // init helpers    
 void init_images() {
-  debris_image = loadImage("debris2_blue.png");
-  debris_image2 = loadImage("debris2_blue.png");
+  debris_image = loadImage("debris2_blue.png");  
   nebula_image = loadImage("nebula_blue.png");
   missile_image = loadImage("shot2.png");
-  missile_info = new ImageInfo(missile_image, MISSILE_SIZE, 0, false);
+  explosionImage = loadImage("explosion_alpha.png");    
+  explosionInfo = new ImageInfo(explosion_alpha, 17, 24, true);
+  missileInfo = new ImageInfo(missile_image, MISSILE_SIZE, 0, false);
   asteroid_image = loadImage("asteroid_blue.png");
-  asteroid_info = new ImageInfo(asteroid_image, ASTEROID_SIZE, 0, false);
+  asteroidInfo = new ImageInfo(asteroid_image, ASTEROID_SIZE, 0, false);
   ballImage = loadImage("tux_droid.png");  
 }
 void init_sounds() {
@@ -77,6 +79,8 @@ void init_sounds() {
   //soundtrack.play();
   missileSound = maxim.loadFile("missile.wav");
   missileSound.speed(0.1);  
+  explosionSound = maxim.loadFile("explosion.wav");
+  explosionSound.speed(0.1);
 }
 void init_ship() {    
   ImageInfo inf = new ImageInfo(loadImage("double_ship.png"), SHIP_RADIUS, 0, false);
@@ -87,7 +91,11 @@ void init_physics() {
 //  physics.setCustomRenderingMethod(this, "myCustomRenderer");
   physics.setDensity(10.0);  
   detector = new CollisionDetector (physics, this);
-  THRUSTER_IMPULSE = physics.screenToWorld(THRUSTER_IMPULSE);  
+  sprites.add(missileGroup);
+  sprites.add(asteroidGroup);
+  THRUSTER_IMPULSE = physics.screenToWorld(THRUSTER_IMPULSE);
+  trash = new Body[2];
+  trashDay = false;
 }
 void draw_background() {
   Vec2 center = new Vec2(int(debris_image.width/2), int(debris_image.height/2));
@@ -109,19 +117,19 @@ void draw() {
   myCustomRenderer(physics.getWorld());
 }
 void myCustomRenderer(World world) {
+  if (trashDay) {
+    takeOutTheTrash(world);
+  }
   my_ship.update(world);
   processSpriteGroup(missileGroup);  
   processSpriteGroup(asteroidGroup);
 }
 void collision(Body b1, Body b2, float impulse) {
-  if ((b1 == my_ship.body && b2.getMass() > 0)
-    || (b2 == my_ship.body && b1.getMass() > 0))
-  {
-    if (impulse > 1.0)
-    {
-      score += 1;
-    }
-  }
+  collectTrash(b1, b2, impulse);
+}  
+  //deleteSprite(b2);
+  
+  //physics.removeBody(b1);
 //  for (int i=0;i<sprites.length;i++) {
 //     if (b1 == sprites[i] || b2 == sprites[i]){// its a crate
 //         crateSounds[i].cue(0);
@@ -129,7 +137,7 @@ void collision(Body b1, Body b2, float impulse) {
 //         crateSounds[i].play();
 //     }
 //   }
-}
+
 void keyPressed() {  
   if (key == CODED) {
       switch (keyCode) {
@@ -209,6 +217,7 @@ class Sprite {
   Body body;
   Vec2 screenPosition, worldPosition, impulse;
   float angle, angle_velocity;
+  int id;
   ImageInfo imageInfo;
   AudioPlayer sound;
   PImage image;
@@ -325,7 +334,7 @@ class Ship {
     
     float angle = physics.getAngle(body);
     float angle_velocity = 0.0;   
-    Sprite missile = new Sprite(mPos, MISSILE_IMPULSE, angle, angle_velocity, missile_info, missileSound);
+    Sprite missile = new Sprite(mPos, MISSILE_IMPULSE, angle, angle_velocity, missileInfo, missileSound);
     missileGroup.add(missile);
     Vec2 bearing = radian_vector(missile.getPosition(), new Vec2(missile.getRadius(),0), missile.getAngle());
     apply_impulse(missile.body, bearing, MISSILE_IMPULSE_FACTOR);
@@ -365,24 +374,12 @@ class Ship {
     line(position.x, position.y, tip.x, tip.y);        
   }    
 }
-
 // helpers
 void processSpriteGroup(ArrayList<Sprite> group) {    
   for (int i=0; i<group.size(); i++) {
      group.get(i) .update();
   }
 }
-
-//global dist_flown  
-//  remove = []
-//  for(int i=0; i<group.size(); i++) {   
-//    if (group[i].update()){
-//      if group == sprites['nukes']:
-//              dist_flown = 0
-//      remove.append(item)
-//      continue;      
-//    item.draw(canvas)
-//  group.difference_update(remove)  
         
 Vec2 radian_vector(Vec2 v1, Vec2 v2, float angle) {  
   //this is incorrectly implemented. didn't acocount for y position  
@@ -427,8 +424,44 @@ void update_image(Body body, PImage image, ImageInfo info) {
 void spawnAsteroid(Vec2 position) {
   float angle = 0;
   float angle_velocity = 100;   
-  Sprite asteroid = new Sprite(position, ASTEROID_IMPULSE, angle, angle_velocity, asteroid_info, missileSound);
+  println("asteroid info: " + asteroidInfo.getRadius()); 
+  Sprite asteroid = new Sprite(position, ASTEROID_IMPULSE, angle, angle_velocity, asteroidInfo, missileSound);  
   asteroidGroup.add(asteroid);
   Vec2 bearing = radian_vector(asteroid.getPosition(), new Vec2(asteroid.getRadius(),0), asteroid.getAngle());
   apply_impulse(asteroid.body, bearing, ASTEROID_IMPULSE_FACTOR);  
+}
+void deleteSprite(Body body) {  
+  OUTERMOST: for(int i=0; i<sprites.size(); i++) {
+    for(int j=0; j<sprites.get(i).size(); j++) {
+      if (body == sprites.get(i).get(j).body) {
+        sprites.get(i).remove(j);      
+        break OUTERMOST;      
+      }      
+    }    
+  }  
+}
+void explode(pos, impulse, exp_img, exp_inf):    
+    ang = random() * 2 * PI - PI;    
+    explosion = Sprite(pos, impulse, ang, 0, explosionImage, explosionInfo, explosionSound)
+    sprites.get(2).add(explosion);
+void collectTrash(Body b1, Body b2, float impulse) {
+  if (b1 != my_ship.body && b1.getMass() > 0) {
+    trash[0] = b1;
+    trashDay = true;
+  }
+  if (b2 != my_ship.body && b2.getMass() > 0) {
+    trash[1] = b2;
+    trashDay = true;
+  }      
+}
+void takeOutTheTrash(World world) {  
+  for(int i=0; i<trash.length; i++) {
+    println(trash[i]) ;
+    if(trash[i] != null) {
+      deleteSprite(trash[i]);  
+      physics.removeBody(trash[i]);
+      trash[i] = null;    
+    }      
+  }    
+  trashDay = false;    
 }

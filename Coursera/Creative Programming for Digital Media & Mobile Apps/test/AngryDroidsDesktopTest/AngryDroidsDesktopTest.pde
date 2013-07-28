@@ -36,6 +36,7 @@ PImage crateImage, ballImage, tip;
 int score = 0;
 
 boolean dragging = false;
+boolean removeBox = false;
 
 void setup() {
   size(1024,768);
@@ -92,6 +93,8 @@ void setup() {
   // circle parameters are center x,y and radius
   droid = physics.createCircle(width/2, -100, ballSize/2);
   box = physics.createRect(10,10,100,100);
+  //box.setName("jimmy");
+  
   // sets up the collision callbacks
   detector = new CollisionDetector (physics, this);
 
@@ -118,10 +121,16 @@ void draw() {
 
   // we can call the renderer here if we want 
   // to run both our renderer and the debug renderer
-  //myCustomRenderer(physics.getWorld());
+  myCustomRenderer(physics.getWorld());
 
   fill(0);
   text("Score: " + score, 20, 20);
+
+  if(removeBox) {
+    physics.removeBody(box);
+    println("box removed");
+    removeBox = false;
+  }
 }
 void mousePressed() {
   physics.applyForce(box, force);
@@ -144,6 +153,11 @@ void mouseReleased()
   impulse = impulse.mul(50);
   droid.applyImpulse(impulse, droid.getWorldCenter());
 }
+//void mouseClicked(){
+//  
+//  removeBox = true;
+//  println("mouse clicked: " + mouseX + ", " + mouseY + "removeBox: " + removeBox );
+//}
 
 // this function renders the physics scene.
 // this can either be called automatically from the physics
@@ -167,6 +181,7 @@ void myCustomRenderer(World world) {
   rotate(-radians(droidAngle));
   image(ballImage, 0, 0, ballSize, ballSize);
   popMatrix();
+
 
 
   for (int i = 0; i < crates.length; i++)
