@@ -239,7 +239,8 @@ class Sprite {
     frameSize = new Vec2(image.width/info.getLifespan(), image.height);
     sound = snd; 
     sound.cue(0);
-    sound.speed(0.1);
+    sound.speed(1);
+    sound.setLooping(false);
     //worldPosition = physics.screenToWorld(screenPosition);   
     println("pos: " + screenPosition + ", radius: " + info.getRadius());
     body = physics.createCircle(screenPosition.x, screenPosition.y, info.getRadius());
@@ -258,7 +259,11 @@ class Sprite {
   }  
   ImageInfo getImageInfo() {
     return imageInfo;      
-  }    
+  }
+  void playSound() {
+    sound.cue(0);
+    sound.play();
+  }  
   void update() {
     int spriteIndex = 1;
     if (imageInfo.animated) {            
@@ -493,7 +498,9 @@ void explode(Vec2 pos, Vec2 impulse, PImage image, ImageInfo info) {
   float ang = random(TWO_PI);    
   //Sprite(Vec2 pos, Vec2 imp, float ang, float ang_vel, ImageInfo info, AudioPlayer snd) {
   Sprite explosion = new Sprite(pos, impulse, 0.0, 0.0, info, explosionSound);  
-  explosionGroup.add(explosion);
+  explosionGroup.add(explosion);  
+  explosion.playSound();
+
 }
 void collectTrash(Body b1, Body b2, float impulse) {
   if (b1 != my_ship.body && b1.getMass() > 0) {
