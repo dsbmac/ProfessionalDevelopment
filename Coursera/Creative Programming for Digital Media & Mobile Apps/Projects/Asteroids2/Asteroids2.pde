@@ -46,7 +46,7 @@ ArrayList<Sprite> missileGroup = new ArrayList<Sprite>();
 ArrayList<Sprite> asteroidGroup = new ArrayList<Sprite>();
 ArrayList<Sprite> explosionGroup = new ArrayList<Sprite>();
 ArrayList<ArrayList<Sprite>> sprites = new ArrayList<ArrayList<Sprite>>(1);
-Body[] trash;
+ArrayList<Body> trash;
 // a handler that will detect collisions
 CollisionDetector detector; 
 
@@ -98,8 +98,7 @@ void init_physics() {
   sprites.add(asteroidGroup);
   sprites.add(explosionGroup);
   THRUSTER_IMPULSE = physics.screenToWorld(THRUSTER_IMPULSE);
-  trash = new Body[2];
-  trashDay = false;
+  trash = new ArrayList<Body>();
 }
 void draw_background() {
   Vec2 center = new Vec2(int(debris_image.width/2), int(debris_image.height/2));
@@ -121,7 +120,7 @@ void draw() {
   myCustomRenderer(physics.getWorld());
 }
 void myCustomRenderer(World world) {
-  if (trashDay) {
+  if (!trash.isEmpty()) {
     takeOutTheTrash(world);
   }
   my_ship.update(world);
@@ -504,22 +503,19 @@ void explode(Vec2 pos, Vec2 impulse, PImage image, ImageInfo info) {
 }
 void collectTrash(Body b1, Body b2, float impulse) {
   if (b1 != my_ship.body && b1.getMass() > 0) {
-    trash[0] = b1;
-    trashDay = true;
+    trash.set(0, b1);
   }
   if (b2 != my_ship.body && b2.getMass() > 0) {
-    trash[1] = b2;
-    trashDay = true;
+    trash.set(1, b2);
   }      
 }
 void takeOutTheTrash(World world) {  
-  for(int i=0; i<trash.length; i++) {
-    println(trash[i]) ;
-    if(trash[i] != null) {
-      deleteSprite(trash[i]);  
-      physics.removeBody(trash[i]);
-      trash[i] = null;    
+  for(int i=0; i<trash.size(); i++) {
+    println(trash.get(i)) ;
+    if(trash.get(i) != null) {
+      deleteSprite(trash.get(i));
+      physics.removeBody(trash.get(i));
+      trash.set(i, null);    
     }      
   }    
-  trashDay = false;    
 } 
