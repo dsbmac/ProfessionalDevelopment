@@ -99,6 +99,8 @@ void init_physics() {
   sprites.add(explosionGroup);
   THRUSTER_IMPULSE = physics.screenToWorld(THRUSTER_IMPULSE);
   trash = new ArrayList<Body>();
+  trash.add(null);
+  trash.add(null);
 }
 void draw_background() {
   Vec2 center = new Vec2(int(debris_image.width/2), int(debris_image.height/2));
@@ -121,26 +123,17 @@ void draw() {
 }
 void myCustomRenderer(World world) {
   if (!trash.isEmpty()) {
-    takeOutTheTrash(world);
+    takeOutTrash(world);
   }
   my_ship.update(world);
   for (int i=0; i<sprites.size(); i++) {
-    processSpriteGroup(sprites.get(i));
+    processSpriteGroup(sprites.get(i), world);
   }
 }
 void collision(Body b1, Body b2, float impulse) {
   collectTrash(b1, b2, impulse);
 }  
-  //deleteSprite(b2);
-  
-  //physics.removeBody(b1);
-//  for (int i=0;i<sprites.length;i++) {
-//     if (b1 == sprites[i] || b2 == sprites[i]){// its a crate
-//         crateSounds[i].cue(0);
-//         crateSounds[i].speed(0.5 + (impulse / 10000));// 10000 as the crates move slower??
-//         crateSounds[i].play();
-//     }
-//   }
+
 
 void keyPressed() {  
   if (key == CODED) {
@@ -235,12 +228,15 @@ class Sprite {
     age = 0.0;
     imageInfo = info;
     image = info.getImage();
-    frameSize = new Vec2(image.width/info.getLifespan(), image.height);
+    if (info.animated) {
+      frameSize = new Vec2(image.width/info.getLifespan(), image.height);  
+    } else {
+      frameSize = info.size;
+    }    
     sound = snd; 
     sound.cue(0);
     sound.speed(1);
     sound.setLooping(false);
-    //worldPosition = physics.screenToWorld(screenPosition);   
     println("pos: " + screenPosition + ", radius: " + info.getRadius());
     body = physics.createCircle(screenPosition.x, screenPosition.y, info.getRadius());
     body.setAngle(angle);
@@ -248,7 +244,7 @@ class Sprite {
     println("sprite_angVel: " + body.getAngularVelocity());
   }
   Vec2 getPosition() {
-    return screenPosition;      
+    return screenPosition;
   }
   float getAngle() {
     return angle;      
@@ -263,7 +259,7 @@ class Sprite {
     sound.cue(0);
     sound.play();
   }  
-  void update() {
+  boolean update() {
     int spriteIndex = 1;
     if (imageInfo.animated) {            
       spriteIndex = int(age);            
@@ -277,47 +273,21 @@ class Sprite {
     translate(screenPosition.x, screenPosition.y);
     rotate(-angle);
     imageMode(CENTER);
-    image(image.get(0 + int(spriteIndex*frameSize.x), 0, int(frameSize.x), int(frameSize.y)), 0, 0);
-    //image(image.get(0, 0, int(imageInfo.getSize().x), int(imageInfo.getSize().y)), 0, 0);    
-    //image(image, 0, 0);
+    if (imageInfo.animated) {
+      image(image.get(0 + int(spriteIndex*frameSize.x), 0, int(frameSize.x), int(frameSize.y)), 0, 0);
+    } else {
+      image(image.get(0, 0, int(imageInfo.getSize().x), int(imageInfo.getSize().y)), 0, 0);
+    } 
     imageMode(CORNER);
     popMatrix();       
     Vec2 tip = radian_vector(screenPosition, new Vec2(imageInfo.getRadius(), 0), angle);    
     line(screenPosition.x, screenPosition.y, tip.x, tip.y);
-    
     if (imageInfo.animated) {
       age += EXPLOSION_SPEED;
     } else {
       age +=1;
-    }
-    
-    
-//    def update(self):
-//        #print self.radius, self.pos, 'vel:', self.vel, 'self.angle:', self.angle
-//            
-//        if self.animated:            
-//            
-//            spriteIndex = int(self.age)      
-//            
-//            xVal = (spriteIndex * self.image_size[0]) + self.image_size[0]/2.0
-//            yVal = self.image_center[1]
-//            ctr = [xVal, yVal]            
-//            
-//            self.image_center = ctr
-//                
-//        self.angle += self.angle_vel                     
-//            
-//        self.pos = [(self.pos[i] + self.vel[i]) % WINDOW_SIZE[i]  for i in range(2)]    
-//        if self.lifespan == NUKE_LIFESPAN and time%50 ==0:
-//            self.vel = [x * random.choice([-1,1])  for x in self.vel]            
-//        
-//        if self.animated:
-//            self.age += EXPLOSION_SPEED            
-//        else:
-//            self.age +=1
-//        
-//        return self.age > self.lifespan            
-//     
+    }    
+    return imageInfo.lifespan != 0 && age > imageInfo.lifespan;
   }
 }  
 
@@ -425,15 +395,18 @@ class Ship {
     popMatrix();       
     tip = radian_vector(position, new Vec2(radius, 0), angle);    
     line(position.x, position.y, tip.x, tip.y);        
-  }    
-}
-// helpers
-void processSpriteGroup(ArrayList<Sprite> group) {    
-  for (int i=0; i<group.size(); i++) {
-     group.get(i) .update();
   }
 }
-        
+
+// helpers
+void processSpriteGroup(ArrayList<Sprite> group, World world) {
+  for (int i=0; i<group.size(); i++) {
+     if(group.get(i).update()) {
+       deleteSprite(group.get(i).body, world);   
+     }
+  }
+}
+    
 Vec2 radian_vector(Vec2 v1, Vec2 v2, float angle) {  
   //this is incorrectly implemented. didn't acocount for y position  
   float x = v1.x + (cos(angle) * v2.x);
@@ -483,25 +456,27 @@ void spawnAsteroid(Vec2 position) {
   Vec2 bearing = radian_vector(asteroid.getPosition(), new Vec2(asteroid.getRadius(),0), asteroid.getAngle());
   apply_impulse(asteroid.body, bearing, ASTEROID_IMPULSE_FACTOR);  
 }
-void deleteSprite(Body body) {  
+void deleteSprite(Body body, World wolrd) {  
   OUTERMOST: for(int i=0; i<sprites.size(); i++) {
     for(int j=0; j<sprites.get(i).size(); j++) {
       if (body == sprites.get(i).get(j).body) {
         sprites.get(i).remove(j);      
         break OUTERMOST;      
       }      
-    }    
-  }  
+    }
+  }
+  physics.removeBody(body);
 }
 void explode(Vec2 pos, Vec2 impulse, PImage image, ImageInfo info) {
   float ang = random(TWO_PI);    
   //Sprite(Vec2 pos, Vec2 imp, float ang, float ang_vel, ImageInfo info, AudioPlayer snd) {
   Sprite explosion = new Sprite(pos, impulse, 0.0, 0.0, info, explosionSound);  
-  explosionGroup.add(explosion);  
+  explosionGroup.add(explosion);
   explosion.playSound();
-
 }
 void collectTrash(Body b1, Body b2, float impulse) {
+  println("collectTrash...");
+  println("trash.size: " + trash.size());
   if (b1 != my_ship.body && b1.getMass() > 0) {
     trash.set(0, b1);
   }
@@ -509,13 +484,12 @@ void collectTrash(Body b1, Body b2, float impulse) {
     trash.set(1, b2);
   }      
 }
-void takeOutTheTrash(World world) {  
+void takeOutTrash(World world) {  
   for(int i=0; i<trash.size(); i++) {
     println(trash.get(i)) ;
     if(trash.get(i) != null) {
-      deleteSprite(trash.get(i));
-      physics.removeBody(trash.get(i));
+      deleteSprite(trash.get(i), world);      
       trash.set(i, null);    
     }      
   }    
-} 
+}
