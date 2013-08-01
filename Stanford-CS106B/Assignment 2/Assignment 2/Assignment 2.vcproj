@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="8.00"
+	Version="9.00"
 	Name="Assignment 2"
 	ProjectGUID="{147A8AD7-62B9-48C9-A524-EA485F9A4337}"
 	RootNamespace="Assignment 2"
+	TargetFrameworkVersion="131072"
 	>
 	<Platforms>
 		<Platform
@@ -58,9 +59,12 @@
 				Name="VCLinkerTool"
 				AdditionalDependencies="CS106CPPLib.lib winmm.lib"
 				SuppressStartupBanner="true"
+				AdditionalLibraryDirectories="&quot;C:\Users\Denis\Desktop\Assignment 2\Assignment 2\include&quot;"
 				IgnoreDefaultLibraryNames="libc.lib; libcd.lib"
 				GenerateDebugInformation="true"
 				SubSystem="2"
+				RandomizedBaseAddress="1"
+				DataExecutionPrevention="0"
 				TargetMachine="1"
 			/>
 			<Tool
@@ -80,9 +84,6 @@
 			/>
 			<Tool
 				Name="VCAppVerifierTool"
-			/>
-			<Tool
-				Name="VCWebDeploymentTool"
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
@@ -123,6 +124,8 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
+				RandomizedBaseAddress="1"
+				DataExecutionPrevention="0"
 			/>
 			<Tool
 				Name="VCALinkTool"
@@ -143,9 +146,6 @@
 				Name="VCAppVerifierTool"
 			/>
 			<Tool
-				Name="VCWebDeploymentTool"
-			/>
-			<Tool
 				Name="VCPostBuildEventTool"
 			/>
 		</Configuration>
@@ -159,7 +159,79 @@
 			>
 		</Filter>
 		<File
+			RelativePath=".\include\console.h"
+			>
+		</File>
+		<File
+			RelativePath=".\include\direction.h"
+			>
+		</File>
+		<File
+			RelativePath=".\include\error.h"
+			>
+		</File>
+		<File
+			RelativePath=".\include\filelib.h"
+			>
+		</File>
+		<File
+			RelativePath=".\include\foreach.h"
+			>
+		</File>
+		<File
+			RelativePath=".\include\gevents.h"
+			>
+		</File>
+		<File
+			RelativePath=".\include\ginteractors.h"
+			>
+		</File>
+		<File
+			RelativePath=".\include\gmath.h"
+			>
+		</File>
+		<File
+			RelativePath=".\include\gobjects.h"
+			>
+		</File>
+		<File
+			RelativePath=".\include\graph.h"
+			>
+		</File>
+		<File
+			RelativePath=".\include\grid.h"
+			>
+		</File>
+		<File
+			RelativePath=".\include\gtimer.h"
+			>
+		</File>
+		<File
+			RelativePath=".\include\gtypes.h"
+			>
+		</File>
+		<File
+			RelativePath=".\include\gwindow.h"
+			>
+		</File>
+		<File
+			RelativePath=".\include\hashmap.h"
+			>
+		</File>
+		<File
+			RelativePath=".\include\hashset.h"
+			>
+		</File>
+		<File
+			RelativePath=".\include\lexicon.h"
+			>
+		</File>
+		<File
 			RelativePath=".\main.cpp"
+			>
+		</File>
+		<File
+			RelativePath=".\include\map.h"
 			>
 		</File>
 		<File
@@ -179,6 +251,26 @@
 			>
 		</File>
 		<File
+			RelativePath=".\include\platform.h"
+			>
+		</File>
+		<File
+			RelativePath=".\include\point.h"
+			>
+		</File>
+		<File
+			RelativePath=".\include\pqueue.h"
+			>
+		</File>
+		<File
+			RelativePath=".\include\queue.h"
+			>
+		</File>
+		<File
+			RelativePath=".\include\random.h"
+			>
+		</File>
+		<File
 			RelativePath=".\RandomWriting.cpp"
 			>
 		</File>
@@ -187,7 +279,51 @@
 			>
 		</File>
 		<File
+			RelativePath=".\include\set.h"
+			>
+		</File>
+		<File
+			RelativePath=".\include\simpio.h"
+			>
+		</File>
+		<File
+			RelativePath=".\include\sound.h"
+			>
+		</File>
+		<File
+			RelativePath=".\spl.jar"
+			>
+		</File>
+		<File
+			RelativePath=".\include\stack.h"
+			>
+		</File>
+		<File
+			RelativePath=".\StanfordCPPLib.lib"
+			>
+		</File>
+		<File
+			RelativePath=".\stanfordcpplib.pdb"
+			>
+		</File>
+		<File
+			RelativePath=".\include\strlib.h"
+			>
+		</File>
+		<File
 			RelativePath=".\text1.txt"
+			>
+		</File>
+		<File
+			RelativePath=".\include\thread.h"
+			>
+		</File>
+		<File
+			RelativePath=".\include\tokenscanner.h"
+			>
+		</File>
+		<File
+			RelativePath=".\include\vector.h"
 			>
 		</File>
 	</Files>
