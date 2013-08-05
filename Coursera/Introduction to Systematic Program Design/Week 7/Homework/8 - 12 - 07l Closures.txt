@@ -1,0 +1,271 @@
+
+Sometimes the function that you want to 
+pass to an abstract function, the 
+function you're passing as an argument, 
+doesn't exist yet. 
+In those cases, you could always define 
+it with Local if you want to. 
+But there's a very interesting subcase 
+where you must define it with Local. 
+That's what we're going to look at in 
+this video, is what to do when the 
+function you want to pass to an abstract 
+function doesn't yet exist. 
+I mean, closure started at Racket. 
+And this file is like built in starter, 
+in that it defines five images for us to 
+use, and it defines a list of those 
+images. 
+But it doesn't define those functions 
+like wide and tall. 
+Those predicates aren't defined in here. 
+So in some sense, what's going to happen 
+in the problems we deal with is we're 
+going to wish we had those predicates. 
+And we'll have to define them and others. 
+The rest of the file has problems, again 
+similar to those in using built in 
+starter. 
+But the difference here is that I've got 
+all the way to the template stage. 
+Just to get us going more quickly. 
+So wide only is the function we saw 
+before. 
+We're supposed to use a list of only 
+those images that have their width 
+greater than their height. 
+And here's the check-expect, and there's 
+the stub, and here's the template. 
+I've got the template, commented out, so 
+that I can run all of the tests. 
+So now we say we're going to go forward. 
+Here we've got the template. 
+Now, what do we put in the dots? 
+What do we put in the dots? 
+Well, we don't have wide, question mark, 
+anymore. 
+We don't have the function we need to put 
+in the dots. 
+So lemme show you kind of the full way 
+you want to do this. 
+You kind of want to say something like, 
+well, if, if each image is i, then what 
+I'm trying to say is, is, the width of 
+that image greater than The height of 
+that image, that's kind of where I wish I 
+could put there. 
+But I can't put that there, I have to put 
+a function there. 
+But that's kind of what I wish I could 
+put. 
+So what will I do? 
+Well, I'll make myself a function. 
+And since this is a relatively simple 
+function and we're pretty far along in 
+the course, I'm going to define it using 
+local. 
+[NOISE] And now that I've defined that 
+function using Local, I can just put It 
+there. 
+I'll just put wide question mark there. 
+And now I've managed to say what I think 
+I want to say. 
+I've got this function Let me change its 
+line breaking a little bit to make it a 
+bit more standard. 
+I could change its line breaking a bit 
+more to make it a bit more easier to 
+read. 
+Let's try that. 
+Now I've got some failing tests, but I 
+think those are farther on in the file. 
+And they are. 
+The test for wide only is succeeding. 
+So that function's done. 
+So the big idea here was, hey, you know, 
+the function that I need to pass to 
+filter doesn't exist yet, that's not a 
+problem, I'll just define it. 
+And since it's a super simple function 
+and it's pretty far along in the course, 
+I'll define it using local rather than 
+defining it as a top level function and 
+going through the whole design recipe. 
+But remember, remember, remember, 
+remember The design recipe is there to 
+help you not hinder you. 
+If you're not sure how to design the y 
+question mark function, then do design at 
+top level and do follow the whole recipe 
+and work the whole thing through so that 
+you get it right. 
+If, on the other hand, you see what y 
+question mark has to be really easily. 
+Define it with local. 
+Let's keep going. 
+This next case is going to be a little 
+bit different. 
+Now I want a function called wider than 
+only that consumes a number and a list of 
+image and produces a list of only those 
+images in the list. 
+With width greater than w. 
+So if I say wider than only 40, LOI one, 
+I only get i four and i five. 
+Because if we go up here to look at LOI 
+one, only i four and i five have width 
+greater than 40. 
+Let's pop back down here, to 
+wider-than-only. 
+I'll comment out the stub, I'll uncomment 
+the template, now what are we going to 
+put here? 
+Clearly it's a filter what goes here? 
+Well what goes here is something like, 
+let's see, it's something like, greater, 
+image, width of i, assuming again that 
+the image is i, w. 
+It's something like that. 
+And now this case has a very important 
+property. 
+And the property is this. 
+The body of the function that I need to 
+pass to filter, the body of the function 
+that I pass to filter is going to be 
+something like this, right? 
+Notice that this body, refers to A 
+parameter of the enclosing function. 
+It refers to w here which is a parameter 
+of the enclosing function. 
+And when you have that property, when the 
+body of a function that you need to pass 
+to an abstract function makes reference 
+to a parameter of an enclosing function. 
+Then you must define the function you 
+pass using local, and I'll show you why. 
+I'll define a predicate wider than, 
+question mark Of i, and that'll be its 
+body. 
+And I'll put Wider Than there, and I'll 
+test it. 
+And it is working, I'm pretty sure. 
+Yes, this is a test for farther down in 
+the file. 
+So Wider Than is working. 
+Look at what's happening here. 
+If I do check syntax then the width of i 
+has to be greater than w. 
+And this w is defined by the enclosing 
+wider than only function. 
+It's a perimeter of the enclosing wider 
+than only function. 
+And it can be referred to here because of 
+lexical scoping. 
+If I tried on the other had- let's try 
+the other approach- if I tried on the 
+other hand to define wider than at top 
+level. 
+So I'm taking this Wider Than out of the 
+Local, and I'm defining it out here. 
+And I'll comment this version out. 
+So now what I'm doing is I'm trying to 
+define this Wider Than predicate. 
+At top level rather than using local. 
+And it's just not going to work. 
+It's not going to work because this w 
+here doesn't xist at top level, this 
+doesn't work. 
+Let me comment both of these out and go 
+back to this one. 
+This one works because the w Used in the 
+body of wider-than, this w is a parameter 
+of the enclosing function. 
+It's the rules of lexical scoping that 
+let it be used here out here, this w is 
+nothing. 
+The terminology that we use for this, 
+because we want to use fancy computer 
+scientist terminology, is that, wider 
+than is what's called a closure, and it 
+closes over the surrounding value of w. 
+And if you want to see why this works, 
+let's just try hand stepping. 
+This case will hand step wider than only 
+40 LOI1. 
+By putting it here I'll cause the stepper 
+to get to it before any of the check 
+expect. 
+So we'll step that and let's see, we're 
+defining a bunch of images, so this I'll 
+do very quickly. 
+There's all the images being defined, 
+there's the list being defined. 
+Let me make this a little bit bigger so 
+we can see. 
+Let me make it even a bit bigger. 
+So now we've got wider than only 40 loi 
+1. 
+Loi 1, of course, evaluates to that list. 
+Let's make it even bigger now. 
+Now we've got wider than only 40 with the 
+list. 
+So now we've substituted the arguments to 
+wider than only into the body of wider 
+than only. 
+Notice that w in the body of the 
+wider-than predicate has been replaced by 
+40. 
+In the next step, we have a local, and so 
+we rename and lift. 
+And look what's happened here. 
+There's this new function, wider than 
+question mark underscore zero. 
+Which in some sense is a special version 
+of wider than question mark, for 40. 
+What's happened is the combination of 
+having a function definition. 
+Inside another function, where the inner 
+function's body refers to a parameter of 
+the outer function. 
+That's this closure pattern. 
+The combination of doing that and the 
+rules for function calling and local make 
+kind of a function factory. 
+Each time wider than only is called with 
+a particular value for w, a new version 
+of wider than question mark underscore 
+something will be created that's a 
+predicate for that particular value of w. 
+And then the rest of it is just a call to 
+filter operating on each particular 
+image's width. 
+I won't go into the details for that. 
+So what you're seeing here is, two cases 
+where the function that you want to pass 
+to an abstract function doesn't already 
+exist. 
+In the first kind of case, that's wide 
+only. 
+You can define that function using the 
+local or you could define that function 
+at top level. 
+But in the second case, where the body of 
+the function must refer to a parameter of 
+the outer function, then you must define 
+the function locally. 
+As what we call a closure. 
+You can't define the function at top 
+level here, because the w doesn't exist 
+at top level. 
+The w only exists here inside the outer 
+function. 
+So this does not work. 
+I've got 2 exercises left in this file 
+for you to try. 
+1, the first one, is the non closure 
+case, the second one is the closure case. 
+Work through those carefully and I think 
+you'll then be comfortable using local to 
+define the function that you pass. 
+To built in abstract function. 
+
