@@ -16,7 +16,7 @@ import org.jbox2d.dynamics.*;
 int WIDTH = 1024;
 int HEIGHT = 768;
 int REVERSE_Y = -1;
-int ASTEROID_INTERVAL = 20;
+int ASTEROID_INTERVAL = 5;
 int ASTEROID_SPAWN_MARGIN = 8;
 Vec2 SCREEN_CENTER = new Vec2(WIDTH/2, HEIGHT/2);
 int EXPLOSION_SPEED = 1;
@@ -28,12 +28,11 @@ float MISSILE_IMPULSE_FACTOR = 20;
 float ASTEROID_IMPULSE_FACTOR = 5;
 float THRUST_FACTOR = 1;
 int SHIP_RADIUS = 35;
-Vec2 THRUSTER_IMPULSE = new Vec2(20, 0);
-AABB aabb;
+Vec2 THRUSTER_IMPULSE = new Vec2(30, 0);
 
 int time;
 int score, shots = 0;
-boolean started, trashDay;
+boolean started, trashDay, spawnOnce;
 PImage ballImage, debris_image, debris_image2, nebula_image, missile_image, asteroid_image,
  explosionImage;
 ImageInfo asteroidInfo, missileInfo, explosionInfo;
@@ -42,9 +41,9 @@ Maxim maxim;
 AudioPlayer soundtrack, droidSound, wallSound, missileSound, explosionSound;
 ArrayList<AudioPlayer> missileSounds = new ArrayList<AudioPlayer>();
 
-Physics physics; // The physics handler: we'll see more of this later
-// rigid bodies for the droid and two crates
+Physics physics;
 Ship my_ship;
+// these containers group the various sprites then they are put into the sprites multi container
 ArrayList<Sprite> missileGroup = new ArrayList<Sprite>();
 ArrayList<Sprite> asteroidGroup = new ArrayList<Sprite>();
 ArrayList<Sprite> explosionGroup = new ArrayList<Sprite>();
@@ -109,6 +108,7 @@ void init_physics() {
   trash = new ArrayList<Body>();
   trash.add(null);
   trash.add(null);
+  spawnOnce = false;
 }
 
 void draw_background() {
@@ -124,9 +124,10 @@ void draw_background() {
 void draw() {
   time +=1;
   draw_background();
-//  text("angle: " + (my_ship.getAngle()*180/PI) + ", pos:" + my_ship.getPosition() + "boundingBox: ", 20, 20);  
-//  text("mouseX: " + mouseX + ", " + mouseY + ", worldX: " 
-  //+ physics.screenToWorld(new Vec2(mouseX, mouseY)), 20, 40); 
+  text("angle: " + (my_ship.getAngle()*180/PI) + ", pos:" + my_ship.getPosition(), 20, 20);  
+  text("mouseX: " + mouseX + ", " + mouseY + ", worldX: " 
+  + physics.screenToWorld(new Vec2(mouseX, mouseY)), 20, 40); 
+  text("seconds: " + second(), 20, 60);
   myCustomRenderer(physics.getWorld());
 }
 
@@ -143,7 +144,6 @@ void myCustomRenderer(World world) {
 void collision(Body b1, Body b2, float impulse) {
   collectTrash(b1, b2, impulse);
 }  
-
 
 void keyPressed() {  
   if (key == CODED) {
@@ -187,7 +187,6 @@ void mouseClicked() {
   explode(new Vec2(mouseX, mouseY), new Vec2(0,0), explosionImage, explosionInfo);
   
 }
-
 
 // Classes
 class ImageInfo {
@@ -364,8 +363,7 @@ class Ship {
   }  
   void fire_missile() {
     shots += 1;   
-    Vec2 mPos = radian_vector(position, new Vec2(radius+MISSILE_SIZE+2, 0), angle);
-    float angle = physics.getAngle(body);
+    Vec2 mPos = radian_vector(position, new Vec2(radius+MISSILE_SIZE+10, 0), getAngle());
     float angle_velocity = 0.0;   
     Sprite missile = new Sprite(mPos, MISSILE_IMPULSE, angle, angle_velocity, missileInfo, missileSound);
     missileGroup.add(missile);
@@ -479,9 +477,9 @@ void spawnAsteroid() {
   }    
 }  
 
-// takes  a   p osw i  t ion and returns a boolean if it meets the margin requirement. ensures the space is clear to spawn a new object
-boolean  positionCheck(Vec2 newPosition, int newRadius) {
-  // c  heck asteroid and missile positions
+// takes position and returns a boolean if it meets the margin requirement. ensures the space is clear to spawn a new object
+boolean positionCheck(Vec2 newPosition, int newRadius) {
+  // check asteroid and missile positions
   float newMargin = 0;
     for (int i=0; i<2; i++) { //check only to 2 for missile   and asteroids groups 
     for (int j=0; j < sprites.get(i).size(); j++) {
@@ -493,7 +491,7 @@ boolean  positionCheck(Vec2 newPosition, int newRadius) {
       } 
     }
   } 
-  // check ship podasition
+  // check ship position
   newMargin = distVec(newPosition, my_ship.getPosition()) - (my_ship.getRadius() + newRadius);
   if (newMargin < ASTEROID_SPAWN_MARGIN) {
     return false;
@@ -547,8 +545,13 @@ void takeOutTrash(World world) {
 }
 
 void asteroidSpawner() {
-  if (((millis() / 1000) % ASTEROID_INTERVAL == 0)) {
-    spawnAsteroid();
+  if (second() % ASTEROID_INTERVAL == 0) {
+    if (!spawnOnce) {
+      spawnAsteroid();
+      spawnOnce = true;
+    }        
+  } else {
+    spawnOnce = false;
   }
 }
 
