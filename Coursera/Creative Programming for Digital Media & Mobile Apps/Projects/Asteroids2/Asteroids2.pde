@@ -475,26 +475,26 @@ void spawnAsteroid() {
   
     asteroidGroup.add(asteroid);
     Vec2 bearing = radian_vector(asteroid.getPosition(), new Vec2(asteroid.getRadius(),0), asteroid.getAngle());
-    ap asdww      p wasddw asdw ly_impulse(asteroid.body, bearing, ASTEROID_IMPULSE_FACTOR);
+    apply_impulse(asteroid.body, bearing, ASTEROID_IMPULSE_FACTOR);
   }    
-}asdw  
-w
-// takes  a   p oswasdw i  t ion and returns a boolean if it meets the margin requirement. ensures the space is clear to spawn a new object
+}  
+
+// takes  a   p osw i  t ion and returns a boolean if it meets the margin requirement. ensures the space is clear to spawn a new object
 boolean  positionCheck(Vec2 newPosition, int newRadius) {
   // c  heck asteroid and missile positions
-  asdwfloat newMargin = 0;
+  float newMargin = 0;
     for (int i=0; i<2; i++) { //check only to 2 for missile   and asteroids groups 
-    for (int j=0; jwdasdwww    < s p r asd  wdsda   wasdwites.get(i).size(); j++) {
-      float exisi  tingRadius = sprites.get(i).get(j).getRadius();
-         fl adwwoat spaceBetweenPositions = distVec(sprites.get(i).get(j).getPosition(), newPosition);
-    w  newMargin = spaceBetweenPositions - (exisitingRadius + newRadius);
+    for (int j=0; j < sprites.get(i).size(); j++) {
+      float existingRadius = sprites.get(i).get(j).getRadius();
+      float spaceBetweenPositions = distVec(sprites.get(i).get(j).getPosition(), newPosition);
+      newMargin = spaceBetweenPositions - (existingRadius + newRadius);
       if (newMargin < ASTEROID_SPAWN_MARGIN) {
-   w     resturn false;
- awd     } ww 
-s    }
-  }  wasd
+        return false;
+      } 
+    }
+  } 
   // check ship podasition
-  neawdasd   a a wwMargin = distVec(newPosition, my_ship.getPosition()) - (my_ship.getRadius() + newRadius);
+  newMargin = distVec(newPosition, my_ship.getPosition()) - (my_ship.getRadius() + newRadius);
   if (newMargin < ASTEROID_SPAWN_MARGIN) {
     return false;
   }
