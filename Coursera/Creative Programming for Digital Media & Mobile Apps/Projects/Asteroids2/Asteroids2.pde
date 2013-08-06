@@ -64,6 +64,7 @@ void setup() {
   init_sounds();
   started = true;
 }
+
 // init helpers    
 void init_images() {
   debris_image = loadImage("debris2_blue.png");  
@@ -77,6 +78,7 @@ void init_images() {
   asteroidInfo = new ImageInfo(asteroid_image, ASTEROID_SIZE, 0, false);
   ballImage = loadImage("tux_droid.png");  
 }
+
 void init_sounds() {
   maxim = new Maxim(this);
   soundtrack = maxim.loadFile("soundtrack.wav");
@@ -88,10 +90,12 @@ void init_sounds() {
   explosionSound = maxim.loadFile("explosion.wav");
   explosionSound.speed(0.1);
 }
+
 void init_ship() {    
   ImageInfo inf = new ImageInfo(loadImage("double_ship.png"), SHIP_RADIUS, 0, false);
   my_ship = new Ship(SCREEN_CENTER, new Vec2(0,0), 0, inf);
 }
+
 void init_physics() {
   physics = new Physics(this, width, height, 0, 0, width*1.2, height*1.2, width, height, 100);  
   physics.setCustomRenderingMethod(this, "myCustomRenderer");
@@ -106,6 +110,7 @@ void init_physics() {
   trash.add(null);
   trash.add(null);
 }
+
 void draw_background() {
   Vec2 center = new Vec2(int(debris_image.width/2), int(debris_image.height/2));
   int wtime = int((time / 8) % center.x); 
@@ -124,6 +129,7 @@ void draw() {
   //+ physics.screenToWorld(new Vec2(mouseX, mouseY)), 20, 40); 
   myCustomRenderer(physics.getWorld());
 }
+
 void myCustomRenderer(World world) {
   if (!trash.isEmpty()) {
     takeOutTrash(world);
@@ -322,11 +328,10 @@ class Ship {
     thrust_sound = maxim.loadFile("thrust.wav");
     thrust_sound.cue(0);
     thrust_sound.speed(1);
-    radius = imageInfo.getRadius();
     dist_flown = 0;
-    body = physics.createCircle(SCREEN_CENTER.x, SCREEN_CENTER.y, radius);    
+    body = physics.createCircle(SCREEN_CENTER.x, SCREEN_CENTER.y, imageInfo.getRadius());    
     int crateSize = 70;  
-    tip = radian_vector(position, new Vec2(radius,0), angle);
+    tip = radian_vector(position, new Vec2(imageInfo.getRadius(),0), angle);
     //body = physics.createRect(SCREEN_CENTER.x, SCREEN_CENTER.y-crateSize, SCREEN_CENTER.x+crateSize, SCREEN_CENTER.y);
   }
   // Methods  
@@ -340,7 +345,7 @@ class Ship {
     return angle;      
   }
   float getRadius() {
-    return radius;      
+    return imageInfo.getRadius();      
   }  
   ImageInfo getImageInfo() {
     return imageInfo;      
@@ -420,6 +425,7 @@ Vec2 radian_vector(Vec2 v1, Vec2 v2, float angle) {
   float y = v1.y - (sin(angle) * v2.x);
   return new Vec2(int(x), int(y));  
 }
+
 void apply_impulse(Body body, Vec2 bearing, float factor) {
   Vec2 impulse = new Vec2();  
   impulse.set(physics.screenToWorld(bearing));
@@ -430,6 +436,7 @@ void apply_impulse(Body body, Vec2 bearing, float factor) {
   body.applyImpulse(impulse, center);
   ////println("impulse: " + impulse + ", bearing: " + bearing + ", center:" + center);
 }
+
 void add_vector(Body body, Vec2 vector, float factor) {
   Vec2 center = body.getWorldCenter();    
   //Vec2 bearing = radian_vector(center, vector, physics.getAngle(body));
@@ -440,9 +447,11 @@ void add_vector(Body body, Vec2 vector, float factor) {
   impulse = impulse.mul(factor);  
   body.applyImpulse(impulse, center);
 }
+
 float myGetAngle(Body body) {
   return physics.getAngle(body) * -1;
 }
+
 void update_image(Body body, PImage image, ImageInfo info) {  
   Vec2 position = physics.worldToScreen(body.getWorldCenter()); 
   float angle = physics.getAngle(body);        
@@ -454,21 +463,50 @@ void update_image(Body body, PImage image, ImageInfo info) {
   imageMode(CORNER);
   popMatrix();
 }
-void spawnAsteroid() {  
-  Vec2 position  = new Vec2(random(0, width), random(0, height));
-  while (dist(position.x,position.y, my_ship.getPosition().x, my_ship.getPosition().y) 
-  < my_ship.getRadius() * ASTEROID_SPAWN_MARGIN) { //safety spawn margin
-    position = new Vec2(random(0, width), random(0, height));
-  } 
-  float angle = 0;
-  float angle_velocity = random(PI);   
-  //println("asteroid info: " + asteroidInfo.getRadius()); 
-  Sprite asteroid = new Sprite(position, ASTEROID_IMPULSE, angle, angle_velocity, asteroidInfo, missileSound);  
 
-  asteroidGroup.add(asteroid);
-  Vec2 bearing = radian_vector(asteroid.getPosition(), new Vec2(asteroid.getRadius(),0), asteroid.getAngle());
-  apply_impulse(asteroid.body, bearing, ASTEROID_IMPULSE_FACTOR);  
+void spawnAsteroid() {  
+  Vec2 newPosition  = new Vec2(random(0, width), random(0, height));
+  // if the position conflicts it will skip the spawn
+  if (positionCheck(newPosition, asteroidInfo.getRadius())) { 
+    float angle = 0;
+    float angle_velocity = random(PI);   
+    //println("asteroid info: " + asteroidInfo.getRadius()); 
+    Sprite asteroid = new Sprite(newPosition, ASTEROID_IMPULSE, angle, angle_velocity, asteroidInfo, missileSound);  
+  
+    asteroidGroup.add(asteroid);
+    Vec2 bearing = radian_vector(asteroid.getPosition(), new Vec2(asteroid.getRadius(),0), asteroid.getAngle());
+    ap asdww      p wasddw asdw ly_impulse(asteroid.body, bearing, ASTEROID_IMPULSE_FACTOR);
+  }    
+}asdw  
+w
+// takes  a   p oswasdw i  t ion and returns a boolean if it meets the margin requirement. ensures the space is clear to spawn a new object
+boolean  positionCheck(Vec2 newPosition, int newRadius) {
+  // c  heck asteroid and missile positions
+  asdwfloat newMargin = 0;
+    for (int i=0; i<2; i++) { //check only to 2 for missile   and asteroids groups 
+    for (int j=0; jwdasdwww    < s p r asd  wdsda   wasdwites.get(i).size(); j++) {
+      float exisi  tingRadius = sprites.get(i).get(j).getRadius();
+         fl adwwoat spaceBetweenPositions = distVec(sprites.get(i).get(j).getPosition(), newPosition);
+    w  newMargin = spaceBetweenPositions - (exisitingRadius + newRadius);
+      if (newMargin < ASTEROID_SPAWN_MARGIN) {
+   w     resturn false;
+ awd     } ww 
+s    }
+  }  wasd
+  // check ship podasition
+  neawdasd   a a wwMargin = distVec(newPosition, my_ship.getPosition()) - (my_ship.getRadius() + newRadius);
+  if (newMargin < ASTEROID_SPAWN_MARGIN) {
+    return false;
+  }
+  return true;
 }
+
+// Vec2 Vec2 -> float
+// Calculates the distance between two Vec2 vectors.
+float distVec(Vec2 v1, Vec2 v2) {
+  return dist(v1.x, v1.y, v2.x, v2.y);
+}
+
 void deleteSprite(Body body, World wolrd) {  
   OUTERMOST: for(int i=0; i<sprites.size(); i++) {
     for(int j=0; j<sprites.get(i).size(); j++) {
@@ -497,6 +535,7 @@ void collectTrash(Body b1, Body b2, float impulse) {
     trash.set(1, b2);    
   }      
 }
+
 void takeOutTrash(World world) {  
   for(int i=0; i<trash.size(); i++) {
     //println(trash.get(i)) ;
@@ -506,6 +545,7 @@ void takeOutTrash(World world) {
     }      
   }    
 }
+
 void asteroidSpawner() {
   if (((millis() / 1000) % ASTEROID_INTERVAL == 0)) {
     spawnAsteroid();
