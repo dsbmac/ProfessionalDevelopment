@@ -140,12 +140,8 @@ void myCustomRenderer(World world) {
   for (int i=0; i<sprites.size(); i++) {
     ArrayList<Sprite> group = sprites.get(i);
     for (int j=0; j<group.size(); j++) {
-      if (group.get(j).update()) {
-        println("collision: ");
-        if (i==0) {
-          explode(group.get(j).getPosition(), group.get(j).getImpulse());
-        }
-        deleteSprite(group.get(j).body, world);   
+      if (group.get(j).update()) {        
+        deleteSprite(group.get(j).body, world, i==0);   
       }
     }
   }
@@ -270,8 +266,8 @@ class Sprite {
   Vec2 getPosition() {
     return screenPosition;
   }
-  Vec2 getImpulse() {
-    return body.getImpulse(); 
+  Vec2 getVelocity() {
+    return body.getLinearVelocity(); 
   }  
   float getAngle() {
     return angle;      
@@ -357,8 +353,8 @@ class Ship {
   Vec2 getPosition() {
     return position;      
   }
-  Vec2 getImpulse() {
-    return body.getVelocity();      
+  Vec2 getVelocity() {
+    return body.getLinearVelocity();      
   }  
   float getAngle() {
     return angle;      
@@ -523,7 +519,7 @@ float distVec(Vec2 v1, Vec2 v2) {
   return dist(v1.x, v1.y, v2.x, v2.y);
 }
 
-void deleteSprite(Body body, World wolrd) {  
+void deleteSprite(Body body, World world, boolean explosionEnabled) {  
   OUTERMOST: for(int i=0; i<sprites.size(); i++) {
     for(int j=0; j<sprites.get(i).size(); j++) {
       if (body == sprites.get(i).get(j).body) {
@@ -532,7 +528,10 @@ void deleteSprite(Body body, World wolrd) {
       }      
     }
   }  
-  physics.removeBody(body);  
+  physics.removeBody(body);
+  if (explosionEnabled) {
+    explode(body.getPosition(), body.getLinearVelocity());
+  }
 }
 
 void explode(Vec2 pos, Vec2 impulse) {
@@ -556,7 +555,7 @@ void takeOutTrash(World world) {
   for(int i=0; i<trash.size(); i++) {
     //println(trash.get(i)) ;
     if(trash.get(i) != null) {
-      deleteSprite(trash.get(i), world);      
+      deleteSprite(trash.get(i), world, false);      
       trash.set(i, null);    
     }      
   }    
