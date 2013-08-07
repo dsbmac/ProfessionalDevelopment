@@ -22,7 +22,7 @@ Vec2 SCREEN_CENTER = new Vec2(WIDTH/2, HEIGHT/2);
 int EXPLOSION_SPEED = 1;
 int MISSILE_SIZE = 5;
 int ASTEROID_SIZE = 38;
-Vec2 MISSILE_IMPULSE = new Vec2(20,0);
+Vec2 MISSILE_IMPULSE = new Vec2(0,0);
 Vec2 ASTEROID_IMPULSE = new Vec2(10,0);
 float MISSILE_IMPULSE_FACTOR = 20;
 float ASTEROID_IMPULSE_FACTOR = 5;
@@ -97,12 +97,12 @@ void init_ship() {
 
 void init_physics() {
   physics = new Physics(this, width, height, 0, 0, width*1.2, height*1.2, width, height, 100);  
-  physics.setCustomRenderingMethod(this, "myCustomRenderer");
+  //physics.setCustomRenderingMethod(this, "myCustomRenderer");
   physics.setDensity(10.0);  
   physics.setBullet(true);
   detector = new CollisionDetector (physics, this);
-  sprites.add(missileGroup);
   sprites.add(asteroidGroup);
+  sprites.add(missileGroup);
   sprites.add(explosionGroup);
   THRUSTER_IMPULSE = physics.screenToWorld(THRUSTER_IMPULSE);
   trash = new ArrayList<Body>();
@@ -115,7 +115,7 @@ void draw_background() {
   Vec2 center = new Vec2(int(debris_image.width/2), int(debris_image.height/2));
   int wtime = int((time / 8) % center.x); 
   image(nebula_image, 0, 0, width, height);
-  //fix wrap around
+  // !!!  fix wrap around
   image(debris_image, width/2+1.25*wtime, 0, width, height);
   image(debris_image2, 1.25*wtime-width/2, 0, 1.1*width, 1.1*height);
 }
@@ -124,7 +124,8 @@ void draw_background() {
 void draw() {
   time +=1;
   draw_background();
-  text("angle: " + (my_ship.getAngle()*180/PI) + ", pos:" + my_ship.getPosition(), 20, 20);  
+  text("angle: " + (my_ship.getAngle()*180/PI) + ", pos:" + my_ship.getPosition() + ", mass: " + 
+  my_ship.getBody().getMass(), 20, 20);  
   text("mouseX: " + mouseX + ", " + mouseY + ", worldX: " 
   + physics.screenToWorld(new Vec2(mouseX, mouseY)), 20, 40); 
   text("seconds: " + second(), 20, 60);
@@ -137,11 +138,22 @@ void myCustomRenderer(World world) {
   }
   my_ship.update(world);
   for (int i=0; i<sprites.size(); i++) {
-    processSpriteGroup(sprites.get(i), world);
+    ArrayList<Sprite> group = sprites.get(i);
+    for (int j=0; j<group.size(); j++) {
+      if (group.get(j).update()) {
+        println("collision: ");
+        if (i==0) {
+          explode(group.get(j).getPosition(), group.get(j).getImpulse());
+        }
+        deleteSprite(group.get(j).body, world);   
+      }
+    }
   }
   asteroidSpawner();
 }
+
 void collision(Body b1, Body b2, float impulse) {
+  println("collision..." + b1.getMass() + ", " + b2.getMass());
   collectTrash(b1, b2, impulse);
 }  
 
@@ -170,6 +182,7 @@ void keyPressed() {
       }
     }  
 }
+
 void keyReleased() {
   if (key == CODED) {
     switch (keyCode) {
@@ -181,10 +194,11 @@ void keyReleased() {
     }      
   }
 }
+
 void mouseClicked() {
   //spawnAsteroid(new Vec2(mouseX, mouseY));
   //void explode(Vec2 pos, Vec2 impulse, PImage explosionImage, ImageInfo explosionInfo) 
-  explode(new Vec2(mouseX, mouseY), new Vec2(0,0), explosionImage, explosionInfo);
+  explode(new Vec2(mouseX, mouseY), new Vec2(0,0));
   
 }
 
@@ -256,6 +270,9 @@ class Sprite {
   Vec2 getPosition() {
     return screenPosition;
   }
+  Vec2 getImpulse() {
+    return body.getImpulse(); 
+  }  
   float getAngle() {
     return angle;      
   }
@@ -340,6 +357,9 @@ class Ship {
   Vec2 getPosition() {
     return position;      
   }
+  Vec2 getImpulse() {
+    return body.getVelocity();      
+  }  
   float getAngle() {
     return angle;      
   }
@@ -351,7 +371,11 @@ class Ship {
   }  
   void set_image_center(Vec2 ctr) {
     image_center = ctr;      
-  } 
+  }
+  Body getBody() {
+    return body;      
+  }  
+  
   void turn(boolean right) {
     // !!! refactor to make the turn constant on/off instead of reacting to the keyboard    
     if (right) {      
@@ -360,11 +384,14 @@ class Ship {
       angle += SHIP_ANGLE_VEL;
     }
     body.setAngle(angle);      
-  }  
+  }
+  
   void fire_missile() {
     shots += 1;   
-    Vec2 mPos = radian_vector(position, new Vec2(radius+MISSILE_SIZE+10, 0), getAngle());
-    float angle_velocity = 0.0;   
+    // !!! for some reason I have to push the missile starting position out extra far to avoid a collision
+    // with the ship body
+    Vec2 mPos = radian_vector(position, new Vec2((2*radius)+(2*MISSILE_SIZE)+40, 0), getAngle());
+    float angle_velocity = 0.0;
     Sprite missile = new Sprite(mPos, MISSILE_IMPULSE, angle, angle_velocity, missileInfo, missileSound);
     missileGroup.add(missile);
     Vec2 bearing = radian_vector(missile.getPosition(), new Vec2(missile.getRadius(),0), missile.getAngle());
@@ -372,11 +399,13 @@ class Ship {
     missileSound.cue(0);
     missileSound.play();
   }
+  
   void apply_thrust() {      
     Vec2 bearing = radian_vector(my_ship.getPosition(), new Vec2(my_ship.getRadius(),0), my_ship.getAngle());
     ////println(THRUSTER_IMPULSE + ", " + new Vec2(my_ship.getRadius(),0));
     apply_impulse(body, bearing, 1);    
   }
+  
   void set_thrust(boolean keyStatus) {      
     if (keyStatus) {      
       thrust_status = true;
@@ -388,12 +417,11 @@ class Ship {
       thrust_sound.stop();
       thrust_sound.cue(0);
     }
-  }      
+  }  
+  
   void update(World world) {    
-    // get the droids position and rotation from
-    // the physics engine and then apply a translate 
-    // and rotate to the image using those values
-    // (then do the same for the crates)
+    // get the sprite position and rotation from the physics engine and then 
+    // apply a translate and rotate to the image using those values
     position = physics.worldToScreen(body.getWorldCenter()); 
     angle = physics.getAngle(body);        
     pushMatrix();
@@ -403,19 +431,13 @@ class Ship {
     image(image.get(0, 0, int(imageInfo.getSize().x/2), int(imageInfo.getSize().y)), 0, 0);
     imageMode(CORNER);
     popMatrix();       
-//    tip = radian_vector(position, new Vec2(radius, 0), angle);    
-//    line(position.x, position.y, tip.x, tip.y);        
+    tip = radian_vector(position, new Vec2(radius, 0), angle);    
+    line(position.x, position.y, tip.x, tip.y);        
   }
 }
 
 // helpers
-void processSpriteGroup(ArrayList<Sprite> group, World world) {
-  for (int i=0; i<group.size(); i++) {
-     if(group.get(i).update()) {
-       deleteSprite(group.get(i).body, world);   
-     }
-  }
-}
+
     
 Vec2 radian_vector(Vec2 v1, Vec2 v2, float angle) {  
   //this is incorrectly implemented. didn't acocount for y position  
@@ -444,10 +466,6 @@ void add_vector(Body body, Vec2 vector, float factor) {
   impulse = impulse.sub(center);      
   impulse = impulse.mul(factor);  
   body.applyImpulse(impulse, center);
-}
-
-float myGetAngle(Body body) {
-  return physics.getAngle(body) * -1;
 }
 
 void update_image(Body body, PImage image, ImageInfo info) {  
@@ -516,16 +534,16 @@ void deleteSprite(Body body, World wolrd) {
   }  
   physics.removeBody(body);  
 }
-void explode(Vec2 pos, Vec2 impulse, PImage image, ImageInfo info) {
+
+void explode(Vec2 pos, Vec2 impulse) {
   float ang = random(TWO_PI);    
-  //Sprite(Vec2 pos, Vec2 imp, float ang, float ang_vel, ImageInfo info, AudioPlayer snd) {
-  Sprite explosion = new Sprite(pos, impulse, 0.0, 0.0, info, explosionSound);  
+  Sprite explosion = new Sprite(pos, impulse, 0.0, 0.0, explosionInfo, explosionSound);  
   explosionGroup.add(explosion);
   explosion.playSound();
 }
+
 void collectTrash(Body b1, Body b2, float impulse) {
   //println("collectTrash...");
-  //println("trash.size: " + trash.size());
   if (b1 != my_ship.body && b1.getMass() > 0) {    
     trash.set(0, b1);    
   }
