@@ -528,16 +528,18 @@ void deleteSprite(Body body, World world, boolean explosionEnabled) {
         break OUTERMOST;
       }      
     }
-  }  
-  physics.removeBody(body);
+  }    
   if (explosionEnabled) {
-    explode(body.getPosition(), body.getLinearVelocity());
+    Vec2 explosionPosition = physics.worldToScreen(body.getWorldCenter());
+    explode(explosionPosition, body.getLinearVelocity());
   }
+  physics.removeBody(body);
 }
 
-void explode(Vec2 pos, Vec2 impulse) {
+void explode(Vec2 position, Vec2 impulse) {
+  println("explosion pos: " + position);
   float ang = random(TWO_PI);    
-  Sprite explosion = new Sprite(pos, impulse, 0.0, 0.0, explosionInfo, explosionSound);  
+  Sprite explosion = new Sprite(position, impulse, 0.0, 0.0, explosionInfo, explosionSound);  
   explosionGroup.add(explosion);
   explosion.playSound();
 }
