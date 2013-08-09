@@ -32,7 +32,7 @@ Vec2 THRUSTER_IMPULSE = new Vec2(30, 0);
 
 int time;
 int score, shots = 0;
-boolean started, trashDay, spawnOnce;
+boolean started, trashEnabled, spawnOnce;
 PImage ballImage, debris_image, debris_image2, nebula_image, missile_image, asteroid_image,
  explosionImage;
 ImageInfo asteroidInfo, missileInfo, explosionInfo;
@@ -519,12 +519,13 @@ float distVec(Vec2 v1, Vec2 v2) {
   return dist(v1.x, v1.y, v2.x, v2.y);
 }
 
+// deletes a sprite from the world
 void deleteSprite(Body body, World world, boolean explosionEnabled) {  
   OUTERMOST: for(int i=0; i<sprites.size(); i++) {
     for(int j=0; j<sprites.get(i).size(); j++) {
       if (body == sprites.get(i).get(j).body) {
         sprites.get(i).remove(j);      
-        break OUTERMOST;      
+        break OUTERMOST;
       }      
     }
   }  
@@ -551,11 +552,12 @@ void collectTrash(Body b1, Body b2, float impulse) {
   }      
 }
 
+// deletes the sprites in the trash arraylist
 void takeOutTrash(World world) {  
   for(int i=0; i<trash.size(); i++) {
-    //println(trash.get(i)) ;
     if(trash.get(i) != null) {
-      deleteSprite(trash.get(i), world, false);      
+      boolean explosionEnabled = trash.get(i).getMass() > 4.5; //explosion mass condition for asteroid and ship
+      deleteSprite(trash.get(i), world, explosionEnabled);      
       trash.set(i, null);    
     }      
   }    
