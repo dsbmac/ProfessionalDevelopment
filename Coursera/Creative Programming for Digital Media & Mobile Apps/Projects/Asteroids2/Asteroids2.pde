@@ -13,8 +13,8 @@ import org.jbox2d.dynamics.*;
 
 
 // Globals
-int WIDTH = 1024;
-int HEIGHT = 768;
+final int WIDTH = 1024;
+final int HEIGHT = 768;
 int REVERSE_Y = -1;
 int ASTEROID_INTERVAL = 5;
 int ASTEROID_SPAWN_MARGIN = 8;
@@ -27,6 +27,7 @@ Vec2 ASTEROID_IMPULSE = new Vec2(10,0);
 float MISSILE_IMPULSE_FACTOR = 20;
 float ASTEROID_IMPULSE_FACTOR = 5;
 float THRUST_FACTOR = 1;
+float ship_friction = -100;
 int SHIP_RADIUS = 35;
 Vec2 THRUSTER_IMPULSE = new Vec2(30, 0);
 
@@ -341,6 +342,7 @@ class Ship {
     thrust_sound.cue(0);
     thrust_sound.speed(1);
     dist_flown = 0;
+    physics.setFriction(ship_friction);
     body = physics.createCircle(SCREEN_CENTER.x, SCREEN_CENTER.y, imageInfo.getRadius());    
     int crateSize = 70;  
     tip = radian_vector(position, new Vec2(imageInfo.getRadius(),0), angle);
