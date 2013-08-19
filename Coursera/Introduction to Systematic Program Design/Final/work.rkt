@@ -40,3 +40,4 @@
             (above (make-hat img)
                    img))]            
     (map put-hat-on loi)))
+
