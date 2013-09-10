@@ -19,5 +19,3 @@
                 s2
                 s1))]
     (foldr longer-string (first los) los)))
-
-
