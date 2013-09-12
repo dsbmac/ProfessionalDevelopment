@@ -1,15 +1,13 @@
-  
 //globals
 float PHI = (1 + sqrt(5)) / 2;
 int UNIT_SIZE = 50;
-String blue = "#0000FF";
-String red = "#FF0000";
-ArrayList<MyTriangle> points = new ArrayList<MyTriangle>();
+color blue = #0000FF;
+color red = #FF0000;
 
 class MyTriangle {
   PVector a, b, c;
-  String clr;
-  MyTriangle(String x, PVector aa, PVector bb, PVector cc) {
+  color clr;
+  MyTriangle(color x, PVector aa, PVector bb, PVector cc) {
     a= aa;
     b = bb;
     c = cc;
@@ -24,7 +22,7 @@ class MyTriangle {
   PVector get_c() {
     return c;
   }
-  String get_color() {
+  color get_color() {
     return clr;
   }
 }
@@ -46,7 +44,7 @@ return result;
     
 }
 // takes a position and creates the Pvector for the top coordinate of the triangle
-PVector make_vector(int x, int y, float angle, float vector_length) {    
+PVector make_vector(float x, float y, float angle, float vector_length) {    
   float radians = convert_to_radians(angle);
   int result_x = int(vector_length * cos(radians));
   int result_y = int(vector_length * sin(radians));
@@ -79,15 +77,38 @@ float convert_to_radians(float degrees) {
 // takes an int level and draws the penrose fractal
 void draw_penrose(ArrayList<MyTriangle> triangles, int level) {
   for (int i=0; i<level; i++) {
-    sub_divide(triangles);
+    //sub_divide(triangles);
+    draw_triangles(triangles);
   }    
+} 
+
+void draw_triangles(ArrayList<MyTriangle> triangles) {
+  println(triangles.get(0).get_a());
+  for (int i=0; i<triangles.size(); i++) {
+    MyTriangle triangle = triangles.get(i); 
+    if (triangle.get_color() == red) {
+      translate(triangle.get_a().x, triangle.get_a().y);
+      // fill triangle area
+      strokeWeight(0);
+      fill(red);
+      triangle(0, 0,
+       triangle.get_b().x, triangle.get_b().y, 
+       triangle.get_c().x, triangle.get_c().y);
+   
+      // draw outlines
+      strokeWeight(2);
+      line(0, 0, triangle.get_b().x, triangle.get_b().y);  
+      line(0, 0, triangle.get_c().x, triangle.get_c().y);
+    }
+  }  
 }
 
 ArrayList<MyTriangle> init_triangles() {
   ArrayList<MyTriangle> result = new ArrayList<MyTriangle>();
-  PVector c = make_vector(0, 0, 72.0, PHI*UNIT_SIZE);
-  PVector b = make_vector(0, 0, 72.0+36.0, PHI*UNIT_SIZE);
-  MyTriangle triangle = new MyTriangle(red, new PVector(0, 0), b, c);
+  PVector a = new PVector(width/2, height/2);
+  PVector c = make_vector(a.x, a.y, 72.0, PHI*UNIT_SIZE);
+  PVector b = make_vector(a.x, a.y, 72.0+36.0, PHI*UNIT_SIZE);
+  MyTriangle triangle = new MyTriangle(red, a, b, c);
   result.add(triangle);
   return result;
 }
