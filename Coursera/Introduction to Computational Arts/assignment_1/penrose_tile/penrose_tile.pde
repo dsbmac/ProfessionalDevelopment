@@ -40,9 +40,9 @@ ArrayList<MyTriangle> sub_divide(ArrayList<MyTriangle> triangles) {
        MyTriangle t2 = new MyTriangle(blue, p, triangle.get_c(), triangle.get_a());       
     }   
   }
-return result;
-    
+  return result;  
 }
+
 // takes a position and creates the Pvector for the top coordinate of the triangle
 PVector make_vector(float x, float y, float angle, float vector_length) {    
   float radians = convert_to_radians(angle);
@@ -54,10 +54,9 @@ PVector make_vector(float x, float y, float angle, float vector_length) {
 
 // takes a color, x, y, and angle and returns a MyTriangle
 MyTriangle make_triangle(color couleur, int x, int y, float angle) {
-  rotate(convert_to_radians(angle));
   PVector a = new PVector(x, y);
-  PVector c = make_vector(a.x, a.y, 72.0, PHI*UNIT_SIZE);
-  PVector b = make_vector(a.x, a.y, 72.0+36.0, PHI*UNIT_SIZE);
+  PVector c = PVector.sub(a, make_vector(a.x, a.y, 72.0+angle, PHI*UNIT_SIZE));
+  PVector b = PVector.sub(a, make_vector(a.x, a.y, 72.0+36.0+angle, PHI*UNIT_SIZE));
   MyTriangle triangle = new MyTriangle(couleur, a, b, c);
   return triangle;
 }  
@@ -72,9 +71,9 @@ float convert_to_radians(float degrees) {
 // takes an int level and draws the penrose fractal
 void draw_penrose(ArrayList<MyTriangle> triangles, int level) {
   for (int i=0; i<level; i++) {
-    //sub_divide(triangles);
-    draw_triangles(triangles);
+    sub_divide(triangles);
   }    
+  draw_triangles(triangles);
 } 
 
 // initializes the triangles arraylist with a wheel of triangles
@@ -90,25 +89,32 @@ ArrayList<MyTriangle> make_wheel() {
   return triangles;
 }
 
+// takes a MyTriangle and shades in the triangle area and outlines 2 sides  
+void draw_triangle(MyTriangle triangle) {
+  if (triangle.get_color() == red) {
+  
+  // fill triangle area
+  strokeWeight(0);
+  fill(triangle.get_color());
+  triangle(
+   triangle.get_a().x, triangle.get_a().y,
+   triangle.get_b().x, triangle.get_b().y, 
+   triangle.get_c().x, triangle.get_c().y);
+   
+  // draw outlines
+  strokeWeight(2);
+  line(triangle.get_a().x, triangle.get_a().y,
+   triangle.get_b().x, triangle.get_b().y);  
+  line(triangle.get_a().x, triangle.get_a().y,
+   triangle.get_c().x, triangle.get_c().y);
+  } 
+}
+
 void draw_triangles(ArrayList<MyTriangle> triangles) {
   for (int i=0; i<triangles.size(); i++) {
+    println("i: " + i);
     MyTriangle triangle = triangles.get(i); 
-    println("color: " + triangle.get_color());
-    if (triangle.get_color() == red) {
-      println(triangle.get_a());
-      translate(triangle.get_a().x, triangle.get_a().y);
-      // fill triangle area
-      strokeWeight(0);
-      fill(triangle.get_color());
-      triangle(0, 0,
-       triangle.get_b().x, triangle.get_b().y, 
-       triangle.get_c().x, triangle.get_c().y);
-   
-      // draw outlines
-      strokeWeight(2);
-      line(0, 0, triangle.get_b().x, triangle.get_b().y);  
-      line(0, 0, triangle.get_c().x, triangle.get_c().y);
-    }
+    draw_triangle(triangle);
   }  
 }
 
@@ -123,13 +129,7 @@ ArrayList<MyTriangle> init_triangles() {
 void setup() {
   size(640, 480);
   ArrayList<MyTriangle> triangles = init_triangles();
-  println("triangles.size(): " + triangles.size());
-  for (int i=0; i<triangles.size(); i++) {
-    println("triangles.get(x).get(b): " + triangles.get(i).get_c());
-  }
- 
-  draw_penrose(triangles, 1); 
-  
+  draw_penrose(triangles, 1);   
 }
 
 void draw() {
