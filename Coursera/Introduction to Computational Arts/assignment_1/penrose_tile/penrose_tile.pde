@@ -32,12 +32,15 @@ ArrayList<MyTriangle> sub_divide(ArrayList<MyTriangle> triangles) {
   for (int i=0; i<triangles.size(); i++) {
     MyTriangle triangle = triangles.get(i);
     if (triangle.get_color() == red) {
-       //subdivide red triangle
-       PVector p = PVector.sub(triangle.get_a(), triangle.get_b());
-       p.div(PHI);
-       p.add(triangle.get_a());
-       MyTriangle t1 = new MyTriangle(red, triangle.get_c(), p, triangle.get_b());
-       MyTriangle t2 = new MyTriangle(blue, p, triangle.get_c(), triangle.get_a());       
+      //subdivide red triangle
+      println("inside sub_divide if");
+      PVector p = PVector.sub(triangle.get_a(), triangle.get_b());
+      p.div(PHI);
+      p.add(triangle.get_a());
+      MyTriangle t1 = new MyTriangle(red, triangle.get_c(), p, triangle.get_b());
+      MyTriangle t2 = new MyTriangle(blue, p, triangle.get_c(), triangle.get_a());
+      result.add(t1);
+      result.add(t2);
     }   
   }
   return result;  
@@ -69,9 +72,10 @@ float convert_to_radians(float degrees) {
 }
 
 // takes an int level and draws the penrose fractal
-void draw_penrose(ArrayList<MyTriangle> triangles, int level) {
+void draw_penrose(ArrayList<MyTriangle> starter_triangles, int level) {
+  ArrayList<MyTriangle> triangles = new ArrayList<MyTriangle>();
   for (int i=0; i<level; i++) {
-    sub_divide(triangles);
+    triangles = sub_divide(starter_triangles);
   }    
   draw_triangles(triangles);
 } 
@@ -120,9 +124,10 @@ void draw_triangles(ArrayList<MyTriangle> triangles) {
 
 ArrayList<MyTriangle> init_triangles() {
   ArrayList<MyTriangle> result = new ArrayList<MyTriangle>();
-  //MyTriangle triangle = make_triangle(red, int(width/2), int(height/2), 0.0);
-  ArrayList<MyTriangle> wheel = make_wheel();
-  result.addAll(wheel);
+  MyTriangle triangle = make_triangle(red, int(width/2), int(height/2), 0.0);
+  //ArrayList<MyTriangle> wheel = make_wheel();
+  //result.addAll(wheel);
+  result.add(triangle);
   return result;
 }
 
