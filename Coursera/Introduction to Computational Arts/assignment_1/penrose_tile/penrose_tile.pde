@@ -1,14 +1,15 @@
 //globals
 float PHI = (1 + sqrt(5)) / 2;
-int UNIT_SIZE = 100;
-color blue = #00ADA7;
-color red = #C24366;
+int UNIT_SIZE = 250;
+color [] palette = {#00A9BC, #FFF3C3, #E4171E, #791714, #1A181D};
+color blue = palette[0];
+color red = palette[2];
 
 class MyTriangle {
   PVector a, b, c;
   color couleur;
   MyTriangle(color clr, PVector aa, PVector bb, PVector cc) {
-    a= aa;
+    a = aa;
     b = bb;
     c = cc;
     couleur = clr;
@@ -128,30 +129,23 @@ float convert_to_radians(float degrees) {
 // takes a MyTriangle and shades in the triangle area and outlines 2 sides  
 void draw_triangle(MyTriangle triangle) {
   // shade in triangle area
+  PVector a = triangle.get_a();
+  PVector b = triangle.get_b();
+  PVector c = triangle.get_c();
   strokeWeight(0);
+  stroke(triangle.get_color());
   fill(triangle.get_color());
-  triangle(
-  triangle.get_a().x, triangle.get_a().y, 
-  triangle.get_b().x, triangle.get_b().y, 
-  triangle.get_c().x, triangle.get_c().y);
-
+  triangle(a.x, a.y, b.x, b.y, c.x, c.y);
   // draw outlines
+  stroke(palette[4]);
   strokeWeight(2);
-  line(triangle.get_a().x, triangle.get_a().y, 
-  triangle.get_b().x, triangle.get_b().y);  
-  line(triangle.get_a().x, triangle.get_a().y, 
-  triangle.get_c().x, triangle.get_c().y);
+  line(a.x, a.y, b.x, b.y);  
+  line(a.x, a.y, c.x, c.y);
 }
 
 void draw_triangles(ArrayList<MyTriangle> triangles) {
-  println("size: " + triangles.size());
   for (int i=0; i<triangles.size(); i++) {
-    println("i: " + i);
     MyTriangle triangle = triangles.get(i);
-    println("color: " + triangle.get_color());
-    println("a: " + triangle.get_a());
-    println("b: " + triangle.get_b());
-    println("c: " + triangle.get_c());
     draw_triangle(triangle);
   }
 }
@@ -161,14 +155,14 @@ ArrayList<MyTriangle> init_triangles() {
   MyTriangle triangle = make_triangle(red, int(width/2), int(height/2), 0.0, false);
   ArrayList<MyTriangle> wheel = make_wheel();
   result.addAll(wheel);
-  //result.add(triangle);
   return result;
 }
 
 void setup() {
-  size(640, 480);
+  size(800, 600);
+  background(palette[1]);
   ArrayList<MyTriangle> triangles = init_triangles();
-  draw_penrose(triangles, 3);
+  draw_penrose(triangles, 7);
 }
 
 void draw() {

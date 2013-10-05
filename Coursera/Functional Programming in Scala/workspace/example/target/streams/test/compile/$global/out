@@ -1,0 +1,34 @@
+[0m[[0mdebug[0m] [0m[0m
+[0m[[0mdebug[0m] [0mInitial source changes: [0m
+[0m[[0mdebug[0m] [0m	removed:Set()[0m
+[0m[[0mdebug[0m] [0m	added: Set(C:\eclipse\workspace\Assignments\example\src\test\scala\example\ListsSuite.scala)[0m
+[0m[[0mdebug[0m] [0m	modified: Set()[0m
+[0m[[0mdebug[0m] [0mRemoved products: Set()[0m
+[0m[[0mdebug[0m] [0mModified external sources: Set()[0m
+[0m[[0mdebug[0m] [0mModified binary dependencies: Set()[0m
+[0m[[0mdebug[0m] [0mInitial directly invalidated sources: Set(C:\eclipse\workspace\Assignments\example\src\test\scala\example\ListsSuite.scala)[0m
+[0m[[0mdebug[0m] [0m[0m
+[0m[[0mdebug[0m] [0mSources indirectly invalidated by:[0m
+[0m[[0mdebug[0m] [0m	product: Set()[0m
+[0m[[0mdebug[0m] [0m	binary dep: Set()[0m
+[0m[[0mdebug[0m] [0m	external source: Set()[0m
+[0m[[0mdebug[0m] [0mAll initially invalidated sources: Set(C:\eclipse\workspace\Assignments\example\src\test\scala\example\ListsSuite.scala)[0m
+[0m[[0mdebug[0m] [0mRecompiling all 1 sources: invalidated sources (1) exceeded 50.0% of all sources[0m
+[0m[[0minfo[0m] [0mCompiling 1 Scala source to C:\eclipse\workspace\Assignments\example\target\scala-2.10\test-classes...[0m
+[0m[[0mdebug[0m] [0mRunning cached compiler 4adae5c9, interfacing (CompilerInterface) with Scala compiler version 2.10.2[0m
+[0m[[0mdebug[0m] [0mCalling Scala compiler with arguments  (CompilerInterface):[0m
+[0m[[0mdebug[0m] [0m	-deprecation[0m
+[0m[[0mdebug[0m] [0m	-feature[0m
+[0m[[0mdebug[0m] [0m	-d[0m
+[0m[[0mdebug[0m] [0m	C:\eclipse\workspace\Assignments\example\target\scala-2.10\test-classes[0m
+[0m[[0mdebug[0m] [0m	-bootclasspath[0m
+[0m[[0mdebug[0m] [0m	C:\Users\Denis\algs4\java\lib\resources.jar;C:\Users\Denis\algs4\java\lib\rt.jar;C:\Users\Denis\algs4\java\lib\sunrsasign.jar;C:\Users\Denis\algs4\java\lib\jsse.jar;C:\Users\Denis\algs4\java\lib\jce.jar;C:\Users\Denis\algs4\java\lib\charsets.jar;C:\Users\Denis\algs4\java\lib\jfr.jar;C:\Users\Denis\algs4\java\classes;C:\Users\Denis\.sbt\boot\scala-2.10.2\lib\scala-library.jar[0m
+[0m[[0mdebug[0m] [0m	-classpath[0m
+[0m[[0mdebug[0m] [0m	C:\eclipse\workspace\Assignments\example\target\scala-2.10\test-classes;C:\eclipse\workspace\Assignments\example\target\scala-2.10\classes;C:\eclipse\workspace\Assignments\example\lib_managed\jars\org.scalatest\scalatest_2.10\scalatest_2.10-1.9.1.jar;C:\eclipse\workspace\Assignments\example\lib_managed\jars\org.scala-lang\scala-actors\scala-actors-2.10.0.jar;C:\eclipse\workspace\Assignments\example\lib_managed\jars\org.scala-lang\scala-reflect\scala-reflect-2.10.0.jar;C:\eclipse\workspace\Assignments\example\lib_managed\jars\junit\junit\junit-4.10.jar;C:\eclipse\workspace\Assignments\example\lib_managed\jars\org.hamcrest\hamcrest-core\hamcrest-core-1.1.jar[0m
+[0m[[0mdebug[0m] [0mScala compilation took 1.516415665 s[0m
+[0m[[0mdebug[0m] [0mStep 2 changed sources and immdediate dependencies:[0m
+[0m[[0mdebug[0m] [0m	Set(C:\eclipse\workspace\Assignments\example\src\test\scala\example\ListsSuite.scala)[0m
+[0m[[0mdebug[0m] [0mNon-trivial strongly connected components: [0m
+[0m[[0mdebug[0m] [0m	[0m
+[0m[[0mdebug[0m] [0mStep 2 invalidated sources:[0m
+[0m[[0mdebug[0m] [0m	Set(C:\eclipse\workspace\Assignments\example\src\test\scala\example\ListsSuite.scala)[0m
