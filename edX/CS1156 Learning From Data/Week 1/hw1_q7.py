@@ -74,8 +74,7 @@ def score(examples):
             if x == 1: score += 1*x
             if x == 0: score += 0*x
         scores[k] = score
-    return scores
-        
+    return scores        
 
 init()
 outsideD = filter_H()
