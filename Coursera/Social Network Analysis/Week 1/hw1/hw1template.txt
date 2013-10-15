@@ -1,0 +1,17 @@
+# Fill in the following information about your network. 
+# Since the assignment will be graded automatically, 
+# don't paste any extraneous characters (spaces are OK). 
+
+# for example:
+# number of edges: 5
+# and NOT
+# number of edges: I think it's 5 but I'm not sure...
+
+# Fill in all lines that do not start with #
+# with values you figure out from your network
+
+number of nodes: 388
+number of edges: 3598
+number of connected components: 20
+size of largest connected component: 345
+maximum degree: 94
